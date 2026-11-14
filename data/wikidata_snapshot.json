@@ -1,0 +1,2805 @@
+{
+  "Q10998": {
+    "lastrevid": 2567935774,
+    "labels": {
+      "it": {
+        "language": "it",
+        "value": "Solanum tuberosum"
+      },
+      "es": {
+        "language": "es",
+        "value": "Solanum tuberosum"
+      }
+    },
+    "aliases": {
+      "it": [
+        {
+          "language": "it",
+          "value": "Patata"
+        }
+      ],
+      "es": [
+        {
+          "language": "es",
+          "value": "papa"
+        },
+        {
+          "language": "es",
+          "value": "patata"
+        }
+      ]
+    }
+  },
+  "Q110184114": {
+    "lastrevid": 2550301850,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "harina de maíz"
+      },
+      "it": {
+        "language": "it",
+        "value": "farina di mais"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "harina de panizo"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "farina di granoturco"
+        }
+      ]
+    }
+  },
+  "Q11575": {
+    "lastrevid": 2568061028,
+    "labels": {
+      "it": {
+        "language": "it",
+        "value": "Zea mays"
+      },
+      "es": {
+        "language": "es",
+        "value": "maíz"
+      }
+    },
+    "aliases": {
+      "it": [
+        {
+          "language": "it",
+          "value": "Z. mays"
+        },
+        {
+          "language": "it",
+          "value": "mais"
+        },
+        {
+          "language": "it",
+          "value": "granoturco"
+        },
+        {
+          "language": "it",
+          "value": "granturco"
+        }
+      ],
+      "es": [
+        {
+          "language": "es",
+          "value": "choclo"
+        },
+        {
+          "language": "es",
+          "value": "Zea mays"
+        },
+        {
+          "language": "es",
+          "value": "Z. mays"
+        },
+        {
+          "language": "es",
+          "value": "maiz"
+        },
+        {
+          "language": "es",
+          "value": "Coronta o Panocha"
+        },
+        {
+          "language": "es",
+          "value": "Elote o Choclo"
+        },
+        {
+          "language": "es",
+          "value": "Olote"
+        }
+      ]
+    }
+  },
+  "Q131226": {
+    "lastrevid": 2567776175,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "lenteja"
+      },
+      "it": {
+        "language": "it",
+        "value": "Lens culinaris"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Lens lens"
+        },
+        {
+          "language": "es",
+          "value": "Ervum lens"
+        },
+        {
+          "language": "es",
+          "value": "Vicia lens"
+        },
+        {
+          "language": "es",
+          "value": "lenteja verde"
+        },
+        {
+          "language": "es",
+          "value": "Lens culinaris"
+        },
+        {
+          "language": "es",
+          "value": "L. culinaris"
+        },
+        {
+          "language": "es",
+          "value": "Lenteja"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "lenticchia"
+        }
+      ]
+    }
+  },
+  "Q131607": {
+    "lastrevid": 2544917625,
+    "labels": {},
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "funche"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "polenda"
+        },
+        {
+          "language": "it",
+          "value": "pulenda"
+        }
+      ]
+    }
+  },
+  "Q13195": {
+    "lastrevid": 2560806359,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "lima"
+      },
+      "it": {
+        "language": "it",
+        "value": "limetta"
+      }
+    },
+    "aliases": {
+      "it": [
+        {
+          "language": "it",
+          "value": "lime"
+        },
+        {
+          "language": "it",
+          "value": "lima"
+        }
+      ],
+      "es": [
+        {
+          "language": "es",
+          "value": "limón verde"
+        },
+        {
+          "language": "es",
+          "value": "limón"
+        }
+      ]
+    }
+  },
+  "Q132624": {
+    "lastrevid": 2565783001,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Cuminum cyminum"
+      },
+      "it": {
+        "language": "it",
+        "value": "Cuminum cyminum"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Comino comun"
+        },
+        {
+          "language": "es",
+          "value": "Cuminum odorum"
+        },
+        {
+          "language": "es",
+          "value": "Cuminum officinale"
+        },
+        {
+          "language": "es",
+          "value": "Ligusticum cuminum"
+        },
+        {
+          "language": "es",
+          "value": "Comino"
+        },
+        {
+          "language": "es",
+          "value": "Comino hortense"
+        },
+        {
+          "language": "es",
+          "value": "Cuminum hispanicum"
+        },
+        {
+          "language": "es",
+          "value": "Cyminon longeinvolucellatum"
+        },
+        {
+          "language": "es",
+          "value": "Alcamonia"
+        },
+        {
+          "language": "es",
+          "value": "Cominos"
+        },
+        {
+          "language": "es",
+          "value": "Comino fino"
+        },
+        {
+          "language": "es",
+          "value": "Comino real"
+        },
+        {
+          "language": "es",
+          "value": "Comino común"
+        },
+        {
+          "language": "es",
+          "value": "Luerssenia cyminum"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "Cumino"
+        },
+        {
+          "language": "it",
+          "value": "Cumino romano"
+        }
+      ]
+    }
+  },
+  "Q13317": {
+    "lastrevid": 2568606148,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "yogur"
+      },
+      "it": {
+        "language": "it",
+        "value": "yogurt"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "yogurt"
+        },
+        {
+          "language": "es",
+          "value": "yogourt"
+        },
+        {
+          "language": "es",
+          "value": "yoghourt"
+        }
+      ]
+    }
+  },
+  "Q13417087": {
+    "lastrevid": 2566078737,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "leche evaporada"
+      },
+      "it": {
+        "language": "it",
+        "value": "latte evaporato"
+      }
+    },
+    "aliases": {}
+  },
+  "Q134283": {
+    "lastrevid": 2568783518,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Origanum vulgare"
+      },
+      "it": {
+        "language": "it",
+        "value": "Origanum vulgare"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Origanum creticum"
+        },
+        {
+          "language": "es",
+          "value": "Origanum purpurescens"
+        },
+        {
+          "language": "es",
+          "value": "Origanum virens"
+        },
+        {
+          "language": "es",
+          "value": "Oreganin"
+        },
+        {
+          "language": "es",
+          "value": "Urégano"
+        },
+        {
+          "language": "es",
+          "value": "Origanum anglicum"
+        },
+        {
+          "language": "es",
+          "value": "Origanum pruinosum"
+        },
+        {
+          "language": "es",
+          "value": "Origanum minus"
+        },
+        {
+          "language": "es",
+          "value": "Origanum oblongatum"
+        },
+        {
+          "language": "es",
+          "value": "Origanum loureiroi"
+        },
+        {
+          "language": "es",
+          "value": "Origanum barcense"
+        },
+        {
+          "language": "es",
+          "value": "Furiegano"
+        },
+        {
+          "language": "es",
+          "value": "Origanum humile"
+        },
+        {
+          "language": "es",
+          "value": "Origanum angustifolium"
+        },
+        {
+          "language": "es",
+          "value": "Origanum vulgare subsp viride"
+        },
+        {
+          "language": "es",
+          "value": "Origanum strobilaceum"
+        },
+        {
+          "language": "es",
+          "value": "Uregano"
+        },
+        {
+          "language": "es",
+          "value": "orégano"
+        },
+        {
+          "language": "es",
+          "value": "órgano"
+        },
+        {
+          "language": "es",
+          "value": "oreganín"
+        },
+        {
+          "language": "es",
+          "value": "orégano común"
+        },
+        {
+          "language": "es",
+          "value": "orégano nano"
+        },
+        {
+          "language": "es",
+          "value": "orégano trenzado"
+        },
+        {
+          "language": "es",
+          "value": "orégano turco"
+        },
+        {
+          "language": "es",
+          "value": "orenga"
+        },
+        {
+          "language": "es",
+          "value": "oriégano"
+        },
+        {
+          "language": "es",
+          "value": "furiégano"
+        },
+        {
+          "language": "es",
+          "value": "mejorana silvestre"
+        },
+        {
+          "language": "es",
+          "value": "perigüel"
+        },
+        {
+          "language": "es",
+          "value": "uriégano"
+        },
+        {
+          "language": "es",
+          "value": "uriéganu"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "origano"
+        }
+      ]
+    }
+  },
+  "Q15062992": {
+    "lastrevid": 2473964315,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "frijol negro"
+      },
+      "it": {
+        "language": "it",
+        "value": "fagiolo nero"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "caraota"
+        }
+      ]
+    }
+  },
+  "Q1548030": {
+    "lastrevid": 2557583502,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "morrón"
+      },
+      "it": {
+        "language": "it",
+        "value": "peperone"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "pimiento morrón"
+        },
+        {
+          "language": "es",
+          "value": "chile morrón"
+        },
+        {
+          "language": "es",
+          "value": "pimentón"
+        },
+        {
+          "language": "es",
+          "value": "pimiento"
+        },
+        {
+          "language": "es",
+          "value": "morron"
+        },
+        {
+          "language": "es",
+          "value": "pimiento morron"
+        },
+        {
+          "language": "es",
+          "value": "chile morron"
+        },
+        {
+          "language": "es",
+          "value": "pimenton"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "peperone dolce"
+        }
+      ]
+    }
+  },
+  "Q15660894": {
+    "lastrevid": 2499845114,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Tortilla de maíz"
+      },
+      "it": {
+        "language": "it",
+        "value": "tortilla"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Tortilla de maiz"
+        },
+        {
+          "language": "es",
+          "value": "pablo emilio escobar"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "Tortillas"
+        }
+      ]
+    }
+  },
+  "Q1761719": {
+    "lastrevid": 2536561056,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Lippia graveolens"
+      },
+      "it": {
+        "language": "it",
+        "value": "Lippia graveolens"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "orégano mexicano"
+        }
+      ]
+    }
+  },
+  "Q191768": {
+    "lastrevid": 2567795246,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "carne de cerdo"
+      },
+      "it": {
+        "language": "it",
+        "value": "carne di maiale"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "carne de puerco"
+        },
+        {
+          "language": "es",
+          "value": "carne porcina"
+        },
+        {
+          "language": "es",
+          "value": "carne de porcino"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "carne di porco"
+        },
+        {
+          "language": "it",
+          "value": "carne suina"
+        },
+        {
+          "language": "it",
+          "value": "suino"
+        },
+        {
+          "language": "it",
+          "value": "porco"
+        },
+        {
+          "language": "it",
+          "value": "maiale"
+        }
+      ]
+    }
+  },
+  "Q20638126": {
+    "lastrevid": 2569264097,
+    "labels": {
+      "it": {
+        "language": "it",
+        "value": "pomodoro"
+      },
+      "es": {
+        "language": "es",
+        "value": "tomate"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "jitomate"
+        },
+        {
+          "language": "es",
+          "value": "🍅"
+        }
+      ]
+    }
+  },
+  "Q2249305": {
+    "lastrevid": 2561400276,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "harina de trigo"
+      },
+      "it": {
+        "language": "it",
+        "value": "farina di grano"
+      }
+    },
+    "aliases": {
+      "it": [
+        {
+          "language": "it",
+          "value": "farina di frumento"
+        }
+      ]
+    }
+  },
+  "Q22915010": {
+    "lastrevid": 2539241356,
+    "labels": {
+      "it": {
+        "language": "it",
+        "value": "pepe nero"
+      },
+      "es": {
+        "language": "es",
+        "value": "pimienta negra"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "pimiento negro"
+        }
+      ]
+    }
+  },
+  "Q23400": {
+    "lastrevid": 2567598339,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Allium sativum"
+      },
+      "it": {
+        "language": "it",
+        "value": "aglio"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Ajo"
+        },
+        {
+          "language": "es",
+          "value": "Ajo doméstico"
+        },
+        {
+          "language": "es",
+          "value": "Ajo común"
+        },
+        {
+          "language": "es",
+          "value": "Ajo domestico"
+        },
+        {
+          "language": "es",
+          "value": "Allium sativum subsp. ophioscorodon"
+        },
+        {
+          "language": "es",
+          "value": "Ajo diego"
+        },
+        {
+          "language": "es",
+          "value": "Ajo sanjuanero"
+        },
+        {
+          "language": "es",
+          "value": "Ajo castellano"
+        },
+        {
+          "language": "es",
+          "value": "Ajos"
+        },
+        {
+          "language": "es",
+          "value": "Allium controversum"
+        },
+        {
+          "language": "es",
+          "value": "Allium ophioscorodon"
+        },
+        {
+          "language": "es",
+          "value": "Ajo cultivado"
+        },
+        {
+          "language": "es",
+          "value": "Allium sativum var ophioscorodon"
+        },
+        {
+          "language": "es",
+          "value": "Ajo castanuelo"
+        },
+        {
+          "language": "es",
+          "value": "Ajo comun y hortense que se come"
+        },
+        {
+          "language": "es",
+          "value": "Ajo andaluz"
+        },
+        {
+          "language": "es",
+          "value": "Ajo castañuelo"
+        },
+        {
+          "language": "es",
+          "value": "Allium sativum subsp ophioscorodon"
+        },
+        {
+          "language": "es",
+          "value": "Ajo comun"
+        },
+        {
+          "language": "es",
+          "value": "Allium sativum var. ophioscorodon"
+        },
+        {
+          "language": "es",
+          "value": "Ajo común y hortense que se come"
+        },
+        {
+          "language": "es",
+          "value": "Ajo morado"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "Aglio"
+        }
+      ]
+    }
+  },
+  "Q23485": {
+    "lastrevid": 2567631057,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Allium cepa"
+      },
+      "it": {
+        "language": "it",
+        "value": "cipolla"
+      }
+    },
+    "aliases": {
+      "it": [
+        {
+          "language": "it",
+          "value": "cipolla"
+        },
+        {
+          "language": "it",
+          "value": "Allium coepa"
+        },
+        {
+          "language": "it",
+          "value": "Allium cepa L."
+        }
+      ],
+      "es": [
+        {
+          "language": "es",
+          "value": "cebolla"
+        }
+      ]
+    }
+  },
+  "Q25284": {
+    "lastrevid": 2567785123,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Petroselinum crispum"
+      },
+      "it": {
+        "language": "it",
+        "value": "Petroselinum crispum"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Petroselinum hortense"
+        },
+        {
+          "language": "es",
+          "value": "perejil"
+        },
+        {
+          "language": "es",
+          "value": "ligustico peregrino"
+        },
+        {
+          "language": "es",
+          "value": "apio de piedras"
+        },
+        {
+          "language": "es",
+          "value": "perejil de hoja crespada"
+        },
+        {
+          "language": "es",
+          "value": "perexil"
+        },
+        {
+          "language": "es",
+          "value": "perejil rizo"
+        },
+        {
+          "language": "es",
+          "value": "prexil"
+        },
+        {
+          "language": "es",
+          "value": "perejil en rama"
+        },
+        {
+          "language": "es",
+          "value": "petroselino"
+        },
+        {
+          "language": "es",
+          "value": "peregil"
+        },
+        {
+          "language": "es",
+          "value": "prejilo"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "Petroselinum hortense"
+        },
+        {
+          "language": "it",
+          "value": "Prezzemolo"
+        }
+      ]
+    }
+  },
+  "Q26006": {
+    "lastrevid": 2567798080,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Laurus nobilis"
+      },
+      "it": {
+        "language": "it",
+        "value": "Laurus nobilis"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Laurel europeo"
+        },
+        {
+          "language": "es",
+          "value": "Laurel"
+        },
+        {
+          "language": "es",
+          "value": "Loreda"
+        },
+        {
+          "language": "es",
+          "value": "Llorea"
+        },
+        {
+          "language": "es",
+          "value": "Laurel del Mediterraneo"
+        },
+        {
+          "language": "es",
+          "value": "Árbol de Apolo"
+        },
+        {
+          "language": "es",
+          "value": "Laurel de Apolo"
+        },
+        {
+          "language": "es",
+          "value": "Laurel de cocina"
+        },
+        {
+          "language": "es",
+          "value": "Los Laureles"
+        },
+        {
+          "language": "es",
+          "value": "Choriu"
+        },
+        {
+          "language": "es",
+          "value": "Laurel macho"
+        },
+        {
+          "language": "es",
+          "value": "Laurel noble"
+        },
+        {
+          "language": "es",
+          "value": "Lorel"
+        },
+        {
+          "language": "es",
+          "value": "Lauredo"
+        },
+        {
+          "language": "es",
+          "value": "Laurus vulgaris"
+        },
+        {
+          "language": "es",
+          "value": "Laurel hembra"
+        },
+        {
+          "language": "es",
+          "value": "Llorel"
+        },
+        {
+          "language": "es",
+          "value": "Lloreo"
+        },
+        {
+          "language": "es",
+          "value": "Laurus undulata"
+        },
+        {
+          "language": "es",
+          "value": "Laurel del Mediterráneo"
+        },
+        {
+          "language": "es",
+          "value": "Laurelal"
+        },
+        {
+          "language": "es",
+          "value": "Llaurer"
+        },
+        {
+          "language": "es",
+          "value": "Lloreolo"
+        },
+        {
+          "language": "es",
+          "value": "Laurel común"
+        },
+        {
+          "language": "es",
+          "value": "Laurel comun"
+        },
+        {
+          "language": "es",
+          "value": "Arbol de Apolo"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "alloro"
+        }
+      ]
+    }
+  },
+  "Q2763698": {
+    "lastrevid": 2563894960,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "sésamo"
+      },
+      "it": {
+        "language": "it",
+        "value": "Sesamum indicum"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Sesamum indicum"
+        },
+        {
+          "language": "es",
+          "value": "sesamo"
+        },
+        {
+          "language": "es",
+          "value": "anjolí"
+        },
+        {
+          "language": "es",
+          "value": "ajonjolí"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "Sesamo"
+        }
+      ]
+    }
+  },
+  "Q28298": {
+    "lastrevid": 2569158849,
+    "labels": {
+      "it": {
+        "language": "it",
+        "value": "Apium graveolens"
+      },
+      "es": {
+        "language": "es",
+        "value": "Apium graveolens"
+      }
+    },
+    "aliases": {
+      "it": [
+        {
+          "language": "it",
+          "value": "Apium graveolens rapaceum"
+        },
+        {
+          "language": "it",
+          "value": "sedano rapa"
+        },
+        {
+          "language": "it",
+          "value": "sedano"
+        },
+        {
+          "language": "it",
+          "value": "sedano da costa"
+        }
+      ],
+      "es": [
+        {
+          "language": "es",
+          "value": "apio"
+        }
+      ]
+    }
+  },
+  "Q2830455": {
+    "lastrevid": 2565193298,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "leche condensada"
+      },
+      "it": {
+        "language": "it",
+        "value": "latte condensato"
+      }
+    },
+    "aliases": {}
+  },
+  "Q30056": {
+    "lastrevid": 2568691258,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Daucus carota"
+      },
+      "it": {
+        "language": "it",
+        "value": "Daucus carota"
+      }
+    },
+    "aliases": {
+      "it": [
+        {
+          "language": "it",
+          "value": "carota"
+        }
+      ]
+    }
+  },
+  "Q3181909": {
+    "lastrevid": 2551761602,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "guayaba"
+      },
+      "it": {
+        "language": "it",
+        "value": "guaiava"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Guayaba"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "guava"
+        }
+      ]
+    }
+  },
+  "Q323635": {
+    "lastrevid": 2558042206,
+    "labels": {
+      "it": {
+        "language": "it",
+        "value": "fagiolo pinto"
+      },
+      "es": {
+        "language": "es",
+        "value": "frijol pinto"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Judía Pinta"
+        },
+        {
+          "language": "es",
+          "value": "Alubia Pinta"
+        }
+      ]
+    }
+  },
+  "Q3342808": {
+    "lastrevid": 2568399479,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "coco"
+      },
+      "it": {
+        "language": "it",
+        "value": "noce di cocco"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "coco (nuez)"
+        },
+        {
+          "language": "es",
+          "value": "nuez de coco"
+        },
+        {
+          "language": "es",
+          "value": "fruto del cocotero"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "cocco"
+        }
+      ]
+    }
+  },
+  "Q3367716": {
+    "lastrevid": 2543709546,
+    "labels": {
+      "it": {
+        "language": "it",
+        "value": "nopal"
+      },
+      "es": {
+        "language": "es",
+        "value": "nopal"
+      }
+    },
+    "aliases": {}
+  },
+  "Q3393961": {
+    "lastrevid": 2513352369,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "maicena"
+      },
+      "it": {
+        "language": "it",
+        "value": "amido di mais"
+      }
+    },
+    "aliases": {
+      "it": [
+        {
+          "language": "it",
+          "value": "maizena"
+        }
+      ]
+    }
+  },
+  "Q34887": {
+    "lastrevid": 2567855905,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Carica papaya"
+      },
+      "it": {
+        "language": "it",
+        "value": "Carica papaya"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Carica portorricensis"
+        },
+        {
+          "language": "es",
+          "value": "Carica papaya var. jimenezii"
+        },
+        {
+          "language": "es",
+          "value": "Papaya citriformis"
+        },
+        {
+          "language": "es",
+          "value": "Carica papaya f. mamaya"
+        },
+        {
+          "language": "es",
+          "value": "Cárica papaia"
+        },
+        {
+          "language": "es",
+          "value": "Papaya edulis"
+        },
+        {
+          "language": "es",
+          "value": "Carica jamaicensis"
+        },
+        {
+          "language": "es",
+          "value": "Papaya edulis var. macrocarpa"
+        },
+        {
+          "language": "es",
+          "value": "Papaya rochefortii"
+        },
+        {
+          "language": "es",
+          "value": "Papaya carica"
+        },
+        {
+          "language": "es",
+          "value": "Papaya cucumerina"
+        },
+        {
+          "language": "es",
+          "value": "Carica papaya f. portoricensis"
+        },
+        {
+          "language": "es",
+          "value": "Papaya bourgeaei"
+        },
+        {
+          "language": "es",
+          "value": "Carica papaya var. bady"
+        },
+        {
+          "language": "es",
+          "value": "Carica papaya f portoricensis"
+        },
+        {
+          "language": "es",
+          "value": "Papaya hermaphrodita"
+        },
+        {
+          "language": "es",
+          "value": "Papaya edulis var pyriformis"
+        },
+        {
+          "language": "es",
+          "value": "Papaya cimarrona"
+        },
+        {
+          "language": "es",
+          "value": "Carica hermaphrodita"
+        },
+        {
+          "language": "es",
+          "value": "Papaya peltata"
+        },
+        {
+          "language": "es",
+          "value": "Carica rochefortii"
+        },
+        {
+          "language": "es",
+          "value": "Vasconcellea peltata"
+        },
+        {
+          "language": "es",
+          "value": "Carica pinnatifida"
+        },
+        {
+          "language": "es",
+          "value": "Papaya edulis var. pyriformis"
+        },
+        {
+          "language": "es",
+          "value": "Papaya vulgaris"
+        },
+        {
+          "language": "es",
+          "value": "Papaya cubensis"
+        },
+        {
+          "language": "es",
+          "value": "Carica papaya var bady"
+        },
+        {
+          "language": "es",
+          "value": "Carica citriformis"
+        },
+        {
+          "language": "es",
+          "value": "Carica cubensis"
+        },
+        {
+          "language": "es",
+          "value": "Carica sativa"
+        },
+        {
+          "language": "es",
+          "value": "Carica bourgeaei"
+        },
+        {
+          "language": "es",
+          "value": "Papaya edulis var macrocarpa"
+        },
+        {
+          "language": "es",
+          "value": "Carica peltata"
+        },
+        {
+          "language": "es",
+          "value": "Carica papaya f mamaya"
+        },
+        {
+          "language": "es",
+          "value": "Papaya communis"
+        },
+        {
+          "language": "es",
+          "value": "Papaya papaya"
+        },
+        {
+          "language": "es",
+          "value": "Carica posopora"
+        },
+        {
+          "language": "es",
+          "value": "Carica papaya var jimenezii"
+        },
+        {
+          "language": "es",
+          "value": "Carica jimenezii"
+        },
+        {
+          "language": "es",
+          "value": "Carica mamaya"
+        },
+        {
+          "language": "es",
+          "value": "Carica papaia"
+        },
+        {
+          "language": "es",
+          "value": "melón zapote"
+        },
+        {
+          "language": "es",
+          "value": "papaya"
+        },
+        {
+          "language": "es",
+          "value": "árbol de melon"
+        },
+        {
+          "language": "es",
+          "value": "papayo"
+        },
+        {
+          "language": "es",
+          "value": "olocoton"
+        },
+        {
+          "language": "es",
+          "value": "fruta bomba"
+        },
+        {
+          "language": "es",
+          "value": "melon de arbol"
+        },
+        {
+          "language": "es",
+          "value": "melon de árbol"
+        },
+        {
+          "language": "es",
+          "value": "lechoza"
+        },
+        {
+          "language": "es",
+          "value": "mamão"
+        },
+        {
+          "language": "es",
+          "value": "mamao"
+        },
+        {
+          "language": "es",
+          "value": "ababaya"
+        },
+        {
+          "language": "es",
+          "value": "arbol de melon"
+        },
+        {
+          "language": "es",
+          "value": "melon zapote"
+        },
+        {
+          "language": "es",
+          "value": "melón de árbol"
+        },
+        {
+          "language": "es",
+          "value": "arbol de melón"
+        },
+        {
+          "language": "es",
+          "value": "melón de arbol"
+        },
+        {
+          "language": "es",
+          "value": "olocotón"
+        },
+        {
+          "language": "es",
+          "value": "árbol de melón"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "Papaia"
+        },
+        {
+          "language": "it",
+          "value": "Papaya"
+        }
+      ]
+    }
+  },
+  "Q3621199": {
+    "lastrevid": 2526598631,
+    "labels": {
+      "it": {
+        "language": "it",
+        "value": "arachide"
+      },
+      "es": {
+        "language": "es",
+        "value": "maní"
+      }
+    },
+    "aliases": {
+      "it": [
+        {
+          "language": "it",
+          "value": "nocciolina americana"
+        },
+        {
+          "language": "it",
+          "value": "spagnolette"
+        },
+        {
+          "language": "it",
+          "value": "nocciolina"
+        },
+        {
+          "language": "it",
+          "value": "seme di arachide"
+        },
+        {
+          "language": "it",
+          "value": "bagigi"
+        }
+      ]
+    }
+  },
+  "Q370239": {
+    "lastrevid": 2567851553,
+    "labels": {
+      "it": {
+        "language": "it",
+        "value": "Cinnamomum verum"
+      },
+      "es": {
+        "language": "es",
+        "value": "Cinnamomum verum"
+      }
+    },
+    "aliases": {
+      "it": [
+        {
+          "language": "it",
+          "value": "cannella"
+        },
+        {
+          "language": "it",
+          "value": "cinnamomo"
+        },
+        {
+          "language": "it",
+          "value": "Cinnamomum zeylanicum"
+        }
+      ]
+    }
+  },
+  "Q37937": {
+    "lastrevid": 2567859572,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Ipomoea batatas"
+      },
+      "it": {
+        "language": "it",
+        "value": "Ipomoea batatas"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Convolvulus denticulatus"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea purpusii"
+        },
+        {
+          "language": "es",
+          "value": "Convolvulus apiculata"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea triloba"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea praetermissa"
+        },
+        {
+          "language": "es",
+          "value": "Convolvulus esculentus"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea batatas fo. trifida"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea simplex"
+        },
+        {
+          "language": "es",
+          "value": "Moniatos"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea denticulata"
+        },
+        {
+          "language": "es",
+          "value": "Moniato"
+        },
+        {
+          "language": "es",
+          "value": "Batatas edulis var. porphyrorhiza"
+        },
+        {
+          "language": "es",
+          "value": "Convolvulus batatas"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea mesenterioides"
+        },
+        {
+          "language": "es",
+          "value": "Patatas de Málaga"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea bolusiana"
+        },
+        {
+          "language": "es",
+          "value": "Convolvulus varius"
+        },
+        {
+          "language": "es",
+          "value": "Camote"
+        },
+        {
+          "language": "es",
+          "value": "Patata dulce"
+        },
+        {
+          "language": "es",
+          "value": "Boniato"
+        },
+        {
+          "language": "es",
+          "value": "Batatas edulis"
+        },
+        {
+          "language": "es",
+          "value": "Aniseia martinicensis var nitens"
+        },
+        {
+          "language": "es",
+          "value": "Papa dulce"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea batatas var. edulis"
+        },
+        {
+          "language": "es",
+          "value": "Convolvulus edulis"
+        },
+        {
+          "language": "es",
+          "value": "Convolvulus tuberosus"
+        },
+        {
+          "language": "es",
+          "value": "Boniatos"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea tiliacea"
+        },
+        {
+          "language": "es",
+          "value": "Buniato"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea batatas fo trifida"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea vulsa"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea setifera"
+        },
+        {
+          "language": "es",
+          "value": "Patata de Málaga"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea angustisecta"
+        },
+        {
+          "language": "es",
+          "value": "Aniseia martinicensis var. nitens"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea edulis"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea bolusiana var pinnatipartita"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea batatas var. lobata"
+        },
+        {
+          "language": "es",
+          "value": "Batata"
+        },
+        {
+          "language": "es",
+          "value": "Camotes"
+        },
+        {
+          "language": "es",
+          "value": "Convolvulus hederaceus"
+        },
+        {
+          "language": "es",
+          "value": "Convolvulus tiliaceus"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea batatas var edulis"
+        },
+        {
+          "language": "es",
+          "value": "Patatas de Malaga"
+        },
+        {
+          "language": "es",
+          "value": "Batata dulce"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea confertiflora"
+        },
+        {
+          "language": "es",
+          "value": "Convolvulus attenuatus"
+        },
+        {
+          "language": "es",
+          "value": "Patata de Malaga"
+        },
+        {
+          "language": "es",
+          "value": "Rapadura"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea davidsoniae"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea batatas var lobata"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea fastigiata"
+        },
+        {
+          "language": "es",
+          "value": "Ipomoea bolusiana var. pinnatipartita"
+        },
+        {
+          "language": "es",
+          "value": "Batatas edulis var porphyrorhiza"
+        },
+        {
+          "language": "es",
+          "value": "Convolvulus candicans"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "batata"
+        },
+        {
+          "language": "it",
+          "value": "patata dolce"
+        },
+        {
+          "language": "it",
+          "value": "patata americana"
+        },
+        {
+          "language": "it",
+          "value": "patata raffreddata"
+        }
+      ]
+    }
+  },
+  "Q3919027": {
+    "lastrevid": 2567866292,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "mango"
+      },
+      "it": {
+        "language": "it",
+        "value": "mango"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Manguífera índica"
+        },
+        {
+          "language": "es",
+          "value": "M. indica"
+        },
+        {
+          "language": "es",
+          "value": "Mangifera indica"
+        },
+        {
+          "language": "es",
+          "value": "Manguifera indica"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "Mangifera indica"
+        }
+      ]
+    }
+  },
+  "Q41354": {
+    "lastrevid": 2561450954,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "vinagre"
+      },
+      "it": {
+        "language": "it",
+        "value": "aceto"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "vinagre de vino"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "aceti"
+        }
+      ]
+    }
+  },
+  "Q41611": {
+    "lastrevid": 2567812427,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Coriandrum sativum"
+      },
+      "it": {
+        "language": "it",
+        "value": "Coriandrum sativum"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Jilantro"
+        },
+        {
+          "language": "es",
+          "value": "Xendro"
+        },
+        {
+          "language": "es",
+          "value": "Ciliandro"
+        },
+        {
+          "language": "es",
+          "value": "Celandria"
+        },
+        {
+          "language": "es",
+          "value": "Anisillo"
+        },
+        {
+          "language": "es",
+          "value": "Salandria"
+        },
+        {
+          "language": "es",
+          "value": "Coriandropsis syriaca"
+        },
+        {
+          "language": "es",
+          "value": "Selinum coriandrum"
+        },
+        {
+          "language": "es",
+          "value": "Coendro"
+        },
+        {
+          "language": "es",
+          "value": "Cilantro silvestre"
+        },
+        {
+          "language": "es",
+          "value": "Coantrillo"
+        },
+        {
+          "language": "es",
+          "value": "Coentro das hortas"
+        },
+        {
+          "language": "es",
+          "value": "Cuantrillo"
+        },
+        {
+          "language": "es",
+          "value": "Cilantro hortense"
+        },
+        {
+          "language": "es",
+          "value": "Coriandrum globosum"
+        },
+        {
+          "language": "es",
+          "value": "Coentro"
+        },
+        {
+          "language": "es",
+          "value": "Tantsanacua"
+        },
+        {
+          "language": "es",
+          "value": "Ceandro"
+        },
+        {
+          "language": "es",
+          "value": "Sium coriaudrum"
+        },
+        {
+          "language": "es",
+          "value": "Cilantro"
+        },
+        {
+          "language": "es",
+          "value": "Coriandro"
+        },
+        {
+          "language": "es",
+          "value": "Cilandro"
+        },
+        {
+          "language": "es",
+          "value": "Bifora loureiroi"
+        },
+        {
+          "language": "es",
+          "value": "Colentro"
+        },
+        {
+          "language": "es",
+          "value": "Coriandreae"
+        },
+        {
+          "language": "es",
+          "value": "Coriandrum diversifolium"
+        },
+        {
+          "language": "es",
+          "value": "Coriandrum majus"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "Coriandolo"
+        },
+        {
+          "language": "it",
+          "value": "Cilantro"
+        },
+        {
+          "language": "it",
+          "value": "Prezzemolo cinese"
+        }
+      ]
+    }
+  },
+  "Q500": {
+    "lastrevid": 2563894694,
+    "labels": {
+      "it": {
+        "language": "it",
+        "value": "Citrus × limon"
+      },
+      "es": {
+        "language": "es",
+        "value": "limonero"
+      }
+    },
+    "aliases": {
+      "it": [
+        {
+          "language": "it",
+          "value": "limone"
+        },
+        {
+          "language": "it",
+          "value": "Citrus x limon"
+        },
+        {
+          "language": "it",
+          "value": "Citrus limon"
+        }
+      ],
+      "es": [
+        {
+          "language": "es",
+          "value": "Citrus × limon"
+        },
+        {
+          "language": "es",
+          "value": "Citrus limon"
+        }
+      ]
+    }
+  },
+  "Q5032643": {
+    "lastrevid": 2523273320,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Tomate en conserva"
+      }
+    },
+    "aliases": {}
+  },
+  "Q504133": {
+    "lastrevid": 2541493702,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "chile jalapeño"
+      },
+      "it": {
+        "language": "it",
+        "value": "jalapeño"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "aji japeno"
+        },
+        {
+          "language": "es",
+          "value": "ají japeno"
+        },
+        {
+          "language": "es",
+          "value": "aji japeño"
+        },
+        {
+          "language": "es",
+          "value": "ají japeño"
+        },
+        {
+          "language": "es",
+          "value": "chile cuaresmeno"
+        },
+        {
+          "language": "es",
+          "value": "chile cuaresmeño"
+        },
+        {
+          "language": "es",
+          "value": "chile jalapeno"
+        },
+        {
+          "language": "es",
+          "value": "jalapeno"
+        },
+        {
+          "language": "es",
+          "value": "jalapeño"
+        }
+      ]
+    }
+  },
+  "Q5090": {
+    "lastrevid": 2567528528,
+    "labels": {
+      "it": {
+        "language": "it",
+        "value": "riso"
+      },
+      "es": {
+        "language": "es",
+        "value": "arroz"
+      }
+    },
+    "aliases": {}
+  },
+  "Q517283": {
+    "lastrevid": 2567570626,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Pachyrhizus erosus"
+      },
+      "it": {
+        "language": "it",
+        "value": "Pachyrhizus erosus"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "jícama"
+        },
+        {
+          "language": "es",
+          "value": "síncama"
+        }
+      ]
+    }
+  },
+  "Q5613350": {
+    "lastrevid": 2540811862,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "chile mirasol"
+      },
+      "it": {
+        "language": "it",
+        "value": "mirasol"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "chile guajillo"
+        },
+        {
+          "language": "es",
+          "value": "pimiento guajillo"
+        },
+        {
+          "language": "es",
+          "value": "guajillo"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "guajillo"
+        }
+      ]
+    }
+  },
+  "Q617583": {
+    "lastrevid": 2540811631,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Chile serrano"
+      },
+      "it": {
+        "language": "it",
+        "value": "Serrano del Sol"
+      }
+    },
+    "aliases": {}
+  },
+  "Q622525": {
+    "lastrevid": 2568007296,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Physalis ixocarpa"
+      },
+      "it": {
+        "language": "it",
+        "value": "Physalis philadelphica"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Tomate milpero"
+        },
+        {
+          "language": "es",
+          "value": "Miltomate"
+        },
+        {
+          "language": "es",
+          "value": "Tomate de cáscara"
+        },
+        {
+          "language": "es",
+          "value": "Tomate de cascara"
+        },
+        {
+          "language": "es",
+          "value": "Physalis philadelphica"
+        },
+        {
+          "language": "es",
+          "value": "Tomate de fresadilla"
+        },
+        {
+          "language": "es",
+          "value": "Physalis aequata"
+        },
+        {
+          "language": "es",
+          "value": "Tomate verde"
+        }
+      ]
+    }
+  },
+  "Q640032": {
+    "lastrevid": 2568020002,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Dysphania ambrosioides"
+      },
+      "it": {
+        "language": "it",
+        "value": "Dysphania ambrosioides"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "epazote"
+        },
+        {
+          "language": "es",
+          "value": "paico"
+        }
+      ]
+    }
+  },
+  "Q715160": {
+    "lastrevid": 2568553478,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "almidón de papa"
+      },
+      "it": {
+        "language": "it",
+        "value": "fecola di patate"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Fécula de patata"
+        },
+        {
+          "language": "es",
+          "value": "Fécula de papa"
+        },
+        {
+          "language": "es",
+          "value": "Almidón de patata"
+        },
+        {
+          "language": "es",
+          "value": "almidon de papa"
+        },
+        {
+          "language": "es",
+          "value": "Fecula de patata"
+        },
+        {
+          "language": "es",
+          "value": "Fecula de papa"
+        },
+        {
+          "language": "es",
+          "value": "Almidon de patata"
+        },
+        {
+          "language": "es",
+          "value": "chuno"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "fecola"
+        }
+      ]
+    }
+  },
+  "Q7533": {
+    "lastrevid": 2563801751,
+    "labels": {
+      "it": {
+        "language": "it",
+        "value": "zucchina"
+      },
+      "es": {
+        "language": "es",
+        "value": "cucurbita pepo"
+      }
+    },
+    "aliases": {
+      "it": [
+        {
+          "language": "it",
+          "value": "zucchino"
+        }
+      ]
+    }
+  },
+  "Q764375": {
+    "lastrevid": 2558282033,
+    "labels": {
+      "it": {
+        "language": "it",
+        "value": "Habanero"
+      },
+      "es": {
+        "language": "es",
+        "value": "Capsicum chinense ‘Habanero’"
+      }
+    },
+    "aliases": {}
+  },
+  "Q80235": {
+    "lastrevid": 2567934279,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Tamarindus indica"
+      },
+      "it": {
+        "language": "it",
+        "value": "Tamarindus indica"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Tamarindo"
+        },
+        {
+          "language": "es",
+          "value": "Tamarindus erythraea"
+        },
+        {
+          "language": "es",
+          "value": "Tamarindus somalensis"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "Tamarindo"
+        }
+      ]
+    }
+  },
+  "Q81375": {
+    "lastrevid": 2567630867,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "cícer arietinum"
+      },
+      "it": {
+        "language": "it",
+        "value": "Cicer arietinum"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "garbanzo"
+        },
+        {
+          "language": "es",
+          "value": "cicer edessanum"
+        },
+        {
+          "language": "es",
+          "value": "cicer grossum"
+        },
+        {
+          "language": "es",
+          "value": "cicer rotundum"
+        },
+        {
+          "language": "es",
+          "value": "cicer sativum"
+        },
+        {
+          "language": "es",
+          "value": "cicer physodes"
+        },
+        {
+          "language": "es",
+          "value": "cicer arientinium"
+        },
+        {
+          "language": "es",
+          "value": "cicer album"
+        },
+        {
+          "language": "es",
+          "value": "cicer sintenisii"
+        },
+        {
+          "language": "es",
+          "value": "cicer nigrum"
+        },
+        {
+          "language": "es",
+          "value": "ononis crotalarioides"
+        },
+        {
+          "language": "es",
+          "value": "cicer arietinum"
+        },
+        {
+          "language": "es",
+          "value": "c. arietinum"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "Ceci"
+        },
+        {
+          "language": "it",
+          "value": "Cecio"
+        }
+      ]
+    }
+  },
+  "Q81464": {
+    "lastrevid": 2567984279,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Spinacia oleracea"
+      },
+      "it": {
+        "language": "it",
+        "value": "Spinacia oleracea"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Espinaca macho"
+        },
+        {
+          "language": "es",
+          "value": "Espinaca de invierno"
+        },
+        {
+          "language": "es",
+          "value": "Espinacas"
+        },
+        {
+          "language": "es",
+          "value": "Spinacia oleracea subsp. glabra"
+        },
+        {
+          "language": "es",
+          "value": "Spinacia glabra"
+        },
+        {
+          "language": "es",
+          "value": "Espinaca común"
+        },
+        {
+          "language": "es",
+          "value": "Espinaca hembra"
+        },
+        {
+          "language": "es",
+          "value": "Espinaca de Holanda"
+        },
+        {
+          "language": "es",
+          "value": "Espinaca"
+        },
+        {
+          "language": "es",
+          "value": "Spinacia spinosa"
+        },
+        {
+          "language": "es",
+          "value": "Spinacia oleracea subsp glabra"
+        },
+        {
+          "language": "es",
+          "value": "Spinacia inermis"
+        },
+        {
+          "language": "es",
+          "value": "Espinaca de verano"
+        },
+        {
+          "language": "es",
+          "value": "Chenopodium oleraceum"
+        },
+        {
+          "language": "es",
+          "value": "Espinaca comun"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "Spinaci"
+        },
+        {
+          "language": "it",
+          "value": "Spinacio"
+        }
+      ]
+    }
+  },
+  "Q840171": {
+    "lastrevid": 2548324919,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "crema agria"
+      },
+      "it": {
+        "language": "it",
+        "value": "panna acida"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Nata agria"
+        },
+        {
+          "language": "es",
+          "value": "Crema ácida"
+        },
+        {
+          "language": "es",
+          "value": "Crema acida"
+        }
+      ]
+    }
+  },
+  "Q860808": {
+    "lastrevid": 2540811661,
+    "labels": {
+      "it": {
+        "language": "it",
+        "value": "Chipotle"
+      },
+      "es": {
+        "language": "es",
+        "value": "chile chipotle"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Chile Chipotle"
+        },
+        {
+          "language": "es",
+          "value": "Chilpoctle"
+        },
+        {
+          "language": "es",
+          "value": "Chilpotle"
+        },
+        {
+          "language": "es",
+          "value": "Pochilli"
+        },
+        {
+          "language": "es",
+          "value": "Chipocle"
+        },
+        {
+          "language": "es",
+          "value": "Chipotle"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "Chilpotle"
+        }
+      ]
+    }
+  },
+  "Q897746": {
+    "lastrevid": 2550874568,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Chile poblano"
+      },
+      "it": {
+        "language": "it",
+        "value": "Ancho Poblano"
+      }
+    },
+    "aliases": {
+      "it": [
+        {
+          "language": "it",
+          "value": "Poblano"
+        }
+      ]
+    }
+  },
+  "Q961769": {
+    "lastrevid": 2555869513,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "aguacate"
+      },
+      "it": {
+        "language": "it",
+        "value": "avocado"
+      }
+    },
+    "aliases": {
+      "it": [
+        {
+          "language": "it",
+          "value": "Persea americana"
+        }
+      ],
+      "es": [
+        {
+          "language": "es",
+          "value": "palta"
+        }
+      ]
+    }
+  }
+}

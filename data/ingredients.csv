@@ -1,0 +1,60 @@
+id,name_es,aliases_es,wikidata_id,term_it,aliases_it,category,scope,note
+jitomate,Jitomate,tomate|tomate rojo,Q20638126,pomodoro,,Verduras,México,
+cilantro,Cilantro,cilantro fresco,Q41611,coriandolo,,Hierbas y especias,México,Busca las hojas frescas si la receta pide cilantro fresco. Las semillas se venden por separado.
+aguacate,Aguacate,palta,Q961769,avocado,,Frutas,México,
+cebolla,Cebolla,,Q23485,cipolla,,Verduras,México,
+ajo,Ajo,ajo común,Q23400,aglio,,Verduras,México,
+comino,Comino,comino común,Q132624,cumino,,Hierbas y especias,México,
+oregano,Orégano común,orégano,Q134283,origano,,Hierbas y especias,México,Se refiere a Origanum vulgare. Si la receta pide orégano mexicano comprueba la especie.
+laurel,Laurel,laurel de cocina|hojas de laurel,Q26006,alloro,,Hierbas y especias,México,
+ajonjoli,Ajonjolí,sésamo,Q2763698,sesamo,,Hierbas y especias,México,
+calabacita,Calabacita,calabacín,Q7533,zucchina,zucchino,Verduras,México,
+arroz,Arroz,,Q5090,riso,,Granos y harinas,México,
+mango,Mango,,Q3919027,mango,,Frutas,México,
+papaya,Papaya,,Q34887,papaia,papaya,Frutas,México,
+frijol_negro,Frijol negro,frijoles negros|caraota,Q15062992,fagiolo nero,fagioli neri,Legumbres,México,
+garbanzo,Garbanzo,garbanzos,Q81375,ceci,cece,Legumbres,México,
+chile_poblano,Chile poblano,poblano,Q897746,,Poblano|Ancho Poblano,Chiles y pimientos,México,Wikidata identifica el cultivar. Si la receta pide poblano fresco comprueba la presentación antes de comprarlo.
+morron,Chile morrón,pimiento morrón|morrón,Q1548030,peperone,peperone dolce|peperone verde,Chiles y pimientos,México,Para el sustituto del poblano elige específicamente un morrón verde.
+tomatillo,Tomatillo,tomate verde|tomate de cáscara|miltomate,Q622525,,,Verduras,México,
+masa_harina,Masa harina,harina de maíz nixtamalizada|harina nixtamalizada,,,,Granos y harinas,México,Para tortillas busca que el envase indique maíz nixtamalizado.
+polenta,Polenta,,Q131607,,,Granos y harinas,Italia,En el comercio también se usa «polenta» para la harina o mezcla destinada a preparar el plato.
+harina_maiz,Harina de maíz,harina común de maíz,Q110184114,farina di mais,farina di granoturco,Granos y harinas,Italia,La harina de maíz común puede venderse molida en distintos grosores.
+jalapeno,Chile jalapeño,chile cuaresmeño|cuaresmeño|jalapeño,Q504133,jalapeño,,Chiles y pimientos,México,
+chipotle,Chile chipotle,chipotle|chilpotle,Q860808,chipotle,chilpotle,Chiles y pimientos,México,Es jalapeño seco y ahumado.
+habanero,Chile habanero,habanero,Q764375,habanero,,Chiles y pimientos,México,
+guajillo,Chile guajillo,guajillo,Q5613350,,peperoncino guajillo,Chiles y pimientos,México,El guajillo se usa seco. La fuente de Wikidata identifica el cultivar mirasol.
+nopal,Nopal,nopales|penca de nopal,Q3367716,nopal,,Verduras,México,
+jicama,Jícama,,Q517283,,,Verduras,México,
+epazote,Epazote,paico,Q640032,,,Hierbas y especias,México,Hierba usada como condimento en frijoles de olla y otros guisos.
+oregano_mexicano,Orégano mexicano,,Q1761719,,,Hierbas y especias,México,Esta ficha se refiere a Lippia graveolens.
+maiz,Maíz,,Q11575,mais,granoturco|granturco,Granos y harinas,México,Comprueba si la receta pide grano fresco o seco.
+tortilla_maiz,Tortilla de maíz,tortillas de maíz,Q15660894,tortilla,tortillas|tortilla di mais,Granos y harinas,México,Si el envase solo dice tortilla comprueba que sea de maíz.
+zanahoria,Zanahoria,zanahorias,Q30056,carota,carote,Verduras,México,
+espinaca,Espinaca,espinacas,Q81464,spinaci,spinacio,Verduras,México,
+apio,Apio,apio de tallo,Q28298,sedano,sedano da costa,Verduras,México,Si la receta pide tallos busca sedano da costa.
+perejil,Perejil,perejil fresco,Q25284,prezzemolo,,Hierbas y especias,México,
+papa,Papa,patata|papas,Q10998,patata,patate,Verduras,México,
+camote,Camote,batata|boniato,Q37937,patata dolce,patata americana|batata,Verduras,México,
+cacahuate,Cacahuate,cacahuete|maní|cacahuates,Q3621199,arachide,arachidi,Legumbres,México,
+lenteja,Lenteja,lentejas,Q131226,lenticchia,lenticchie,Legumbres,México,
+guayaba,Guayaba,,Q3181909,guaiava,guava,Frutas,México,
+tamarindo,Tamarindo,,Q80235,tamarindo,,Frutas,México,
+coco,Coco,nuez de coco,Q3342808,cocco,noce di cocco,Frutas,México,
+lima,Lima,lima ácida|lima verde,Q13195,limetta,lime,Frutas,México,En México también se llama lima a otros cítricos. Esta ficha se refiere a la lima ácida.
+pimienta_negra,Pimienta negra,pimienta negra en grano,Q22915010,pepe nero,,Hierbas y especias,México,
+canela,Canela de Ceilán,canela|canela en rama,Q370239,cannella,cinnamomo,Hierbas y especias,México,Para comprar esta variedad comprueba que el envase diga Cinnamomum verum.
+harina_trigo,Harina de trigo,,Q2249305,farina di grano,farina di frumento,Granos y harinas,México,
+fecula_maiz,Fécula de maíz,maicena|almidón de maíz,Q3393961,amido di mais,maizena,Granos y harinas,México,
+leche_evaporada,Leche evaporada,,Q13417087,latte evaporato,,Lácteos,México,
+leche_condensada,Leche condensada,leche condensada azucarada,Q2830455,latte condensato,latte condensato zuccherato,Lácteos,México,
+carne_cerdo,Carne de cerdo,carne de puerco|carne de cochino,Q191768,carne di maiale,carne suina,Carnes,México,
+vinagre,Vinagre,,Q41354,aceto,,Condimentos,México,
+serrano,Chile serrano,serrano,Q617583,,peperoncino serrano,Chiles y pimientos,México,Busca el chile fresco para salsas crudas.
+chile_ancho,Chile ancho,ancho,,,peperoncino ancho,Chiles y pimientos,México,Es el poblano seco. Confirma la presentación.
+frijol_pinto,Frijol pinto,frijoles pintos,Q323635,fagiolo pinto,fagioli pinto,Legumbres,México,
+crema_agria,Crema agria,crema ácida,Q840171,panna acida,,Lácteos,México,Esta ficha corresponde a crema agria.
+yogur,Yogur natural,yogur sin azúcar,Q13317,,yogurt bianco non zuccherato,Lácteos,Italia,Para los usos sugeridos elige yogur natural sin azúcar.
+fecula_papa,Fécula de papa,almidón de papa|fécula de patata,Q715160,fecola di patate,,Granos y harinas,Italia,
+limon_amarillo,Limón amarillo,limón amarillo jugo,Q500,limone,,Frutas,Italia,
+tomate_lata,Jitomate enlatado,jitomate en conserva|tomate en lata,Q5032643,,pomodori in scatola,Verduras,Italia,Los tomates pelados enteros son una presentación de la conserva.

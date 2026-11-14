@@ -1,0 +1,556 @@
+{
+  "sources": {
+    "gob_chiles": {
+      "label": "Secretaría de Agricultura · México, cuna del chile",
+      "url": "https://www.gob.mx/agricultura/es/articulos/mexico-cuna-del-chile-riqueza-genetica-que-da-sabor-al-mundo"
+    },
+    "masienda_masa": {
+      "label": "Masienda · Guía de la masa harina",
+      "url": "https://masienda.com/es/blogs/learn/guide-to-masa-harina"
+    },
+    "treccani_polenta": {
+      "label": "Treccani · Polenta",
+      "url": "https://www.treccani.it/vocabolario/polenta/"
+    },
+    "gob_epazote": {
+      "label": "Secretaría de Agricultura · Epazote",
+      "url": "https://www.gob.mx/agricultura/articulos/hierba-olorosa-y-sabrosa-es-el-epazote"
+    },
+    "inifap_guajillo": {
+      "label": "INIFAP · Variedades de chile",
+      "url": "https://zacatecas.inifap.gob.mx/publicaciones/cultChprofit.pdf"
+    },
+    "sep_chiles": {
+      "label": "SEP · Chiles de México",
+      "url": "https://nemd.aprende.gob.mx/contenido/recurso/41976/"
+    },
+    "sep_secado": {
+      "label": "SEP · Chiles frescos y secos",
+      "url": "https://nuevaescuelamexicana.sep.gob.mx/contenido/recurso/41033/"
+    },
+    "gob_poblano": {
+      "label": "Secretaría de Agricultura · Chile poblano",
+      "url": "https://www.gob.mx/agricultura/articulos/el-chile-poblano-rey-de-los-rellenos"
+    },
+    "gob_hierbas": {
+      "label": "Secretaría de Agricultura · Cilantro y perejil",
+      "url": "https://www.gob.mx/agricultura/es/articulos/no-es-lo-mismo-ni-es-igual-cilantro-y-perejil?idiom=es"
+    },
+    "oregano_guide": {
+      "label": "McCormick · Orégano mexicano y mediterráneo",
+      "url": "https://www.mccormick.com/blogs/how-to/about-oregano-uses-pairings-and-recipes"
+    },
+    "mu_subs": {
+      "label": "University of Missouri Extension · Ingredient Substitution",
+      "url": "https://extension.missouri.edu/publications/mp564"
+    },
+    "csu_subs": {
+      "label": "Colorado State University Extension · Ingredient Substitutions",
+      "url": "https://extension.colostate.edu/resource/ingredient-substitutions/"
+    },
+    "usda_refritos": {
+      "label": "USDA · Frijoles refritos enlatados",
+      "url": "https://www.ams.usda.gov/sites/default/files/media/AA_20257B_Beans_Refried_Cnd_020718.pdf"
+    },
+    "maine_beans": {
+      "label": "University of Maine Cooperative Extension · Legumbres",
+      "url": "https://extension.umaine.edu/publications/4183e/"
+    },
+    "usu_limes": {
+      "label": "Utah State University Extension · Limas",
+      "url": "https://extension.usu.edu/nutrition/research/limes"
+    },
+    "mutti_pelati": {
+      "label": "Mutti · Pomodori pelati",
+      "url": "https://mutti-parma.com/it/i-nostri-prodotti/pomodori-pelati/"
+    }
+  },
+  "local_ingredients": {
+    "masa_harina": {
+      "sources": [
+        "masienda_masa"
+      ],
+      "reference_it": "farina di mais nixtamalizzata",
+      "reference_kind": "description",
+      "note_it": "Traducción descriptiva de la etiqueta que conviene buscar."
+    },
+    "tomatillo": {
+      "reference_it": "Physalis philadelphica",
+      "reference_kind": "scientific"
+    },
+    "polenta": {
+      "sources": [
+        "treccani_polenta"
+      ],
+      "reference_it": "polenta",
+      "reference_kind": "documented"
+    },
+    "guajillo": {
+      "sources": [
+        "inifap_guajillo"
+      ],
+      "reference_it": "guajillo",
+      "reference_kind": "documented"
+    },
+    "jicama": {
+      "reference_it": "Pachyrhizus erosus",
+      "reference_kind": "scientific"
+    },
+    "epazote": {
+      "sources": [
+        "gob_epazote"
+      ],
+      "reference_it": "Dysphania ambrosioides",
+      "reference_kind": "scientific"
+    },
+    "oregano_mexicano": {
+      "reference_it": "Lippia graveolens",
+      "reference_kind": "scientific"
+    },
+    "serrano": {
+      "reference_it": "peperoncino serrano",
+      "reference_kind": "description",
+      "sources": [
+        "sep_chiles"
+      ]
+    },
+    "chile_ancho": {
+      "reference_it": "peperoncino ancho",
+      "reference_kind": "description",
+      "sources": [
+        "sep_chiles"
+      ]
+    },
+    "yogur": {
+      "reference_it": "yogurt bianco non zuccherato",
+      "reference_kind": "description",
+      "sources": [
+        "mu_subs"
+      ]
+    },
+    "tomate_lata": {
+      "reference_it": "pomodori in scatola",
+      "reference_kind": "description",
+      "sources": [
+        "mutti_pelati"
+      ]
+    }
+  },
+  "relations": [
+    {
+      "from": "chile_poblano",
+      "to": "morron",
+      "type": "culinary_substitute",
+      "use": "rellenar",
+      "target_name_it": "Peperone verde",
+      "target_name_es": "Chile morrón verde",
+      "context": "Rellenar y hornear.",
+      "reason": "El morrón verde se sostiene entero y su pulpa permite rellenarlo y hornearlo.",
+      "limitations": "Suele quedar más dulce y aporta muy poco picor. El resultado tiene un sabor distinto.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "gob_chiles",
+        "gob_poblano"
+      ]
+    },
+    {
+      "from": "chile_poblano",
+      "to": "morron",
+      "type": "culinary_substitute",
+      "use": "rajas",
+      "target_name_it": "Peperone verde",
+      "target_name_es": "Chile morrón verde",
+      "context": "Preparar rajas.",
+      "reason": "Asado y cortado en tiras, el morrón conserva el volumen que aportan las rajas.",
+      "limitations": "La versión queda más dulce y pierde el sabor característico del poblano.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "gob_chiles",
+        "gob_poblano"
+      ]
+    },
+    {
+      "from": "cilantro",
+      "to": "perejil",
+      "type": "culinary_substitute",
+      "use": "decorar",
+      "target_name_it": "Prezzemolo fresco",
+      "target_name_es": "Perejil fresco",
+      "context": "Decorar al servir.",
+      "reason": "Las hojas frescas picadas aportan color al servir.",
+      "limitations": "El perejil tiene otro aroma. Sirve cuando la hierba se usa como adorno y no define el sabor del platillo.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "gob_hierbas"
+      ]
+    },
+    {
+      "from": "oregano_mexicano",
+      "to": "oregano",
+      "type": "culinary_substitute",
+      "use": "guisar",
+      "target_name_it": "Origano secco",
+      "target_name_es": "Orégano común seco",
+      "context": "Sazonar guisos.",
+      "reason": "Aporta un fondo herbal a guisos donde el orégano es un acento.",
+      "limitations": "El orégano mediterráneo tiene un perfil distinto y pierde el matiz cítrico del mexicano.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "oregano_guide"
+      ]
+    },
+    {
+      "from": "guajillo",
+      "to": "chile_ancho",
+      "type": "culinary_substitute",
+      "use": "adobo",
+      "target_name_it": "Peperoncino ancho essiccato",
+      "target_name_es": "Chile ancho seco",
+      "context": "Preparar adobos.",
+      "reason": "El ancho seco se puede hidratar y moler para dar cuerpo a un adobo.",
+      "limitations": "Suele oscurecer la mezcla y cambia el sabor frutal y el picor típicos del guajillo.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "sep_chiles",
+        "inifap_guajillo"
+      ]
+    },
+    {
+      "from": "serrano",
+      "to": "jalapeno",
+      "type": "culinary_substitute",
+      "use": "salsa_cruda",
+      "target_name_it": "Jalapeño fresco",
+      "target_name_es": "Chile jalapeño fresco",
+      "context": "Preparar salsa cruda.",
+      "reason": "Ambos se usan frescos y picados para dar textura y picor a una salsa.",
+      "limitations": "La intensidad cambia entre variedades y piezas. Agrega al gusto.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "sep_chiles"
+      ]
+    },
+    {
+      "from": "jalapeno",
+      "to": "serrano",
+      "type": "culinary_substitute",
+      "use": "salsa_cruda",
+      "target_name_it": "Peperoncino serrano fresco",
+      "target_name_es": "Chile serrano fresco",
+      "context": "Preparar salsa cruda.",
+      "reason": "El serrano conserva la función de un chile fresco en la salsa.",
+      "limitations": "Puede resultar más picante. Empieza con poco y ajusta al gusto.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "sep_chiles",
+        "inifap_guajillo"
+      ]
+    },
+    {
+      "from": "frijol_negro",
+      "to": "frijol_pinto",
+      "type": "culinary_substitute",
+      "use": "refritos",
+      "target_name_it": "Fagioli pinto cotti",
+      "target_name_es": "Frijoles pintos cocidos",
+      "context": "Preparar frijoles refritos.",
+      "reason": "Las dos variedades se usan para preparar frijoles refritos y se pueden machacar una vez cocidas.",
+      "limitations": "El pinto deja un puré más claro. Si empiezas con frijol seco, el tiempo de cocción puede variar.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "usda_refritos",
+        "maine_beans"
+      ]
+    },
+    {
+      "from": "frijol_pinto",
+      "to": "frijol_negro",
+      "type": "culinary_substitute",
+      "use": "refritos",
+      "target_name_it": "Fagioli neri cotti",
+      "target_name_es": "Frijoles negros cocidos",
+      "context": "Preparar frijoles refritos.",
+      "reason": "El frijol negro también produce una base machacada para refritos.",
+      "limitations": "Queda más oscuro y cambia el sabor. Si empiezas con frijol seco, el tiempo de cocción puede variar.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "usda_refritos",
+        "maine_beans"
+      ]
+    },
+    {
+      "from": "crema_agria",
+      "to": "yogur",
+      "type": "culinary_substitute",
+      "use": "al_frio",
+      "target_name_it": "Yogurt bianco non zuccherato",
+      "target_name_es": "Yogur natural sin azúcar",
+      "context": "Aderezar en frío.",
+      "reason": "El yogur natural aporta acidez y una base cremosa a un aderezo frío.",
+      "limitations": "La consistencia y el contenido de grasa dependen del yogur. Esta opción se propone para preparaciones frías.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "mu_subs",
+        "csu_subs"
+      ]
+    },
+    {
+      "from": "fecula_maiz",
+      "to": "harina_trigo",
+      "type": "culinary_substitute",
+      "use": "espesar",
+      "target_name_it": "Farina di grano tenero",
+      "target_name_es": "Harina de trigo común",
+      "context": "Espesar una salsa.",
+      "reason": "La harina de trigo gelatiniza al cocerse y espesa una salsa.",
+      "limitations": "Requiere una cantidad distinta y puede dejar un acabado más opaco. Contiene gluten.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "mu_subs"
+      ]
+    },
+    {
+      "from": "fecula_maiz",
+      "to": "fecula_papa",
+      "type": "culinary_substitute",
+      "use": "espesar",
+      "target_name_it": "Fecola di patate",
+      "target_name_es": "Fécula de papa",
+      "context": "Espesar una salsa.",
+      "reason": "La fécula de papa cumple la función de espesante en una salsa.",
+      "limitations": "Puede cambiar el brillo y la consistencia. Ajusta según cómo espese la preparación.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "csu_subs",
+        "mu_subs"
+      ]
+    },
+    {
+      "from": "harina_trigo",
+      "to": "fecula_maiz",
+      "type": "culinary_substitute",
+      "use": "espesar",
+      "target_name_it": "Amido di mais",
+      "target_name_es": "Fécula de maíz",
+      "context": "Espesar una salsa.",
+      "reason": "El almidón de maíz espesa la salsa al calentarse.",
+      "limitations": "La cantidad y el método difieren. Este uso no cubre masas de pan ni rebozados.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "csu_subs",
+        "mu_subs"
+      ]
+    },
+    {
+      "from": "lima",
+      "to": "limon_amarillo",
+      "type": "culinary_substitute",
+      "use": "guacamole",
+      "target_name_it": "Succo di limone",
+      "target_name_es": "Jugo de limón amarillo",
+      "context": "Preparar guacamole.",
+      "reason": "El jugo de limón amarillo aporta acidez al guacamole servido fresco.",
+      "limitations": "El aroma cambia. Agrégalo poco a poco y ajusta al gusto.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "usu_limes"
+      ]
+    },
+    {
+      "from": "jitomate",
+      "to": "tomate_lata",
+      "type": "culinary_substitute",
+      "use": "salsa_cocida",
+      "target_name_it": "Pomodori pelati",
+      "target_name_es": "Jitomates pelados en lata",
+      "context": "Preparar una salsa cocida.",
+      "reason": "Los jitomates enlatados se pueden triturar y cocinar como base de salsa.",
+      "limitations": "Escurre parte del líquido si necesitas una salsa más espesa. La conserva no aporta la textura del jitomate crudo.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "mu_subs",
+        "mutti_pelati"
+      ]
+    },
+    {
+      "from": "chipotle",
+      "to": "jalapeno",
+      "type": "not_equivalent",
+      "use": "ahumado",
+      "target_name_it": "Jalapeño fresco",
+      "target_name_es": "Chile jalapeño fresco",
+      "context": "Aportar sabor ahumado.",
+      "reason": "El sabor ahumado aparece al procesar el jalapeño para obtener chipotle.",
+      "limitations": "Si la receta pide la nota ahumada del chipotle, el jalapeño fresco por sí solo no la aporta.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "sep_secado"
+      ]
+    },
+    {
+      "from": "masa_harina",
+      "to": "polenta",
+      "type": "not_equivalent",
+      "target_name_it": "Polenta",
+      "target_name_es": "Polenta",
+      "context": "Para tortillas de maíz.",
+      "reason": "La masa harina se obtiene de maíz nixtamalizado y forma una masa al hidratarla. La polenta se prepara cociendo harina de maíz en agua.",
+      "limitations": "Evita usar polenta o harina de maíz para polenta como reemplazo directo en tortillas.",
+      "verification": "source_supported",
+      "sources": [
+        "masienda_masa",
+        "treccani_polenta",
+        "Q131607"
+      ],
+      "use": "tortillas",
+      "evidence": "direct"
+    },
+    {
+      "from": "masa_harina",
+      "to": "harina_maiz",
+      "type": "not_equivalent",
+      "target_name_it": "Farina di mais",
+      "target_name_es": "Harina de maíz común",
+      "context": "Para tortillas de maíz.",
+      "reason": "«Farina di mais» indica harina de maíz, mientras que «nixtamalizzata» especifica el tratamiento necesario para la masa harina.",
+      "limitations": "Comprueba la palabra «nixtamalizzata» en el envase.",
+      "verification": "source_supported",
+      "sources": [
+        "masienda_masa",
+        "Q110184114"
+      ],
+      "use": "tortillas",
+      "evidence": "direct"
+    }
+  ],
+  "uses": {
+    "rellenar": {
+      "label": "Rellenar y hornear",
+      "aliases": [
+        "rellenar",
+        "relleno",
+        "rellenos",
+        "hornear",
+        "ripieno",
+        "farcire",
+        "in forno"
+      ]
+    },
+    "rajas": {
+      "label": "Preparar rajas",
+      "aliases": [
+        "rajas",
+        "rajas con crema"
+      ]
+    },
+    "decorar": {
+      "label": "Decorar al servir",
+      "aliases": [
+        "decorar",
+        "guarnicion",
+        "decorazione",
+        "guarnire"
+      ]
+    },
+    "guisar": {
+      "label": "Sazonar guisos",
+      "aliases": [
+        "guisos",
+        "guiso",
+        "stufato",
+        "stufati"
+      ]
+    },
+    "adobo": {
+      "label": "Preparar adobos",
+      "aliases": [
+        "adobo",
+        "adobos",
+        "marinata"
+      ]
+    },
+    "salsa_cruda": {
+      "label": "Preparar salsa cruda",
+      "aliases": [
+        "salsa cruda",
+        "salsa fresca",
+        "salsa a crudo"
+      ]
+    },
+    "refritos": {
+      "label": "Preparar frijoles refritos",
+      "aliases": [
+        "refritos",
+        "frijoles refritos",
+        "fagioli rifritti"
+      ]
+    },
+    "al_frio": {
+      "label": "Aderezar en frío",
+      "aliases": [
+        "aderezo",
+        "aderezar",
+        "aderezar en frio",
+        "condire a freddo",
+        "condimento a freddo"
+      ]
+    },
+    "espesar": {
+      "label": "Espesar una salsa",
+      "aliases": [
+        "espesar",
+        "espesar salsa",
+        "espesar una salsa",
+        "addensare",
+        "addensare una salsa"
+      ]
+    },
+    "guacamole": {
+      "label": "Preparar guacamole",
+      "aliases": [
+        "guacamole"
+      ]
+    },
+    "salsa_cocida": {
+      "label": "Preparar una salsa cocida",
+      "aliases": [
+        "salsa cocida",
+        "caldillo",
+        "salsa cotta"
+      ]
+    },
+    "tortillas": {
+      "label": "Hacer tortillas de maíz",
+      "aliases": [
+        "tortilla",
+        "tortillas",
+        "tortillas de maiz",
+        "tortilla di mais"
+      ]
+    },
+    "ahumado": {
+      "label": "Aportar sabor ahumado",
+      "aliases": [
+        "sabor ahumado",
+        "ahumado",
+        "sapore affumicato"
+      ]
+    }
+  }
+}

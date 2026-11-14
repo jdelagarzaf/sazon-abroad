@@ -1,0 +1,2353 @@
+{
+  "schema_version": 1,
+  "ingredients": [
+    {
+      "id": "jitomate",
+      "name_es": "Jitomate",
+      "name_it": "pomodoro",
+      "aliases_es": [
+        "tomate",
+        "tomate rojo"
+      ],
+      "aliases_it": [],
+      "category": "Verduras",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q20638126",
+      "wikidata_labels": {
+        "it": "pomodoro",
+        "es": "tomate"
+      },
+      "sources": [
+        "Q20638126"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "cilantro",
+      "name_es": "Cilantro",
+      "name_it": "coriandolo",
+      "aliases_es": [
+        "cilantro fresco"
+      ],
+      "aliases_it": [],
+      "category": "Hierbas y especias",
+      "scope": "México",
+      "note": "Busca las hojas frescas si la receta pide cilantro fresco. Las semillas se venden por separado.",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q41611",
+      "wikidata_labels": {
+        "es": "Coriandrum sativum",
+        "it": "Coriandrum sativum"
+      },
+      "sources": [
+        "Q41611"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "aguacate",
+      "name_es": "Aguacate",
+      "name_it": "avocado",
+      "aliases_es": [
+        "palta"
+      ],
+      "aliases_it": [],
+      "category": "Frutas",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q961769",
+      "wikidata_labels": {
+        "es": "aguacate",
+        "it": "avocado"
+      },
+      "sources": [
+        "Q961769"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "cebolla",
+      "name_es": "Cebolla",
+      "name_it": "cipolla",
+      "aliases_es": [],
+      "aliases_it": [],
+      "category": "Verduras",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q23485",
+      "wikidata_labels": {
+        "es": "Allium cepa",
+        "it": "cipolla"
+      },
+      "sources": [
+        "Q23485"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "ajo",
+      "name_es": "Ajo",
+      "name_it": "aglio",
+      "aliases_es": [
+        "ajo común"
+      ],
+      "aliases_it": [],
+      "category": "Verduras",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q23400",
+      "wikidata_labels": {
+        "es": "Allium sativum",
+        "it": "aglio"
+      },
+      "sources": [
+        "Q23400"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "comino",
+      "name_es": "Comino",
+      "name_it": "cumino",
+      "aliases_es": [
+        "comino común"
+      ],
+      "aliases_it": [],
+      "category": "Hierbas y especias",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q132624",
+      "wikidata_labels": {
+        "es": "Cuminum cyminum",
+        "it": "Cuminum cyminum"
+      },
+      "sources": [
+        "Q132624"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "oregano",
+      "name_es": "Orégano común",
+      "name_it": "origano",
+      "aliases_es": [
+        "orégano"
+      ],
+      "aliases_it": [],
+      "category": "Hierbas y especias",
+      "scope": "México",
+      "note": "Se refiere a Origanum vulgare. Si la receta pide orégano mexicano comprueba la especie.",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q134283",
+      "wikidata_labels": {
+        "es": "Origanum vulgare",
+        "it": "Origanum vulgare"
+      },
+      "sources": [
+        "Q134283"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "laurel",
+      "name_es": "Laurel",
+      "name_it": "alloro",
+      "aliases_es": [
+        "laurel de cocina",
+        "hojas de laurel"
+      ],
+      "aliases_it": [],
+      "category": "Hierbas y especias",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q26006",
+      "wikidata_labels": {
+        "es": "Laurus nobilis",
+        "it": "Laurus nobilis"
+      },
+      "sources": [
+        "Q26006"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "ajonjoli",
+      "name_es": "Ajonjolí",
+      "name_it": "sesamo",
+      "aliases_es": [
+        "sésamo"
+      ],
+      "aliases_it": [],
+      "category": "Hierbas y especias",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q2763698",
+      "wikidata_labels": {
+        "es": "sésamo",
+        "it": "Sesamum indicum"
+      },
+      "sources": [
+        "Q2763698"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "calabacita",
+      "name_es": "Calabacita",
+      "name_it": "zucchina",
+      "aliases_es": [
+        "calabacín"
+      ],
+      "aliases_it": [
+        "zucchino"
+      ],
+      "category": "Verduras",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q7533",
+      "wikidata_labels": {
+        "it": "zucchina",
+        "es": "cucurbita pepo"
+      },
+      "sources": [
+        "Q7533"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "arroz",
+      "name_es": "Arroz",
+      "name_it": "riso",
+      "aliases_es": [],
+      "aliases_it": [],
+      "category": "Granos y harinas",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q5090",
+      "wikidata_labels": {
+        "it": "riso",
+        "es": "arroz"
+      },
+      "sources": [
+        "Q5090"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "mango",
+      "name_es": "Mango",
+      "name_it": "mango",
+      "aliases_es": [],
+      "aliases_it": [],
+      "category": "Frutas",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q3919027",
+      "wikidata_labels": {
+        "es": "mango",
+        "it": "mango"
+      },
+      "sources": [
+        "Q3919027"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "papaya",
+      "name_es": "Papaya",
+      "name_it": "papaia",
+      "aliases_es": [],
+      "aliases_it": [
+        "papaya"
+      ],
+      "category": "Frutas",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q34887",
+      "wikidata_labels": {
+        "es": "Carica papaya",
+        "it": "Carica papaya"
+      },
+      "sources": [
+        "Q34887"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "frijol_negro",
+      "name_es": "Frijol negro",
+      "name_it": "fagiolo nero",
+      "aliases_es": [
+        "frijoles negros",
+        "caraota"
+      ],
+      "aliases_it": [
+        "fagioli neri"
+      ],
+      "category": "Legumbres",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q15062992",
+      "wikidata_labels": {
+        "es": "frijol negro",
+        "it": "fagiolo nero"
+      },
+      "sources": [
+        "Q15062992"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "garbanzo",
+      "name_es": "Garbanzo",
+      "name_it": "ceci",
+      "aliases_es": [
+        "garbanzos"
+      ],
+      "aliases_it": [
+        "cece"
+      ],
+      "category": "Legumbres",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q81375",
+      "wikidata_labels": {
+        "es": "cícer arietinum",
+        "it": "Cicer arietinum"
+      },
+      "sources": [
+        "Q81375"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "chile_poblano",
+      "name_es": "Chile poblano",
+      "name_it": null,
+      "aliases_es": [
+        "poblano"
+      ],
+      "aliases_it": [
+        "Poblano",
+        "Ancho Poblano"
+      ],
+      "category": "Chiles y pimientos",
+      "scope": "México",
+      "note": "Wikidata identifica el cultivar. Si la receta pide poblano fresco comprueba la presentación antes de comprarlo.",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q897746",
+      "wikidata_labels": {
+        "es": "Chile poblano",
+        "it": "Ancho Poblano"
+      },
+      "sources": [
+        "Q897746"
+      ],
+      "verification": "source_supported"
+    },
+    {
+      "id": "morron",
+      "name_es": "Chile morrón",
+      "name_it": "peperone",
+      "aliases_es": [
+        "pimiento morrón",
+        "morrón"
+      ],
+      "aliases_it": [
+        "peperone dolce",
+        "peperone verde"
+      ],
+      "category": "Chiles y pimientos",
+      "scope": "México",
+      "note": "Para el sustituto del poblano elige específicamente un morrón verde.",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q1548030",
+      "wikidata_labels": {
+        "es": "morrón",
+        "it": "peperone"
+      },
+      "sources": [
+        "Q1548030"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "tomatillo",
+      "name_es": "Tomatillo",
+      "name_it": null,
+      "aliases_es": [
+        "tomate verde",
+        "tomate de cáscara",
+        "miltomate"
+      ],
+      "aliases_it": [],
+      "category": "Verduras",
+      "scope": "México",
+      "note": "",
+      "reference_it": "Physalis philadelphica",
+      "reference_kind": "scientific",
+      "note_it": null,
+      "wikidata_id": "Q622525",
+      "wikidata_labels": {
+        "es": "Physalis ixocarpa",
+        "it": "Physalis philadelphica"
+      },
+      "sources": [
+        "Q622525"
+      ],
+      "verification": "source_supported"
+    },
+    {
+      "id": "masa_harina",
+      "name_es": "Masa harina",
+      "name_it": null,
+      "aliases_es": [
+        "harina de maíz nixtamalizada",
+        "harina nixtamalizada"
+      ],
+      "aliases_it": [],
+      "category": "Granos y harinas",
+      "scope": "México",
+      "note": "Para tortillas busca que el envase indique maíz nixtamalizado.",
+      "reference_it": "farina di mais nixtamalizzata",
+      "reference_kind": "description",
+      "note_it": "Traducción descriptiva de la etiqueta que conviene buscar.",
+      "wikidata_id": null,
+      "wikidata_labels": {},
+      "sources": [
+        "masienda_masa"
+      ],
+      "verification": "source_supported"
+    },
+    {
+      "id": "polenta",
+      "name_es": "Polenta",
+      "name_it": null,
+      "aliases_es": [],
+      "aliases_it": [],
+      "category": "Granos y harinas",
+      "scope": "Italia",
+      "note": "En el comercio también se usa «polenta» para la harina o mezcla destinada a preparar el plato.",
+      "reference_it": "polenta",
+      "reference_kind": "documented",
+      "note_it": null,
+      "wikidata_id": "Q131607",
+      "wikidata_labels": {},
+      "sources": [
+        "treccani_polenta",
+        "Q131607"
+      ],
+      "verification": "source_supported"
+    },
+    {
+      "id": "harina_maiz",
+      "name_es": "Harina de maíz",
+      "name_it": "farina di mais",
+      "aliases_es": [
+        "harina común de maíz"
+      ],
+      "aliases_it": [
+        "farina di granoturco"
+      ],
+      "category": "Granos y harinas",
+      "scope": "Italia",
+      "note": "La harina de maíz común puede venderse molida en distintos grosores.",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q110184114",
+      "wikidata_labels": {
+        "es": "harina de maíz",
+        "it": "farina di mais"
+      },
+      "sources": [
+        "Q110184114"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "jalapeno",
+      "name_es": "Chile jalapeño",
+      "name_it": "jalapeño",
+      "aliases_es": [
+        "chile cuaresmeño",
+        "cuaresmeño",
+        "jalapeño"
+      ],
+      "aliases_it": [],
+      "category": "Chiles y pimientos",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q504133",
+      "wikidata_labels": {
+        "es": "chile jalapeño",
+        "it": "jalapeño"
+      },
+      "sources": [
+        "Q504133"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "chipotle",
+      "name_es": "Chile chipotle",
+      "name_it": "chipotle",
+      "aliases_es": [
+        "chipotle",
+        "chilpotle"
+      ],
+      "aliases_it": [
+        "chilpotle"
+      ],
+      "category": "Chiles y pimientos",
+      "scope": "México",
+      "note": "Es jalapeño seco y ahumado.",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q860808",
+      "wikidata_labels": {
+        "it": "Chipotle",
+        "es": "chile chipotle"
+      },
+      "sources": [
+        "Q860808"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "habanero",
+      "name_es": "Chile habanero",
+      "name_it": "habanero",
+      "aliases_es": [
+        "habanero"
+      ],
+      "aliases_it": [],
+      "category": "Chiles y pimientos",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q764375",
+      "wikidata_labels": {
+        "it": "Habanero",
+        "es": "Capsicum chinense ‘Habanero’"
+      },
+      "sources": [
+        "Q764375"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "guajillo",
+      "name_es": "Chile guajillo",
+      "name_it": null,
+      "aliases_es": [
+        "guajillo"
+      ],
+      "aliases_it": [
+        "peperoncino guajillo"
+      ],
+      "category": "Chiles y pimientos",
+      "scope": "México",
+      "note": "El guajillo se usa seco. La fuente de Wikidata identifica el cultivar mirasol.",
+      "reference_it": "guajillo",
+      "reference_kind": "documented",
+      "note_it": null,
+      "wikidata_id": "Q5613350",
+      "wikidata_labels": {
+        "es": "chile mirasol",
+        "it": "mirasol"
+      },
+      "sources": [
+        "inifap_guajillo",
+        "Q5613350"
+      ],
+      "verification": "source_supported"
+    },
+    {
+      "id": "nopal",
+      "name_es": "Nopal",
+      "name_it": "nopal",
+      "aliases_es": [
+        "nopales",
+        "penca de nopal"
+      ],
+      "aliases_it": [],
+      "category": "Verduras",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q3367716",
+      "wikidata_labels": {
+        "it": "nopal",
+        "es": "nopal"
+      },
+      "sources": [
+        "Q3367716"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "jicama",
+      "name_es": "Jícama",
+      "name_it": null,
+      "aliases_es": [],
+      "aliases_it": [],
+      "category": "Verduras",
+      "scope": "México",
+      "note": "",
+      "reference_it": "Pachyrhizus erosus",
+      "reference_kind": "scientific",
+      "note_it": null,
+      "wikidata_id": "Q517283",
+      "wikidata_labels": {
+        "es": "Pachyrhizus erosus",
+        "it": "Pachyrhizus erosus"
+      },
+      "sources": [
+        "Q517283"
+      ],
+      "verification": "source_supported"
+    },
+    {
+      "id": "epazote",
+      "name_es": "Epazote",
+      "name_it": null,
+      "aliases_es": [
+        "paico"
+      ],
+      "aliases_it": [],
+      "category": "Hierbas y especias",
+      "scope": "México",
+      "note": "Hierba usada como condimento en frijoles de olla y otros guisos.",
+      "reference_it": "Dysphania ambrosioides",
+      "reference_kind": "scientific",
+      "note_it": null,
+      "wikidata_id": "Q640032",
+      "wikidata_labels": {
+        "es": "Dysphania ambrosioides",
+        "it": "Dysphania ambrosioides"
+      },
+      "sources": [
+        "gob_epazote",
+        "Q640032"
+      ],
+      "verification": "source_supported"
+    },
+    {
+      "id": "oregano_mexicano",
+      "name_es": "Orégano mexicano",
+      "name_it": null,
+      "aliases_es": [],
+      "aliases_it": [],
+      "category": "Hierbas y especias",
+      "scope": "México",
+      "note": "Esta ficha se refiere a Lippia graveolens.",
+      "reference_it": "Lippia graveolens",
+      "reference_kind": "scientific",
+      "note_it": null,
+      "wikidata_id": "Q1761719",
+      "wikidata_labels": {
+        "es": "Lippia graveolens",
+        "it": "Lippia graveolens"
+      },
+      "sources": [
+        "Q1761719"
+      ],
+      "verification": "source_supported"
+    },
+    {
+      "id": "maiz",
+      "name_es": "Maíz",
+      "name_it": "mais",
+      "aliases_es": [],
+      "aliases_it": [
+        "granoturco",
+        "granturco"
+      ],
+      "category": "Granos y harinas",
+      "scope": "México",
+      "note": "Comprueba si la receta pide grano fresco o seco.",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q11575",
+      "wikidata_labels": {
+        "it": "Zea mays",
+        "es": "maíz"
+      },
+      "sources": [
+        "Q11575"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "tortilla_maiz",
+      "name_es": "Tortilla de maíz",
+      "name_it": "tortilla",
+      "aliases_es": [
+        "tortillas de maíz"
+      ],
+      "aliases_it": [
+        "tortillas",
+        "tortilla di mais"
+      ],
+      "category": "Granos y harinas",
+      "scope": "México",
+      "note": "Si el envase solo dice tortilla comprueba que sea de maíz.",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q15660894",
+      "wikidata_labels": {
+        "es": "Tortilla de maíz",
+        "it": "tortilla"
+      },
+      "sources": [
+        "Q15660894"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "zanahoria",
+      "name_es": "Zanahoria",
+      "name_it": "carota",
+      "aliases_es": [
+        "zanahorias"
+      ],
+      "aliases_it": [
+        "carote"
+      ],
+      "category": "Verduras",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q30056",
+      "wikidata_labels": {
+        "es": "Daucus carota",
+        "it": "Daucus carota"
+      },
+      "sources": [
+        "Q30056"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "espinaca",
+      "name_es": "Espinaca",
+      "name_it": "spinaci",
+      "aliases_es": [
+        "espinacas"
+      ],
+      "aliases_it": [
+        "spinacio"
+      ],
+      "category": "Verduras",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q81464",
+      "wikidata_labels": {
+        "es": "Spinacia oleracea",
+        "it": "Spinacia oleracea"
+      },
+      "sources": [
+        "Q81464"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "apio",
+      "name_es": "Apio",
+      "name_it": "sedano",
+      "aliases_es": [
+        "apio de tallo"
+      ],
+      "aliases_it": [
+        "sedano da costa"
+      ],
+      "category": "Verduras",
+      "scope": "México",
+      "note": "Si la receta pide tallos busca sedano da costa.",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q28298",
+      "wikidata_labels": {
+        "it": "Apium graveolens",
+        "es": "Apium graveolens"
+      },
+      "sources": [
+        "Q28298"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "perejil",
+      "name_es": "Perejil",
+      "name_it": "prezzemolo",
+      "aliases_es": [
+        "perejil fresco"
+      ],
+      "aliases_it": [],
+      "category": "Hierbas y especias",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q25284",
+      "wikidata_labels": {
+        "es": "Petroselinum crispum",
+        "it": "Petroselinum crispum"
+      },
+      "sources": [
+        "Q25284"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "papa",
+      "name_es": "Papa",
+      "name_it": "patata",
+      "aliases_es": [
+        "patata",
+        "papas"
+      ],
+      "aliases_it": [
+        "patate"
+      ],
+      "category": "Verduras",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q10998",
+      "wikidata_labels": {
+        "it": "Solanum tuberosum",
+        "es": "Solanum tuberosum"
+      },
+      "sources": [
+        "Q10998"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "camote",
+      "name_es": "Camote",
+      "name_it": "patata dolce",
+      "aliases_es": [
+        "batata",
+        "boniato"
+      ],
+      "aliases_it": [
+        "patata americana",
+        "batata"
+      ],
+      "category": "Verduras",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q37937",
+      "wikidata_labels": {
+        "es": "Ipomoea batatas",
+        "it": "Ipomoea batatas"
+      },
+      "sources": [
+        "Q37937"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "cacahuate",
+      "name_es": "Cacahuate",
+      "name_it": "arachide",
+      "aliases_es": [
+        "cacahuete",
+        "maní",
+        "cacahuates"
+      ],
+      "aliases_it": [
+        "arachidi"
+      ],
+      "category": "Legumbres",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q3621199",
+      "wikidata_labels": {
+        "it": "arachide",
+        "es": "maní"
+      },
+      "sources": [
+        "Q3621199"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "lenteja",
+      "name_es": "Lenteja",
+      "name_it": "lenticchia",
+      "aliases_es": [
+        "lentejas"
+      ],
+      "aliases_it": [
+        "lenticchie"
+      ],
+      "category": "Legumbres",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q131226",
+      "wikidata_labels": {
+        "es": "lenteja",
+        "it": "Lens culinaris"
+      },
+      "sources": [
+        "Q131226"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "guayaba",
+      "name_es": "Guayaba",
+      "name_it": "guaiava",
+      "aliases_es": [],
+      "aliases_it": [
+        "guava"
+      ],
+      "category": "Frutas",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q3181909",
+      "wikidata_labels": {
+        "es": "guayaba",
+        "it": "guaiava"
+      },
+      "sources": [
+        "Q3181909"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "tamarindo",
+      "name_es": "Tamarindo",
+      "name_it": "tamarindo",
+      "aliases_es": [],
+      "aliases_it": [],
+      "category": "Frutas",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q80235",
+      "wikidata_labels": {
+        "es": "Tamarindus indica",
+        "it": "Tamarindus indica"
+      },
+      "sources": [
+        "Q80235"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "coco",
+      "name_es": "Coco",
+      "name_it": "cocco",
+      "aliases_es": [
+        "nuez de coco"
+      ],
+      "aliases_it": [
+        "noce di cocco"
+      ],
+      "category": "Frutas",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q3342808",
+      "wikidata_labels": {
+        "es": "coco",
+        "it": "noce di cocco"
+      },
+      "sources": [
+        "Q3342808"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "lima",
+      "name_es": "Lima",
+      "name_it": "limetta",
+      "aliases_es": [
+        "lima ácida",
+        "lima verde"
+      ],
+      "aliases_it": [
+        "lime"
+      ],
+      "category": "Frutas",
+      "scope": "México",
+      "note": "En México también se llama lima a otros cítricos. Esta ficha se refiere a la lima ácida.",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q13195",
+      "wikidata_labels": {
+        "es": "lima",
+        "it": "limetta"
+      },
+      "sources": [
+        "Q13195"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "pimienta_negra",
+      "name_es": "Pimienta negra",
+      "name_it": "pepe nero",
+      "aliases_es": [
+        "pimienta negra en grano"
+      ],
+      "aliases_it": [],
+      "category": "Hierbas y especias",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q22915010",
+      "wikidata_labels": {
+        "it": "pepe nero",
+        "es": "pimienta negra"
+      },
+      "sources": [
+        "Q22915010"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "canela",
+      "name_es": "Canela de Ceilán",
+      "name_it": "cannella",
+      "aliases_es": [
+        "canela",
+        "canela en rama"
+      ],
+      "aliases_it": [
+        "cinnamomo"
+      ],
+      "category": "Hierbas y especias",
+      "scope": "México",
+      "note": "Para comprar esta variedad comprueba que el envase diga Cinnamomum verum.",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q370239",
+      "wikidata_labels": {
+        "it": "Cinnamomum verum",
+        "es": "Cinnamomum verum"
+      },
+      "sources": [
+        "Q370239"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "harina_trigo",
+      "name_es": "Harina de trigo",
+      "name_it": "farina di grano",
+      "aliases_es": [],
+      "aliases_it": [
+        "farina di frumento"
+      ],
+      "category": "Granos y harinas",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q2249305",
+      "wikidata_labels": {
+        "es": "harina de trigo",
+        "it": "farina di grano"
+      },
+      "sources": [
+        "Q2249305"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "fecula_maiz",
+      "name_es": "Fécula de maíz",
+      "name_it": "amido di mais",
+      "aliases_es": [
+        "maicena",
+        "almidón de maíz"
+      ],
+      "aliases_it": [
+        "maizena"
+      ],
+      "category": "Granos y harinas",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q3393961",
+      "wikidata_labels": {
+        "es": "maicena",
+        "it": "amido di mais"
+      },
+      "sources": [
+        "Q3393961"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "leche_evaporada",
+      "name_es": "Leche evaporada",
+      "name_it": "latte evaporato",
+      "aliases_es": [],
+      "aliases_it": [],
+      "category": "Lácteos",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q13417087",
+      "wikidata_labels": {
+        "es": "leche evaporada",
+        "it": "latte evaporato"
+      },
+      "sources": [
+        "Q13417087"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "leche_condensada",
+      "name_es": "Leche condensada",
+      "name_it": "latte condensato",
+      "aliases_es": [
+        "leche condensada azucarada"
+      ],
+      "aliases_it": [
+        "latte condensato zuccherato"
+      ],
+      "category": "Lácteos",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q2830455",
+      "wikidata_labels": {
+        "es": "leche condensada",
+        "it": "latte condensato"
+      },
+      "sources": [
+        "Q2830455"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "carne_cerdo",
+      "name_es": "Carne de cerdo",
+      "name_it": "carne di maiale",
+      "aliases_es": [
+        "carne de puerco",
+        "carne de cochino"
+      ],
+      "aliases_it": [
+        "carne suina"
+      ],
+      "category": "Carnes",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q191768",
+      "wikidata_labels": {
+        "es": "carne de cerdo",
+        "it": "carne di maiale"
+      },
+      "sources": [
+        "Q191768"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "vinagre",
+      "name_es": "Vinagre",
+      "name_it": "aceto",
+      "aliases_es": [],
+      "aliases_it": [],
+      "category": "Condimentos",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q41354",
+      "wikidata_labels": {
+        "es": "vinagre",
+        "it": "aceto"
+      },
+      "sources": [
+        "Q41354"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "serrano",
+      "name_es": "Chile serrano",
+      "name_it": null,
+      "aliases_es": [
+        "serrano"
+      ],
+      "aliases_it": [],
+      "category": "Chiles y pimientos",
+      "scope": "México",
+      "note": "Busca el chile fresco para salsas crudas.",
+      "reference_it": "peperoncino serrano",
+      "reference_kind": "description",
+      "note_it": null,
+      "wikidata_id": "Q617583",
+      "wikidata_labels": {
+        "es": "Chile serrano",
+        "it": "Serrano del Sol"
+      },
+      "sources": [
+        "sep_chiles",
+        "Q617583"
+      ],
+      "verification": "source_supported"
+    },
+    {
+      "id": "chile_ancho",
+      "name_es": "Chile ancho",
+      "name_it": null,
+      "aliases_es": [
+        "ancho"
+      ],
+      "aliases_it": [],
+      "category": "Chiles y pimientos",
+      "scope": "México",
+      "note": "Es el poblano seco. Confirma la presentación.",
+      "reference_it": "peperoncino ancho",
+      "reference_kind": "description",
+      "note_it": null,
+      "wikidata_id": null,
+      "wikidata_labels": {},
+      "sources": [
+        "sep_chiles"
+      ],
+      "verification": "source_supported"
+    },
+    {
+      "id": "frijol_pinto",
+      "name_es": "Frijol pinto",
+      "name_it": "fagiolo pinto",
+      "aliases_es": [
+        "frijoles pintos"
+      ],
+      "aliases_it": [
+        "fagioli pinto"
+      ],
+      "category": "Legumbres",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q323635",
+      "wikidata_labels": {
+        "it": "fagiolo pinto",
+        "es": "frijol pinto"
+      },
+      "sources": [
+        "Q323635"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "crema_agria",
+      "name_es": "Crema agria",
+      "name_it": "panna acida",
+      "aliases_es": [
+        "crema ácida"
+      ],
+      "aliases_it": [],
+      "category": "Lácteos",
+      "scope": "México",
+      "note": "Esta ficha corresponde a crema agria.",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q840171",
+      "wikidata_labels": {
+        "es": "crema agria",
+        "it": "panna acida"
+      },
+      "sources": [
+        "Q840171"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "yogur",
+      "name_es": "Yogur natural",
+      "name_it": null,
+      "aliases_es": [
+        "yogur sin azúcar"
+      ],
+      "aliases_it": [],
+      "category": "Lácteos",
+      "scope": "Italia",
+      "note": "Para los usos sugeridos elige yogur natural sin azúcar.",
+      "reference_it": "yogurt bianco non zuccherato",
+      "reference_kind": "description",
+      "note_it": null,
+      "wikidata_id": "Q13317",
+      "wikidata_labels": {
+        "es": "yogur",
+        "it": "yogurt"
+      },
+      "sources": [
+        "mu_subs",
+        "Q13317"
+      ],
+      "verification": "source_supported"
+    },
+    {
+      "id": "fecula_papa",
+      "name_es": "Fécula de papa",
+      "name_it": "fecola di patate",
+      "aliases_es": [
+        "almidón de papa",
+        "fécula de patata"
+      ],
+      "aliases_it": [],
+      "category": "Granos y harinas",
+      "scope": "Italia",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q715160",
+      "wikidata_labels": {
+        "es": "almidón de papa",
+        "it": "fecola di patate"
+      },
+      "sources": [
+        "Q715160"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "limon_amarillo",
+      "name_es": "Limón amarillo",
+      "name_it": "limone",
+      "aliases_es": [
+        "limón amarillo jugo"
+      ],
+      "aliases_it": [],
+      "category": "Frutas",
+      "scope": "Italia",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q500",
+      "wikidata_labels": {
+        "it": "Citrus × limon",
+        "es": "limonero"
+      },
+      "sources": [
+        "Q500"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "tomate_lata",
+      "name_es": "Jitomate enlatado",
+      "name_it": null,
+      "aliases_es": [
+        "jitomate en conserva",
+        "tomate en lata"
+      ],
+      "aliases_it": [],
+      "category": "Verduras",
+      "scope": "Italia",
+      "note": "Los tomates pelados enteros son una presentación de la conserva.",
+      "reference_it": "pomodori in scatola",
+      "reference_kind": "description",
+      "note_it": null,
+      "wikidata_id": "Q5032643",
+      "wikidata_labels": {
+        "es": "Tomate en conserva"
+      },
+      "sources": [
+        "mutti_pelati",
+        "Q5032643"
+      ],
+      "verification": "source_supported"
+    }
+  ],
+  "uses": {
+    "rellenar": {
+      "label": "Rellenar y hornear",
+      "aliases": [
+        "rellenar",
+        "relleno",
+        "rellenos",
+        "hornear",
+        "ripieno",
+        "farcire",
+        "in forno"
+      ]
+    },
+    "rajas": {
+      "label": "Preparar rajas",
+      "aliases": [
+        "rajas",
+        "rajas con crema"
+      ]
+    },
+    "decorar": {
+      "label": "Decorar al servir",
+      "aliases": [
+        "decorar",
+        "guarnicion",
+        "decorazione",
+        "guarnire"
+      ]
+    },
+    "guisar": {
+      "label": "Sazonar guisos",
+      "aliases": [
+        "guisos",
+        "guiso",
+        "stufato",
+        "stufati"
+      ]
+    },
+    "adobo": {
+      "label": "Preparar adobos",
+      "aliases": [
+        "adobo",
+        "adobos",
+        "marinata"
+      ]
+    },
+    "salsa_cruda": {
+      "label": "Preparar salsa cruda",
+      "aliases": [
+        "salsa cruda",
+        "salsa fresca",
+        "salsa a crudo"
+      ]
+    },
+    "refritos": {
+      "label": "Preparar frijoles refritos",
+      "aliases": [
+        "refritos",
+        "frijoles refritos",
+        "fagioli rifritti"
+      ]
+    },
+    "al_frio": {
+      "label": "Aderezar en frío",
+      "aliases": [
+        "aderezo",
+        "aderezar",
+        "aderezar en frio",
+        "condire a freddo",
+        "condimento a freddo"
+      ]
+    },
+    "espesar": {
+      "label": "Espesar una salsa",
+      "aliases": [
+        "espesar",
+        "espesar salsa",
+        "espesar una salsa",
+        "addensare",
+        "addensare una salsa"
+      ]
+    },
+    "guacamole": {
+      "label": "Preparar guacamole",
+      "aliases": [
+        "guacamole"
+      ]
+    },
+    "salsa_cocida": {
+      "label": "Preparar una salsa cocida",
+      "aliases": [
+        "salsa cocida",
+        "caldillo",
+        "salsa cotta"
+      ]
+    },
+    "tortillas": {
+      "label": "Hacer tortillas de maíz",
+      "aliases": [
+        "tortilla",
+        "tortillas",
+        "tortillas de maiz",
+        "tortilla di mais"
+      ]
+    },
+    "ahumado": {
+      "label": "Aportar sabor ahumado",
+      "aliases": [
+        "sabor ahumado",
+        "ahumado",
+        "sapore affumicato"
+      ]
+    }
+  },
+  "relations": [
+    {
+      "from": "chile_poblano",
+      "to": "morron",
+      "type": "culinary_substitute",
+      "use": "rellenar",
+      "target_name_it": "Peperone verde",
+      "target_name_es": "Chile morrón verde",
+      "context": "Rellenar y hornear.",
+      "reason": "El morrón verde se sostiene entero y su pulpa permite rellenarlo y hornearlo.",
+      "limitations": "Suele quedar más dulce y aporta muy poco picor. El resultado tiene un sabor distinto.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "gob_chiles",
+        "gob_poblano"
+      ]
+    },
+    {
+      "from": "chile_poblano",
+      "to": "morron",
+      "type": "culinary_substitute",
+      "use": "rajas",
+      "target_name_it": "Peperone verde",
+      "target_name_es": "Chile morrón verde",
+      "context": "Preparar rajas.",
+      "reason": "Asado y cortado en tiras, el morrón conserva el volumen que aportan las rajas.",
+      "limitations": "La versión queda más dulce y pierde el sabor característico del poblano.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "gob_chiles",
+        "gob_poblano"
+      ]
+    },
+    {
+      "from": "cilantro",
+      "to": "perejil",
+      "type": "culinary_substitute",
+      "use": "decorar",
+      "target_name_it": "Prezzemolo fresco",
+      "target_name_es": "Perejil fresco",
+      "context": "Decorar al servir.",
+      "reason": "Las hojas frescas picadas aportan color al servir.",
+      "limitations": "El perejil tiene otro aroma. Sirve cuando la hierba se usa como adorno y no define el sabor del platillo.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "gob_hierbas"
+      ]
+    },
+    {
+      "from": "oregano_mexicano",
+      "to": "oregano",
+      "type": "culinary_substitute",
+      "use": "guisar",
+      "target_name_it": "Origano secco",
+      "target_name_es": "Orégano común seco",
+      "context": "Sazonar guisos.",
+      "reason": "Aporta un fondo herbal a guisos donde el orégano es un acento.",
+      "limitations": "El orégano mediterráneo tiene un perfil distinto y pierde el matiz cítrico del mexicano.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "oregano_guide"
+      ]
+    },
+    {
+      "from": "guajillo",
+      "to": "chile_ancho",
+      "type": "culinary_substitute",
+      "use": "adobo",
+      "target_name_it": "Peperoncino ancho essiccato",
+      "target_name_es": "Chile ancho seco",
+      "context": "Preparar adobos.",
+      "reason": "El ancho seco se puede hidratar y moler para dar cuerpo a un adobo.",
+      "limitations": "Suele oscurecer la mezcla y cambia el sabor frutal y el picor típicos del guajillo.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "sep_chiles",
+        "inifap_guajillo"
+      ]
+    },
+    {
+      "from": "serrano",
+      "to": "jalapeno",
+      "type": "culinary_substitute",
+      "use": "salsa_cruda",
+      "target_name_it": "Jalapeño fresco",
+      "target_name_es": "Chile jalapeño fresco",
+      "context": "Preparar salsa cruda.",
+      "reason": "Ambos se usan frescos y picados para dar textura y picor a una salsa.",
+      "limitations": "La intensidad cambia entre variedades y piezas. Agrega al gusto.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "sep_chiles"
+      ]
+    },
+    {
+      "from": "jalapeno",
+      "to": "serrano",
+      "type": "culinary_substitute",
+      "use": "salsa_cruda",
+      "target_name_it": "Peperoncino serrano fresco",
+      "target_name_es": "Chile serrano fresco",
+      "context": "Preparar salsa cruda.",
+      "reason": "El serrano conserva la función de un chile fresco en la salsa.",
+      "limitations": "Puede resultar más picante. Empieza con poco y ajusta al gusto.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "sep_chiles",
+        "inifap_guajillo"
+      ]
+    },
+    {
+      "from": "frijol_negro",
+      "to": "frijol_pinto",
+      "type": "culinary_substitute",
+      "use": "refritos",
+      "target_name_it": "Fagioli pinto cotti",
+      "target_name_es": "Frijoles pintos cocidos",
+      "context": "Preparar frijoles refritos.",
+      "reason": "Las dos variedades se usan para preparar frijoles refritos y se pueden machacar una vez cocidas.",
+      "limitations": "El pinto deja un puré más claro. Si empiezas con frijol seco, el tiempo de cocción puede variar.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "usda_refritos",
+        "maine_beans"
+      ]
+    },
+    {
+      "from": "frijol_pinto",
+      "to": "frijol_negro",
+      "type": "culinary_substitute",
+      "use": "refritos",
+      "target_name_it": "Fagioli neri cotti",
+      "target_name_es": "Frijoles negros cocidos",
+      "context": "Preparar frijoles refritos.",
+      "reason": "El frijol negro también produce una base machacada para refritos.",
+      "limitations": "Queda más oscuro y cambia el sabor. Si empiezas con frijol seco, el tiempo de cocción puede variar.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "usda_refritos",
+        "maine_beans"
+      ]
+    },
+    {
+      "from": "crema_agria",
+      "to": "yogur",
+      "type": "culinary_substitute",
+      "use": "al_frio",
+      "target_name_it": "Yogurt bianco non zuccherato",
+      "target_name_es": "Yogur natural sin azúcar",
+      "context": "Aderezar en frío.",
+      "reason": "El yogur natural aporta acidez y una base cremosa a un aderezo frío.",
+      "limitations": "La consistencia y el contenido de grasa dependen del yogur. Esta opción se propone para preparaciones frías.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "mu_subs",
+        "csu_subs"
+      ]
+    },
+    {
+      "from": "fecula_maiz",
+      "to": "harina_trigo",
+      "type": "culinary_substitute",
+      "use": "espesar",
+      "target_name_it": "Farina di grano tenero",
+      "target_name_es": "Harina de trigo común",
+      "context": "Espesar una salsa.",
+      "reason": "La harina de trigo gelatiniza al cocerse y espesa una salsa.",
+      "limitations": "Requiere una cantidad distinta y puede dejar un acabado más opaco. Contiene gluten.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "mu_subs"
+      ]
+    },
+    {
+      "from": "fecula_maiz",
+      "to": "fecula_papa",
+      "type": "culinary_substitute",
+      "use": "espesar",
+      "target_name_it": "Fecola di patate",
+      "target_name_es": "Fécula de papa",
+      "context": "Espesar una salsa.",
+      "reason": "La fécula de papa cumple la función de espesante en una salsa.",
+      "limitations": "Puede cambiar el brillo y la consistencia. Ajusta según cómo espese la preparación.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "csu_subs",
+        "mu_subs"
+      ]
+    },
+    {
+      "from": "harina_trigo",
+      "to": "fecula_maiz",
+      "type": "culinary_substitute",
+      "use": "espesar",
+      "target_name_it": "Amido di mais",
+      "target_name_es": "Fécula de maíz",
+      "context": "Espesar una salsa.",
+      "reason": "El almidón de maíz espesa la salsa al calentarse.",
+      "limitations": "La cantidad y el método difieren. Este uso no cubre masas de pan ni rebozados.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "csu_subs",
+        "mu_subs"
+      ]
+    },
+    {
+      "from": "lima",
+      "to": "limon_amarillo",
+      "type": "culinary_substitute",
+      "use": "guacamole",
+      "target_name_it": "Succo di limone",
+      "target_name_es": "Jugo de limón amarillo",
+      "context": "Preparar guacamole.",
+      "reason": "El jugo de limón amarillo aporta acidez al guacamole servido fresco.",
+      "limitations": "El aroma cambia. Agrégalo poco a poco y ajusta al gusto.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "usu_limes"
+      ]
+    },
+    {
+      "from": "jitomate",
+      "to": "tomate_lata",
+      "type": "culinary_substitute",
+      "use": "salsa_cocida",
+      "target_name_it": "Pomodori pelati",
+      "target_name_es": "Jitomates pelados en lata",
+      "context": "Preparar una salsa cocida.",
+      "reason": "Los jitomates enlatados se pueden triturar y cocinar como base de salsa.",
+      "limitations": "Escurre parte del líquido si necesitas una salsa más espesa. La conserva no aporta la textura del jitomate crudo.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "mu_subs",
+        "mutti_pelati"
+      ]
+    },
+    {
+      "from": "chipotle",
+      "to": "jalapeno",
+      "type": "not_equivalent",
+      "use": "ahumado",
+      "target_name_it": "Jalapeño fresco",
+      "target_name_es": "Chile jalapeño fresco",
+      "context": "Aportar sabor ahumado.",
+      "reason": "El sabor ahumado aparece al procesar el jalapeño para obtener chipotle.",
+      "limitations": "Si la receta pide la nota ahumada del chipotle, el jalapeño fresco por sí solo no la aporta.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "sep_secado"
+      ]
+    },
+    {
+      "from": "masa_harina",
+      "to": "polenta",
+      "type": "not_equivalent",
+      "target_name_it": "Polenta",
+      "target_name_es": "Polenta",
+      "context": "Para tortillas de maíz.",
+      "reason": "La masa harina se obtiene de maíz nixtamalizado y forma una masa al hidratarla. La polenta se prepara cociendo harina de maíz en agua.",
+      "limitations": "Evita usar polenta o harina de maíz para polenta como reemplazo directo en tortillas.",
+      "verification": "source_supported",
+      "sources": [
+        "masienda_masa",
+        "treccani_polenta",
+        "Q131607"
+      ],
+      "use": "tortillas",
+      "evidence": "direct"
+    },
+    {
+      "from": "masa_harina",
+      "to": "harina_maiz",
+      "type": "not_equivalent",
+      "target_name_it": "Farina di mais",
+      "target_name_es": "Harina de maíz común",
+      "context": "Para tortillas de maíz.",
+      "reason": "«Farina di mais» indica harina de maíz, mientras que «nixtamalizzata» especifica el tratamiento necesario para la masa harina.",
+      "limitations": "Comprueba la palabra «nixtamalizzata» en el envase.",
+      "verification": "source_supported",
+      "sources": [
+        "masienda_masa",
+        "Q110184114"
+      ],
+      "use": "tortillas",
+      "evidence": "direct"
+    }
+  ],
+  "sources": {
+    "gob_chiles": {
+      "label": "Secretaría de Agricultura · México, cuna del chile",
+      "url": "https://www.gob.mx/agricultura/es/articulos/mexico-cuna-del-chile-riqueza-genetica-que-da-sabor-al-mundo"
+    },
+    "masienda_masa": {
+      "label": "Masienda · Guía de la masa harina",
+      "url": "https://masienda.com/es/blogs/learn/guide-to-masa-harina"
+    },
+    "treccani_polenta": {
+      "label": "Treccani · Polenta",
+      "url": "https://www.treccani.it/vocabolario/polenta/"
+    },
+    "gob_epazote": {
+      "label": "Secretaría de Agricultura · Epazote",
+      "url": "https://www.gob.mx/agricultura/articulos/hierba-olorosa-y-sabrosa-es-el-epazote"
+    },
+    "inifap_guajillo": {
+      "label": "INIFAP · Variedades de chile",
+      "url": "https://zacatecas.inifap.gob.mx/publicaciones/cultChprofit.pdf"
+    },
+    "sep_chiles": {
+      "label": "SEP · Chiles de México",
+      "url": "https://nemd.aprende.gob.mx/contenido/recurso/41976/"
+    },
+    "sep_secado": {
+      "label": "SEP · Chiles frescos y secos",
+      "url": "https://nuevaescuelamexicana.sep.gob.mx/contenido/recurso/41033/"
+    },
+    "gob_poblano": {
+      "label": "Secretaría de Agricultura · Chile poblano",
+      "url": "https://www.gob.mx/agricultura/articulos/el-chile-poblano-rey-de-los-rellenos"
+    },
+    "gob_hierbas": {
+      "label": "Secretaría de Agricultura · Cilantro y perejil",
+      "url": "https://www.gob.mx/agricultura/es/articulos/no-es-lo-mismo-ni-es-igual-cilantro-y-perejil?idiom=es"
+    },
+    "oregano_guide": {
+      "label": "McCormick · Orégano mexicano y mediterráneo",
+      "url": "https://www.mccormick.com/blogs/how-to/about-oregano-uses-pairings-and-recipes"
+    },
+    "mu_subs": {
+      "label": "University of Missouri Extension · Ingredient Substitution",
+      "url": "https://extension.missouri.edu/publications/mp564"
+    },
+    "csu_subs": {
+      "label": "Colorado State University Extension · Ingredient Substitutions",
+      "url": "https://extension.colostate.edu/resource/ingredient-substitutions/"
+    },
+    "usda_refritos": {
+      "label": "USDA · Frijoles refritos enlatados",
+      "url": "https://www.ams.usda.gov/sites/default/files/media/AA_20257B_Beans_Refried_Cnd_020718.pdf"
+    },
+    "maine_beans": {
+      "label": "University of Maine Cooperative Extension · Legumbres",
+      "url": "https://extension.umaine.edu/publications/4183e/"
+    },
+    "usu_limes": {
+      "label": "Utah State University Extension · Limas",
+      "url": "https://extension.usu.edu/nutrition/research/limes"
+    },
+    "mutti_pelati": {
+      "label": "Mutti · Pomodori pelati",
+      "url": "https://mutti-parma.com/it/i-nostri-prodotti/pomodori-pelati/"
+    },
+    "Q20638126": {
+      "label": "Wikidata · Q20638126",
+      "url": "https://www.wikidata.org/wiki/Q20638126",
+      "license": "CC0-1.0",
+      "revision": 2569264097,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2569264097"
+    },
+    "Q41611": {
+      "label": "Wikidata · Q41611",
+      "url": "https://www.wikidata.org/wiki/Q41611",
+      "license": "CC0-1.0",
+      "revision": 2567812427,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2567812427"
+    },
+    "Q961769": {
+      "label": "Wikidata · Q961769",
+      "url": "https://www.wikidata.org/wiki/Q961769",
+      "license": "CC0-1.0",
+      "revision": 2555869513,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2555869513"
+    },
+    "Q23485": {
+      "label": "Wikidata · Q23485",
+      "url": "https://www.wikidata.org/wiki/Q23485",
+      "license": "CC0-1.0",
+      "revision": 2567631057,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2567631057"
+    },
+    "Q23400": {
+      "label": "Wikidata · Q23400",
+      "url": "https://www.wikidata.org/wiki/Q23400",
+      "license": "CC0-1.0",
+      "revision": 2567598339,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2567598339"
+    },
+    "Q132624": {
+      "label": "Wikidata · Q132624",
+      "url": "https://www.wikidata.org/wiki/Q132624",
+      "license": "CC0-1.0",
+      "revision": 2565783001,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2565783001"
+    },
+    "Q134283": {
+      "label": "Wikidata · Q134283",
+      "url": "https://www.wikidata.org/wiki/Q134283",
+      "license": "CC0-1.0",
+      "revision": 2568783518,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2568783518"
+    },
+    "Q26006": {
+      "label": "Wikidata · Q26006",
+      "url": "https://www.wikidata.org/wiki/Q26006",
+      "license": "CC0-1.0",
+      "revision": 2567798080,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2567798080"
+    },
+    "Q2763698": {
+      "label": "Wikidata · Q2763698",
+      "url": "https://www.wikidata.org/wiki/Q2763698",
+      "license": "CC0-1.0",
+      "revision": 2563894960,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2563894960"
+    },
+    "Q7533": {
+      "label": "Wikidata · Q7533",
+      "url": "https://www.wikidata.org/wiki/Q7533",
+      "license": "CC0-1.0",
+      "revision": 2563801751,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2563801751"
+    },
+    "Q5090": {
+      "label": "Wikidata · Q5090",
+      "url": "https://www.wikidata.org/wiki/Q5090",
+      "license": "CC0-1.0",
+      "revision": 2567528528,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2567528528"
+    },
+    "Q3919027": {
+      "label": "Wikidata · Q3919027",
+      "url": "https://www.wikidata.org/wiki/Q3919027",
+      "license": "CC0-1.0",
+      "revision": 2567866292,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2567866292"
+    },
+    "Q34887": {
+      "label": "Wikidata · Q34887",
+      "url": "https://www.wikidata.org/wiki/Q34887",
+      "license": "CC0-1.0",
+      "revision": 2567855905,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2567855905"
+    },
+    "Q15062992": {
+      "label": "Wikidata · Q15062992",
+      "url": "https://www.wikidata.org/wiki/Q15062992",
+      "license": "CC0-1.0",
+      "revision": 2473964315,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2473964315"
+    },
+    "Q81375": {
+      "label": "Wikidata · Q81375",
+      "url": "https://www.wikidata.org/wiki/Q81375",
+      "license": "CC0-1.0",
+      "revision": 2567630867,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2567630867"
+    },
+    "Q897746": {
+      "label": "Wikidata · Q897746",
+      "url": "https://www.wikidata.org/wiki/Q897746",
+      "license": "CC0-1.0",
+      "revision": 2550874568,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2550874568"
+    },
+    "Q1548030": {
+      "label": "Wikidata · Q1548030",
+      "url": "https://www.wikidata.org/wiki/Q1548030",
+      "license": "CC0-1.0",
+      "revision": 2557583502,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2557583502"
+    },
+    "Q622525": {
+      "label": "Wikidata · Q622525",
+      "url": "https://www.wikidata.org/wiki/Q622525",
+      "license": "CC0-1.0",
+      "revision": 2568007296,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2568007296"
+    },
+    "Q131607": {
+      "label": "Wikidata · Q131607",
+      "url": "https://www.wikidata.org/wiki/Q131607",
+      "license": "CC0-1.0",
+      "revision": 2544917625,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2544917625"
+    },
+    "Q110184114": {
+      "label": "Wikidata · Q110184114",
+      "url": "https://www.wikidata.org/wiki/Q110184114",
+      "license": "CC0-1.0",
+      "revision": 2550301850,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2550301850"
+    },
+    "Q504133": {
+      "label": "Wikidata · Q504133",
+      "url": "https://www.wikidata.org/wiki/Q504133",
+      "license": "CC0-1.0",
+      "revision": 2541493702,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2541493702"
+    },
+    "Q860808": {
+      "label": "Wikidata · Q860808",
+      "url": "https://www.wikidata.org/wiki/Q860808",
+      "license": "CC0-1.0",
+      "revision": 2540811661,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2540811661"
+    },
+    "Q764375": {
+      "label": "Wikidata · Q764375",
+      "url": "https://www.wikidata.org/wiki/Q764375",
+      "license": "CC0-1.0",
+      "revision": 2558282033,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2558282033"
+    },
+    "Q5613350": {
+      "label": "Wikidata · Q5613350",
+      "url": "https://www.wikidata.org/wiki/Q5613350",
+      "license": "CC0-1.0",
+      "revision": 2540811862,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2540811862"
+    },
+    "Q3367716": {
+      "label": "Wikidata · Q3367716",
+      "url": "https://www.wikidata.org/wiki/Q3367716",
+      "license": "CC0-1.0",
+      "revision": 2543709546,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2543709546"
+    },
+    "Q517283": {
+      "label": "Wikidata · Q517283",
+      "url": "https://www.wikidata.org/wiki/Q517283",
+      "license": "CC0-1.0",
+      "revision": 2567570626,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2567570626"
+    },
+    "Q640032": {
+      "label": "Wikidata · Q640032",
+      "url": "https://www.wikidata.org/wiki/Q640032",
+      "license": "CC0-1.0",
+      "revision": 2568020002,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2568020002"
+    },
+    "Q1761719": {
+      "label": "Wikidata · Q1761719",
+      "url": "https://www.wikidata.org/wiki/Q1761719",
+      "license": "CC0-1.0",
+      "revision": 2536561056,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2536561056"
+    },
+    "Q11575": {
+      "label": "Wikidata · Q11575",
+      "url": "https://www.wikidata.org/wiki/Q11575",
+      "license": "CC0-1.0",
+      "revision": 2568061028,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2568061028"
+    },
+    "Q15660894": {
+      "label": "Wikidata · Q15660894",
+      "url": "https://www.wikidata.org/wiki/Q15660894",
+      "license": "CC0-1.0",
+      "revision": 2499845114,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2499845114"
+    },
+    "Q30056": {
+      "label": "Wikidata · Q30056",
+      "url": "https://www.wikidata.org/wiki/Q30056",
+      "license": "CC0-1.0",
+      "revision": 2568691258,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2568691258"
+    },
+    "Q81464": {
+      "label": "Wikidata · Q81464",
+      "url": "https://www.wikidata.org/wiki/Q81464",
+      "license": "CC0-1.0",
+      "revision": 2567984279,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2567984279"
+    },
+    "Q28298": {
+      "label": "Wikidata · Q28298",
+      "url": "https://www.wikidata.org/wiki/Q28298",
+      "license": "CC0-1.0",
+      "revision": 2569158849,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2569158849"
+    },
+    "Q25284": {
+      "label": "Wikidata · Q25284",
+      "url": "https://www.wikidata.org/wiki/Q25284",
+      "license": "CC0-1.0",
+      "revision": 2567785123,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2567785123"
+    },
+    "Q10998": {
+      "label": "Wikidata · Q10998",
+      "url": "https://www.wikidata.org/wiki/Q10998",
+      "license": "CC0-1.0",
+      "revision": 2567935774,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2567935774"
+    },
+    "Q37937": {
+      "label": "Wikidata · Q37937",
+      "url": "https://www.wikidata.org/wiki/Q37937",
+      "license": "CC0-1.0",
+      "revision": 2567859572,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2567859572"
+    },
+    "Q3621199": {
+      "label": "Wikidata · Q3621199",
+      "url": "https://www.wikidata.org/wiki/Q3621199",
+      "license": "CC0-1.0",
+      "revision": 2526598631,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2526598631"
+    },
+    "Q131226": {
+      "label": "Wikidata · Q131226",
+      "url": "https://www.wikidata.org/wiki/Q131226",
+      "license": "CC0-1.0",
+      "revision": 2567776175,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2567776175"
+    },
+    "Q3181909": {
+      "label": "Wikidata · Q3181909",
+      "url": "https://www.wikidata.org/wiki/Q3181909",
+      "license": "CC0-1.0",
+      "revision": 2551761602,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2551761602"
+    },
+    "Q80235": {
+      "label": "Wikidata · Q80235",
+      "url": "https://www.wikidata.org/wiki/Q80235",
+      "license": "CC0-1.0",
+      "revision": 2567934279,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2567934279"
+    },
+    "Q3342808": {
+      "label": "Wikidata · Q3342808",
+      "url": "https://www.wikidata.org/wiki/Q3342808",
+      "license": "CC0-1.0",
+      "revision": 2568399479,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2568399479"
+    },
+    "Q13195": {
+      "label": "Wikidata · Q13195",
+      "url": "https://www.wikidata.org/wiki/Q13195",
+      "license": "CC0-1.0",
+      "revision": 2560806359,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2560806359"
+    },
+    "Q22915010": {
+      "label": "Wikidata · Q22915010",
+      "url": "https://www.wikidata.org/wiki/Q22915010",
+      "license": "CC0-1.0",
+      "revision": 2539241356,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2539241356"
+    },
+    "Q370239": {
+      "label": "Wikidata · Q370239",
+      "url": "https://www.wikidata.org/wiki/Q370239",
+      "license": "CC0-1.0",
+      "revision": 2567851553,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2567851553"
+    },
+    "Q2249305": {
+      "label": "Wikidata · Q2249305",
+      "url": "https://www.wikidata.org/wiki/Q2249305",
+      "license": "CC0-1.0",
+      "revision": 2561400276,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2561400276"
+    },
+    "Q3393961": {
+      "label": "Wikidata · Q3393961",
+      "url": "https://www.wikidata.org/wiki/Q3393961",
+      "license": "CC0-1.0",
+      "revision": 2513352369,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2513352369"
+    },
+    "Q13417087": {
+      "label": "Wikidata · Q13417087",
+      "url": "https://www.wikidata.org/wiki/Q13417087",
+      "license": "CC0-1.0",
+      "revision": 2566078737,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2566078737"
+    },
+    "Q2830455": {
+      "label": "Wikidata · Q2830455",
+      "url": "https://www.wikidata.org/wiki/Q2830455",
+      "license": "CC0-1.0",
+      "revision": 2565193298,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2565193298"
+    },
+    "Q191768": {
+      "label": "Wikidata · Q191768",
+      "url": "https://www.wikidata.org/wiki/Q191768",
+      "license": "CC0-1.0",
+      "revision": 2567795246,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2567795246"
+    },
+    "Q41354": {
+      "label": "Wikidata · Q41354",
+      "url": "https://www.wikidata.org/wiki/Q41354",
+      "license": "CC0-1.0",
+      "revision": 2561450954,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2561450954"
+    },
+    "Q617583": {
+      "label": "Wikidata · Q617583",
+      "url": "https://www.wikidata.org/wiki/Q617583",
+      "license": "CC0-1.0",
+      "revision": 2540811631,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2540811631"
+    },
+    "Q323635": {
+      "label": "Wikidata · Q323635",
+      "url": "https://www.wikidata.org/wiki/Q323635",
+      "license": "CC0-1.0",
+      "revision": 2558042206,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2558042206"
+    },
+    "Q840171": {
+      "label": "Wikidata · Q840171",
+      "url": "https://www.wikidata.org/wiki/Q840171",
+      "license": "CC0-1.0",
+      "revision": 2548324919,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2548324919"
+    },
+    "Q13317": {
+      "label": "Wikidata · Q13317",
+      "url": "https://www.wikidata.org/wiki/Q13317",
+      "license": "CC0-1.0",
+      "revision": 2568606148,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2568606148"
+    },
+    "Q715160": {
+      "label": "Wikidata · Q715160",
+      "url": "https://www.wikidata.org/wiki/Q715160",
+      "license": "CC0-1.0",
+      "revision": 2568553478,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2568553478"
+    },
+    "Q500": {
+      "label": "Wikidata · Q500",
+      "url": "https://www.wikidata.org/wiki/Q500",
+      "license": "CC0-1.0",
+      "revision": 2563894694,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2563894694"
+    },
+    "Q5032643": {
+      "label": "Wikidata · Q5032643",
+      "url": "https://www.wikidata.org/wiki/Q5032643",
+      "license": "CC0-1.0",
+      "revision": 2523273320,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2523273320"
+    }
+  }
+}
