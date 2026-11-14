@@ -58,7 +58,7 @@ El script consulta la propiedad P18 de Wikidata y guarda las miniaturas con una 
 
 ## Evaluación
 
-La pestaña **Evaluación** compara tres métodos sobre 40 consultas y permite filtrar errores. Puedes reproducir las métricas y los resultados por consulta desde PowerShell:
+La sección **Evaluación** del menú lateral compara tres métodos sobre 40 consultas y permite filtrar errores. Puedes reproducir las métricas y los resultados por consulta desde PowerShell:
 
 ```powershell
 .\.venv\Scripts\python evaluation.py
