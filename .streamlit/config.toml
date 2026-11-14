@@ -1,13 +1,15 @@
 [theme]
 base = "light"
 primaryColor = "#A83622"
-backgroundColor = "#FDF9EF"
-secondaryBackgroundColor = "#F4ECDD"
-textColor = "#272D22"
-borderColor = "#DECCB5"
+backgroundColor = "#FAF8F3"
+secondaryBackgroundColor = "#EEF0E7"
+textColor = "#243D30"
+borderColor = "#DFE1D5"
 showWidgetBorder = true
 font = "sans serif"
 headingFont = "serif"
+baseRadius = "1rem"
+paddingTop = "2rem"
 
 [browser]
 gatherUsageStats = false

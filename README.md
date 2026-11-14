@@ -46,6 +46,16 @@ Cada ficha basada en Wikidata enlaza al concepto y a la revisión consultada. Wi
 | `masa harina` | Qué término buscar en el envase y por qué la polenta no sirve como reemplazo directo en tortillas. |
 | `zzzz` | Mensaje de búsqueda sin resultados. |
 
+## Fotos de los ingredientes
+
+Las tarjetas cargan miniaturas desde Wikimedia Commons. El repositorio solo guarda las URL y los créditos en `data/photos.json`. Para incorporar las fotos de ingredientes nuevos o actualizar las referencias, ejecuta este comando después de regenerar el catálogo:
+
+```powershell
+python scripts/fetch_photos.py
+```
+
+El script consulta la propiedad P18 de Wikidata y guarda las miniaturas con una licencia compatible. Se pueden elegir archivos de Commons específicos cuando la foto de Wikidata muestra otra variedad o presentación, como un morrón rojo en la ficha donde se sugiere el verde. Las fichas sin foto conservan sus etiquetas, descripciones y fuentes culinarias.
+
 ## Evaluación
 
 La pestaña **Evaluación** compara tres métodos sobre 40 consultas y permite filtrar errores. Puedes reproducir las métricas y los resultados por consulta desde PowerShell:

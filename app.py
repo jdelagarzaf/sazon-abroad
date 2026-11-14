@@ -1,7 +1,9 @@
 """Streamlit interface for the Sazón Abroad ingredient catalog."""
 
+from collections import defaultdict
 import json
 from pathlib import Path
+import re
 
 import streamlit as st
 
@@ -9,6 +11,7 @@ from evaluation_view import show_evaluation
 from search import IngredientSearch, normalize
 
 CATALOG_PATH = Path(__file__).resolve().parent / "data" / "catalog.json"
+PHOTOS_PATH = CATALOG_PATH.with_name("photos.json")
 EXAMPLES = ("Jitomate", "Chile poblano", "Masa harina")
 VERIFICATION_LABELS = {
     "retrieved": "Recuperado de Wikidata",
@@ -25,13 +28,33 @@ EVIDENCE_LABELS = {
     "inferred": "Sugerencia inferida de las fuentes",
 }
 
-st.set_page_config(page_title="Sazón Abroad", page_icon="🌶️", layout="centered")
+st.set_page_config(page_title="Sazón Abroad", page_icon="🌶️", layout="wide")
 
 
 @st.cache_data(max_entries=1, show_spinner=False)
 def load_catalog(modified_ns):
     catalog = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
     return catalog, IngredientSearch(catalog["ingredients"], catalog["relations"], catalog.get("uses"))
+
+
+@st.cache_data(max_entries=1, show_spinner=False)
+def load_photos(modified_ns):
+    try:
+        return json.loads(PHOTOS_PATH.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+
+def show_photo(photo, alt, width="stretch"):
+    st.image(photo["thumbnail"], alt=alt, width=width)
+
+
+def show_photo_credit(photo):
+    license_name = photo["license"]
+    if photo["license_url"]:
+        license_name = f"[{license_name}]({photo['license_url']})"
+    author = re.sub(r"([\\`*_\[\]<>])", r"\\\1", photo["author"] or "Wikimedia Commons")
+    st.caption(f"Imagen de referencia · [{author}]({photo['source']}) · {license_name} · Miniatura")
 
 
 def show_sources(source_ids, sources):
@@ -43,31 +66,55 @@ def show_sources(source_ids, sources):
         st.markdown(f"- {link}")
 
 
-def show_relation(relation, sources):
+def show_relation_details(relation, sources):
     warning = relation["type"] == "not_equivalent"
-    with st.container(border=True):
-        if warning:
-            st.warning("No equivalente")
+    st.markdown(f"**{relation['context']}** {relation['reason']}")
+    st.write(relation["limitations"])
+    evidence = EVIDENCE_LABELS.get(relation.get("evidence"), VERIFICATION_LABELS[relation["verification"]])
+    if not warning:
+        review = "Revisión culinaria aceptada" if relation.get("human_review") == "accepted" else "Pendiente de revisión culinaria"
+        evidence += f" · {review}"
+    st.caption(evidence)
+    with st.expander("Fuentes de esta relación"):
+        show_sources(relation["sources"], sources)
+
+
+def show_relation_card(relations, sources, photos):
+    first = relations[0]
+    warning = first["type"] == "not_equivalent"
+    photo = photos.get(first["to"])
+    with st.container(border=True, gap="xsmall"):
+        if photo:
+            thumbnail, body = st.columns([1, 4], gap="medium")
+            with thumbnail:
+                show_photo(photo, first["target_name_es"], width=136)
+            details = body.container(gap="xsmall")
         else:
-            st.info("Sustitución culinaria")
-        st.markdown(f"**{relation['target_name_it']}** · {relation['target_name_es']}")
-        st.markdown(f"**{relation['context']}** {relation['reason']}")
-        st.write(relation["limitations"])
-        evidence = EVIDENCE_LABELS.get(relation.get("evidence"), VERIFICATION_LABELS[relation["verification"]])
-        if not warning:
-            review = "Revisión culinaria aceptada" if relation.get("human_review") == "accepted" else "Pendiente de revisión culinaria"
-            evidence += f" · {review}"
-        st.caption(evidence)
-        with st.expander("Fuentes de esta relación"):
-            show_sources(relation["sources"], sources)
+            details = st.container(gap="xsmall")
+        with details:
+            if warning:
+                st.badge("No equivalente", color="red")
+            else:
+                st.badge("Sustitución culinaria", color="orange")
+            st.subheader(first["target_name_it"])
+            st.caption(first["target_name_es"])
+            for relation in relations:
+                show_relation_details(relation, sources)
+            if photo:
+                show_photo_credit(photo)
 
 
-def show_ingredient(ingredient, relations, sources):
-    with st.container(border=True):
+def show_ingredient(ingredient, sources, photos, *, searched=False):
+    photo = photos.get(ingredient["id"])
+    with st.container(border=True, gap="xsmall"):
+        if searched:
+            st.caption("Ingrediente buscado")
+        if photo:
+            show_photo(photo, ingredient["name_es"])
+        st.subheader(ingredient["name_es"])
         st.caption(ingredient["category"])
-        st.markdown(f"### {ingredient['name_es']}")
         if ingredient["name_it"]:
-            st.success("Equivalencia de nombre")
+            st.badge("Equivalencia de nombre", color="green")
             st.markdown(f"**En italiano** · {ingredient['name_it']}")
         elif ingredient["reference_it"]:
             label = REFERENCE_LABELS[ingredient["reference_kind"]]
@@ -87,46 +134,43 @@ def show_ingredient(ingredient, relations, sources):
                 alias_label = "Italiano" if ingredient["name_it"] else "Términos de búsqueda"
                 st.markdown(f"**{alias_label}** · " + ", ".join(ingredient["aliases_it"]))
             show_sources(ingredient["sources"], sources)
+            if photo:
+                show_photo_credit(photo)
+
+
+def show_alternatives(relations, sources, photos, *, context=None):
+    groups = defaultdict(list)
     for relation in relations:
-        show_relation(relation, sources)
+        key = (relation["type"], relation["to"], relation["target_name_it"], relation["target_name_es"])
+        groups[key].append(relation)
+
+    substitutes = [cards for key, cards in groups.items() if key[0] == "culinary_substitute"]
+    warnings = [cards for key, cards in groups.items() if key[0] == "not_equivalent"]
+    if substitutes:
+        st.header("Alternativas sugeridas")
+        for cards in substitutes:
+            show_relation_card(cards, sources, photos)
+    elif not warnings:
+        st.header("Alternativas sugeridas")
+        message = "Todavía no hay sustitutos registrados para este ingrediente."
+        if context:
+            message = f"Todavía no hay sustitutos registrados para este uso ({context})."
+        st.info(message)
+
+    if warnings:
+        st.header("Advertencias")
+        for cards in warnings:
+            show_relation_card(cards, sources, photos)
 
 
 def set_query(value):
     st.session_state["ingredient_query"] = value
 
 
-st.html("""
-<style>
-.stApp .block-container { max-width: 830px; padding-top: 3rem; }
-.sazon-route {
-    color: #476048;
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    margin-bottom: 0.35rem;
-}
-.sazon-hero {
-    border-bottom: 1px solid #DECCB5;
-    padding-bottom: 1.15rem;
-    margin-bottom: 0.8rem;
-}
-.sazon-hero h1 {
-    color: #263727;
-    font-size: clamp(2.5rem, 7vw, 4rem);
-    line-height: 1.04;
-    letter-spacing: -0.045em;
-    padding: 0;
-    margin: 0 0 0.7rem;
-}
-.sazon-hero p { margin: 0; max-width: 44ch; color: #41463B; }
-</style>
-<header class="sazon-hero">
-  <div class="sazon-route">México → Italia</div>
-  <h1>Sazón Abroad</h1>
-  <p>Encuentra el nombre italiano de un ingrediente o una alternativa para tu platillo.</p>
-</header>
-""")
+with st.container(gap="xsmall"):
+    st.caption("México → Italia")
+    st.title("Sazón Abroad")
+    st.write("Encuentra el nombre italiano de un ingrediente o una alternativa para tu platillo.")
 
 try:
     catalog, search_index = load_catalog(CATALOG_PATH.stat().st_mtime_ns)
@@ -137,6 +181,7 @@ except (OSError, ValueError):
 ingredients = catalog["ingredients"]
 sources = catalog["sources"]
 uses = catalog.get("uses", {})
+photos = load_photos(PHOTOS_PATH.stat().st_mtime_ns) if PHOTOS_PATH.is_file() else {}
 search_tab, catalog_tab, evaluation_tab = st.tabs(["Buscar", "Catálogo", "Evaluación"])
 with search_tab:
     query = st.text_input(
@@ -154,8 +199,6 @@ with search_tab:
         results = lookup.hits
         if results and lookup.use:
             st.caption(f"Uso culinario · {uses[lookup.use]['label']}")
-        elif results and lookup.context:
-            st.info(f"No tenemos recomendaciones para ese uso ({lookup.context}).")
         if not results:
             st.info("No encontramos un ingrediente. Prueba con otro nombre o explora el catálogo.")
         elif results[0].match == "fuzzy":
@@ -164,14 +207,29 @@ with search_tab:
             st.caption("Coincidencias por nombre incompleto.")
         elif results[0].match == "bm25":
             st.caption("Coincidencias por palabras. Comprueba el nombre y la presentación en la ficha.")
-        for result in results:
-            ingredient = result.ingredient
-            relations = search_index.relations_for(ingredient["id"], lookup.use)
-            if lookup.context and not lookup.use:
-                relations = []
-            show_ingredient(ingredient, relations, sources)
-            if lookup.use and not relations:
-                st.caption("La ficha todavía no tiene relaciones registradas para este uso.")
+        if results:
+            matches = {hit.ingredient["id"]: hit.ingredient for hit in results}
+            ingredient_id = results[0].ingredient["id"]
+            if len(matches) > 1:
+                selected_match = st.selectbox(
+                    "Ingredientes que coinciden", list(matches),
+                    format_func=lambda item: matches[item]["name_es"],
+                    key=f"result-match-{normalize(query)}",
+                )
+                if selected_match in matches:
+                    ingredient_id = selected_match
+
+            relations = []
+            if not lookup.context or lookup.use:
+                relations = search_index.relations_for(ingredient_id, lookup.use)
+            # Limit the width so the original stays compact on large desktop screens.
+            with st.container(width=1120):
+                original, alternatives = st.columns([1, 2.65], gap="large")
+                with original:
+                    show_ingredient(matches[ingredient_id], sources, photos, searched=True)
+                with alternatives:
+                    context = uses[lookup.use]["label"].lower() if lookup.use else lookup.context
+                    show_alternatives(relations, sources, photos, context=context)
 
 with catalog_tab:
     mexican_ingredients = [item for item in ingredients if item["scope"] == "México"]
@@ -224,7 +282,9 @@ with catalog_tab:
             key="catalog_ingredient",
         )
         if selected_id in by_id:
-            show_ingredient(by_id[selected_id], search_index.relations_for(selected_id), sources)
+            show_ingredient(by_id[selected_id], sources, {})
+            for relation in search_index.relations_for(selected_id):
+                show_relation_card([relation], sources, {})
 
 with evaluation_tab:
     show_evaluation(catalog)

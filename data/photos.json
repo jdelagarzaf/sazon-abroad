@@ -1,0 +1,352 @@
+{
+  "jitomate": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Tomato_scanned.jpg/330px-Tomato_scanned.jpg",
+    "author": "David Besa from Sonoma, USA",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tomato_scanned.jpg"
+  },
+  "cilantro": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/A_scene_of_Coriander_leaves.JPG/330px-A_scene_of_Coriander_leaves.JPG",
+    "author": "Thamizhpparithi Maari",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:A_scene_of_Coriander_leaves.JPG"
+  },
+  "aguacate": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Avocado_Hass_-_single_and_halved.jpg/330px-Avocado_Hass_-_single_and_halved.jpg",
+    "author": "Ivar Leidus",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Avocado_Hass_-_single_and_halved.jpg"
+  },
+  "cebolla": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Allium_cepa%2C_Amol.jpg/330px-Allium_cepa%2C_Amol.jpg",
+    "author": "Mehdi",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Allium_cepa,_Amol.jpg"
+  },
+  "ajo": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Garlic_bulbs_and_cloves.jpg/330px-Garlic_bulbs_and_cloves.jpg",
+    "author": "Ivar Leidus",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Garlic_bulbs_and_cloves.jpg"
+  },
+  "comino": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Cuminum_cyminum_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-198.jpg/330px-Cuminum_cyminum_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-198.jpg",
+    "author": "Franz Eugen Köhler, Köhler's Medizinal-Pflanzen",
+    "license": "Dominio público",
+    "license_url": null,
+    "source": "https://commons.wikimedia.org/wiki/File:Cuminum_cyminum_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-198.jpg"
+  },
+  "oregano": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Origanum_vulgare_inflorescence_-_Keila.jpg/330px-Origanum_vulgare_inflorescence_-_Keila.jpg",
+    "author": "Ivar Leidus",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Origanum_vulgare_inflorescence_-_Keila.jpg"
+  },
+  "ajonjoli": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Sesamum_indicum_2.jpg/330px-Sesamum_indicum_2.jpg",
+    "author": "Franz Xaver",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Sesamum_indicum_2.jpg"
+  },
+  "calabacita": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Courgette_Cucurbita_pepo_2.jpg/330px-Courgette_Cucurbita_pepo_2.jpg",
+    "author": "Meanos",
+    "license": "Dominio público",
+    "license_url": null,
+    "source": "https://commons.wikimedia.org/wiki/File:Courgette_Cucurbita_pepo_2.jpg"
+  },
+  "arroz": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/330px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
+    "author": "Earth100",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:White,_Brown,_Red_%26_Wild_rice.jpg"
+  },
+  "mango": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/The_Botanical_Magazine._Mango.jpg/330px-The_Botanical_Magazine._Mango.jpg",
+    "author": "Walter Hood Fitch (1817-1892) del. et lith. Description by John Smith (1798 - 1888)",
+    "license": "Dominio público",
+    "license_url": null,
+    "source": "https://commons.wikimedia.org/wiki/File:The_Botanical_Magazine._Mango.jpg"
+  },
+  "papaya": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Carica_papaya_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-029.jpg/330px-Carica_papaya_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-029.jpg",
+    "author": "Franz Eugen Köhler, Köhler's Medizinal-Pflanzen",
+    "license": "Dominio público",
+    "license_url": null,
+    "source": "https://commons.wikimedia.org/wiki/File:Carica_papaya_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-029.jpg"
+  },
+  "garbanzo": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Sa-whitegreen-chickpea.jpg/330px-Sa-whitegreen-chickpea.jpg",
+    "author": "Sanjay Acharya",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Sa-whitegreen-chickpea.jpg"
+  },
+  "chile_poblano": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Stacked_Poblano_Peppers_-_Flickr_-_joncutrer.jpg/330px-Stacked_Poblano_Peppers_-_Flickr_-_joncutrer.jpg",
+    "author": "Jonathan Cutrer from San Angelo, Texas, United States",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Stacked_Poblano_Peppers_-_Flickr_-_joncutrer.jpg"
+  },
+  "morron": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Green-Bell-Pepper.jpg/330px-Green-Bell-Pepper.jpg",
+    "author": "Evan-Amos",
+    "license": "Dominio público",
+    "license_url": null,
+    "source": "https://commons.wikimedia.org/wiki/File:Green-Bell-Pepper.jpg"
+  },
+  "tomatillo": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Kluse_-_Physalis_philadelphica_-_Tomatillo_06_ies.jpg/330px-Kluse_-_Physalis_philadelphica_-_Tomatillo_06_ies.jpg",
+    "author": "Frank Vincentz",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Kluse_-_Physalis_philadelphica_-_Tomatillo_06_ies.jpg"
+  },
+  "polenta": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Polenta_uncooked.jpg/330px-Polenta_uncooked.jpg",
+    "author": "Popo le Chien",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Polenta_uncooked.jpg"
+  },
+  "harina_maiz": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Makai_ka_Atta.JPG/330px-Makai_ka_Atta.JPG",
+    "author": "Miansari66",
+    "license": "Dominio público",
+    "license_url": null,
+    "source": "https://commons.wikimedia.org/wiki/File:Makai_ka_Atta.JPG"
+  },
+  "chipotle": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Capsicum_annuum_chipotle_dried.jpg/330px-Capsicum_annuum_chipotle_dried.jpg",
+    "author": "User:Carstor",
+    "license": "CC BY-SA 2.5",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+    "source": "https://commons.wikimedia.org/wiki/File:Capsicum_annuum_chipotle_dried.jpg"
+  },
+  "habanero": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Habanero.jpg/330px-Habanero.jpg",
+    "author": "André Karwath aka Aka",
+    "license": "CC BY-SA 2.5",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+    "source": "https://commons.wikimedia.org/wiki/File:Habanero.jpg"
+  },
+  "guajillo": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Guajillos.jpg/330px-Guajillos.jpg",
+    "author": "Badagnani",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Guajillos.jpg"
+  },
+  "nopal": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Nopal11.jpg/330px-Nopal11.jpg",
+    "author": "jlastras",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Nopal11.jpg"
+  },
+  "jicama": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Pachyrhizus_erosus_Blanco2.249.png/330px-Pachyrhizus_erosus_Blanco2.249.png",
+    "author": "Francisco Manuel Blanco (O.S.A.)",
+    "license": "Dominio público",
+    "license_url": null,
+    "source": "https://commons.wikimedia.org/wiki/File:Pachyrhizus_erosus_Blanco2.249.png"
+  },
+  "epazote": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Dysphania_ambrosioides_NRCS-1.jpg/330px-Dysphania_ambrosioides_NRCS-1.jpg",
+    "author": "",
+    "license": "Dominio público",
+    "license_url": null,
+    "source": "https://commons.wikimedia.org/wiki/File:Dysphania_ambrosioides_NRCS-1.jpg"
+  },
+  "oregano_mexicano": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Lippia_graveolens%2C_known_as_Mexican_Oregano_%2811628265214%29.jpg/330px-Lippia_graveolens%2C_known_as_Mexican_Oregano_%2811628265214%29.jpg",
+    "author": "Dick Culbert from Gibsons, B.C., Canada",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Lippia_graveolens,_known_as_Mexican_Oregano_(11628265214).jpg"
+  },
+  "maiz": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Klip_kukuruza_uzgojen_u_Me%C4%91imurju_%28Croatia%29.JPG/330px-Klip_kukuruza_uzgojen_u_Me%C4%91imurju_%28Croatia%29.JPG",
+    "author": "Silverije",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Klip_kukuruza_uzgojen_u_Me%C4%91imurju_(Croatia).JPG"
+  },
+  "tortilla_maiz": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Tortillas_de_maiz_blanco_%28M%C3%A9xico%29_01.jpg/330px-Tortillas_de_maiz_blanco_%28M%C3%A9xico%29_01.jpg",
+    "author": "ProtoplasmaKid",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tortillas_de_maiz_blanco_(M%C3%A9xico)_01.jpg"
+  },
+  "zanahoria": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Daucus_carota.jpg/330px-Daucus_carota.jpg",
+    "author": "User:Tigerente",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Daucus_carota.jpg"
+  },
+  "espinaca": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Spinacia_oleracea_Spinazie_bloeiend.jpg/330px-Spinacia_oleracea_Spinazie_bloeiend.jpg",
+    "author": "Rasbak",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Spinacia_oleracea_Spinazie_bloeiend.jpg"
+  },
+  "apio": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/2023-06-22_Apium_graveolens_%28Wild_Celery%29%2C_Elswick%2C_Northumberland_4.jpg/330px-2023-06-22_Apium_graveolens_%28Wild_Celery%29%2C_Elswick%2C_Northumberland_4.jpg",
+    "author": "MPF",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:2023-06-22_Apium_graveolens_(Wild_Celery),_Elswick,_Northumberland_4.jpg"
+  },
+  "perejil": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Chopping_parsley-01.jpg/330px-Chopping_parsley-01.jpg",
+    "author": "katerha",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Chopping_parsley-01.jpg"
+  },
+  "papa": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/234_Solanum_tuberosum_L.jpg/330px-234_Solanum_tuberosum_L.jpg",
+    "author": "Amédée Masclef",
+    "license": "Dominio público",
+    "license_url": null,
+    "source": "https://commons.wikimedia.org/wiki/File:234_Solanum_tuberosum_L.jpg"
+  },
+  "cacahuate": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Peanuts_%28Arachis_hypogaea%29_-_in_shell%2C_shell_cracked_open%2C_shelled%2C_peeled.jpg/330px-Peanuts_%28Arachis_hypogaea%29_-_in_shell%2C_shell_cracked_open%2C_shelled%2C_peeled.jpg",
+    "author": "Ivar Leidus",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Peanuts_(Arachis_hypogaea)_-_in_shell,_shell_cracked_open,_shelled,_peeled.jpg"
+  },
+  "lenteja": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Lens_culinaris_Sturm8.jpg/330px-Lens_culinaris_Sturm8.jpg",
+    "author": "Johann Georg Sturm (Painter: Jacob Sturm)",
+    "license": "Dominio público",
+    "license_url": null,
+    "source": "https://commons.wikimedia.org/wiki/File:Lens_culinaris_Sturm8.jpg"
+  },
+  "guayaba": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Guava_fruit.jpg/330px-Guava_fruit.jpg",
+    "author": "Amada44",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Guava_fruit.jpg"
+  },
+  "tamarindo": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Tamarindus_indica_pods.JPG/330px-Tamarindus_indica_pods.JPG",
+    "author": "B.navez",
+    "license": "CC BY 2.5",
+    "license_url": "https://creativecommons.org/licenses/by/2.5",
+    "source": "https://commons.wikimedia.org/wiki/File:Tamarindus_indica_pods.JPG"
+  },
+  "coco": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Revendeuses_de_Noix_de_Coco_03.jpg/330px-Revendeuses_de_Noix_de_Coco_03.jpg",
+    "author": "Adewi97",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Revendeuses_de_Noix_de_Coco_03.jpg"
+  },
+  "lima": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Backyard_limes.jpg/330px-Backyard_limes.jpg",
+    "author": "Wtstoffs at en.wikipedia",
+    "license": "Dominio público",
+    "license_url": null,
+    "source": "https://commons.wikimedia.org/wiki/File:Backyard_limes.jpg"
+  },
+  "canela": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Cinnamomum_verum1.jpg/330px-Cinnamomum_verum1.jpg",
+    "author": "",
+    "license": "Dominio público",
+    "license_url": null,
+    "source": "https://commons.wikimedia.org/wiki/File:Cinnamomum_verum1.jpg"
+  },
+  "harina_trigo": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Wheat_flour_01.jpg/330px-Wheat_flour_01.jpg",
+    "author": "congerdesign",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Wheat_flour_01.jpg"
+  },
+  "fecula_maiz": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Corn_Flour.jpg/330px-Corn_Flour.jpg",
+    "author": "Issac Gyamfi",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Corn_Flour.jpg"
+  },
+  "leche_evaporada": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Dosenmilch.jpg/330px-Dosenmilch.jpg",
+    "author": "HV",
+    "license": "Dominio público",
+    "license_url": null,
+    "source": "https://commons.wikimedia.org/wiki/File:Dosenmilch.jpg"
+  },
+  "leche_condensada": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Tin_of_condensed_milk.jpg/330px-Tin_of_condensed_milk.jpg",
+    "author": "Robin from Rotterdam, Netherlands",
+    "license": "CC BY-SA 2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tin_of_condensed_milk.jpg"
+  },
+  "vinagre": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Eguilles_20110828_14.jpg/330px-Eguilles_20110828_14.jpg",
+    "author": "Georges Seguin (Okki)",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Eguilles_20110828_14.jpg"
+  },
+  "serrano": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Serranochilis.jpg/330px-Serranochilis.jpg",
+    "author": "Cindy from Wisconsin, USA",
+    "license": "CC BY-SA 2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Serranochilis.jpg"
+  },
+  "frijol_pinto": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Pinto_bean.jpg/330px-Pinto_bean.jpg",
+    "author": "",
+    "license": "Dominio público",
+    "license_url": null,
+    "source": "https://commons.wikimedia.org/wiki/File:Pinto_bean.jpg"
+  },
+  "crema_agria": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Sour_Cream.jpg/330px-Sour_Cream.jpg",
+    "author": "jules",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sour_Cream.jpg"
+  },
+  "yogur": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Joghurt.jpg/330px-Joghurt.jpg",
+    "author": "No machine-readable author provided. Rainer Zenz assumed (based on copyright claims).",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Joghurt.jpg"
+  },
+  "fecula_papa": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Potato_Starch.JPG/330px-Potato_Starch.JPG",
+    "author": "Onlymyself65536",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Potato_Starch.JPG"
+  },
+  "limon_amarillo": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Citrus_x_limon_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-041.jpg/330px-Citrus_x_limon_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-041.jpg",
+    "author": "Franz Eugen Köhler, Köhler's Medizinal-Pflanzen",
+    "license": "Dominio público",
+    "license_url": null,
+    "source": "https://commons.wikimedia.org/wiki/File:Citrus_x_limon_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-041.jpg"
+  }
+}
