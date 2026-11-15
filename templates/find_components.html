@@ -1,0 +1,106 @@
+{% from 'components.html' import photo_credit, source_list %}
+
+{% macro icon(name, size='size-5') %}
+{% set paths = {
+  'search': 'm20 20-4.5-4.5m2-4a6 6 0 1 1-12 0 6 6 0 0 1 12 0Z',
+  'swap': 'M3 8h17m-4-4 4 4-4 4m5 4H4m4-4-4 4 4 4',
+  'warning': 'M12 8v5m0 3h.01M10.3 4.5 2.6 18a1.5 1.5 0 0 0 1.3 2.2h16.2a1.5 1.5 0 0 0 1.3-2.2L13.7 4.5a2 2 0 0 0-3.4 0Z',
+  'basket': 'm4 10 4-6m12 6-4-6M3 10h18l-2 9H5l-2-9Zm6 3v3m6-3v3',
+  'leaf': 'M20 4c-7 0-14 3-14 9a5 5 0 0 0 5 5c6 0 9-7 9-14ZM4 20l9-9',
+  'book': 'M12 6C9 4 6 4 3 5v14c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1Zm0 0v14',
+  'check': 'm5 12 4 4L19 6',
+} %}
+<svg aria-hidden="true" class="{{ size }} shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="{{ paths[name] }}"/></svg>
+{% endmacro %}
+
+{% macro result_ingredient(item, sources, photos) %}
+{% set photo = photos.get(item.id) %}
+<article class="card find-card p-0">
+  {% if photo %}
+    <img class="h-36 w-full rounded-t-2xl object-cover sm:h-44" src="{{ photo.thumbnail }}" alt="{{ item.name_es }}">
+  {% endif %}
+  <div class="space-y-4 p-4 sm:p-5">
+    <div class="flex items-center gap-3">
+      {% if not photo %}<span class="find-icon find-icon--rose">{{ icon('leaf') }}</span>{% endif %}
+      <div class="min-w-0">
+        <p class="text-sm font-semibold text-brand">Ingrediente buscado</p>
+        <h3 class="text-2xl leading-tight">{{ item.name_es }}</h3>
+        <p class="text-sm text-muted">{{ item.category }}</p>
+      </div>
+    </div>
+    <div class="find-translation flex items-start gap-3">
+      {{ icon('basket') }}
+      <div class="min-w-0">
+        {% if item.name_it or item.reference_it %}
+          <p class="text-sm font-semibold">{{ 'En italiano' if item.name_it else reference_labels[item.reference_kind] }}</p>
+          <p class="mt-1 font-display text-xl font-semibold">{{ item.name_it or item.reference_it }}</p>
+          {% if item.note_it %}<p class="mt-2 text-sm">{{ item.note_it }}</p>{% endif %}
+        {% else %}
+          <p class="text-sm font-semibold">Nombre en italiano</p>
+          <p class="mt-1 text-sm">Sin nombre común confirmado en el catálogo.</p>
+        {% endif %}
+      </div>
+    </div>
+    {% if item.note %}<p class="text-sm">{{ item.note }}</p>{% endif %}
+    <details class="find-disclosure">
+      <summary>{{ icon('book', 'size-4') }} Fuentes y nombres alternativos</summary>
+      <div class="space-y-2 pt-2 text-sm">
+        <p class="text-muted">{{ verification_labels[item.verification] }}</p>
+        {% if item.aliases_es %}<p><strong>Español</strong> · {{ item.aliases_es|join(', ') }}</p>{% endif %}
+        {% if item.aliases_it %}<p><strong>{{ 'Italiano' if item.name_it else 'Términos de búsqueda' }}</strong> · {{ item.aliases_it|join(', ') }}</p>{% endif %}
+        {{ source_list(item.sources, sources) }}
+        {% if photo %}{{ photo_credit(photo) }}{% endif %}
+      </div>
+    </details>
+  </div>
+</article>
+{% endmacro %}
+
+{% macro result_relation(relations, sources, photos) %}
+{% set first = relations[0] %}
+{% set photo = photos.get(first.to) %}
+{% set warning = first.type == 'not_equivalent' %}
+<article class="card find-card space-y-4 {{ 'find-warning' if warning else 'find-substitute' }} p-4 sm:p-5">
+  <header class="flex items-center gap-3">
+    {% if photo %}
+      <img class="size-16 shrink-0 rounded-xl object-cover sm:size-20" loading="lazy" src="{{ photo.thumbnail }}" alt="{{ first.target_name_es }}">
+    {% else %}
+      <span class="find-icon {{ 'find-icon--rose' if warning else 'find-icon--olive' }}">{{ icon('warning' if warning else 'swap') }}</span>
+    {% endif %}
+    <div class="min-w-0">
+      <p class="text-xs font-semibold {{ 'text-brand' if warning else 'find-olive-text' }}">{{ 'No equivalente' if warning else 'Sustitución culinaria' }}</p>
+      <h4 class="font-display text-xl leading-tight font-semibold">{{ first.target_name_it }}</h4>
+      {% if first.target_name_es != first.target_name_it %}<p class="text-sm text-muted">{{ first.target_name_es }}</p>{% endif %}
+    </div>
+  </header>
+  {% for relation in relations %}
+    <div class="space-y-3 border-t border-line pt-3">
+      <p class="flex items-center gap-2 text-sm font-semibold {{ 'text-brand' if warning else 'find-olive-text' }}">
+        {{ icon('warning' if warning else 'check', 'size-4') }} {{ relation.context }}
+      </p>
+      {% if not warning %}<p class="text-sm">{{ relation.reason }}</p>{% endif %}
+      {% if relation.limitations %}
+        <div class="find-caution flex items-start gap-2">
+          {{ icon('warning', 'size-4') }}
+          <div>
+            <p class="font-semibold">{{ 'Por qué evitarlo' if warning else 'Ten en cuenta' }}</p>
+            <p>{{ relation.limitations }}</p>
+          </div>
+        </div>
+      {% endif %}
+      <details class="find-disclosure">
+        <summary>{{ icon('book', 'size-4') }} {{ 'Explicación y fuentes' if warning else 'Evidencia y fuentes' }}</summary>
+        <div class="space-y-2 pt-2 text-sm">
+          {% if warning %}<p>{{ relation.reason }}</p>{% endif %}
+          <p class="text-muted">
+            {{ evidence_labels.get(relation.evidence, verification_labels[relation.verification]) }}
+            {% if not warning %} · {{ 'Revisión culinaria aceptada' if relation.human_review == 'accepted' else 'Pendiente de revisión culinaria' }}{% endif %}
+          </p>
+          {{ source_list(relation.sources, sources) }}
+          {% if photo and loop.first %}{{ photo_credit(photo) }}{% endif %}
+        </div>
+      </details>
+    </div>
+  {% endfor %}
+</article>
+{% endmacro %}
