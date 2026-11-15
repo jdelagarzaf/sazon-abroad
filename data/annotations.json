@@ -63,6 +63,30 @@
     "mutti_pelati": {
       "label": "Mutti · Pomodori pelati",
       "url": "https://mutti-parma.com/it/i-nostri-prodotti/pomodori-pelati/"
+    },
+    "guacamole_programa": {
+      "label": "Consulado de México en Vancouver · Guacamole",
+      "url": "https://consulmex.sre.gob.mx/vancouver/images/pdf/Programa_Maz.pdf"
+    },
+    "bayless_rajas": {
+      "label": "Rick Bayless · Rajas de poblano",
+      "url": "https://www.rickbayless.com/recipe/roasted-poblano-rajas-greens-and-or-chicken-2/"
+    },
+    "bayless_verdes": {
+      "label": "Rick Bayless · Chilaquiles verdes",
+      "url": "https://www.rickbayless.com/recipe/green-chilaquiles/"
+    },
+    "bayless_feta": {
+      "label": "Rick Bayless · Chilaquiles de Topolobampo",
+      "url": "https://www.rickbayless.com/recipe/topolobampos-chilaquiles/"
+    },
+    "bayless_totopos": {
+      "label": "Rick Bayless · Chilaquiles con salsa de tomatillo",
+      "url": "https://www.rickbayless.com/recipe/tomatillo-sauced-chilaquiles/"
+    },
+    "sep_milpa": {
+      "label": "Nueva Escuela Mexicana · Las recetas de la milpa",
+      "url": "https://nemd.aprende.gob.mx/contenido/coleccion/las-recetas-de-la-milpa-2/"
     }
   },
   "local_ingredients": {
@@ -134,6 +158,36 @@
       "sources": [
         "mutti_pelati"
       ]
+    },
+    "aceite_vegetal": {
+      "sources": [
+        "bayless_rajas"
+      ],
+      "reference_it": "olio di semi dal gusto neutro",
+      "reference_kind": "description"
+    },
+    "crema_mexicana": {
+      "sources": [
+        "bayless_rajas",
+        "bayless_totopos"
+      ],
+      "reference_it": "crema messicana",
+      "reference_kind": "description"
+    },
+    "queso_fresco_mexicano": {
+      "sources": [
+        "bayless_feta",
+        "sep_milpa"
+      ],
+      "reference_it": "formaggio fresco messicano",
+      "reference_kind": "description"
+    },
+    "feta": {
+      "sources": [
+        "bayless_feta"
+      ],
+      "reference_it": "feta dal gusto delicato",
+      "reference_kind": "description"
     }
   },
   "relations": [
@@ -437,6 +491,88 @@
       ],
       "use": "tortillas",
       "evidence": "direct"
+    },
+    {
+      "from": "crema_mexicana",
+      "to": "creme_fraiche",
+      "type": "culinary_substitute",
+      "use": "rajas",
+      "target_name_it": "Crème fraîche",
+      "target_name_es": "Crème fraîche",
+      "context": "Preparar rajas.",
+      "reason": "Envuelve las tiras de chile y aporta una textura cremosa al guiso.",
+      "limitations": "Es más espesa y ácida que algunas cremas mexicanas. Agrégala a fuego bajo y ajusta la consistencia.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "bayless_rajas"
+      ]
+    },
+    {
+      "from": "crema_mexicana",
+      "to": "creme_fraiche",
+      "type": "culinary_substitute",
+      "use": "terminar_chilaquiles",
+      "target_name_it": "Crème fraîche",
+      "target_name_es": "Crème fraîche",
+      "context": "Terminar los chilaquiles al servir.",
+      "reason": "Aporta cremosidad y acidez como cobertura al servir.",
+      "limitations": "Puede quedar más espesa. Reparte pequeñas cucharadas sobre cada plato.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "bayless_totopos"
+      ]
+    },
+    {
+      "from": "queso_fresco_mexicano",
+      "to": "feta",
+      "type": "culinary_substitute",
+      "use": "terminar_chilaquiles",
+      "target_name_it": "Feta dal gusto delicato",
+      "target_name_es": "Feta suave",
+      "context": "Terminar los chilaquiles al servir.",
+      "reason": "La feta se puede desmoronar sobre la salsa y conserva el contraste de textura.",
+      "limitations": "Suele ser más salada. Empieza con poca y prueba antes de añadir más sal.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "bayless_feta"
+      ]
+    },
+    {
+      "from": "tortilla_maiz",
+      "to": "totopos",
+      "type": "culinary_substitute",
+      "use": "chilaquiles",
+      "target_name_it": "Totopos o chips di tortilla di mais",
+      "target_name_es": "Totopos gruesos",
+      "context": "Preparar chilaquiles.",
+      "reason": "Los totopos ya tienen la textura crujiente de una tortilla frita u horneada.",
+      "limitations": "Los delgados se ablandan muy rápido. Elige una variedad gruesa y mézclala con la salsa justo antes de servir.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "bayless_verdes",
+        "bayless_totopos"
+      ]
+    },
+    {
+      "from": "serrano",
+      "to": "jalapeno",
+      "type": "culinary_substitute",
+      "use": "chilaquiles",
+      "target_name_it": "Jalapeño fresco",
+      "target_name_es": "Chile jalapeño fresco",
+      "context": "Preparar chilaquiles.",
+      "reason": "Se puede cocer y licuar con el tomatillo para aportar picor a la salsa verde.",
+      "limitations": "El picor cambia entre piezas. Empieza con un chile y ajusta después de probar la salsa.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "bayless_verdes",
+        "sep_milpa"
+      ]
     }
   ],
   "uses": {
@@ -550,6 +686,22 @@
         "sabor ahumado",
         "ahumado",
         "sapore affumicato"
+      ]
+    },
+    "chilaquiles": {
+      "label": "Preparar chilaquiles",
+      "aliases": [
+        "chilaquiles",
+        "chilaquiles verdes",
+        "chilaquiles verdi"
+      ]
+    },
+    "terminar_chilaquiles": {
+      "label": "Terminar los chilaquiles al servir",
+      "aliases": [
+        "servir chilaquiles",
+        "terminar chilaquiles",
+        "guarnire i chilaquiles"
       ]
     }
   }

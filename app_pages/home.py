@@ -41,6 +41,8 @@ with st.container(border=True, gap="small"):
         show_photo(HERO, "Guacamole preparado en un molcajete de piedra")
         show_photo_credit(HERO)
 
+st.page_link("app_pages/recipes.py", label="Explorar recetas mexicanas", icon=":material/restaurant_menu:")
+
 st.header("Prueba una búsqueda")
 for column, (query, description, kind, color) in zip(st.columns(3, gap="medium"), EXAMPLES):
     with column.container(border=True, gap="xsmall", height="stretch"):

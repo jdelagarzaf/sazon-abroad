@@ -1466,6 +1466,201 @@
         "Q5032643"
       ],
       "verification": "source_supported"
+    },
+    {
+      "id": "sal",
+      "name_es": "Sal de mesa",
+      "name_it": "sale da cucina",
+      "aliases_es": [
+        "sal"
+      ],
+      "aliases_it": [
+        "sale"
+      ],
+      "category": "Condimentos",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q11254",
+      "wikidata_labels": {
+        "es": "sal",
+        "it": "sale da cucina"
+      },
+      "sources": [
+        "Q11254"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "agua",
+      "name_es": "Agua",
+      "name_it": "acqua",
+      "aliases_es": [],
+      "aliases_it": [],
+      "category": "Básicos de cocina",
+      "scope": "México",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q283",
+      "wikidata_labels": {
+        "it": "acqua",
+        "es": "agua"
+      },
+      "sources": [
+        "Q283"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "aceite_vegetal",
+      "name_es": "Aceite vegetal neutro",
+      "name_it": null,
+      "aliases_es": [
+        "aceite neutro"
+      ],
+      "aliases_it": [
+        "olio di semi"
+      ],
+      "category": "Básicos de cocina",
+      "scope": "México",
+      "note": "Elige un aceite de sabor neutro apto para cocinar.",
+      "reference_it": "olio di semi dal gusto neutro",
+      "reference_kind": "description",
+      "note_it": null,
+      "wikidata_id": null,
+      "wikidata_labels": {},
+      "sources": [
+        "bayless_rajas"
+      ],
+      "verification": "source_supported"
+    },
+    {
+      "id": "crema_mexicana",
+      "name_es": "Crema mexicana",
+      "name_it": null,
+      "aliases_es": [
+        "crema de mesa mexicana"
+      ],
+      "aliases_it": [],
+      "category": "Lácteos",
+      "scope": "México",
+      "note": "",
+      "reference_it": "crema messicana",
+      "reference_kind": "description",
+      "note_it": null,
+      "wikidata_id": "Q25223359",
+      "wikidata_labels": {},
+      "sources": [
+        "bayless_rajas",
+        "bayless_totopos",
+        "Q25223359"
+      ],
+      "verification": "source_supported"
+    },
+    {
+      "id": "queso_fresco_mexicano",
+      "name_es": "Queso fresco mexicano",
+      "name_it": null,
+      "aliases_es": [
+        "queso fresco"
+      ],
+      "aliases_it": [],
+      "category": "Lácteos",
+      "scope": "México",
+      "note": "Busca una presentación que se pueda desmoronar.",
+      "reference_it": "formaggio fresco messicano",
+      "reference_kind": "description",
+      "note_it": null,
+      "wikidata_id": null,
+      "wikidata_labels": {},
+      "sources": [
+        "bayless_feta",
+        "sep_milpa"
+      ],
+      "verification": "source_supported"
+    },
+    {
+      "id": "totopos",
+      "name_es": "Totopos",
+      "name_it": "totopos",
+      "aliases_es": [
+        "totopos de maíz"
+      ],
+      "aliases_it": [
+        "chips di tortilla di mais"
+      ],
+      "category": "Granos y harinas",
+      "scope": "México",
+      "note": "Para chilaquiles elige totopos gruesos y sin saborizantes.",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q258455",
+      "wikidata_labels": {
+        "es": "Totopo",
+        "it": "Totopos"
+      },
+      "sources": [
+        "Q258455"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "creme_fraiche",
+      "name_es": "Crème fraîche",
+      "name_it": "crème fraîche",
+      "aliases_es": [
+        "crema fresca francesa"
+      ],
+      "aliases_it": [
+        "creme fraiche"
+      ],
+      "category": "Lácteos",
+      "scope": "Italia",
+      "note": "",
+      "reference_it": null,
+      "reference_kind": null,
+      "note_it": null,
+      "wikidata_id": "Q1142459",
+      "wikidata_labels": {
+        "it": "crème fraîche",
+        "es": "Crème fraîche"
+      },
+      "sources": [
+        "Q1142459"
+      ],
+      "verification": "retrieved"
+    },
+    {
+      "id": "feta",
+      "name_es": "Feta suave",
+      "name_it": null,
+      "aliases_es": [
+        "queso feta"
+      ],
+      "aliases_it": [
+        "feta delicata"
+      ],
+      "category": "Lácteos",
+      "scope": "Italia",
+      "note": "Elige una feta de sabor suave para usarla desmoronada.",
+      "reference_it": "feta dal gusto delicato",
+      "reference_kind": "description",
+      "note_it": null,
+      "wikidata_id": "Q182760",
+      "wikidata_labels": {
+        "es": "Feta",
+        "it": "feta"
+      },
+      "sources": [
+        "bayless_feta",
+        "Q182760"
+      ],
+      "verification": "source_supported"
     }
   ],
   "uses": {
@@ -1579,6 +1774,22 @@
         "sabor ahumado",
         "ahumado",
         "sapore affumicato"
+      ]
+    },
+    "chilaquiles": {
+      "label": "Preparar chilaquiles",
+      "aliases": [
+        "chilaquiles",
+        "chilaquiles verdes",
+        "chilaquiles verdi"
+      ]
+    },
+    "terminar_chilaquiles": {
+      "label": "Terminar los chilaquiles al servir",
+      "aliases": [
+        "servir chilaquiles",
+        "terminar chilaquiles",
+        "guarnire i chilaquiles"
       ]
     }
   },
@@ -1883,6 +2094,88 @@
       ],
       "use": "tortillas",
       "evidence": "direct"
+    },
+    {
+      "from": "crema_mexicana",
+      "to": "creme_fraiche",
+      "type": "culinary_substitute",
+      "use": "rajas",
+      "target_name_it": "Crème fraîche",
+      "target_name_es": "Crème fraîche",
+      "context": "Preparar rajas.",
+      "reason": "Envuelve las tiras de chile y aporta una textura cremosa al guiso.",
+      "limitations": "Es más espesa y ácida que algunas cremas mexicanas. Agrégala a fuego bajo y ajusta la consistencia.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "bayless_rajas"
+      ]
+    },
+    {
+      "from": "crema_mexicana",
+      "to": "creme_fraiche",
+      "type": "culinary_substitute",
+      "use": "terminar_chilaquiles",
+      "target_name_it": "Crème fraîche",
+      "target_name_es": "Crème fraîche",
+      "context": "Terminar los chilaquiles al servir.",
+      "reason": "Aporta cremosidad y acidez como cobertura al servir.",
+      "limitations": "Puede quedar más espesa. Reparte pequeñas cucharadas sobre cada plato.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "bayless_totopos"
+      ]
+    },
+    {
+      "from": "queso_fresco_mexicano",
+      "to": "feta",
+      "type": "culinary_substitute",
+      "use": "terminar_chilaquiles",
+      "target_name_it": "Feta dal gusto delicato",
+      "target_name_es": "Feta suave",
+      "context": "Terminar los chilaquiles al servir.",
+      "reason": "La feta se puede desmoronar sobre la salsa y conserva el contraste de textura.",
+      "limitations": "Suele ser más salada. Empieza con poca y prueba antes de añadir más sal.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "bayless_feta"
+      ]
+    },
+    {
+      "from": "tortilla_maiz",
+      "to": "totopos",
+      "type": "culinary_substitute",
+      "use": "chilaquiles",
+      "target_name_it": "Totopos o chips di tortilla di mais",
+      "target_name_es": "Totopos gruesos",
+      "context": "Preparar chilaquiles.",
+      "reason": "Los totopos ya tienen la textura crujiente de una tortilla frita u horneada.",
+      "limitations": "Los delgados se ablandan muy rápido. Elige una variedad gruesa y mézclala con la salsa justo antes de servir.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "bayless_verdes",
+        "bayless_totopos"
+      ]
+    },
+    {
+      "from": "serrano",
+      "to": "jalapeno",
+      "type": "culinary_substitute",
+      "use": "chilaquiles",
+      "target_name_it": "Jalapeño fresco",
+      "target_name_es": "Chile jalapeño fresco",
+      "context": "Preparar chilaquiles.",
+      "reason": "Se puede cocer y licuar con el tomatillo para aportar picor a la salsa verde.",
+      "limitations": "El picor cambia entre piezas. Empieza con un chile y ajusta después de probar la salsa.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "bayless_verdes",
+        "sep_milpa"
+      ]
     }
   ],
   "sources": {
@@ -1949,6 +2242,30 @@
     "mutti_pelati": {
       "label": "Mutti · Pomodori pelati",
       "url": "https://mutti-parma.com/it/i-nostri-prodotti/pomodori-pelati/"
+    },
+    "guacamole_programa": {
+      "label": "Consulado de México en Vancouver · Guacamole",
+      "url": "https://consulmex.sre.gob.mx/vancouver/images/pdf/Programa_Maz.pdf"
+    },
+    "bayless_rajas": {
+      "label": "Rick Bayless · Rajas de poblano",
+      "url": "https://www.rickbayless.com/recipe/roasted-poblano-rajas-greens-and-or-chicken-2/"
+    },
+    "bayless_verdes": {
+      "label": "Rick Bayless · Chilaquiles verdes",
+      "url": "https://www.rickbayless.com/recipe/green-chilaquiles/"
+    },
+    "bayless_feta": {
+      "label": "Rick Bayless · Chilaquiles de Topolobampo",
+      "url": "https://www.rickbayless.com/recipe/topolobampos-chilaquiles/"
+    },
+    "bayless_totopos": {
+      "label": "Rick Bayless · Chilaquiles con salsa de tomatillo",
+      "url": "https://www.rickbayless.com/recipe/tomatillo-sauced-chilaquiles/"
+    },
+    "sep_milpa": {
+      "label": "Nueva Escuela Mexicana · Las recetas de la milpa",
+      "url": "https://nemd.aprende.gob.mx/contenido/coleccion/las-recetas-de-la-milpa-2/"
     },
     "Q20638126": {
       "label": "Wikidata · Q20638126",
@@ -2073,8 +2390,8 @@
       "label": "Wikidata · Q622525",
       "url": "https://www.wikidata.org/wiki/Q622525",
       "license": "CC0-1.0",
-      "revision": 2568007296,
-      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2568007296"
+      "revision": 2569292436,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2569292436"
     },
     "Q131607": {
       "label": "Wikidata · Q131607",
@@ -2348,6 +2665,48 @@
       "license": "CC0-1.0",
       "revision": 2523273320,
       "revision_url": "https://www.wikidata.org/w/index.php?oldid=2523273320"
+    },
+    "Q11254": {
+      "label": "Wikidata · Q11254",
+      "url": "https://www.wikidata.org/wiki/Q11254",
+      "license": "CC0-1.0",
+      "revision": 2568050607,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2568050607"
+    },
+    "Q283": {
+      "label": "Wikidata · Q283",
+      "url": "https://www.wikidata.org/wiki/Q283",
+      "license": "CC0-1.0",
+      "revision": 2568555831,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2568555831"
+    },
+    "Q25223359": {
+      "label": "Wikidata · Q25223359",
+      "url": "https://www.wikidata.org/wiki/Q25223359",
+      "license": "CC0-1.0",
+      "revision": 2302196572,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2302196572"
+    },
+    "Q258455": {
+      "label": "Wikidata · Q258455",
+      "url": "https://www.wikidata.org/wiki/Q258455",
+      "license": "CC0-1.0",
+      "revision": 2482137191,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2482137191"
+    },
+    "Q1142459": {
+      "label": "Wikidata · Q1142459",
+      "url": "https://www.wikidata.org/wiki/Q1142459",
+      "license": "CC0-1.0",
+      "revision": 2537657210,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2537657210"
+    },
+    "Q182760": {
+      "label": "Wikidata · Q182760",
+      "url": "https://www.wikidata.org/wiki/Q182760",
+      "license": "CC0-1.0",
+      "revision": 2559447880,
+      "revision_url": "https://www.wikidata.org/w/index.php?oldid=2559447880"
     }
   }
 }

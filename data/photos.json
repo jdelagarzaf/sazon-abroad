@@ -348,5 +348,40 @@
     "license": "Dominio público",
     "license_url": null,
     "source": "https://commons.wikimedia.org/wiki/File:Citrus_x_limon_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-041.jpg"
+  },
+  "sal": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Salt_shaker_on_white_background.jpg/330px-Salt_shaker_on_white_background.jpg",
+    "author": "Dubravko Sorić SoraZG on Flickr",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Salt_shaker_on_white_background.jpg"
+  },
+  "agua": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Ice_water_vapor.jpg/330px-Ice_water_vapor.jpg",
+    "author": "Blue_ice.jpg: Stephanie Costa Wassertropfen.jpg: Sven Hoppe Above_the_Clouds.jpg: Arun Kulshreshtha derivative work: StarLight (talk)",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ice_water_vapor.jpg"
+  },
+  "totopos": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Totopodemaiz.jpg/330px-Totopodemaiz.jpg",
+    "author": "juan Manuel Marquez",
+    "license": "CC0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Totopodemaiz.jpg"
+  },
+  "creme_fraiche": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Raspberries_with_cr%C3%A8me_fra%C3%AEche_and_sugar.jpg/330px-Raspberries_with_cr%C3%A8me_fra%C3%AEche_and_sugar.jpg",
+    "author": "Jef Poskanzer from Berkeley, CA, USA",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Raspberries_with_cr%C3%A8me_fra%C3%AEche_and_sugar.jpg"
+  },
+  "feta": {
+    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Feta_Greece_2.jpg/330px-Feta_Greece_2.jpg",
+    "author": "Dominik Hundhammer",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Feta_Greece_2.jpg"
   }
 }

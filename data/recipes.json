@@ -1,0 +1,292 @@
+[
+  {
+    "id": "guacamole",
+    "title": "Guacamole con jitomate",
+    "description": "Aguacate machacado con jitomate, chile fresco y un toque de lima.",
+    "servings": 4,
+    "minutes": 15,
+    "sources": [
+      "guacamole_programa"
+    ],
+    "photo": {
+      "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Guacamole_tradicional.jpg/960px-Guacamole_tradicional.jpg",
+      "author": "Jazz Guy",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "source": "https://commons.wikimedia.org/wiki/File:Guacamole_tradicional.jpg",
+      "alt": "Guacamole en molcajete"
+    },
+    "ingredients": [
+      {
+        "id": "aguacate",
+        "amount": "2 piezas maduras"
+      },
+      {
+        "id": "cebolla",
+        "amount": "¼ de pieza"
+      },
+      {
+        "id": "jitomate",
+        "amount": "1 pieza mediana"
+      },
+      {
+        "id": "jalapeno",
+        "amount": "½–1 pieza"
+      },
+      {
+        "id": "cilantro",
+        "amount": "2 cucharadas picadas"
+      },
+      {
+        "id": "lima",
+        "amount": "1–2 cucharadas de jugo",
+        "use": "guacamole",
+        "alternatives": [
+          {
+            "to": "limon_amarillo",
+            "amount": "1 cucharada de jugo para empezar, al gusto"
+          }
+        ],
+        "label": "Limón verde (lima ácida)"
+      },
+      {
+        "id": "sal",
+        "amount": "Al gusto"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Pica la cebolla, el jitomate, el jalapeño y las hojas de cilantro. Si prefieres menos picor, empieza con medio chile y retira las venas."
+      },
+      {
+        "text": "Machaca la pulpa de los aguacates con un tenedor, dejando algunos trozos. Incorpora los ingredientes picados."
+      },
+      {
+        "text": "Añade el jugo de limón verde poco a poco, sazona con sal y sirve.",
+        "changes": [
+          {
+            "from": "lima",
+            "to": "limon_amarillo",
+            "text": "Empieza con 1 cucharada de jugo de limón amarillo. Prueba, ajusta la acidez y la sal, y sirve."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rajas",
+    "title": "Rajas con crema",
+    "description": "Tiras de chile asado con cebolla y crema, para servir en tortillas calientes.",
+    "servings": 4,
+    "minutes": 35,
+    "sources": [
+      "bayless_rajas"
+    ],
+    "photo": {
+      "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Chile_en_rajas.jpg/960px-Chile_en_rajas.jpg",
+      "author": "El Mono Español",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source": "https://commons.wikimedia.org/wiki/File:Chile_en_rajas.jpg",
+      "alt": "Tiras de chile poblano asado"
+    },
+    "ingredients": [
+      {
+        "id": "chile_poblano",
+        "amount": "3 chiles grandes",
+        "use": "rajas",
+        "alternatives": [
+          {
+            "to": "morron",
+            "amount": "2–3 morrones grandes, según el tamaño"
+          }
+        ]
+      },
+      {
+        "id": "cebolla",
+        "amount": "1 pieza mediana"
+      },
+      {
+        "id": "ajo",
+        "amount": "2 dientes"
+      },
+      {
+        "id": "aceite_vegetal",
+        "amount": "1 cucharada"
+      },
+      {
+        "id": "crema_mexicana",
+        "amount": "180 ml",
+        "use": "rajas",
+        "alternatives": [
+          {
+            "to": "creme_fraiche",
+            "amount": "180 ml"
+          }
+        ]
+      },
+      {
+        "id": "sal",
+        "amount": "Al gusto"
+      },
+      {
+        "id": "tortilla_maiz",
+        "amount": "8 piezas para servir"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Asa los poblanos bajo el grill del horno y voltéalos hasta que la piel se ampolle. Déjalos reposar tapados unos minutos. Quita la piel, las semillas y el tallo, y corta la pulpa en tiras.",
+        "changes": [
+          {
+            "from": "chile_poblano",
+            "to": "morron",
+            "text": "Asa los morrones verdes bajo el grill hasta que la piel se ampolle. Déjalos reposar tapados, retira la piel y las semillas y córtalos en tiras. Si sueltan mucho líquido, escúrrelos antes de saltear."
+          }
+        ]
+      },
+      {
+        "text": "Corta la cebolla en plumas y saltéala en aceite hasta que esté blanda. Añade el ajo picado y las tiras de chile. Remueve durante un minuto."
+      },
+      {
+        "text": "Incorpora la crema mexicana y cocina a fuego bajo hasta que cubra las tiras. Sazona y sirve con las tortillas calientes.",
+        "changes": [
+          {
+            "from": "crema_mexicana",
+            "to": "creme_fraiche",
+            "text": "Incorpora la crème fraîche a fuego bajo. Si queda muy espesa, añade un chorrito de agua. Sazona y sirve con las tortillas calientes."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "chilaquiles_verdes",
+    "title": "Chilaquiles verdes",
+    "description": "Tortillas crujientes bañadas en salsa de tomatillo, con crema y queso desmoronado.",
+    "servings": 4,
+    "minutes": 40,
+    "sources": [
+      "sep_milpa",
+      "bayless_verdes",
+      "bayless_feta"
+    ],
+    "photo": {
+      "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Chilaquiles_verdes.jpg/960px-Chilaquiles_verdes.jpg",
+      "author": "Wotancito",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source": "https://commons.wikimedia.org/wiki/File:Chilaquiles_verdes.jpg",
+      "alt": "Chilaquiles verdes servidos con huevo"
+    },
+    "ingredients": [
+      {
+        "id": "tortilla_maiz",
+        "amount": "12 piezas",
+        "use": "chilaquiles",
+        "alternatives": [
+          {
+            "to": "totopos",
+            "amount": "200 g de totopos gruesos"
+          }
+        ]
+      },
+      {
+        "id": "tomatillo",
+        "amount": "600 g"
+      },
+      {
+        "id": "serrano",
+        "amount": "1–2 piezas",
+        "use": "chilaquiles",
+        "alternatives": [
+          {
+            "to": "jalapeno",
+            "amount": "1 pieza para empezar"
+          }
+        ]
+      },
+      {
+        "id": "cebolla",
+        "amount": "½ pieza"
+      },
+      {
+        "id": "ajo",
+        "amount": "1 diente"
+      },
+      {
+        "id": "agua",
+        "amount": "120 ml para la salsa, más la necesaria para cocer"
+      },
+      {
+        "id": "aceite_vegetal",
+        "amount": "1 cucharada",
+        "omit_with": {
+          "from": "tortilla_maiz",
+          "to": "totopos"
+        }
+      },
+      {
+        "id": "sal",
+        "amount": "Al gusto"
+      },
+      {
+        "id": "crema_mexicana",
+        "amount": "80 ml",
+        "use": "terminar_chilaquiles",
+        "alternatives": [
+          {
+            "to": "creme_fraiche",
+            "amount": "80 ml"
+          }
+        ]
+      },
+      {
+        "id": "queso_fresco_mexicano",
+        "amount": "80 g",
+        "use": "terminar_chilaquiles",
+        "alternatives": [
+          {
+            "to": "feta",
+            "amount": "60–80 g, al gusto"
+          }
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "text": "Corta las tortillas en triángulos y mézclalos con el aceite. Hornéalos en una capa a 200 °C durante unos 12–18 minutos. Voltéalos a mitad de la cocción y sácalos cuando estén crujientes.",
+        "changes": [
+          {
+            "from": "tortilla_maiz",
+            "to": "totopos",
+            "text": "Mide 200 g de totopos gruesos y resérvalos. Puedes saltar el horneado y prescindir del aceite."
+          }
+        ]
+      },
+      {
+        "text": "Quita la cáscara de los tomatillos y enjuágalos. Cuécelos con los serranos en agua hasta que se ablanden. Escurre y licúa con la cebolla, el ajo y hasta 120 ml de agua. Sazona y deja hervir suavemente unos minutos.",
+        "changes": [
+          {
+            "from": "serrano",
+            "to": "jalapeno",
+            "text": "Quita la cáscara de los tomatillos y enjuágalos. Cuécelos con un jalapeño en agua hasta que se ablanden. Escurre y licúa con la cebolla, el ajo y hasta 120 ml de agua. Prueba el picor, sazona y deja hervir suavemente unos minutos."
+          }
+        ]
+      },
+      {
+        "text": "Reparte los triángulos crujientes en cuatro platos y báñalos con salsa caliente. Si los prefieres más suaves, mézclalos con la salsa en la olla antes de servir.",
+        "changes": [
+          {
+            "from": "tortilla_maiz",
+            "to": "totopos",
+            "text": "Baña los totopos comprados con la salsa caliente justo al servir para que conserven algo de textura."
+          }
+        ]
+      },
+      {
+        "text": "Sirve con {crema_mexicana}. Desmorona por encima el queso elegido ({queso_fresco_mexicano}) y prueba antes de añadir más sal."
+      }
+    ]
+  }
+]

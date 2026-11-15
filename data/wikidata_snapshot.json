@@ -57,6 +57,84 @@
       ]
     }
   },
+  "Q11254": {
+    "lastrevid": 2568050607,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "sal"
+      },
+      "it": {
+        "language": "it",
+        "value": "sale da cucina"
+      }
+    },
+    "aliases": {
+      "it": [
+        {
+          "language": "it",
+          "value": "sale"
+        }
+      ],
+      "es": [
+        {
+          "language": "es",
+          "value": "sal de mesa"
+        },
+        {
+          "language": "es",
+          "value": "sal común"
+        },
+        {
+          "language": "es",
+          "value": "sal comun"
+        },
+        {
+          "language": "es",
+          "value": "sodio"
+        }
+      ]
+    }
+  },
+  "Q1142459": {
+    "lastrevid": 2537657210,
+    "labels": {
+      "it": {
+        "language": "it",
+        "value": "crème fraîche"
+      },
+      "es": {
+        "language": "es",
+        "value": "Crème fraîche"
+      }
+    },
+    "aliases": {
+      "it": [
+        {
+          "language": "it",
+          "value": "Creme fraiche"
+        }
+      ],
+      "es": [
+        {
+          "language": "es",
+          "value": "Crema fresca"
+        },
+        {
+          "language": "es",
+          "value": "Crème fraiche"
+        },
+        {
+          "language": "es",
+          "value": "Creme fraiche"
+        },
+        {
+          "language": "es",
+          "value": "Creme fraîche"
+        }
+      ]
+    }
+  },
   "Q11575": {
     "lastrevid": 2568061028,
     "labels": {
@@ -629,6 +707,20 @@
       ]
     }
   },
+  "Q182760": {
+    "lastrevid": 2559447880,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Feta"
+      },
+      "it": {
+        "language": "it",
+        "value": "feta"
+      }
+    },
+    "aliases": {}
+  },
   "Q191768": {
     "lastrevid": 2567795246,
     "labels": {
@@ -893,6 +985,11 @@
       ]
     }
   },
+  "Q25223359": {
+    "lastrevid": 2302196572,
+    "labels": {},
+    "aliases": {}
+  },
   "Q25284": {
     "lastrevid": 2567785123,
     "labels": {
@@ -967,6 +1064,20 @@
         }
       ]
     }
+  },
+  "Q258455": {
+    "lastrevid": 2482137191,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Totopo"
+      },
+      "it": {
+        "language": "it",
+        "value": "Totopos"
+      }
+    },
+    "aliases": {}
   },
   "Q26006": {
     "lastrevid": 2567798080,
@@ -1169,6 +1280,49 @@
         {
           "language": "es",
           "value": "apio"
+        }
+      ]
+    }
+  },
+  "Q283": {
+    "lastrevid": 2568555831,
+    "labels": {
+      "it": {
+        "language": "it",
+        "value": "acqua"
+      },
+      "es": {
+        "language": "es",
+        "value": "agua"
+      }
+    },
+    "aliases": {
+      "it": [
+        {
+          "language": "it",
+          "value": "ossido di idrogeno"
+        },
+        {
+          "language": "it",
+          "value": "ossidano"
+        },
+        {
+          "language": "it",
+          "value": "monossido di idrogeno"
+        },
+        {
+          "language": "it",
+          "value": "acqua leggera"
+        },
+        {
+          "language": "it",
+          "value": "monossido di diidrogeno"
+        }
+      ],
+      "es": [
+        {
+          "language": "es",
+          "value": "agua pura"
         }
       ]
     }
@@ -2314,7 +2468,7 @@
     "aliases": {}
   },
   "Q622525": {
-    "lastrevid": 2568007296,
+    "lastrevid": 2569292436,
     "labels": {
       "es": {
         "language": "es",

@@ -12,7 +12,7 @@ python -m venv .venv
 .\.venv\Scripts\python -m streamlit run app.py
 ```
 
-En macOS y Linux, usa `.venv/bin/python` en los dos últimos comandos. Streamlit indica la URL local. La app lee `data/catalog.json`, con 53 ingredientes mexicanos y seis referencias italianas. En **Catálogo** puedes filtrar por categoría y estado, abrir la ficha o consultar la fuente.
+En macOS y Linux, usa `.venv/bin/python` en los dos últimos comandos. Streamlit indica la URL local. La app lee `data/catalog.json`, con 59 ingredientes del catálogo mexicano y ocho referencias italianas. En **Catálogo** puedes filtrar por categoría y estado, abrir la ficha o consultar la fuente.
 
 ## Regenerar el catálogo
 
@@ -45,6 +45,12 @@ Cada ficha basada en Wikidata enlaza al concepto y a la revisión consultada. Wi
 | `amido di mais per addensare` | Alternativas para espesar, con una advertencia de gluten para la harina de trigo. |
 | `masa harina` | Qué término buscar en el envase y por qué la polenta no sirve como reemplazo directo en tortillas. |
 | `zzzz` | Mensaje de búsqueda sin resultados. |
+
+## Recetas mexicanas
+
+En **Recetas** están el guacamole con jitomate, las rajas con crema y los chilaquiles verdes. Puedes consultar la versión base o elegir alternativas para Italia. La lista de compras muestra el término italiano y la cantidad a usar. Los pasos se ajustan cuando eliges un sustituto.
+
+Cada receta de `data/recipes.json` referencia ingredientes y usos del catálogo. Para añadir una alternativa, registra la relación y su fuente en `data/annotations.json`, y especifica en la receta la cantidad y cualquier cambio de preparación. Los pasos usan texto original de Sazón Abroad y cada ficha enlaza sus referencias culinarias y el crédito de su imagen.
 
 ## Fotos de los ingredientes
 
