@@ -17,18 +17,6 @@ app.jinja_env.globals.update(
     evidence_labels=EVIDENCE_LABELS,
 )
 
-HERO = {
-    "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Guacamole_tradicional.jpg/960px-Guacamole_tradicional.jpg",
-    "author": "Jazz Guy",
-    "license": "CC BY 4.0",
-    "license_url": "https://creativecommons.org/licenses/by/4.0/",
-    "source": "https://commons.wikimedia.org/wiki/File:Guacamole_tradicional.jpg",
-}
-EXAMPLES = (
-    ("Jitomate", "Conoce su nombre en italiano.", "Equivalencia", "green"),
-    ("Poblano para rajas", "Encuentra una alternativa para rajas con crema.", "Sustitución", "orange"),
-    ("Masa harina", "Identifica la harina adecuada para tortillas.", "Advertencia", "red"),
-)
 METRICS = {
     "top1": "Top-1 Accuracy",
     "recall_at_3": "Recall@3",
@@ -49,7 +37,12 @@ CASES_PATH = DATA_DIR / "evaluation.csv"
 
 @app.get("/")
 def home():
-    return render_template("home.html", hero=HERO, examples=EXAMPLES)
+    try:
+        recipes = load_recipes()
+    except (OSError, ValueError):
+        app.logger.exception("No se pudieron cargar las recetas para Inicio")
+        recipes = []
+    return render_template("home.html", recipes=recipes)
 
 
 @app.get("/busqueda")

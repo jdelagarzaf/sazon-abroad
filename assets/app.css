@@ -4,8 +4,10 @@
 @theme {
   --color-brand: #8b1f37;
   --color-brand-dark: #69162a;
-  --color-paper: #fcf4ee;
-  --color-surface: #fffaf7;
+  --color-paper: #f9efea;
+  --color-surface: #faf1eb;
+  --color-card-text: #9e807d;
+  --color-card-secondary: #e4d3cb;
   --color-tint: #f4e8e2;
   --color-ink: #41272a;
   --color-muted: #715359;
@@ -29,7 +31,7 @@
   a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible {
     @apply outline-2 outline-offset-2 outline-brand;
   }
-  header a:focus-visible { @apply outline-white; }
+  .site-navigation :is(a, summary):focus-visible { @apply outline-white; }
   table { @apply w-full border-collapse text-left text-sm; }
   th, td { @apply border-b border-line px-4 py-3 align-top; }
   th { @apply bg-tint font-semibold; }
@@ -38,7 +40,113 @@
 }
 
 @layer components {
-  .card { @apply rounded-2xl border border-line bg-surface p-5; }
+  .site-navigation {
+    background: linear-gradient(to bottom, #591220, #420c1f);
+  }
+
+  .nav-link { color: #a9767b; }
+  .nav-link:hover { color: #f0d1ce; }
+  .nav-link[aria-current="page"] {
+    color: #f0d1ce;
+    background-color: #9c3741;
+  }
+
+  .desktop-sidebar { display: none; }
+  .site-content { min-width: 0; }
+
+  @media (min-width: 64rem) {
+    .site-layout { display: flex; }
+    .desktop-sidebar {
+      display: block;
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+      flex: 0 0 14rem;
+      width: 14rem;
+      height: 100vh;
+      height: 100dvh;
+      overflow-y: auto;
+    }
+    .mobile-navigation { display: none; }
+    .site-content { flex: 1 1 0%; }
+  }
+
+  .card {
+    @apply rounded-2xl border border-line bg-surface p-5 text-card-text;
+    --color-muted: var(--color-card-secondary);
+    box-shadow: 0 2px 5px rgb(66 12 31 / 5%), 0 8px 20px rgb(66 12 31 / 4%);
+  }
+
+  .home-hero {
+    --color-muted: #f0d1ce;
+    --hero-overlay: linear-gradient(to right, rgb(0 0 0 / 84%), rgb(0 0 0 / 67%) 70%, rgb(0 0 0 / 58%));
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 22rem;
+    color: #fff7f2;
+    background-color: #420c1f;
+  }
+
+  .home-hero-media {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    container-type: size;
+    pointer-events: none;
+  }
+
+  .home-hero-media img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100cqh;
+    height: 100cqw;
+    max-width: none;
+    object-fit: cover;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .home-hero-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--hero-overlay);
+  }
+
+  .home-hero :is(a, button, input):focus-visible { outline-color: #fff7f2; }
+
+  @media (min-width: 48rem) {
+    .home-hero {
+      --hero-overlay: linear-gradient(to right, rgb(0 0 0 / 84%), rgb(0 0 0 / 70%) 52%, transparent 100%);
+    }
+    .home-hero-content { max-width: min(34rem, 55%); }
+  }
+
+  .home-feature {
+    background-color: var(--feature-bg);
+    color: var(--feature-main);
+  }
+
+  .home-feature-icon { background-color: var(--feature-main); }
+  .home-feature--equivalencias { --feature-bg: #fadcd7; --feature-main: #a93443; }
+  .home-feature--recetas { --feature-bg: #ebecda; --feature-main: #839945; }
+  .home-feature--supermercados { --feature-bg: #f9e4cd; --feature-main: #c27f38; }
+
+  .recipe-strip {
+    @apply grid snap-x snap-proximity grid-flow-col gap-4 overflow-x-auto px-1 pt-1 pb-4;
+    grid-auto-columns: min(85%, 16rem);
+  }
+
+  .recipe-preview {
+    @apply flex h-full flex-col overflow-hidden p-0;
+    color: var(--color-ink);
+  }
+
+  .recipe-description { color: #715359; }
+  .recipe-preview:hover h3 { @apply text-brand; }
+  .recipe-preview:focus-visible { outline-offset: -3px; }
+
   .button { @apply inline-flex cursor-pointer items-center justify-center rounded-lg bg-brand px-4 py-2 font-semibold text-white hover:bg-brand-dark; }
   .button-secondary { @apply border border-brand bg-transparent text-brand hover:bg-tint; }
   .text-link { @apply font-semibold text-brand underline decoration-brand/40 underline-offset-3 hover:decoration-brand; }

@@ -6,21 +6,27 @@
   <title>{% block title %}Sazón Abroad{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
 </head>
-<body>
-  {% set navigation = [('home', 'Inicio'), ('find', 'Búsqueda'), ('recipes_page', 'Recetas'), ('catalog_page', 'Catálogo'), ('evaluation_page', 'Evaluación')] %}
-  <header class="border-b border-line bg-brand text-white">
-    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-8 gap-y-3 px-5 py-4 sm:px-8">
-      <a href="{{ url_for('home') }}" class="font-display text-2xl font-semibold">Sazón Abroad</a>
-      <nav aria-label="Navegación principal" class="flex flex-wrap gap-1">
-        {% for endpoint, label in navigation %}
-          <a href="{{ url_for(endpoint) }}"
-             {% if request.endpoint == endpoint %}aria-current="page"{% endif %}
-             class="rounded-lg px-3 py-2 text-sm font-semibold hover:bg-white/15 aria-[current=page]:bg-white/20">{{ label }}</a>
-        {% endfor %}
-      </nav>
-    </div>
+{% from 'navigation.html' import navigation %}
+<body class="site-layout">
+  <aside class="site-navigation desktop-sidebar px-4 py-7 text-white">
+    <a href="{{ url_for('home') }}" class="block rounded-lg px-3 font-display text-2xl font-semibold">Sazón Abroad</a>
+    <div class="mt-8">{{ navigation() }}</div>
+  </aside>
+  <header class="site-navigation mobile-navigation px-5 py-3 text-white">
+    <details>
+      <summary class="flex min-h-11 list-none items-center justify-between gap-3 rounded-lg text-white [&::-webkit-details-marker]:hidden">
+        <span class="font-display text-xl font-semibold">Sazón Abroad</span>
+        <span class="flex items-center gap-2 rounded-lg bg-white/15 px-3 py-2">
+          <svg aria-hidden="true" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          Menú
+        </span>
+      </summary>
+      <div class="mt-3">{{ navigation() }}</div>
+    </details>
   </header>
-  <main class="mx-auto max-w-7xl px-5 py-8 sm:px-8 sm:py-12">
+  <main class="site-content mx-auto max-w-7xl px-5 py-8 sm:px-8 sm:py-12">
     {% block content %}{% endblock %}
   </main>
 </body>
