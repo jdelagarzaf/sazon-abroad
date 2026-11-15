@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% from 'components.html' import search_form, ingredient_card, relation_card %}
+{% block title %}Búsqueda · Sazón Abroad{% endblock %}
+{% block content %}
+<h1>Búsqueda</h1>
+<div class="card mt-5 max-w-3xl space-y-4">
+  {{ search_form(query) }}
+  <div class="flex flex-wrap items-center gap-3 text-sm">
+    <span class="muted">Prueba con</span>
+    {% for example in ['Jitomate', 'Chile poblano', 'Masa harina'] %}
+      <a class="text-link" href="{{ url_for('find', q=example) }}">{{ example }}</a>
+    {% endfor %}
+  </div>
+</div>
+{% if query %}
+  {% if matches %}
+    <div class="my-5 space-y-2">
+      {% if lookup.use %}<p class="muted">Uso culinario · {{ context }}</p>{% endif %}
+      {% set match = lookup.hits[0].match %}
+      {% if match == 'fuzzy' %}<p class="muted">Coincidencias aproximadas. Comprueba que sea el ingrediente que buscabas.</p>{% endif %}
+      {% if match == 'prefix' %}<p class="muted">Coincidencias por nombre incompleto.</p>{% endif %}
+      {% if match == 'bm25' %}<p class="muted">Coincidencias por palabras. Comprueba el nombre y la presentación en la ficha.</p>{% endif %}
+      {% if matches|length > 1 %}
+        <form class="flex flex-wrap items-end gap-3" method="get">
+          <input type="hidden" name="q" value="{{ query }}">
+          <div>
+            <label for="match">Ingredientes que coinciden</label>
+            <select id="match" name="ingredient">
+              {% for id, item in matches.items() %}<option value="{{ id }}" {% if id == selected %}selected{% endif %}>{{ item.name_es }}</option>{% endfor %}
+            </select>
+          </div>
+          <button class="button button-secondary">Ver ingrediente</button>
+        </form>
+      {% endif %}
+    </div>
+    <div class="mt-5 grid items-start gap-5 lg:grid-cols-[1fr_2fr]">
+      {{ ingredient_card(matches[selected], sources, photos, true) }}
+      <div class="space-y-6">
+        {% if substitutes or not warnings %}
+          <section class="space-y-3">
+            <h2>Alternativas sugeridas</h2>
+            {% for group in substitutes %}
+              {{ relation_card(group, sources, photos) }}
+            {% else %}
+              <p class="notice">Todavía no hay sustitutos registrados para {{ 'este uso (' ~ context ~ ')' if context else 'este ingrediente' }}.</p>
+            {% endfor %}
+          </section>
+        {% endif %}
+        {% if warnings %}
+          <section class="space-y-3">
+            <h2>Advertencias</h2>
+            {% for group in warnings %}{{ relation_card(group, sources, photos) }}{% endfor %}
+          </section>
+        {% endif %}
+      </div>
+    </div>
+  {% else %}
+    <p class="notice mt-5">No encontramos un ingrediente. Prueba con otro nombre o <a class="text-link" href="{{ url_for('catalog_page') }}">explora el catálogo</a>.</p>
+  {% endif %}
+{% endif %}
+{% endblock %}

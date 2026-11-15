@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% from 'components.html' import ingredient_card, relation_card %}
+{% block title %}Catálogo · Sazón Abroad{% endblock %}
+{% block content %}
+<h1>Catálogo</h1>
+<form method="get" class="card my-5 flex flex-wrap items-end gap-4">
+  <div><label for="category">Categoría</label>
+    <select id="category" name="category"><option value="">Todas</option>
+      {% for value in categories %}<option {% if value == category %}selected{% endif %}>{{ value }}</option>{% endfor %}
+    </select>
+  </div>
+  <div><label for="status">Estado de la ficha</label>
+    <select id="status" name="status"><option value="">Todos</option>
+      {% for value in statuses %}<option value="{{ value }}" {% if value == status %}selected{% endif %}>{{ verification_labels[value] }}</option>{% endfor %}
+    </select>
+  </div>
+  <button class="button">Filtrar</button>
+</form>
+<p class="muted mb-3">{{ options|length }} de {{ total }} ingredientes</p>
+{% if selected %}
+  <section id="ficha" class="mb-5 grid scroll-mt-4 items-start gap-4 lg:grid-cols-2">
+    {{ ingredient_card(selected, sources, {}) }}
+    {% if relations %}
+      <div class="space-y-3"><h2>Relaciones culinarias</h2>
+        {% for relation in relations %}{{ relation_card([relation], sources, {}) }}{% endfor %}
+      </div>
+    {% endif %}
+  </section>
+{% endif %}
+{% if options %}
+  <div class="table-wrap">
+    <table aria-label="Ingredientes del catálogo">
+      <thead><tr><th scope="col">Ingrediente</th><th scope="col">Nombre o referencia en Italia</th><th scope="col">Estado</th><th scope="col">Fuente</th></tr></thead>
+      <tbody>
+        {% for item in options %}
+          <tr>
+            <td><a class="text-link" href="{{ url_for('catalog_page', category=category, status=status, ingredient=item.id, _anchor='ficha') }}">{{ item.name_es }}</a></td>
+            <td>{{ item.name_it or item.reference_it or '—' }}</td><td>{{ verification_labels[item.verification] }}</td>
+            <td>{% if item.sources %}<a class="text-link" href="{{ sources[item.sources[0]].url }}">Abrir fuente</a>{% else %}—{% endif %}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% else %}
+  <p class="notice">No hay ingredientes con esos filtros.</p>
+{% endif %}
+{% endblock %}

@@ -1,4 +1,4 @@
-"""Run the labeled retrieval benchmark from the CLI or Streamlit."""
+"""Run the labeled retrieval benchmark from the CLI or web app."""
 
 import csv
 import json

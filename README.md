@@ -9,10 +9,25 @@ Requiere Python 3.12. En PowerShell, desde la carpeta del proyecto:
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python -m pip install -r requirements.txt
-.\.venv\Scripts\python -m streamlit run app.py
+.\.venv\Scripts\python -m flask --app app run --debug
 ```
 
-En macOS y Linux, usa `.venv/bin/python` en los dos últimos comandos. Streamlit indica la URL local. La app lee `data/catalog.json`, con 59 ingredientes del catálogo mexicano y ocho referencias italianas. En **Catálogo** puedes filtrar por categoría y estado, abrir la ficha o consultar la fuente.
+En macOS y Linux, usa `.venv/bin/python` en los dos últimos comandos. Abre <http://127.0.0.1:5000>. La app lee `data/catalog.json`, con 59 ingredientes del catálogo mexicano y ocho referencias italianas. En **Catálogo** puedes filtrar por categoría y estado, abrir la ficha o consultar la fuente.
+
+## Editar la interfaz
+
+- `templates/base.html` define la estructura general y la navegación. Las otras plantillas en `templates/` contienen el HTML de cada página. `templates/components.html` contiene el buscador, las tarjetas y las listas de fuentes que comparten varias páginas.
+- `assets/app.css` define la paleta en `@theme` y los estilos compartidos. Puedes usar clases de Tailwind directamente en las plantillas.
+- `app.py` define las rutas y prepara los datos que recibe cada plantilla.
+
+El CSS compilado se distribuye en `static/app.css`. Para regenerarlo después de cambiar estilos o clases de Tailwind, instala Node.js en tu entorno de desarrollo y ejecuta:
+
+```sh
+npm ci
+npm run build:css
+```
+
+Durante el desarrollo puedes ejecutar `npm run watch:css` en otra terminal. Incluye el CSS regenerado al guardar los cambios en Git.
 
 ## Regenerar el catálogo
 
@@ -64,7 +79,7 @@ El script consulta la propiedad P18 de Wikidata y guarda las miniaturas con una 
 
 ## Evaluación
 
-La sección **Evaluación** del menú lateral compara tres métodos sobre 40 consultas y permite filtrar errores. Puedes reproducir las métricas y los resultados por consulta desde PowerShell:
+La sección **Evaluación** compara tres métodos sobre 40 consultas y permite filtrar errores. Puedes reproducir las métricas y los resultados por consulta desde PowerShell:
 
 ```powershell
 .\.venv\Scripts\python evaluation.py
@@ -74,6 +89,12 @@ Las comprobaciones de regresión se ejecutan con `python -m unittest discover -s
 
 Consulta las definiciones de las métricas, los límites del conjunto de desarrollo y cómo registrar la revisión culinaria en la [metodología](docs/methodology.md).
 
-## Publicar en Streamlit Community Cloud
+## Publicar la aplicación Flask
 
-Con el código en un repositorio público de GitHub y la cuenta vinculada, crea la aplicación eligiendo la rama que contiene la entrega y `app.py` como archivo principal. Selecciona Python 3.12 en *Advanced settings* y prueba las consultas de la tabla desde la URL pública. [Guía de despliegue de Streamlit](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy)
+Usa un alojamiento que pueda ejecutar una aplicación web Python. Instala `requirements.txt` y configura este comando de arranque desde la raíz del repositorio:
+
+```sh
+waitress-serve --host=0.0.0.0 --port=8080 app:app
+```
+
+Si el proveedor asigna un puerto, usa ese valor en lugar de `8080`. El servidor entrega el CSS compilado desde `static/`, así que el alojamiento solo requiere Python. [Guía de despliegue de Flask](https://flask.palletsprojects.com/en/stable/deploying/)

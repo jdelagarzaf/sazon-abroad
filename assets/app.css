@@ -1,0 +1,53 @@
+@import "tailwindcss" source(none);
+@source "../templates";
+
+@theme {
+  --color-brand: #8b1f37;
+  --color-brand-dark: #69162a;
+  --color-paper: #fcf4ee;
+  --color-surface: #fffaf7;
+  --color-tint: #f4e8e2;
+  --color-ink: #41272a;
+  --color-muted: #715359;
+  --color-line: #e7d4cd;
+  --font-display: Georgia, "Times New Roman", serif;
+}
+
+@layer base {
+  body { @apply bg-paper font-sans text-ink antialiased; }
+  h1, h2, h3 { @apply font-display font-semibold; }
+  h1 { @apply text-4xl leading-tight sm:text-5xl; }
+  h2 { @apply text-2xl sm:text-3xl; }
+  h3 { @apply text-xl; }
+  label { @apply block text-sm font-semibold; }
+  input:not([type]), select {
+    @apply mt-1 max-w-full rounded-lg border border-line bg-white px-3 py-2 text-ink;
+  }
+  form #search-query { @apply mt-0; }
+  summary { @apply cursor-pointer text-sm font-semibold text-brand; }
+  details[open] > summary { @apply mb-2; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand;
+  }
+  header a:focus-visible { @apply outline-white; }
+  table { @apply w-full border-collapse text-left text-sm; }
+  th, td { @apply border-b border-line px-4 py-3 align-top; }
+  th { @apply bg-tint font-semibold; }
+  tbody tr:last-child td { @apply border-b-0; }
+  meter { accent-color: var(--color-brand); }
+}
+
+@layer components {
+  .card { @apply rounded-2xl border border-line bg-surface p-5; }
+  .button { @apply inline-flex cursor-pointer items-center justify-center rounded-lg bg-brand px-4 py-2 font-semibold text-white hover:bg-brand-dark; }
+  .button-secondary { @apply border border-brand bg-transparent text-brand hover:bg-tint; }
+  .text-link { @apply font-semibold text-brand underline decoration-brand/40 underline-offset-3 hover:decoration-brand; }
+  .muted { @apply text-sm text-muted; }
+  .muted a { @apply underline underline-offset-2; }
+  .badge { @apply inline-block rounded-full px-2.5 py-1 text-xs font-semibold; }
+  .badge-green { @apply bg-green-100 text-green-900; }
+  .badge-orange { @apply bg-orange-100 text-orange-900; }
+  .badge-red { @apply bg-red-100 text-red-900; }
+  .notice { @apply rounded-xl border border-line bg-tint p-4; }
+  .table-wrap { @apply overflow-x-auto rounded-xl border border-line bg-surface; }
+}

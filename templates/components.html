@@ -1,0 +1,93 @@
+{% macro photo_credit(photo) %}
+<p class="muted text-xs">
+  Imagen de referencia · <a href="{{ photo.source }}">{{ photo.author or 'Wikimedia Commons' }}</a> ·
+  {% if photo.license_url %}<a href="{{ photo.license_url }}">{{ photo.license }}</a>{% else %}{{ photo.license }}{% endif %}
+</p>
+{% endmacro %}
+
+{% macro source_list(ids, sources) %}
+{% if ids %}
+<ul class="list-disc space-y-1 pl-5">
+  {% for id in ids %}
+    {% set source = sources[id] %}
+    <li><a class="text-link" href="{{ source.url }}">{{ source.label }}</a>
+      {% if source.revision_url %} · <a class="text-link" href="{{ source.revision_url }}">Revisión {{ source.revision }}</a>{% endif %}
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endmacro %}
+
+{% macro search_form(query='') %}
+<form action="{{ url_for('find') }}" method="get" class="space-y-2">
+  <label for="search-query">Busca un ingrediente</label>
+  <div class="flex flex-wrap gap-2">
+    <input id="search-query" name="q" value="{{ query }}" maxlength="160" required
+           placeholder="Ej. chile poblano para rajas" aria-describedby="search-help" class="min-w-0 flex-1">
+    <button class="button" type="submit">Buscar</button>
+  </div>
+  <p id="search-help" class="muted">Puedes indicar el uso con «para» o «per».</p>
+</form>
+{% endmacro %}
+
+{% macro ingredient_card(item, sources, photos, searched=false) %}
+{% set photo = photos.get(item.id) %}
+<article class="card space-y-3">
+  {% if searched %}<p class="muted">Ingrediente buscado</p>{% endif %}
+  {% if photo %}<img class="aspect-video w-full rounded-xl object-cover" src="{{ photo.thumbnail }}" alt="{{ item.name_es }}">{% endif %}
+  <div>
+    <h2>{{ item.name_es }}</h2>
+    <p class="muted">{{ item.category }}</p>
+  </div>
+  {% if item.name_it %}
+    <span class="badge badge-green">Equivalencia de nombre</span>
+    <p><strong>En italiano</strong> · {{ item.name_it }}</p>
+  {% elif item.reference_it %}
+    <p><strong>{{ reference_labels[item.reference_kind] }}</strong> · {{ item.reference_it }}</p>
+    {% if item.note_it %}<p class="muted">{{ item.note_it }}</p>{% endif %}
+  {% else %}
+    <p class="muted">Sin nombre italiano común confirmado en el catálogo.</p>
+  {% endif %}
+  {% if item.note %}<p>{{ item.note }}</p>{% endif %}
+  <p class="muted">{{ verification_labels[item.verification] }}</p>
+  <details>
+    <summary>Fuentes y nombres alternativos</summary>
+    {% if item.aliases_es %}<p><strong>Español</strong> · {{ item.aliases_es|join(', ') }}</p>{% endif %}
+    {% if item.aliases_it %}<p><strong>{{ 'Italiano' if item.name_it else 'Términos de búsqueda' }}</strong> · {{ item.aliases_it|join(', ') }}</p>{% endif %}
+    {{ source_list(item.sources, sources) }}
+    {% if photo %}{{ photo_credit(photo) }}{% endif %}
+  </details>
+</article>
+{% endmacro %}
+
+{% macro relation_details(relation, sources) %}
+<div class="space-y-2">
+  <p><strong>{{ relation.context }}</strong> {{ relation.reason }}</p>
+  <p>{{ relation.limitations }}</p>
+  <p class="muted">
+    {{ evidence_labels.get(relation.evidence, verification_labels[relation.verification]) }}
+    {% if relation.type != 'not_equivalent' %}
+      · {{ 'Revisión culinaria aceptada' if relation.human_review == 'accepted' else 'Pendiente de revisión culinaria' }}
+    {% endif %}
+  </p>
+  <details><summary>Fuentes de esta relación</summary>{{ source_list(relation.sources, sources) }}</details>
+</div>
+{% endmacro %}
+
+{% macro relation_card(relations, sources, photos) %}
+{% set first = relations[0] %}
+{% set photo = photos.get(first.to) %}
+{% set warning = first.type == 'not_equivalent' %}
+<article class="card flex flex-col gap-4 sm:flex-row">
+  {% if photo %}<img class="aspect-square w-28 shrink-0 self-start rounded-xl object-cover" loading="lazy" src="{{ photo.thumbnail }}" alt="{{ first.target_name_es }}">{% endif %}
+  <div class="min-w-0 space-y-3">
+    <span class="badge {{ 'badge-red' if warning else 'badge-orange' }}">{{ 'No equivalente' if warning else 'Sustitución culinaria' }}</span>
+    <div>
+      <h3>{{ first.target_name_it }}</h3>
+      <p class="muted">{{ first.target_name_es }}</p>
+    </div>
+    {% for relation in relations %}{{ relation_details(relation, sources) }}{% endfor %}
+    {% if photo %}{{ photo_credit(photo) }}{% endif %}
+  </div>
+</article>
+{% endmacro %}

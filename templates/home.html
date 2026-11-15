@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% from 'components.html' import search_form, photo_credit %}
+{% block content %}
+<section class="card grid items-center gap-7 md:grid-cols-[3fr_2fr] md:p-8">
+  <div class="space-y-5">
+    <h1>Cocina como en casa, desde Italia</h1>
+    <p class="max-w-xl text-lg text-muted">Encuentra ingredientes mexicanos por su nombre en italiano o busca un sustituto para tu platillo.</p>
+    {{ search_form() }}
+    <a class="text-link inline-block" href="{{ url_for('recipes_page') }}">Explorar recetas mexicanas →</a>
+  </div>
+  <figure class="space-y-2">
+    <img class="aspect-[4/3] w-full rounded-2xl object-cover" src="{{ hero.thumbnail }}" alt="Guacamole preparado en un molcajete de piedra">
+    <figcaption>{{ photo_credit(hero) }}</figcaption>
+  </figure>
+</section>
+<section class="mt-10 space-y-4">
+  <h2>Prueba una búsqueda</h2>
+  <div class="grid gap-4 sm:grid-cols-3">
+    {% for query, description, kind, color in examples %}
+      <article class="card flex flex-col items-start gap-3">
+        <span class="badge badge-{{ color }}">{{ kind }}</span>
+        <h3>{{ query }}</h3>
+        <p class="text-muted">{{ description }}</p>
+        <a class="text-link mt-auto" href="{{ url_for('find', q=query) }}" aria-label="Probar búsqueda: {{ query }}">Probar búsqueda →</a>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
