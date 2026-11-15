@@ -2,7 +2,7 @@
 {% block content %}
 <section class="card home-hero flex items-center p-6 sm:p-9">
   <div class="home-hero-media" aria-hidden="true">
-    <img src="https://static-dm.barcelo.com/is/image/barcelo/comida-mexicana-Tacos-al-pastor?fmt=webp-alpha&amp;qlt=75&amp;wid=1200&amp;fit=crop,1" alt="">
+    <img src="{{ url_for('static', filename='inicio-fondo.png') }}" alt="">
   </div>
   <div class="home-hero-content w-full space-y-5">
     <h1>Cocina como en casa</h1>
@@ -30,7 +30,7 @@
     <ul aria-label="Búsquedas de ejemplo" class="flex flex-wrap gap-2">
       {% for label, query, icon in quick_searches %}
         <li>
-          <a href="{{ url_for('find', q=query) }}" class="inline-flex min-h-11 items-center gap-2 rounded-full bg-white/30 px-3 py-2 text-sm font-semibold text-white hover:bg-white/40">
+          <a href="{{ url_for('find', q=query) }}" class="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/25 bg-white/30 px-3 py-2 text-sm font-semibold text-white backdrop-blur-md hover:bg-white/40">
             <svg aria-hidden="true" class="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="{{ icon }}"/>
             </svg>
