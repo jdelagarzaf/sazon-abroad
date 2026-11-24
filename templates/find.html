@@ -7,6 +7,7 @@
   <div class="space-y-2">
     <h1 id="find-heading">Búsqueda de ingredientes</h1>
     <p class="text-muted">Encuentra el nombre italiano o un sustituto para tu platillo.</p>
+    <p class="text-sm"><a class="text-link" href="{{ url_for('adapt_ingredient', q=query) }}">Adaptar con IA local · preguntas libres y otros países</a></p>
   </div>
   <div class="find-search-panel space-y-3 rounded-2xl p-3 sm:p-4">
     <form action="{{ url_for('find') }}" method="get" role="search" class="flex items-stretch gap-2">

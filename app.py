@@ -5,6 +5,9 @@ from functools import lru_cache
 
 from flask import Flask, render_template, request
 
+from adaptation import AdaptationRequest, AdaptationService
+from local_model import ModelError, ModelSettings, OllamaClient
+
 from evaluation import DEVELOPMENT_PATH, FINAL_PATH, GROUPS, SNAPSHOT_PATH, evaluate, evaluate_final, load_cases
 from ingredient_views import (
     CATALOG_PATH, EVIDENCE_LABELS, PROPERTY_LABELS, REFERENCE_LABELS, VERIFICATION_LABELS,
@@ -14,6 +17,8 @@ from recipe_plans import load_recipes, make_plan, resolve_ingredients
 from search import METHODS, normalize
 
 app = Flask(__name__)
+app.config["MAX_CONTENT_LENGTH"] = 16 * 1024
+adaptation_service = AdaptationService()
 app.jinja_env.globals.update(
     verification_labels=VERIFICATION_LABELS,
     reference_labels=REFERENCE_LABELS,
@@ -111,6 +116,27 @@ def catalog_page():
         uses=catalog["uses"],
         relations=index.relations_for(selected["id"]) if selected else [],
     )
+
+
+@app.route("/adaptar", methods=["GET", "POST"])
+def adapt_ingredient():
+    values = {**AdaptationRequest(query=request.args.get("q", "")[:500]).__dict__}
+    response, error, error_code, status = None, None, None, 200
+    if request.method == "POST":
+        values.update({key: request.form.get(key, default) for key, default in values.items()})
+        try:
+            context = AdaptationRequest.from_mapping(values)
+            catalog, index = get_catalog()
+            client = OllamaClient(ModelSettings.from_env())
+            response = adaptation_service.adapt(context, catalog, index, client)
+        except ValueError as exc:
+            error, error_code, status = str(exc), "input", 400
+        except ModelError as exc:
+            error, error_code = str(exc), exc.code
+            status = 504 if exc.code == "timeout" else 502 if exc.code == "invalid_response" else 503
+    return render_template(
+        "adapt.html", values=values, adaptation=response, error=error, error_code=error_code,
+    ), status
 
 
 @app.get("/recetas")

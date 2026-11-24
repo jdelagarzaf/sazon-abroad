@@ -14,6 +14,12 @@ python -m venv .venv
 
 En macOS y Linux, usa `.venv/bin/python` en los dos últimos comandos. Abre <http://127.0.0.1:5000>. La app lee `data/catalog.json`, con 78 ingredientes del catálogo mexicano y 15 referencias italianas. En **Catálogo** puedes filtrar por categoría y estado, abrir la ficha o consultar la fuente.
 
+## Adaptación con IA local
+
+La nueva pantalla **Adaptar con IA** permite preguntas libres e ingredientes fuera del catálogo, con México → Italia como configuración inicial y otros trayectos experimentales. Usa un modelo local a través de Ollama y distingue el nombre del original de una sustitución por uso. Las propuestas se muestran pendientes de verificación culinaria.
+
+Consulta la [guía de instalación, configuración y pruebas](docs/ia-local.md) y el [plan por fases](docs/plan-adaptacion-ia-local.md). El buscador documental, las recetas existentes y la evaluación histórica siguen disponibles.
+
 ## Editar la interfaz
 
 - `templates/base.html` define la estructura general y la navegación. Las otras plantillas en `templates/` contienen el HTML de cada página. `templates/components.html` contiene el buscador, las tarjetas y las listas de fuentes que comparten varias páginas.

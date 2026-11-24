@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% from 'components.html' import source_list %}
+{% block title %}Adaptar con IA · Sazón Abroad{% endblock %}
+{% block content %}
+<section class="space-y-5" aria-labelledby="adapt-heading">
+  <div class="space-y-2">
+    <h1 id="adapt-heading">Cocina entre países</h1>
+    <p class="text-muted">Busca un ingrediente o pregunta qué usar en tu platillo.</p>
+    <p class="text-sm text-muted">México → Italia es el caso inicial. Otros trayectos son experimentales.</p>
+  </div>
+  <form id="adapt-form" method="post" action="{{ url_for('adapt_ingredient') }}" class="adapt-panel space-y-4 rounded-2xl border border-line bg-surface p-5" aria-describedby="adapt-help">
+    <div>
+      <label for="adapt-query">¿Qué quieres adaptar?</label>
+      <input id="adapt-query" name="query" value="{{ values.query }}" maxlength="500" required
+             placeholder="¿Qué uso en vez de poblano para rajas?" class="w-full">
+    </div>
+    <div class="grid gap-4 sm:grid-cols-2">
+      <div><label for="origin-country">País de origen</label><input id="origin-country" name="origin_country" value="{{ values.origin_country }}" maxlength="160" required class="w-full"></div>
+      <div><label for="destination-country">País de destino</label><input id="destination-country" name="destination_country" value="{{ values.destination_country }}" maxlength="160" required class="w-full"></div>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-2">
+      <div><label for="culinary-use">Platillo o uso <span class="font-normal">(opcional)</span></label><input id="culinary-use" name="culinary_use" value="{{ values.culinary_use }}" maxlength="160" placeholder="Rajas con crema" class="w-full"></div>
+      <div><label for="restrictions">Restricciones <span class="font-normal">(opcional)</span></label><input id="restrictions" name="restrictions" value="{{ values.restrictions }}" maxlength="500" placeholder="Sin gluten, vegano…" class="w-full"></div>
+    </div>
+    <details>
+      <summary>Idiomas y presentación</summary>
+      <div class="grid gap-4 pt-3 sm:grid-cols-2">
+        <div><label for="source-language">Idioma de origen</label><input id="source-language" name="source_language" value="{{ values.source_language }}" maxlength="160" required placeholder="es" class="w-full"></div>
+        <div><label for="target-language">Idioma de los nombres locales</label><input id="target-language" name="target_language" value="{{ values.target_language }}" maxlength="160" required placeholder="it" class="w-full"></div>
+        <div><label for="ui-language">Idioma de la explicación</label><input id="ui-language" name="ui_language" value="{{ values.ui_language }}" maxlength="160" required placeholder="es" class="w-full"></div>
+        <div><label for="preparation">Presentación del ingrediente</label><input id="preparation" name="preparation" value="{{ values.preparation }}" maxlength="160" placeholder="Fresco, seco, en conserva…" class="w-full"></div>
+      </div>
+    </details>
+    <p id="adapt-help" class="text-sm text-muted">La adaptación se procesa en este equipo. Puedes consultar ingredientes que no estén en el catálogo.</p>
+    <div class="flex flex-wrap items-center gap-3">
+      <button id="adapt-submit" class="button" type="submit">Adaptar ingrediente</button>
+      <a class="text-link text-sm" href="{{ url_for('find', q=values.query[:160]) }}">Consultar catálogo México–Italia</a>
+    </div>
+    <p id="adapt-progress" role="status" hidden>Preparando la adaptación… La primera consulta puede tardar mientras carga el modelo.</p>
+  </form>
+</section>
+{% if error %}
+  <section class="notice mt-5 space-y-2" role="alert">
+    <h2 class="text-xl">{{ 'Revisa tu consulta' if error_code == 'input' else 'No pudimos generar la adaptación' }}</h2>
+    <p>{{ error }}</p>
+    {% if error_code in ['unavailable', 'model_missing', 'configuration', 'server_error'] %}<p class="text-sm">La guía de instalación está en <code>docs/ia-local.md</code> del proyecto.</p>{% endif %}
+    <p class="text-sm">Tu consulta se conserva arriba para volver a intentar.</p>
+  </section>
+{% endif %}
+{% if adaptation %}
+  {% set result = adaptation.result %}
+  {% set labels = {'same_ingredient': 'Mismo ingrediente', 'descriptive': 'Cómo buscar el original', 'substitute': 'Adaptación para este uso', 'no_proposal': 'Sin propuesta suficiente'} %}
+  <section class="mt-8 space-y-4" aria-labelledby="adapt-result-heading">
+    <article class="adapt-panel space-y-3 rounded-2xl border border-line bg-surface p-5">
+      <p class="text-sm font-semibold text-brand">{{ labels[result.kind] }} · {{ values.destination_country }}</p>
+      <h2 id="adapt-result-heading">{{ result.original_name }}{% if result.local_name %} → {{ result.local_name }}{% endif %}</h2>
+      {% if not adaptation.name_only %}<p>{{ result.summary }}</p>{% endif %}
+      {% if result.culinary_use %}<p class="text-sm"><strong>Uso:</strong> {{ result.culinary_use }}</p>{% endif %}
+      {% if result.clarification %}<p class="notice"><strong>Para continuar:</strong> {{ result.clarification }}</p>{% endif %}
+      {% for warning in result.warnings %}<p class="notice text-sm"><strong>Ten en cuenta:</strong> {{ warning }}</p>{% endfor %}
+      <p class="text-sm text-muted">Propuesta de IA local · pendiente de verificación culinaria.</p>
+    </article>
+    {% for alternative in result.alternatives %}
+      <article class="adapt-panel space-y-3 rounded-2xl border border-line bg-surface p-5">
+        <p class="text-sm font-semibold text-brand">Alternativa para {{ result.culinary_use }}</p>
+        <h3 class="text-2xl">{{ alternative.local_name }}</h3>
+        {% if alternative.adjustment %}<p class="text-sm"><strong>Ajuste:</strong> {{ alternative.adjustment }}</p>{% endif %}
+        <p class="text-sm"><strong>Ten en cuenta:</strong> {{ alternative.limitation }}</p>
+        <details><summary>Por qué puede servir</summary><p class="pt-2">{{ alternative.reason }}</p></details>
+      </article>
+    {% endfor %}
+    <details class="adapt-panel rounded-2xl border border-line bg-surface p-5">
+      <summary>Procedencia y referencias</summary>
+      <div class="space-y-2 pt-2 text-sm">
+        <p>Modelo: {{ adaptation.model }} · {{ adaptation.elapsed_seconds }} s{% if adaptation.cached %} · respuesta recuperada de caché{% endif %}.</p>
+        <p>Las referencias aportan contexto documental. No verifican automáticamente la propuesta generada.</p>
+        {% if adaptation.sources %}{{ source_list(adaptation.sources|list, adaptation.sources) }}{% else %}<p>Sin referencias documentales citadas para esta propuesta.</p>{% endif %}
+      </div>
+    </details>
+  </section>
+{% endif %}
+<script src="{{ url_for('static', filename='adapt.js') }}" defer></script>
+{% endblock %}

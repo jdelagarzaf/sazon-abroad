@@ -1,6 +1,6 @@
 # Plan preliminar: adaptación culinaria con IA local
 
-Fecha: 24 de noviembre de 2026. Estado: propuesta previa a implementación.
+Fecha: 24 de noviembre de 2026. Estado: plan por fases; primera fase completada técnicamente. Seguimiento y límites al final.
 
 ## Objetivo
 
@@ -8,7 +8,7 @@ Evolucionar Sazón Abroad hacia una herramienta que adapte ingredientes y receta
 
 La primera entrega validará el enfoque con un modelo pequeño ejecutado localmente. La arquitectura admitirá otros países e idiomas; eso no significa prometer calidad universal antes de evaluarlos.
 
-## Punto de partida revisado
+## Punto de partida antes de esta iteración
 
 - Flask y Jinja sirven la aplicación; Tailwind define sus estilos. No hace falta cambiar de framework.
 - `search.py` resuelve nombres, erratas y usos mediante el catálogo y vocabularios español–italiano. No interpreta de forma general preguntas libres.
@@ -24,9 +24,9 @@ Hay modificaciones previas en el repositorio. La implementación deberá conserv
 
 ### 1. Modelo local para comprender y adaptar
 
-Usar Ollama como servidor local y un adaptador Python independiente de las rutas Flask. Candidato inicial: `qwen3:4b`, cuantizado; comparar con `qwen3:1.7b` si el equipo necesita una opción menor. La elección final dependerá de pruebas de español, italiano, adaptación culinaria y latencia en el equipo de demostración.
+Usar Ollama como servidor local y un adaptador Python independiente de las rutas Flask. Tras las pruebas de integración, la configuración inicial seleccionada es `qwen2.5:3b` Instruct, cuantizado. Su calidad culinaria y la de futuros candidatos deberán compararse con casos reservados y revisión humana antes de habilitar trayectos estables adicionales.
 
-La ficha de Ollama publica un archivo de aproximadamente 2,5 GB para `qwen3:4b`; ese tamaño no equivale a la RAM necesaria durante la ejecución. Aún falta verificar RAM, GPU y tiempos reales. No se instalará ni descargará nada como parte de este documento.
+La ficha de Ollama publica un archivo de aproximadamente 1,9 GB para `qwen2.5:3b`; ese tamaño no equivale a la RAM necesaria durante la ejecución. En esta fase Ollama informó aproximadamente 2,17 GB residentes por CPU. La instalación y los tiempos observados están documentados en el registro de validación.
 
 El modelo recibirá ingrediente, presentación, receta o uso, países, idiomas y restricciones. Devolverá JSON con un esquema validado por el servidor:
 
@@ -121,7 +121,7 @@ Implementar por entregas pequeñas. No migrar todo el catálogo ni incorporar pr
 
 ## Evaluación propuesta
 
-Crear antes de ajustar prompts un conjunto reservado de al menos 40 casos México → Italia: identidad, sustitución por función, preguntas libres, ingredientes ausentes del catálogo, ambigüedad, restricciones y abstención. Añadir cinco recetas no usadas durante el desarrollo y diez casos del segundo trayecto.
+Crear, antes de nuevos ajustes de prompts basados en esa evaluación, un conjunto reservado de al menos 40 casos México → Italia: identidad, sustitución por función, preguntas libres, ingredientes ausentes del catálogo, ambigüedad, restricciones y abstención. Excluir las consultas utilizadas en la demo, las pruebas de humo y la depuración de esta fase. Añadir cinco recetas no usadas durante el desarrollo y diez casos del segundo trayecto.
 
 Comparar buscador actual, modelo local sin contexto documental y modelo con contexto local sencillo. Evaluar con revisión humana: identidad correcta, utilidad culinaria, ajuste necesario, respeto de restricciones, abstención y procedencia. No comparar porcentajes nuevos directamente con el benchmark histórico si cambia la tarea o el conjunto.
 
@@ -152,6 +152,24 @@ Incluir tres casos explicables: jitomate como identidad, poblano con propuestas 
 Consultadas el 24 de noviembre de 2026. Sustentan la viabilidad técnica; no prueban la calidad culinaria del modelo.
 
 - [Ollama: salidas estructuradas y validación con esquema](https://docs.ollama.com/capabilities/structured-outputs).
+- [Ollama: Qwen2.5 3B Instruct, configuración inicial seleccionada](https://ollama.com/library/qwen2.5:3b).
 - [Ollama: ficha de Qwen3 4B, cuantización y tamaño del archivo](https://ollama.com/library/qwen3:4b).
 - [Ollama: variantes de Qwen3](https://ollama.com/library/qwen3).
 - [Brave Search API: búsqueda web, contexto local y parámetros de país e idioma](https://api-dashboard.search.brave.com/app/documentation/web-search/get-started).
+
+## Seguimiento de ejecución · 24 de noviembre de 2026
+
+| Fase | Estado |
+| --- | --- |
+| 0. Línea base | Completada: 13 pruebas originales correctas con `.venv`; revisión del código y de la interfaz. |
+| 1. IA local | Completada técnicamente: inferencia real, interfaz, validación y caché comprobadas. Calidad culinaria experimental. |
+| 2. Presentación | Pendiente: simplificar las fichas heredadas; la pantalla nueva ya presenta una vista compacta. |
+| 3. Recetas | Pendiente. |
+| 4. Comercios | Pendiente. |
+| 5. Evaluación completa | Pendiente: conjunto reservado, revisión culinaria y medición suficiente de latencia. |
+
+La primera fase añade contratos neutrales, cliente Ollama local, validación estructural y comprobaciones de coherencia, referencias por ID, caché y la ruta `/adaptar`. La guía [IA local](ia-local.md) contiene los pasos de instalación y las pruebas. Las 40 pruebas automáticas actuales incluyen las 13 originales; no constituyen aceptación culinaria. El [registro de validación](fase-1-validacion.md) documenta la ejecución real y sus límites.
+
+Las primeras pruebas con Qwen3 detectaron modos de razonamiento no compatibles con la configuración solicitada, latencia excesiva por CPU y salidas incorrectas al forzar su desactivación. No son una comparación controlada de tamaños. Se adopta `qwen2.5:3b` Instruct para la configuración inicial, con contexto de 4096 tokens y espera de transporte de 120 segundos. El cliente detecta las capacidades del modelo antes de generar. La instalación portátil y el modelo se guardan fuera del control de versiones, en `.runtime/`.
+
+La ejecución final comprobó jitomate → pomodoro, poblano para rajas → peperone verde como sustituto, masa harina como el original nixtamalizado y anís estrellado → anice stellato sin ampliar el catálogo. La interfaz también comprobó jitomate → Tomate con destino Alemania. Las consultas de nombre registraron unos 2 segundos y las contextuales 31–32 segundos por CPU en esa ejecución. La evaluación reservada debe priorizar nombres nuevos y destinos adicionales: durante el desarrollo se observaron traducciones incorrectas para hojas de curry y anís estrellado en alemán.

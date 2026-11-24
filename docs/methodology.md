@@ -80,3 +80,11 @@ El acierto de uso exige recuperar primero el ingrediente esperado, mostrar los c
 El catálogo ampliado recuperó la tostada de maíz, pero el buscador no reconoció «base crujiente» como uso. Tampoco recuperó el ingrediente de origen en dos preguntas abiertas, una sobre Oaxaca para quesadillas y otra sobre guajillo en adobo. Los tres casos dejaron cuatro opciones esperadas sin mostrar.
 
 Estos resultados miden coincidencia con etiquetas editoriales en una muestra pequeña. La tasa de aceptación culinaria sigue pendiente de revisión humana. Para reproducir la evaluación, usa `python evaluation.py --final`. Añade `--group habitual` o `--group especializado` para consultar cada grupo.
+
+## Extensión con IA local
+
+La primera fase de la extensión incorpora inferencia local para preguntas libres e ingredientes no incluidos en el catálogo. La evaluación histórica anterior se conserva: sus cifras describen el buscador documental, no el modelo generativo nuevo.
+
+Las comprobaciones de contrato verifican formato, procedencia de IDs de fuentes, abstención estructural, caché y manejo de fallos. Las pruebas con respuestas simuladas no acreditan conocimiento culinario. `scripts/check_local_ai.py` permite comprobar por separado la inferencia real y guardar respuestas para revisión; tampoco sustituye la aceptación culinaria humana ni una medición de latencia con suficientes muestras.
+
+El [plan de adaptación](plan-adaptacion-ia-local.md) define la comparación futura entre buscador, modelo sin contexto y modelo con evidencia local. La [guía de IA local](ia-local.md) documenta la configuración y sus límites. Los trayectos adicionales siguen siendo experimentales y las propuestas generadas se presentan pendientes de verificación.
