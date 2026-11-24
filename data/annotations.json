@@ -87,6 +87,130 @@
     "sep_milpa": {
       "label": "Nueva Escuela Mexicana · Las recetas de la milpa",
       "url": "https://nemd.aprende.gob.mx/contenido/coleccion/las-recetas-de-la-milpa-2/"
+    },
+    "gob_quesos": {
+      "label": "Secretaría de Agricultura · Quesos mexicanos",
+      "url": "https://www.gob.mx/agricultura/articulos/elaboracion-de-quesos-arte-que-enriquece-los-sabores"
+    },
+    "bayless_quesillo": {
+      "label": "Rick Bayless · Elaboración del quesillo oaxaqueño",
+      "url": "https://www.rickbayless.com/recipe/oaxacan-string-cheese/"
+    },
+    "bayless_piedrazo": {
+      "label": "Rick Bayless · Piedrazo oaxaqueño",
+      "url": "https://www.rickbayless.com/recipe/oaxacan-piedrazo-bar-snack-or-salad/"
+    },
+    "galbani_mozzarella": {
+      "label": "Galbani · Mozzarella y humedad al fundir",
+      "url": "https://www.galbani.it/abcucina/lo-sapevi-che/tutto-sulla-pizza/tagliare-mozzarella-per-pizza"
+    },
+    "galbani_scamorza": {
+      "label": "Galbani · Quesos de pasta hilada",
+      "url": "https://www.galbani.it/abcucina/come-fare/formaggi/tutto-su-formaggi-e-latticini"
+    },
+    "primosale_vaccino": {
+      "label": "Caseificio La Piana · Ficha del primo sale de vaca",
+      "url": "https://www.dolciariamanna.it/wp-content/uploads/2024/03/LA-PIANA-Primo-sale.pdf"
+    },
+    "pecorino_romano": {
+      "label": "Consorzio del Pecorino Romano · Características",
+      "url": "https://www.pecorinoromano.com/pecorino-romano/caratteristiche"
+    },
+    "parmigiano_reggiano": {
+      "label": "Consorzio del Parmigiano Reggiano · Textura y usos",
+      "url": "https://www.parmigianoreggiano.com/en-US/product-guide-seals-and-marks"
+    },
+    "norma_piloncillo": {
+      "label": "Secretaría de Economía · Especificaciones del piloncillo",
+      "url": "https://platiica.economia.gob.mx/normalizacion/wp-content/uploads/sites/2/PDF_Normas_Publicas/NMX-F-596-SCFI-2016.pdf"
+    },
+    "bayless_cafe_olla": {
+      "label": "Rick Bayless · Café de olla con jarabe especiado",
+      "url": "https://www.rickbayless.com/recipe/mexican-spiced-coffee/"
+    },
+    "conabio_nopal": {
+      "label": "CONABIO · Nopales",
+      "url": "https://biodiversidad.gob.mx/diversidad/alimentos/nopales"
+    },
+    "gob_tomatillo": {
+      "label": "Secretaría de Agricultura · Tomatillo",
+      "url": "https://www.gob.mx/agricultura/articulos/147097"
+    },
+    "bayless_sopa_azteca": {
+      "label": "Rick Bayless · Sopa azteca",
+      "url": "https://www.rickbayless.com/recipe/sopa-azteca/"
+    },
+    "bayless_tinga": {
+      "label": "Rick Bayless · Tinga de pollo",
+      "url": "https://www.rickbayless.com/recipe/chicken-tinga-tacos/"
+    },
+    "bayless_esquites": {
+      "label": "Rick Bayless · Esquites",
+      "url": "https://www.rickbayless.com/recipe/esquites/"
+    },
+    "bayless_quesadillas": {
+      "label": "Rick Bayless · Quesadillas de queso y chile",
+      "url": "https://www.rickbayless.com/recipe/mexico-city-style-quesadillas-with-cheese-and-chile-or-mushrooms/"
+    },
+    "conabio_nopalitos": {
+      "label": "CONABIO · Nopalitos en la cocina mexicana",
+      "url": "https://www.biodiversidad.gob.mx/diversidad/alimentos/que-nos-aportan/N_nopales"
+    },
+    "gob_chilaca": {
+      "label": "Secretaría de Agricultura · Chile chilaca y pasilla",
+      "url": "https://www.gob.mx/agricultura/articulos/mexico-cuna-del-chile-riqueza-genetica-que-da-sabor-al-mundo?idiom=es"
+    },
+    "sep_pasilla_morita": {
+      "label": "SEP · Presentaciones de los chiles secos",
+      "url": "https://nuevaescuelamexicana.sep.gob.mx/contenido/recurso/41033/"
+    },
+    "gob_chipotle_adobo": {
+      "label": "SIAP · Chile chipotle en adobo",
+      "url": "https://www.gob.mx/agricultura%7Cdgsiap/articulos/ahumado-y-deshidratado-el-chipotle-sigue-siendo-apreciado"
+    },
+    "gob_tostadas": {
+      "label": "Secretaría de Agricultura · Tostadas mexicanas",
+      "url": "https://www.gob.mx/agricultura/articulos/tostadas-mexicanas-un-clasico-para-la-fiesta-mexicana?idiom=es"
+    },
+    "inifap_jamaica": {
+      "label": "INIFAP · Aprovechamiento del cáliz seco de jamaica",
+      "url": "https://www.gob.mx/agricultura/prensa/desarrolla-inifap-metodos-para-aprovechamiento-del-caliz-de-jamaica?idiom=es"
+    },
+    "gob_agua_jamaica": {
+      "label": "SIAP · Agua de jamaica",
+      "url": "https://www.gob.mx/agricultura%7Cdgsiap/es/articulos/bebida-de-flor-de-jamaica-ademas-de-sabrosa-es-saludable-y-refrescante"
+    },
+    "conabio_chayote": {
+      "label": "CONABIO · Chayote",
+      "url": "https://www.biodiversidad.gob.mx/diversidad/alimentos/que-nos-aportan/N_chayotes"
+    },
+    "bayless_achiote": {
+      "label": "Rick Bayless · Achiote en la cochinita pibil",
+      "url": "https://www.rickbayless.com/recipe/slow-cooked-achiote-pork/"
+    },
+    "conabio_huitlacoche": {
+      "label": "CONABIO · Huitlacoche",
+      "url": "https://biomx.biodiversidad.gob.mx/diversidad/medicinal/hongos-liquenes"
+    },
+    "bayless_quesadillas_huitlacoche": {
+      "label": "Rick Bayless · Rellenos de quesadillas",
+      "url": "https://www.rickbayless.com/recipe/golden-fried-quesadillas-aka-mexico-city-style-quesadillas/"
+    },
+    "agrovoc_maiz": {
+      "label": "FAO AGROVOC · Maíz",
+      "url": "https://agrovoc.fao.org/browse/agrovoc/es/page/c_12332"
+    },
+    "agrovoc_maiz_dulce": {
+      "label": "FAO AGROVOC · Maíz dulce",
+      "url": "https://agrovoc.fao.org/browse/agrovoc/es/page/c_7552"
+    },
+    "agrovoc_chayote": {
+      "label": "FAO AGROVOC · Sechium edule",
+      "url": "https://agrovoc.fao.org/browse/agrovoc/es/page/c_6920"
+    },
+    "agrovoc_jamaica": {
+      "label": "FAO AGROVOC · Hibiscus sabdariffa",
+      "url": "https://agrovoc.fao.org/browse/agrovoc/es/page/c_4035"
     }
   },
   "local_ingredients": {
@@ -96,11 +220,47 @@
       ],
       "reference_it": "farina di mais nixtamalizzata",
       "reference_kind": "description",
-      "note_it": "Traducción descriptiva de la etiqueta que conviene buscar."
+      "note_it": "Traducción descriptiva de la etiqueta que conviene buscar.",
+      "properties": {
+        "process": {
+          "value": "Masa de maíz nixtamalizado que se seca y muele.",
+          "sources": [
+            "masienda_masa"
+          ]
+        },
+        "texture": {
+          "value": "Al hidratarse forma una masa que se puede prensar para tortillas.",
+          "sources": [
+            "masienda_masa"
+          ]
+        }
+      }
     },
     "tomatillo": {
       "reference_it": "Physalis philadelphica",
-      "reference_kind": "scientific"
+      "reference_kind": "scientific",
+      "properties": {
+        "flavor": {
+          "value": "Aporta una acidez fresca a las salsas.",
+          "sources": [
+            "gob_tomatillo"
+          ]
+        },
+        "part": {
+          "value": "Fruto con cáscara delgada y seca que se retira antes de cocinar.",
+          "sources": [
+            "gob_tomatillo"
+          ]
+        }
+      },
+      "substitution_gaps": {
+        "salsa_verde": {
+          "reason": "El fruto aporta la acidez de esta salsa. El jitomate verde o sin madurar es otro ingrediente.",
+          "sources": [
+            "gob_tomatillo"
+          ]
+        }
+      }
     },
     "polenta": {
       "sources": [
@@ -114,7 +274,15 @@
         "inifap_guajillo"
       ],
       "reference_it": "guajillo",
-      "reference_kind": "documented"
+      "reference_kind": "documented",
+      "properties": {
+        "process": {
+          "value": "El guajillo es la presentación seca del chile mirasol.",
+          "sources": [
+            "inifap_guajillo"
+          ]
+        }
+      }
     },
     "jicama": {
       "reference_it": "Pachyrhizus erosus",
@@ -125,7 +293,23 @@
         "gob_epazote"
       ],
       "reference_it": "Dysphania ambrosioides",
-      "reference_kind": "scientific"
+      "reference_kind": "scientific",
+      "properties": {
+        "flavor": {
+          "value": "Hierba de aroma marcado que se usa para sazonar frijoles y guisos.",
+          "sources": [
+            "gob_epazote"
+          ]
+        }
+      },
+      "substitution_gaps": {
+        "frijoles_de_olla": {
+          "reason": "El epazote aporta su aroma propio. Todavía no hay una alternativa documentada en el catálogo para conservarlo en frijoles de olla.",
+          "sources": [
+            "gob_epazote"
+          ]
+        }
+      }
     },
     "oregano_mexicano": {
       "reference_it": "Lippia graveolens",
@@ -187,6 +371,413 @@
         "bayless_feta"
       ],
       "reference_it": "feta dal gusto delicato",
+      "reference_kind": "description"
+    },
+    "queso_oaxaca": {
+      "reference_it": "formaggio messicano a pasta filata (quesillo)",
+      "reference_kind": "description",
+      "sources": [
+        "gob_quesos",
+        "bayless_quesillo"
+      ],
+      "properties": {
+        "texture": {
+          "value": "Suave y fibrosa; se separa en hebras.",
+          "sources": [
+            "gob_quesos"
+          ]
+        },
+        "process": {
+          "value": "La cuajada caliente se estira para formar tiras.",
+          "sources": [
+            "bayless_quesillo"
+          ]
+        }
+      }
+    },
+    "queso_panela": {
+      "reference_it": "formaggio fresco messicano tipo panela",
+      "reference_kind": "description",
+      "sources": [
+        "gob_quesos"
+      ],
+      "properties": {
+        "process": {
+          "value": "Queso fresco.",
+          "sources": [
+            "gob_quesos"
+          ]
+        },
+        "flavor": {
+          "value": "Suave, adecuado para servir en frío.",
+          "sources": [
+            "gob_quesos"
+          ]
+        }
+      }
+    },
+    "queso_cotija": {
+      "reference_it": "formaggio messicano stagionato (Cotija)",
+      "reference_kind": "description",
+      "sources": [
+        "gob_quesos"
+      ],
+      "properties": {
+        "texture": {
+          "value": "Seco y se puede desmoronar.",
+          "sources": [
+            "gob_quesos"
+          ]
+        },
+        "flavor": {
+          "value": "Marcado y salado.",
+          "sources": [
+            "gob_quesos"
+          ]
+        }
+      }
+    },
+    "piloncillo": {
+      "reference_it": "zucchero di canna grezzo in cono",
+      "reference_kind": "description",
+      "sources": [
+        "norma_piloncillo"
+      ],
+      "properties": {
+        "process": {
+          "value": "Jugo de caña concentrado por ebullición y solidificado en moldes.",
+          "sources": [
+            "norma_piloncillo"
+          ]
+        }
+      }
+    },
+    "mozzarella": {
+      "reference_it": "mozzarella",
+      "reference_kind": "documented",
+      "sources": [
+        "galbani_mozzarella"
+      ],
+      "properties": {
+        "moisture": {
+          "value": "La mozzarella fresca puede soltar suero en caliente; la presentación para pizza suele soltar menos.",
+          "sources": [
+            "galbani_mozzarella"
+          ]
+        },
+        "melting": {
+          "value": "Funde y forma hilos.",
+          "sources": [
+            "galbani_mozzarella"
+          ]
+        }
+      }
+    },
+    "scamorza": {
+      "reference_it": "scamorza bianca",
+      "reference_kind": "documented",
+      "sources": [
+        "galbani_scamorza"
+      ],
+      "properties": {
+        "melting": {
+          "value": "Queso de pasta hilada que se ablanda y funde en caliente.",
+          "sources": [
+            "galbani_scamorza"
+          ]
+        }
+      }
+    },
+    "primo_sale": {
+      "reference_it": "primo sale di latte vaccino",
+      "reference_kind": "documented",
+      "sources": [
+        "primosale_vaccino"
+      ]
+    },
+    "pecorino_romano": {
+      "reference_it": "Pecorino Romano",
+      "reference_kind": "documented",
+      "sources": [
+        "pecorino_romano"
+      ],
+      "properties": {
+        "texture": {
+          "value": "Pasta dura apta para rallar en su versión más añejada.",
+          "sources": [
+            "pecorino_romano"
+          ]
+        },
+        "flavor": {
+          "value": "Sabor intenso en la versión para rallar.",
+          "sources": [
+            "pecorino_romano"
+          ]
+        }
+      }
+    },
+    "parmigiano_reggiano": {
+      "reference_it": "Parmigiano Reggiano",
+      "reference_kind": "documented",
+      "sources": [
+        "parmigiano_reggiano"
+      ]
+    },
+    "azucar_morena_oscura": {
+      "reference_it": "zucchero di canna scuro e morbido",
+      "reference_kind": "description",
+      "sources": [
+        "bayless_cafe_olla"
+      ]
+    },
+    "chile_poblano": {
+      "properties": {
+        "process": {
+          "value": "Se puede asar, pelar y cortar en tiras para hacer rajas.",
+          "sources": [
+            "gob_poblano",
+            "bayless_rajas"
+          ]
+        }
+      }
+    },
+    "maiz": {
+      "sources": [
+        "agrovoc_maiz"
+      ]
+    },
+    "nopal": {
+      "reference_it": "pale tenere di fico d’India",
+      "reference_kind": "description",
+      "sources": [
+        "conabio_nopal"
+      ],
+      "properties": {
+        "part": {
+          "value": "Pencas tiernas de la planta; la tuna es un fruto distinto.",
+          "sources": [
+            "conabio_nopal"
+          ]
+        },
+        "moisture": {
+          "value": "Penca suculenta, con tejidos que almacenan agua.",
+          "sources": [
+            "conabio_nopal"
+          ]
+        }
+      },
+      "substitution_gaps": {
+        "ensalada_nopales": {
+          "reason": "La ensalada usa la penca tierna. La tuna, que es el fruto, no cumple esa función.",
+          "sources": [
+            "conabio_nopal"
+          ]
+        }
+      }
+    },
+    "chile_pasilla": {
+      "sources": [
+        "sep_pasilla_morita",
+        "bayless_sopa_azteca"
+      ],
+      "reference_it": "peperoncino pasilla essiccato",
+      "reference_kind": "description",
+      "properties": {
+        "process": {
+          "value": "Se obtiene al secar el chile chilaca.",
+          "sources": [
+            "gob_chilaca"
+          ]
+        }
+      }
+    },
+    "chile_morita": {
+      "sources": [
+        "gob_chipotle_adobo",
+        "sep_pasilla_morita"
+      ],
+      "reference_it": "peperoncino morita essiccato e affumicato",
+      "reference_kind": "description",
+      "properties": {
+        "process": {
+          "value": "Es una presentación seca y ahumada del chile jalapeño.",
+          "sources": [
+            "gob_chipotle_adobo"
+          ]
+        }
+      }
+    },
+    "chile_arbol": {
+      "sources": [
+        "sep_pasilla_morita"
+      ],
+      "reference_it": "peperoncino de árbol essiccato",
+      "reference_kind": "description",
+      "properties": {
+        "heat": {
+          "value": "Picante. Se usa seco en salsas y condimentos.",
+          "sources": [
+            "sep_pasilla_morita"
+          ]
+        }
+      }
+    },
+    "chipotle_adobo": {
+      "sources": [
+        "gob_chipotle_adobo",
+        "bayless_tinga"
+      ],
+      "reference_it": "peperoncini chipotle in salsa adobo",
+      "reference_kind": "description",
+      "properties": {
+        "process": {
+          "value": "Chile ahumado y cocido en salsa de adobo.",
+          "sources": [
+            "gob_chipotle_adobo"
+          ]
+        }
+      }
+    },
+    "tostada_maiz": {
+      "sources": [
+        "gob_tostadas"
+      ],
+      "reference_it": "tortilla di mais croccante (tostada messicana)",
+      "reference_kind": "description",
+      "properties": {
+        "texture": {
+          "value": "Tortilla rígida y crujiente que se usa como base para servir.",
+          "sources": [
+            "gob_tostadas"
+          ]
+        }
+      }
+    },
+    "elote_tierno": {
+      "sources": [
+        "bayless_esquites"
+      ],
+      "reference_it": "mais da granella fresco, raccolto allo stadio latteo",
+      "reference_kind": "description",
+      "properties": {
+        "texture": {
+          "value": "Sus granos son más firmes y menos dulces que los del maíz dulce.",
+          "sources": [
+            "bayless_esquites"
+          ]
+        }
+      }
+    },
+    "jamaica_seca": {
+      "sources": [
+        "inifap_jamaica",
+        "gob_agua_jamaica",
+        "agrovoc_jamaica"
+      ],
+      "reference_it": "calici essiccati di Hibiscus sabdariffa (karkadè)",
+      "reference_kind": "description",
+      "properties": {
+        "part": {
+          "value": "Se usan los cálices secos de Hibiscus sabdariffa.",
+          "sources": [
+            "inifap_jamaica"
+          ]
+        }
+      }
+    },
+    "chayote": {
+      "sources": [
+        "conabio_chayote",
+        "agrovoc_chayote"
+      ],
+      "reference_it": "Sechium edule",
+      "reference_kind": "scientific",
+      "properties": {
+        "part": {
+          "value": "El fruto puede servirse crudo o cocido.",
+          "sources": [
+            "conabio_chayote"
+          ]
+        }
+      }
+    },
+    "achiote": {
+      "sources": [
+        "bayless_achiote"
+      ],
+      "properties": {
+        "flavor": {
+          "value": "La pasta sazonada aporta el sabor y el color rojizo del adobo de la cochinita.",
+          "sources": [
+            "bayless_achiote"
+          ]
+        }
+      }
+    },
+    "huitlacoche": {
+      "sources": [
+        "conabio_huitlacoche",
+        "bayless_quesadillas_huitlacoche"
+      ],
+      "reference_it": "huitlacoche (fungo del mais)",
+      "reference_kind": "description",
+      "properties": {
+        "part": {
+          "value": "El hongo comestible que se desarrolla en la mazorca se usa como relleno.",
+          "sources": [
+            "conabio_huitlacoche",
+            "bayless_quesadillas_huitlacoche"
+          ]
+        }
+      }
+    },
+    "maiz_dulce": {
+      "sources": [
+        "bayless_esquites",
+        "agrovoc_maiz_dulce"
+      ],
+      "reference_it": "mais dolce",
+      "reference_kind": "description",
+      "properties": {
+        "texture": {
+          "value": "En esquites deja los granos más tiernos y dulces.",
+          "sources": [
+            "bayless_esquites"
+          ]
+        }
+      }
+    },
+    "mayonesa": {
+      "sources": [
+        "bayless_esquites"
+      ]
+    },
+    "cafe_molido": {
+      "sources": [
+        "bayless_cafe_olla"
+      ],
+      "reference_it": "caffè macinato",
+      "reference_kind": "description"
+    },
+    "azucar_blanca": {
+      "sources": [
+        "gob_agua_jamaica"
+      ],
+      "reference_it": "zucchero bianco semolato",
+      "reference_kind": "description"
+    },
+    "pollo_cocido": {
+      "sources": [
+        "bayless_tinga"
+      ],
+      "reference_it": "pollo cotto sfilacciato",
+      "reference_kind": "description"
+    },
+    "caldo_pollo": {
+      "sources": [
+        "bayless_sopa_azteca"
+      ],
+      "reference_it": "brodo di pollo",
       "reference_kind": "description"
     }
   },
@@ -272,7 +863,8 @@
       "sources": [
         "sep_chiles",
         "inifap_guajillo"
-      ]
+      ],
+      "adaptation": "Hidrata el ancho antes de molerlo y ajusta poco a poco la cantidad según el sabor del adobo."
     },
     {
       "from": "serrano",
@@ -573,6 +1165,182 @@
         "bayless_verdes",
         "sep_milpa"
       ]
+    },
+    {
+      "from": "queso_oaxaca",
+      "to": "mozzarella",
+      "type": "culinary_substitute",
+      "use": "quesadillas",
+      "target_name_it": "Mozzarella",
+      "target_name_es": "Mozzarella",
+      "context": "Fundir en quesadillas.",
+      "reason": "Al calentarse, forma hilos y conserva la función del quesillo como relleno fundido.",
+      "limitations": "Tiene otro sabor. La versión fresca puede dejar la tortilla húmeda.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "gob_quesos",
+        "bayless_piedrazo",
+        "galbani_mozzarella"
+      ],
+      "adaptation": "Prefiere mozzarella para pizza. Si usas mozzarella fresca, córtala y escúrrela bien antes de rellenar."
+    },
+    {
+      "from": "queso_oaxaca",
+      "to": "scamorza",
+      "type": "culinary_substitute",
+      "use": "quesadillas",
+      "target_name_it": "Scamorza bianca",
+      "target_name_es": "Scamorza blanca",
+      "context": "Fundir en quesadillas.",
+      "reason": "La scamorza es de pasta hilada y funde en caliente.",
+      "limitations": "Suele quedar más firme que el quesillo. Elige la versión blanca para evitar el sabor ahumado.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "gob_quesos",
+        "galbani_scamorza",
+        "galbani_mozzarella"
+      ]
+    },
+    {
+      "from": "queso_panela",
+      "to": "primo_sale",
+      "type": "culinary_substitute",
+      "use": "ensalada",
+      "target_name_it": "Primo sale di latte vaccino",
+      "target_name_es": "Primo sale de vaca",
+      "context": "Servir en ensalada.",
+      "reason": "Es un queso fresco que se puede servir en trozos, como la panela.",
+      "limitations": "El gusto y la firmeza cambian según el productor. Esta sugerencia es para servirlo frío.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "gob_quesos",
+        "primosale_vaccino"
+      ]
+    },
+    {
+      "from": "queso_cotija",
+      "to": "pecorino_romano",
+      "type": "culinary_substitute",
+      "use": "decorar",
+      "target_name_it": "Pecorino Romano",
+      "target_name_es": "Pecorino Romano",
+      "context": "Espolvorear sobre antojitos al servir.",
+      "reason": "Rallado, aporta un acabado seco y un sabor intenso.",
+      "limitations": "El Pecorino es de oveja y su sabor es diferente al de Cotija.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "gob_quesos",
+        "pecorino_romano"
+      ],
+      "adaptation": "Rállalo, empieza con poca cantidad y prueba antes de ajustar la sal."
+    },
+    {
+      "from": "queso_cotija",
+      "to": "parmigiano_reggiano",
+      "type": "culinary_substitute",
+      "use": "decorar",
+      "target_name_it": "Parmigiano Reggiano",
+      "target_name_es": "Parmigiano Reggiano",
+      "context": "Espolvorear sobre antojitos al servir.",
+      "reason": "Es un queso firme que se puede rallar para terminar un plato.",
+      "limitations": "La textura rallada y el sabor cambian respecto al Cotija desmoronado.",
+      "verification": "source_supported",
+      "evidence": "inferred",
+      "sources": [
+        "gob_quesos",
+        "parmigiano_reggiano"
+      ]
+    },
+    {
+      "from": "piloncillo",
+      "to": "azucar_morena_oscura",
+      "type": "culinary_substitute",
+      "use": "cafe_de_olla",
+      "target_name_it": "Zucchero di canna scuro e morbido",
+      "target_name_es": "Azúcar morena oscura",
+      "context": "Endulzar el jarabe para café de olla.",
+      "reason": "La receta de referencia propone azúcar morena oscura como alternativa al piloncillo en el jarabe.",
+      "limitations": "El sabor puede cambiar con el azúcar elegido. Esta sugerencia se refiere al café de olla.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "norma_piloncillo",
+        "bayless_cafe_olla"
+      ],
+      "adaptation": "Usa la cantidad indicada para el azúcar moreno en la receta de referencia; el cono de piloncillo y el azúcar suelto no se miden igual."
+    },
+    {
+      "from": "tomatillo",
+      "to": "jitomate",
+      "type": "not_equivalent",
+      "use": "salsa_verde",
+      "target_name_it": "Pomodoro",
+      "target_name_es": "Jitomate",
+      "context": "Preparar salsa verde mexicana.",
+      "reason": "El tomatillo es un fruto con cáscara propio del género Physalis.",
+      "limitations": "Un jitomate sin madurar no se convierte en tomatillo. Comprueba que el envase identifique el producto.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "gob_tomatillo"
+      ]
+    },
+    {
+      "from": "elote_tierno",
+      "to": "maiz_dulce",
+      "type": "culinary_substitute",
+      "use": "esquites",
+      "target_name_it": "Mais dolce",
+      "target_name_es": "Maíz dulce",
+      "context": "Preparar esquites.",
+      "reason": "Los granos cocidos mantienen la base del esquite caldoso.",
+      "limitations": "Queda más dulce, con granos menos firmes.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "bayless_esquites",
+        "agrovoc_maiz_dulce"
+      ],
+      "adaptation": "Usa maíz dulce fresco o congelado sin sazonar. Comprueba la textura antes porque se cuece más rápido."
+    },
+    {
+      "from": "chile_pasilla",
+      "to": "chile_ancho",
+      "type": "culinary_substitute",
+      "use": "sopa_azteca",
+      "target_name_it": "Peperoncino ancho essiccato",
+      "target_name_es": "Chile ancho",
+      "context": "Dar sabor al caldo de sopa azteca.",
+      "reason": "La referencia documenta el ancho en una versión michoacana de la sopa.",
+      "limitations": "El caldo cambia de sabor respecto a la versión con pasilla.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "bayless_sopa_azteca",
+        "sep_pasilla_morita"
+      ],
+      "adaptation": "Tuesta brevemente, hidrata y licúa con el jitomate."
+    },
+    {
+      "from": "tostada_maiz",
+      "to": "tortilla_maiz",
+      "type": "culinary_substitute",
+      "use": "base_tostada",
+      "target_name_it": "Tortilla di mais",
+      "target_name_es": "Tortilla de maíz",
+      "context": "Preparar una base crujiente.",
+      "reason": "Al hornearla hasta que quede rígida, una tortilla de maíz puede servir como base de la tostada.",
+      "limitations": "El tiempo cambia según el grosor de la tortilla.",
+      "verification": "source_supported",
+      "evidence": "direct",
+      "sources": [
+        "gob_tostadas"
+      ],
+      "adaptation": "Hornéala antes de montar la tinga y deja que se enfríe para que termine de quedar crujiente."
     }
   ],
   "uses": {
@@ -702,6 +1470,90 @@
         "servir chilaquiles",
         "terminar chilaquiles",
         "guarnire i chilaquiles"
+      ]
+    },
+    "quesadillas": {
+      "label": "Fundir en quesadillas",
+      "aliases": [
+        "quesadilla",
+        "quesadillas",
+        "fundir en quesadillas",
+        "fondere nelle quesadillas"
+      ]
+    },
+    "ensalada": {
+      "label": "Servir en ensalada",
+      "aliases": [
+        "ensalada",
+        "ensaladas",
+        "insalata"
+      ]
+    },
+    "frijoles_de_olla": {
+      "label": "Sazonar frijoles de olla",
+      "aliases": [
+        "frijoles de olla",
+        "frijoles en olla",
+        "fagioli in pentola"
+      ]
+    },
+    "ensalada_nopales": {
+      "label": "Hacer ensalada de nopales",
+      "aliases": [
+        "ensalada de nopales",
+        "insalata di nopales"
+      ]
+    },
+    "salsa_verde": {
+      "label": "Preparar salsa verde mexicana",
+      "aliases": [
+        "salsa verde",
+        "salsa verde mexicana",
+        "salsa verde messicana"
+      ]
+    },
+    "cafe_de_olla": {
+      "label": "Endulzar café de olla",
+      "aliases": [
+        "café de olla",
+        "endulzar café de olla"
+      ]
+    },
+    "esquites": {
+      "label": "Preparar esquites",
+      "aliases": [
+        "esquites",
+        "elote en vaso"
+      ]
+    },
+    "sopa_azteca": {
+      "label": "Dar sabor al caldo de sopa azteca",
+      "aliases": [
+        "sopa azteca",
+        "sopa de tortilla",
+        "zuppa di tortilla"
+      ]
+    },
+    "base_tostada": {
+      "label": "Preparar una base crujiente",
+      "aliases": [
+        "base de tostada",
+        "tostadas de tinga",
+        "base croccante"
+      ]
+    },
+    "tinga": {
+      "label": "Sazonar la salsa de tinga",
+      "aliases": [
+        "tinga",
+        "tinga de pollo"
+      ]
+    },
+    "relleno_quesadilla": {
+      "label": "Rellenar quesadillas con hongos",
+      "aliases": [
+        "relleno de quesadilla",
+        "ripieno di quesadilla"
       ]
     }
   }

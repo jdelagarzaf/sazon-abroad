@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
+{% from 'components.html' import source_list %}
 {% block title %}Evaluación · Sazón Abroad{% endblock %}
 {% macro display(ids, names) -%}
-  {% for id in ids %}{{ names[id] }}{{ ', ' if not loop.last }}{% else %}—{% endfor %}
+  {% for id in ids %}{{ names.get(id, id) }}{{ ', ' if not loop.last }}{% else %}—{% endfor %}
+{%- endmacro %}
+{% macro expected_and_shown(expected, shown, names) -%}
+  <span class="muted">Esperado</span> {{ display(expected, names) }}<br>
+  <span class="muted">Mostrado</span> {{ display(shown, names) }}
 {%- endmacro %}
 {% block content %}
 <h1>Evaluación de búsqueda</h1>
+{% if final %}
+  <p class="muted mt-2">Comparación sobre consultas nuevas, con las dos versiones del catálogo guardadas para reproducir el resultado.</p>
+{% endif %}
 <dl class="mt-5 grid gap-4 md:grid-cols-3">
   {% for label, value in [
     ('Consultas etiquetadas', result.count),
@@ -16,12 +24,26 @@
 </dl>
 <p class="muted mt-3">
   {% if result.accepted_share is not none %}Aceptación culinaria: {{ '%.0f'|format(result.accepted_share * 100) }}% de las sustituciones revisadas.
-  {% else %}La tasa de aceptación culinaria se calculará cuando haya revisiones humanas.{% endif %}
+  {% else %}Las sustituciones están pendientes de revisión culinaria humana.{% endif %}
 </p>
 <section class="card mt-6 space-y-4">
   <form method="get" class="flex flex-wrap items-end gap-3">
     <input type="hidden" name="method" value="{{ method }}"><input type="hidden" name="kind" value="{{ kind }}">
     {% if errors %}<input type="hidden" name="errors" value="1">{% endif %}
+    <div><label for="dataset">Conjunto</label>
+      <select id="dataset" name="dataset">
+        <option value="final" {% if final %}selected{% endif %}>Evaluación final</option>
+        <option value="desarrollo" {% if not final %}selected{% endif %}>Desarrollo</option>
+      </select>
+    </div>
+    {% if final %}
+      <div><label for="group">Dificultad</label>
+        <select id="group" name="group">
+          <option value="">Todas</option>
+          {% for id, label in groups.items() %}<option value="{{ id }}" {% if id == group %}selected{% endif %}>{{ label }}</option>{% endfor %}
+        </select>
+      </div>
+    {% endif %}
     <div><label for="metric">Métrica</label>
       <select id="metric" name="metric">{% for key, label in metrics.items() %}<option value="{{ key }}" {% if metric == key %}selected{% endif %}>{{ label }}</option>{% endfor %}</select>
     </div>
@@ -33,7 +55,7 @@
       <meter id="bar-{{ loop.index }}" class="w-full max-w-xl" min="0" max="1" value="{{ row[metric] }}"></meter>
     </div>
   {% endfor %}
-  <p class="muted">Consultas incluidas en esta métrica: {{ counts[metric] }}.</p>
+  <p class="muted">{{ counts[metric] }} {{ 'ajustes requeridos' if metric == 'adjustment_coverage' else 'consultas' }} en esta métrica.</p>
   <div class="table-wrap">
     <table aria-label="Resultados de las métricas por método">
       <thead><tr><th scope="col">Método</th>{% for label in metrics.values() %}<th scope="col">{{ label }}</th>{% endfor %}</tr></thead>
@@ -44,11 +66,38 @@
       </tbody>
     </table>
   </div>
+  {% if final %}
+    <p class="muted">La traducción literal busca pares de nombres en el catálogo base. Las otras dos variantes usan el mismo buscador para medir el efecto de ampliar el catálogo.</p>
+  {% endif %}
 </section>
+{% if final %}
+  <section class="mt-8 space-y-3" aria-labelledby="evaluation-errors">
+    <h2 id="evaluation-errors">Errores de sustitución y advertencias</h2>
+    <div class="table-wrap">
+      <table aria-label="Errores por método">
+        <thead><tr>
+          <th scope="col">Método</th><th scope="col">Sustitutos incorrectos</th><th scope="col">Sustitutos omitidos</th>
+          <th scope="col">Advertencias omitidas</th><th scope="col">Ajustes omitidos en sustitutos mostrados</th>
+        </tr></thead>
+        <tbody>
+          {% for row in result.summary %}
+            <tr>
+              <td>{{ row.method }}</td>
+              {% for key in ['wrong_substitutes', 'missed_substitutes', 'missed_warnings', 'missed_adjustments'] %}<td>{{ row[key] }}</td>{% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="muted">La cobertura de ajustes también cuenta las alternativas requeridas que el buscador dejó de mostrar.</p>
+  </section>
+{% endif %}
 <section id="consultas" class="mt-8 space-y-4">
   <h2>Revisar las consultas</h2>
   <form method="get" action="{{ url_for('evaluation_page', _anchor='consultas') }}" class="card flex flex-wrap items-end gap-4">
     <input type="hidden" name="metric" value="{{ metric }}">
+    <input type="hidden" name="dataset" value="{{ 'final' if final else 'desarrollo' }}">
+    {% if group %}<input type="hidden" name="group" value="{{ group }}">{% endif %}
     <div><label for="method">Método de búsqueda</label>
       <select id="method" name="method">{% for value in methods %}<option {% if value == method %}selected{% endif %}>{{ value }}</option>{% endfor %}</select>
     </div>
@@ -63,19 +112,32 @@
   {% if rows %}
     <div class="table-wrap">
       <table aria-label="Consultas esperadas y recuperadas">
-        <thead><tr>{% for label in ['Consulta', 'Tipo', 'Esperado', 'Recuperado', 'Sustitutos esperados', 'Sustitutos mostrados', 'Advertencias esperadas', 'Advertencias mostradas', 'Evaluación'] %}<th scope="col">{{ label }}</th>{% endfor %}</tr></thead>
+        <thead><tr>
+          {% for label in ['Consulta', 'Tipo', 'Ingrediente', 'Sustitutos', 'Advertencias'] %}<th scope="col">{{ label }}</th>{% endfor %}
+          {% if final %}<th scope="col">Ajustes</th>{% endif %}
+          <th scope="col">Evaluación</th>
+        </tr></thead>
         <tbody>
           {% for row in rows %}
-            <tr><td>{{ row.query }}</td><td>{{ kinds[row.kind] }}</td>
-              {% for key in ['expected', 'returned', 'expected_substitutes', 'substitutes', 'expected_warnings', 'warnings'] %}
-                <td>{{ display(row[key], names) }}</td>
-              {% endfor %}
+            <tr>
+              <td>{{ row.query }}
+                {% if row.source_ids %}<details><summary>Fuentes de la etiqueta</summary>{{ source_list(row.source_ids, sources) }}</details>{% endif %}
+              </td>
+              <td>{{ kinds[row.kind] }}{% if row.group %}<br><span class="muted">{{ 'Habitual' if row.group == 'habitual' else 'Especializada' }}</span>{% endif %}</td>
+              <td>{{ expected_and_shown(row.expected, row.returned, names) }}</td>
+              <td>{{ expected_and_shown(row.expected_substitutes, row.substitutes, names) }}</td>
+              <td>{{ expected_and_shown(row.expected_warnings, row.warnings, names) }}</td>
+              {% if final %}<td>{{ expected_and_shown(row.expected_adjustments, row.adjustments, names) }}</td>{% endif %}
               <td>{{ 'Acierto' if row.correct else 'Error' }}</td></tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
   {% else %}<p class="notice">No hay consultas con estos filtros.</p>{% endif %}
-  <p class="muted">Las consultas y etiquetas son de elaboración propia. Los resultados describen este conjunto de prueba.</p>
+  {% if final %}
+    <p class="muted">Las consultas se escribieron para esta evaluación después de construir el catálogo. Las etiquetas se fijaron antes de obtener las métricas. Los resultados describen esta muestra editorial.</p>
+  {% else %}
+    <p class="muted">Las consultas y etiquetas se prepararon durante el desarrollo. Sirven para detectar regresiones.</p>
+  {% endif %}
 </section>
 {% endblock %}

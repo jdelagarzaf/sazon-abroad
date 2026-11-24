@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% from 'find_components.html' import icon, result_ingredient, result_relation %}
+{% from 'components.html' import substitution_gap %}
 {% block title %}Búsqueda · Sazón Abroad{% endblock %}
 {% block content %}
 <section class="space-y-5" aria-labelledby="find-heading">
@@ -19,7 +20,7 @@
     </form>
     {% if not query %}
       <ul class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm" aria-label="Búsquedas de ejemplo">
-        {% for example in ['Jitomate', 'Chile poblano para rajas', 'Masa harina'] %}
+        {% for example in ['Jitomate', 'Queso Oaxaca para quesadillas', 'Chile poblano para rajas', 'Masa harina para tortillas'] %}
           <li><a class="text-link inline-block py-1" href="{{ url_for('find', q=example) }}">{{ example }}</a></li>
         {% endfor %}
       </ul>
@@ -53,18 +54,23 @@
     <div class="grid items-start gap-5 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
       {{ result_ingredient(matches[selected], sources, photos) }}
       <div class="min-w-0 space-y-6">
-        {% if substitutes or not warnings %}
-          <section class="space-y-3" aria-labelledby="find-substitutes-heading">
-            <h3 id="find-substitutes-heading" class="flex items-center gap-2 text-2xl">
-              <span class="find-icon find-icon--olive">{{ icon('swap') }}</span> Alternativas sugeridas
-            </h3>
-            {% for group in substitutes %}
-              {{ result_relation(group, sources, photos) }}
-            {% else %}
-              <p class="notice wrap-anywhere">Todavía no hay sustitutos registrados para {{ 'este uso (' ~ context ~ ')' if context else 'este ingrediente' }}.</p>
-            {% endfor %}
-          </section>
-        {% endif %}
+        <section class="space-y-3" aria-labelledby="find-substitutes-heading">
+          <h3 id="find-substitutes-heading" class="flex items-center gap-2 text-2xl">
+            <span class="find-icon find-icon--olive">{{ icon('swap') }}</span> Alternativas sugeridas
+          </h3>
+          {% for group in substitutes %}
+            {{ result_relation(group, sources, photos) }}
+          {% else %}
+            {% if not gaps %}
+              <p class="notice wrap-anywhere">
+                {% if context and not lookup.use %}No reconocimos el uso «{{ context }}». Prueba con otro uso culinario.
+                {% elif context %}Todavía no hay sustitutos registrados para este uso ({{ context }}).
+                {% else %}Todavía no hay sustitutos registrados para este ingrediente.{% endif %}
+              </p>
+            {% endif %}
+          {% endfor %}
+          {% for label, gap in gaps %}{{ substitution_gap(label, gap, sources) }}{% endfor %}
+        </section>
         {% if warnings %}
           <section class="space-y-3" aria-labelledby="find-warnings-heading">
             <h3 id="find-warnings-heading" class="flex items-center gap-2 text-2xl">

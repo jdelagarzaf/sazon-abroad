@@ -95,11 +95,17 @@ class IngredientSearch:
         return matching_uses.pop() if len(matching_uses) == 1 else None
 
     def relations_for(self, ingredient_id, use=None):
-        return [
+        eligible = [
             relation for relation in self.relations_by_id.get(ingredient_id, ())
             if (use is None or relation.get("use") == use)
             and relation.get("human_review") != "rejected"
         ]
+        # Rank by evidence for this use; a name match alone says nothing about substitution.
+        return sorted(eligible, key=lambda relation: (
+            relation["type"] != "culinary_substitute",
+            relation.get("human_review") != "accepted",
+            relation.get("evidence") != "direct",
+        ))
 
     def _rank(self, query, limit, method):
         exact = [index for index, terms in enumerate(self.terms) if query in terms]

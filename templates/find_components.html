@@ -1,4 +1,4 @@
-{% from 'components.html' import photo_credit, source_list %}
+{% from 'components.html' import ingredient_properties, photo_credit, source_list %}
 
 {% macro icon(name, size='size-5') %}
 {% set paths = {
@@ -32,7 +32,7 @@
       {{ icon('basket') }}
       <div class="min-w-0">
         {% if item.name_it or item.reference_it %}
-          <p class="text-sm font-semibold">{{ 'En italiano' if item.name_it else reference_labels[item.reference_kind] }}</p>
+          <p class="text-sm font-semibold">{{ 'Mismo ingrediente · En italiano' if item.name_it else reference_labels[item.reference_kind] }}</p>
           <p class="mt-1 font-display text-xl font-semibold">{{ item.name_it or item.reference_it }}</p>
           {% if item.note_it %}<p class="mt-2 text-sm">{{ item.note_it }}</p>{% endif %}
         {% else %}
@@ -42,6 +42,7 @@
       </div>
     </div>
     {% if item.note %}<p class="text-sm">{{ item.note }}</p>{% endif %}
+    {{ ingredient_properties(item, sources) }}
     <details class="find-disclosure">
       <summary>{{ icon('book', 'size-4') }} Fuentes y nombres alternativos</summary>
       <div class="space-y-2 pt-2 text-sm">
@@ -68,7 +69,8 @@
       <span class="find-icon {{ 'find-icon--rose' if warning else 'find-icon--olive' }}">{{ icon('warning' if warning else 'swap') }}</span>
     {% endif %}
     <div class="min-w-0">
-      <p class="text-xs font-semibold {{ 'text-brand' if warning else 'find-olive-text' }}">{{ 'No equivalente' if warning else 'Sustitución culinaria' }}</p>
+      {% set adjusted = relations|selectattr('adaptation')|list %}
+      <p class="text-xs font-semibold {{ 'text-brand' if warning else 'find-olive-text' }}">{{ 'No equivalente' if warning else 'Sustitución con ajustes' if (adjusted|length == relations|length) else 'Sustitución culinaria' }}</p>
       <h4 class="font-display text-xl leading-tight font-semibold">{{ first.target_name_it }}</h4>
       {% if first.target_name_es != first.target_name_it %}<p class="text-sm text-muted">{{ first.target_name_es }}</p>{% endif %}
     </div>
@@ -79,6 +81,12 @@
         {{ icon('warning' if warning else 'check', 'size-4') }} {{ relation.context }}
       </p>
       {% if not warning %}<p class="text-sm">{{ relation.reason }}</p>{% endif %}
+      {% if relation.adaptation %}
+        <p class="text-sm"><strong>Ajuste:</strong> {{ relation.adaptation }}</p>
+      {% endif %}
+      {% if not warning %}
+        <p class="text-sm text-muted">{{ 'Revisión culinaria aceptada' if relation.human_review == 'accepted' else 'Pendiente de revisión culinaria' }}</p>
+      {% endif %}
       {% if relation.limitations %}
         <div class="find-caution flex items-start gap-2">
           {{ icon('warning', 'size-4') }}
@@ -94,7 +102,6 @@
           {% if warning %}<p>{{ relation.reason }}</p>{% endif %}
           <p class="text-muted">
             {{ evidence_labels.get(relation.evidence, verification_labels[relation.verification]) }}
-            {% if not warning %} · {{ 'Revisión culinaria aceptada' if relation.human_review == 'accepted' else 'Pendiente de revisión culinaria' }}{% endif %}
           </p>
           {{ source_list(relation.sources, sources) }}
           {% if photo and loop.first %}{{ photo_credit(photo) }}{% endif %}

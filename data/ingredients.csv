@@ -24,7 +24,7 @@ jalapeno,Chile jalapeño,chile cuaresmeño|cuaresmeño|jalapeño,Q504133,jalape�
 chipotle,Chile chipotle,chipotle|chilpotle,Q860808,chipotle,chilpotle,Chiles y pimientos,México,Es jalapeño seco y ahumado.
 habanero,Chile habanero,habanero,Q764375,habanero,,Chiles y pimientos,México,
 guajillo,Chile guajillo,guajillo,Q5613350,,peperoncino guajillo,Chiles y pimientos,México,El guajillo se usa seco. La fuente de Wikidata identifica el cultivar mirasol.
-nopal,Nopal,nopales|penca de nopal,Q3367716,nopal,,Verduras,México,
+nopal,Nopales,nopal|nopalitos|penca de nopal,Q3367716,,pale di fico d'india|cladodi di opuntia,Verduras,México,Busca pencas tiernas comestibles. La tuna es el fruto.
 jicama,Jícama,,Q517283,,,Verduras,México,
 epazote,Epazote,paico,Q640032,,,Hierbas y especias,México,Hierba usada como condimento en frijoles de olla y otros guisos.
 oregano_mexicano,Orégano mexicano,,Q1761719,,,Hierbas y especias,México,Esta ficha se refiere a Lippia graveolens.
@@ -66,3 +66,29 @@ queso_fresco_mexicano,Queso fresco mexicano,queso fresco,,,,Lácteos,México,Bus
 totopos,Totopos,totopos de maíz,Q258455,totopos,chips di tortilla di mais,Granos y harinas,México,Para chilaquiles elige totopos gruesos y sin saborizantes.
 creme_fraiche,Crème fraîche,crema fresca francesa,Q1142459,crème fraîche,creme fraiche,Lácteos,Italia,
 feta,Feta suave,queso feta,Q182760,,feta delicata,Lácteos,Italia,Elige una feta de sabor suave para usarla desmoronada.
+queso_oaxaca,Queso Oaxaca,quesillo|quesillo oaxaqueño,Q5414737,,formaggio Oaxaca|quesillo messicano,Lácteos,México,Quesillo es el nombre oaxaqueño. Busca el nombre y el origen en la etiqueta.
+queso_panela,Queso panela,panela de leche,,,formaggio panela,Lácteos,México,Aquí «panela» se refiere al queso fresco.
+queso_cotija,Queso Cotija,cotija|queso cotija añejo,,,formaggio Cotija,Lácteos,México,La ficha describe el Cotija seco que se usa desmoronado.
+piloncillo,Piloncillo,panocha de caña|piloncillo en cono,,,piloncillo messicano,Condimentos,México,Confirma que el producto sea jugo de caña concentrado y solidificado.
+mozzarella,Mozzarella,mozzarella para pizza,,,mozzarella per pizza,Lácteos,Italia,
+scamorza,Scamorza blanca,scamorza no ahumada,,,scamorza non affumicata,Lácteos,Italia,
+primo_sale,Primo sale de vaca,queso primo sale de vaca,,,primo sale|primosale,Lácteos,Italia,El nombre también se usa para quesos de otras leches. Elige de vaca para esta sugerencia.
+pecorino_romano,Pecorino Romano,,,,,Lácteos,Italia,
+parmigiano_reggiano,Parmigiano Reggiano,,,,,Lácteos,Italia,
+azucar_morena_oscura,Azúcar morena oscura,azúcar moreno oscuro,,,,Condimentos,Italia,"Busca un azúcar moreno oscuro y húmedo, con melaza."
+chile_pasilla,Chile pasilla,pasilla seco|chile negro seco,Q838835,,peperoncino pasilla,Chiles y pimientos,México,La ficha se refiere al chilaca seco usado en la sopa azteca.
+chile_morita,Chile morita,morita|chipotle morita seco,,,peperoncino morita,Chiles y pimientos,México,
+chile_arbol,Chile de árbol seco,chile de árbol|chile árbol seco,,,peperoncino de arbol,Chiles y pimientos,México,
+chipotle_adobo,Chipotle en adobo,chile chipotle adobado|chipotles en adobo,,,chipotle in adobo,Chiles y pimientos,México,
+tostada_maiz,Tostada de maíz,tostadas de maíz|tostada mexicana,,,,Granos y harinas,México,
+elote_tierno,Elote tierno mexicano,elote tierno|granos de elote tierno,,,,Granos y harinas,México,Busca grano fresco cosechado tierno para esquites.
+jamaica_seca,Flor de jamaica seca,flor de jamaica|jamaica seca|jamaica,Q319390,,karkadè|carcadè|karkadé,Hierbas y especias,México,"Para agua de jamaica, busca cálices secos sin mezclas."
+chayote,Chayote,chayotes,Q319611,,,Verduras,México,
+achiote,Achiote,annatto|achiote molido,Q425902,annatto,semi di annatto,Hierbas y especias,México,"Para cochinita pibil, revisa si la receta pide semillas molidas o pasta sazonada."
+huitlacoche,Huitlacoche,cuitlacoche,Q10711327,,huitlacoche,Verduras,México,
+maiz_dulce,Maíz dulce,elote dulce,Q18966,,,Granos y harinas,Italia,
+mayonesa,Mayonesa,,Q167893,maionese,,Condimentos,México,
+cafe_molido,Café molido,café,,,,Básicos de cocina,México,
+azucar_blanca,Azúcar blanca,azúcar blanca granulada,,,,Condimentos,México,
+pollo_cocido,Pollo cocido,pollo cocido deshebrado,,,,Carnes,México,"Para la tinga, parte de carne ya cocida y deshébrala."
+caldo_pollo,Caldo de pollo,,,,,Básicos de cocina,México,

@@ -12,7 +12,7 @@ python -m venv .venv
 .\.venv\Scripts\python -m flask --app app run --debug
 ```
 
-En macOS y Linux, usa `.venv/bin/python` en los dos últimos comandos. Abre <http://127.0.0.1:5000>. La app lee `data/catalog.json`, con 59 ingredientes del catálogo mexicano y ocho referencias italianas. En **Catálogo** puedes filtrar por categoría y estado, abrir la ficha o consultar la fuente.
+En macOS y Linux, usa `.venv/bin/python` en los dos últimos comandos. Abre <http://127.0.0.1:5000>. La app lee `data/catalog.json`, con 78 ingredientes del catálogo mexicano y 15 referencias italianas. En **Catálogo** puedes filtrar por categoría y estado, abrir la ficha o consultar la fuente.
 
 ## Editar la interfaz
 
@@ -59,11 +59,13 @@ Cada ficha basada en Wikidata enlaza al concepto y a la revisión consultada. Wi
 | `chile poblano para rajas` | Solo la propuesta para rajas, con sus límites de sabor. |
 | `amido di mais per addensare` | Alternativas para espesar, con una advertencia de gluten para la harina de trigo. |
 | `masa harina` | Qué término buscar en el envase y por qué la polenta no sirve como reemplazo directo en tortillas. |
+| `quesillo para quesadillas` | Scamorza y mozzarella con sus diferencias, ajustes y estado de revisión. |
+| `tomatillo para salsa verde` | Sin sustituto registrado y una advertencia para no confundirlo con jitomate. |
 | `zzzz` | Mensaje de búsqueda sin resultados. |
 
 ## Recetas mexicanas
 
-En **Recetas** están el guacamole con jitomate, las rajas con crema y los chilaquiles verdes. Puedes consultar la versión base o elegir alternativas para Italia. La lista de compras muestra el término italiano y la cantidad a usar. Los pasos se ajustan cuando eliges un sustituto.
+En **Recetas** hay diez preparaciones, entre ellas quesadillas de quesillo, tostadas de tinga, esquites caldosos y sopa azteca. Puedes consultar la versión base o elegir alternativas para Italia. La lista de compras muestra el término italiano y la cantidad a usar. Los pasos se ajustan cuando eliges un sustituto.
 
 Cada receta de `data/recipes.json` referencia ingredientes y usos del catálogo. Para añadir una alternativa, registra la relación y su fuente en `data/annotations.json`, y especifica en la receta la cantidad y cualquier cambio de preparación. Los pasos usan texto original de Sazón Abroad y cada ficha enlaza sus referencias culinarias y el crédito de su imagen.
 
@@ -79,15 +81,15 @@ El script consulta la propiedad P18 de Wikidata y guarda las miniaturas con una 
 
 ## Evaluación
 
-La sección **Evaluación** compara tres métodos sobre 40 consultas y permite filtrar errores. Puedes reproducir las métricas y los resultados por consulta desde PowerShell:
+La sección **Evaluación** compara el catálogo base con el ampliado sobre 36 consultas finales. En **Desarrollo** están las 40 consultas de regresión. Puedes filtrar por dificultad e inspeccionar los resultados por consulta.
 
 ```powershell
-.\.venv\Scripts\python evaluation.py
+.\.venv\Scripts\python evaluation.py --final
 ```
 
 Las comprobaciones de regresión se ejecutan con `python -m unittest discover -s tests` en el entorno del proyecto.
 
-Consulta las definiciones de las métricas, los límites del conjunto de desarrollo y cómo registrar la revisión culinaria en la [metodología](docs/methodology.md).
+Consulta las definiciones de las métricas, los límites del conjunto de desarrollo y cómo registrar la revisión culinaria en la [metodología](docs/methodology.md). El [plan del catálogo semántico](docs/semantic-catalog.md) explica cómo ampliar y revisar las fichas.
 
 ## Publicar la aplicación Flask
 

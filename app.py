@@ -5,8 +5,11 @@ from functools import lru_cache
 
 from flask import Flask, render_template, request
 
-from evaluation import DATA_DIR, evaluate, load_cases
-from ingredient_views import CATALOG_PATH, EVIDENCE_LABELS, REFERENCE_LABELS, VERIFICATION_LABELS, get_catalog, load_photos
+from evaluation import DEVELOPMENT_PATH, FINAL_PATH, GROUPS, SNAPSHOT_PATH, evaluate, evaluate_final, load_cases
+from ingredient_views import (
+    CATALOG_PATH, EVIDENCE_LABELS, PROPERTY_LABELS, REFERENCE_LABELS, VERIFICATION_LABELS,
+    get_catalog, load_photos,
+)
 from recipe_plans import load_recipes, make_plan, resolve_ingredients
 from search import METHODS, normalize
 
@@ -15,6 +18,7 @@ app.jinja_env.globals.update(
     verification_labels=VERIFICATION_LABELS,
     reference_labels=REFERENCE_LABELS,
     evidence_labels=EVIDENCE_LABELS,
+    property_labels=PROPERTY_LABELS,
 )
 
 METRICS = {
@@ -32,7 +36,18 @@ KINDS = {
     "contexto": "Uso culinario",
     "sin resultado": "Fuera del catálogo",
 }
-CASES_PATH = DATA_DIR / "evaluation.csv"
+FINAL_METRICS = {
+    **METRICS,
+    "no_substitute": "Abstención contextual correcta",
+    "adjustment_coverage": "Cobertura de ajustes",
+}
+FINAL_KINDS = {
+    "identidad": "Identidad",
+    "contexto": "Sustitución por uso",
+    "ajuste": "Sustitución con ajustes",
+    "sin sustituto": "Sin sustituto apropiado",
+    "sin resultado": "Fuera del catálogo",
+}
 
 
 @app.get("/")
@@ -62,11 +77,17 @@ def find():
             key = (relation["type"], relation["to"], relation["target_name_it"], relation["target_name_es"])
             groups[key].append(relation)
     context = catalog["uses"][lookup.use]["label"] if lookup.use else lookup.context
+    gaps = matches.get(selected, {}).get("substitution_gaps", {})
+    gaps = [
+        (catalog["uses"][use]["label"], gap) for use, gap in gaps.items()
+        if not lookup.context or lookup.use == use
+    ]
     return render_template(
         "find.html", query=query, lookup=lookup, matches=matches, selected=selected,
         context=context, sources=catalog["sources"], photos=load_photos(),
         substitutes=[cards for key, cards in groups.items() if key[0] == "culinary_substitute"],
         warnings=[cards for key, cards in groups.items() if key[0] == "not_equivalent"],
+        gaps=gaps,
     )
 
 
@@ -87,6 +108,7 @@ def catalog_page():
     return render_template(
         "catalog.html", options=options, selected=selected, categories=categories, statuses=statuses,
         category=category, status=status, total=len(ingredients), sources=catalog["sources"],
+        uses=catalog["uses"],
         relations=index.relations_for(selected["id"]) if selected else [],
     )
 
@@ -117,20 +139,44 @@ def recipes_page():
 @lru_cache(maxsize=1)
 def benchmark(catalog_revision, cases_revision):
     catalog, index = get_catalog()
-    return evaluate(catalog, load_cases(CASES_PATH), engine=index)
+    return evaluate(catalog, load_cases(), engine=index)
+
+
+@lru_cache(maxsize=len(GROUPS) + 1)
+def final_benchmark(snapshot_revision, cases_revision, development_revision, group):
+    return evaluate_final(group)
 
 
 @app.get("/evaluacion")
 def evaluation_page():
-    catalog, _ = get_catalog()
-    result = benchmark(CATALOG_PATH.stat().st_mtime_ns, CASES_PATH.stat().st_mtime_ns)
+    final = request.args.get("dataset") != "desarrollo"
+    group = request.args.get("group", "")
+    if not final or group not in GROUPS:
+        group = ""
+    development_revision = DEVELOPMENT_PATH.stat().st_mtime_ns
+    if final:
+        result = final_benchmark(
+            SNAPSHOT_PATH.stat().st_mtime_ns, FINAL_PATH.stat().st_mtime_ns, development_revision, group,
+        )
+        metrics, kinds = FINAL_METRICS, FINAL_KINDS
+        methods = [row["method"] for row in result["summary"]]
+        names, sources = result["names"], result["sources"]
+    else:
+        catalog, _ = get_catalog()
+        result = benchmark(CATALOG_PATH.stat().st_mtime_ns, development_revision)
+        metrics, kinds = METRICS, KINDS
+        methods = list(METHODS.values())
+        names = {item["id"]: item["name_es"] for item in catalog["ingredients"]}
+        sources = {}
     metric = request.args.get("metric", "top1")
-    if metric not in METRICS:
+    if metric not in metrics:
         metric = "top1"
-    method = request.args.get("method", list(METHODS.values())[-1])
-    if method not in METHODS.values():
-        method = list(METHODS.values())[-1]
+    method = request.args.get("method")
+    if method not in methods:
+        method = methods[-1]
     kind = request.args.get("kind", "")
+    if kind not in kinds:
+        kind = ""
     errors = request.args.get("errors") == "1"
     rows = [
         row for row in result["details"]
@@ -140,12 +186,13 @@ def evaluation_page():
     counts = {
         "top1": result["answerable"], "recall_at_3": result["answerable"],
         "no_result": result["count"] - result["answerable"], "context": result["contextual"],
+        "no_substitute": result["contextual_abstentions"],
+        "adjustment_coverage": result["required_adjustments"],
     }
-    names = {item["id"]: item["name_es"] for item in catalog["ingredients"]}
     return render_template(
-        "evaluation.html", result=result, rows=rows, names=names, counts=counts,
-        metrics=METRICS, metric=metric, methods=METHODS.values(), method=method,
-        kinds=KINDS, kind=kind, errors=errors,
+        "evaluation.html", result=result, rows=rows, names=names, sources=sources, counts=counts,
+        metrics=metrics, metric=metric, methods=methods, method=method, kinds=kinds, kind=kind,
+        errors=errors, final=final, groups=GROUPS, group=group,
     )
 
 

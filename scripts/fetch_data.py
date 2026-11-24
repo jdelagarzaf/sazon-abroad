@@ -11,6 +11,7 @@ from urllib.request import Request, urlopen
 ROOT = Path(__file__).resolve().parents[1]
 API_URL = "https://www.wikidata.org/w/api.php"
 SNAPSHOT_PATH = ROOT / "data/wikidata_snapshot.json"
+PROPERTY_IDS = {"texture", "moisture", "flavor", "heat", "melting", "process", "part"}
 
 
 def fetch_entities(ids):
@@ -106,7 +107,7 @@ def build_catalog(rows, annotations, entities):
         else:
             verification = "pending"
 
-        ingredients.append({
+        record = {
             "id": ingredient_id,
             "name_es": row["name_es"],
             "name_it": term_it or None,
@@ -122,7 +123,20 @@ def build_catalog(rows, annotations, entities):
             "wikidata_labels": {lang: data["value"] for lang, data in entity.get("labels", {}).items()},
             "sources": ingredient_sources,
             "verification": verification,
-        })
+        }
+        properties = local.get("properties", {})
+        for name, property_data in properties.items():
+            if name not in PROPERTY_IDS or not property_data["value"].strip() or not property_data["sources"]:
+                raise ValueError(f"{ingredient_id}: propiedad culinaria incompleta o desconocida ({name}).")
+        if properties:
+            record["properties"] = properties
+        gaps = local.get("substitution_gaps", {})
+        for use, gap in gaps.items():
+            if use not in annotations.get("uses", {}) or not gap["reason"].strip() or not gap["sources"]:
+                raise ValueError(f"{ingredient_id}: falta evidencia o contexto para la abstención ({use}).")
+        if gaps:
+            record["substitution_gaps"] = gaps
+        ingredients.append(record)
 
     unknown_annotations = annotations["local_ingredients"].keys() - ingredient_ids
     if unknown_annotations:
@@ -148,7 +162,23 @@ def build_catalog(rows, annotations, entities):
             raise ValueError(f"Tipo de evidencia desconocido: {key}")
         if relation.get("human_review") not in {None, "accepted", "rejected"}:
             raise ValueError(f"Estado de revisión humana desconocido: {key}")
-    for record in ingredients + annotations["relations"]:
+        if "adaptation" in relation and (
+            relation["type"] != "culinary_substitute" or not use or not relation["adaptation"].strip()
+        ):
+            raise ValueError(f"Ajuste culinario sin sustitución y uso válidos: {key}")
+        if (
+            relation["type"] == "culinary_substitute"
+            and relation.get("human_review") != "rejected"
+            and use in annotations["local_ingredients"].get(origin, {}).get("substitution_gaps", {})
+        ):
+            raise ValueError(f"La sustitución contradice una abstención registrada: {key}")
+    claims = [
+        claim
+        for ingredient in ingredients
+        for group in ("properties", "substitution_gaps")
+        for claim in ingredient.get(group, {}).values()
+    ]
+    for record in ingredients + annotations["relations"] + claims:
         missing = set(record["sources"]) - sources.keys()
         if missing:
             raise ValueError(f"Fuentes desconocidas: {', '.join(sorted(missing))}")
@@ -199,7 +229,7 @@ def main():
         write_json(args.output, catalog)
     except (OSError, ValueError, KeyError) as exc:
         parser.exit(1, f"No se pudo regenerar el catálogo: {exc}\n")
-    print(f"{len(catalog['ingredients'])} registros, {len(ids)} conceptos de Wikidata → {args.output}")
+    print(f"{len(catalog['ingredients'])} registros, {len(ids)} conceptos de Wikidata -> {args.output}")
 
 
 if __name__ == "__main__":

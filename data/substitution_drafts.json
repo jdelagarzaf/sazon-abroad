@@ -1,0 +1,22 @@
+{
+  "candidates": [
+    {
+      "from": "chile_pasilla",
+      "to": "chipotle",
+      "use": "sopa_azteca",
+      "reason": "La receta de referencia contempla un poco de chipotle para sazonar el caldo de jitomate.",
+      "limitations": "El chipotle hace el caldo más ahumado y puede aumentar bastante el picor. El sabor cambia respecto al pasilla.",
+      "adaptation": "Añade un trocito de chipotle seco al caldo y pruébalo antes de agregar más.",
+      "sources": ["bayless_sopa_azteca"]
+    },
+    {
+      "from": "chipotle_adobo",
+      "to": "chile_morita",
+      "use": "tinga",
+      "reason": "El morita conserva el componente ahumado. La receta de referencia usa moritas encurtidos como variante para la tinga.",
+      "limitations": "El morita seco carece de la salsa del chipotle en adobo. La receta de referencia respalda el morita encurtido y la adaptación desde chile seco queda por revisar.",
+      "adaptation": "Hidrata el morita y licúa una porción pequeña con el jitomate. Prueba la salsa y ajusta su acidez antes de añadir el pollo.",
+      "sources": ["gob_chipotle_adobo", "bayless_tinga"]
+    }
+  ]
+}

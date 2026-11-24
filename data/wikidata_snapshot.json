@@ -1,4 +1,18 @@
 {
+  "Q10711327": {
+    "lastrevid": 2563891592,
+    "labels": {
+      "it": {
+        "language": "it",
+        "value": "Ustilago maydis"
+      },
+      "es": {
+        "language": "es",
+        "value": "Ustilago maydis"
+      }
+    },
+    "aliases": {}
+  },
   "Q10998": {
     "lastrevid": 2567935774,
     "labels": {
@@ -686,6 +700,27 @@
       ]
     }
   },
+  "Q167893": {
+    "lastrevid": 2567794401,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "mayonesa"
+      },
+      "it": {
+        "language": "it",
+        "value": "maionese"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "mahonesa"
+        }
+      ]
+    }
+  },
   "Q1761719": {
     "lastrevid": 2536561056,
     "labels": {
@@ -720,6 +755,33 @@
       }
     },
     "aliases": {}
+  },
+  "Q18966": {
+    "lastrevid": 2518408700,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "maíz dulce"
+      },
+      "it": {
+        "language": "it",
+        "value": "Zea mays Saccharata Group"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Maiz dulce"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "mais dolce"
+        }
+      ]
+    }
   },
   "Q191768": {
     "lastrevid": 2567795246,
@@ -1385,6 +1447,160 @@
         {
           "language": "it",
           "value": "guava"
+        }
+      ]
+    }
+  },
+  "Q319390": {
+    "lastrevid": 2567834380,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Hibiscus sabdariffa"
+      },
+      "it": {
+        "language": "it",
+        "value": "Hibiscus sabdariffa"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Sabdariffa rubra"
+        },
+        {
+          "language": "es",
+          "value": "Rosa de Abisinia"
+        },
+        {
+          "language": "es",
+          "value": "Hibiscus cruentus"
+        },
+        {
+          "language": "es",
+          "value": "Flor de Jamaica"
+        },
+        {
+          "language": "es",
+          "value": "Rosa de Jamaica"
+        },
+        {
+          "language": "es",
+          "value": "Hibiscus palmatilobus"
+        },
+        {
+          "language": "es",
+          "value": "Jamaica"
+        },
+        {
+          "language": "es",
+          "value": "Hibiscus masuianus"
+        },
+        {
+          "language": "es",
+          "value": "Hibiscus fraternus"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "carcadè"
+        },
+        {
+          "language": "it",
+          "value": "karkadè"
+        }
+      ]
+    }
+  },
+  "Q319611": {
+    "lastrevid": 2565421451,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Sechium edule"
+      },
+      "it": {
+        "language": "it",
+        "value": "Sechium edule"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Chacota"
+        },
+        {
+          "language": "es",
+          "value": "Perulero"
+        },
+        {
+          "language": "es",
+          "value": "Chayote"
+        },
+        {
+          "language": "es",
+          "value": "Güisquil"
+        },
+        {
+          "language": "es",
+          "value": "Sechium chayota"
+        },
+        {
+          "language": "es",
+          "value": "Xuxu"
+        },
+        {
+          "language": "es",
+          "value": "Guisquil"
+        },
+        {
+          "language": "es",
+          "value": "Chayotera"
+        },
+        {
+          "language": "es",
+          "value": "Guatila"
+        },
+        {
+          "language": "es",
+          "value": "Tayota"
+        },
+        {
+          "language": "es",
+          "value": "Chayota edulis"
+        },
+        {
+          "language": "es",
+          "value": "Cucumis acutangulus"
+        },
+        {
+          "language": "es",
+          "value": "Cocoro"
+        },
+        {
+          "language": "es",
+          "value": "Sicyos laciniatus"
+        },
+        {
+          "language": "es",
+          "value": "Sicyos edulis"
+        },
+        {
+          "language": "es",
+          "value": "Papa de pobre"
+        }
+      ],
+      "it": [
+        {
+          "language": "it",
+          "value": "Chayote"
+        },
+        {
+          "language": "it",
+          "value": "Sechio"
         }
       ]
     }
@@ -2277,6 +2493,27 @@
       ]
     }
   },
+  "Q425902": {
+    "lastrevid": 2484690524,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "achiote"
+      },
+      "it": {
+        "language": "it",
+        "value": "annatto"
+      }
+    },
+    "aliases": {
+      "it": [
+        {
+          "language": "it",
+          "value": "C24H28O4"
+        }
+      ]
+    }
+  },
   "Q500": {
     "lastrevid": 2563894694,
     "labels": {
@@ -2414,6 +2651,23 @@
         {
           "language": "es",
           "value": "síncama"
+        }
+      ]
+    }
+  },
+  "Q5414737": {
+    "lastrevid": 2561676195,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Queso de hebra"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "queso de hebra"
         }
       ]
     }
@@ -2828,6 +3082,23 @@
         {
           "language": "it",
           "value": "Spinacio"
+        }
+      ]
+    }
+  },
+  "Q838835": {
+    "lastrevid": 2540811649,
+    "labels": {
+      "es": {
+        "language": "es",
+        "value": "Chile pasilla"
+      }
+    },
+    "aliases": {
+      "es": [
+        {
+          "language": "es",
+          "value": "Pasilla"
         }
       ]
     }

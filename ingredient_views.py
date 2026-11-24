@@ -22,6 +22,15 @@ EVIDENCE_LABELS = {
     "direct": "La fuente respalda este uso",
     "inferred": "Sugerencia inferida de las fuentes",
 }
+PROPERTY_LABELS = {
+    "texture": "Textura",
+    "moisture": "Humedad",
+    "flavor": "Sabor y aroma",
+    "heat": "Picor",
+    "melting": "Al fundir",
+    "process": "Elaboración",
+    "part": "Parte comestible",
+}
 
 
 @lru_cache(maxsize=1)

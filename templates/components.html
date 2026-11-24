@@ -18,6 +18,37 @@
 {% endif %}
 {% endmacro %}
 
+{% macro ingredient_properties(item, sources) %}
+{% if item.properties %}
+  <details class="find-disclosure">
+    <summary>Propiedades culinarias</summary>
+    <dl class="space-y-2 pt-2 text-sm">
+      {% for name, property in item.properties.items() %}
+        <div>
+          <dt class="font-semibold">{{ property_labels[name] }}</dt>
+          <dd>{{ property.value }}
+            {% for id in property.sources %}
+              · <a class="text-link" href="{{ sources[id].url }}">{{ sources[id].label }}</a>
+            {% endfor %}
+          </dd>
+        </div>
+      {% endfor %}
+    </dl>
+  </details>
+{% endif %}
+{% endmacro %}
+
+{% macro substitution_gap(context, gap, sources) %}
+  <div class="notice space-y-2 wrap-anywhere">
+    <p><strong>Sin sustituto registrado · {{ context }}</strong></p>
+    <p>{{ gap.reason }}</p>
+    <details class="find-disclosure">
+      <summary>Fuentes</summary>
+      {{ source_list(gap.sources, sources) }}
+    </details>
+  </div>
+{% endmacro %}
+
 {% macro search_hero_media() %}
 <div class="search-hero-media" aria-hidden="true">
   <img src="{{ url_for('static', filename='inicio-fondo.png') }}" alt="">
@@ -80,6 +111,7 @@
     <p class="muted">Sin nombre italiano común confirmado en el catálogo.</p>
   {% endif %}
   {% if item.note %}<p>{{ item.note }}</p>{% endif %}
+  {{ ingredient_properties(item, sources) }}
   <p class="muted">{{ verification_labels[item.verification] }}</p>
   <details>
     <summary>Fuentes y nombres alternativos</summary>
@@ -94,6 +126,7 @@
 {% macro relation_details(relation, sources) %}
 <div class="space-y-2">
   <p><strong>{{ relation.context }}</strong> {{ relation.reason }}</p>
+  {% if relation.adaptation %}<p><strong>Ajuste:</strong> {{ relation.adaptation }}</p>{% endif %}
   <p>{{ relation.limitations }}</p>
   <p class="muted">
     {{ evidence_labels.get(relation.evidence, verification_labels[relation.verification]) }}
@@ -112,7 +145,7 @@
 <article class="card flex flex-col gap-4 sm:flex-row">
   {% if photo %}<img class="aspect-square w-28 shrink-0 self-start rounded-xl object-cover" loading="lazy" src="{{ photo.thumbnail }}" alt="{{ first.target_name_es }}">{% endif %}
   <div class="min-w-0 space-y-3">
-    <span class="badge {{ 'badge-red' if warning else 'badge-orange' }}">{{ 'No equivalente' if warning else 'Sustitución culinaria' }}</span>
+    <span class="badge {{ 'badge-red' if warning else 'badge-orange' }}">{{ 'No equivalente' if warning else 'Sustitución con ajustes' if first.adaptation else 'Sustitución culinaria' }}</span>
     <div>
       <h3>{{ first.target_name_it }}</h3>
       <p class="muted">{{ first.target_name_es }}</p>

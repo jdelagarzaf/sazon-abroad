@@ -288,5 +288,545 @@
         "text": "Sirve con {crema_mexicana}. Desmorona por encima el queso elegido ({queso_fresco_mexicano}) y prueba antes de añadir más sal."
       }
     ]
+  },
+  {
+    "id": "quesadillas_quesillo",
+    "title": "Quesadillas de quesillo",
+    "description": "Tortillas de maíz al comal con queso Oaxaca fundido.",
+    "servings": 4,
+    "minutes": 20,
+    "prep_minutes": 8,
+    "sources": [
+      "gob_quesos",
+      "bayless_quesadillas",
+      "bayless_quesillo"
+    ],
+    "photo": {
+      "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Plato_con_quesadillas.jpg/960px-Plato_con_quesadillas.jpg",
+      "author": "Dahyana Yasada R. R.",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Plato_con_quesadillas.jpg",
+      "alt": "Quesadillas rellenas de queso Oaxaca"
+    },
+    "ingredients": [
+      {
+        "id": "tortilla_maiz",
+        "amount": "8 piezas"
+      },
+      {
+        "id": "queso_oaxaca",
+        "amount": "240 g",
+        "label": "Queso Oaxaca (quesillo)",
+        "use": "quesadillas",
+        "alternatives": [
+          {
+            "to": "scamorza",
+            "amount": "220–240 g de scamorza blanca"
+          },
+          {
+            "to": "mozzarella",
+            "amount": "220 g de mozzarella para pizza"
+          }
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "text": "Separa el queso Oaxaca en hebras y repártelo en ocho porciones.",
+        "changes": [
+          {
+            "from": "queso_oaxaca",
+            "to": "scamorza",
+            "text": "Ralla la scamorza blanca o córtala en láminas finas para que se funda rápido."
+          },
+          {
+            "from": "queso_oaxaca",
+            "to": "mozzarella",
+            "text": "Corta la mozzarella para pizza en tiras. Si usas una fresca, escúrrela bien y sécala antes de rellenar."
+          }
+        ]
+      },
+      {
+        "text": "Calienta un comal o sartén sin aceite a fuego medio. Entibia cada tortilla hasta que pueda doblarse sin romperse."
+      },
+      {
+        "text": "Coloca una porción de queso sobre media tortilla y dóblala. Cocina por ambos lados hasta que se dore por fuera y el queso se funda. Sirve al momento."
+      }
+    ]
+  },
+  {
+    "id": "cafe_de_olla",
+    "title": "Café de olla",
+    "description": "Café especiado con canela y un jarabe de piloncillo.",
+    "servings": 4,
+    "minutes": 20,
+    "prep_minutes": 5,
+    "sources": [
+      "bayless_cafe_olla",
+      "norma_piloncillo"
+    ],
+    "photo": {
+      "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Caf%C3%A9_de_olla_.jpg/960px-Caf%C3%A9_de_olla_.jpg",
+      "author": "ProtoplasmaKid",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Caf%C3%A9_de_olla_.jpg",
+      "alt": "Taza de café de olla"
+    },
+    "ingredients": [
+      {
+        "id": "agua",
+        "amount": "800 ml"
+      },
+      {
+        "id": "piloncillo",
+        "amount": "50 g, picado",
+        "use": "cafe_de_olla",
+        "alternatives": [
+          {
+            "to": "azucar_morena_oscura",
+            "amount": "40 g para empezar, al gusto"
+          }
+        ]
+      },
+      {
+        "id": "canela",
+        "amount": "1 rama",
+        "label": "Canela en rama"
+      },
+      {
+        "id": "cafe_molido",
+        "amount": "45 g, molido medio"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Hierve 200 ml de agua con la rama de canela. Añade el piloncillo picado y remueve hasta que se disuelva. Deja el jarabe a fuego bajo 5 minutos.",
+        "changes": [
+          {
+            "from": "piloncillo",
+            "to": "azucar_morena_oscura",
+            "text": "Calienta 200 ml de agua con la canela. Disuelve 40 g de azúcar morena oscura, cocina 5 minutos y ajusta el dulzor al final."
+          }
+        ]
+      },
+      {
+        "text": "Prepara el café con los 600 ml de agua restantes. Si lo haces por inmersión, espera 4 minutos y filtra con un colador fino o un filtro de café."
+      },
+      {
+        "text": "Retira la canela del jarabe. Incorpora el jarabe poco a poco al café caliente y sirve."
+      }
+    ]
+  },
+  {
+    "id": "ensalada_nopales",
+    "title": "Ensalada de nopales",
+    "description": "Nopalitos cocidos con jitomate, cebolla, cilantro, limón y queso fresco.",
+    "servings": 4,
+    "minutes": 35,
+    "prep_minutes": 15,
+    "sources": [
+      "conabio_nopalitos",
+      "gob_quesos"
+    ],
+    "photo": {
+      "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Ensalada_de_nopales_y_habas_en_tianguis_de_Acuitlapilco%2C_Tlaxcala.jpg/960px-Ensalada_de_nopales_y_habas_en_tianguis_de_Acuitlapilco%2C_Tlaxcala.jpg",
+      "author": "Isaacvp",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Ensalada_de_nopales_y_habas_en_tianguis_de_Acuitlapilco,_Tlaxcala.jpg",
+      "alt": "Ensalada de nopales con habas en un tianguis"
+    },
+    "ingredients": [
+      {
+        "id": "nopal",
+        "amount": "450 g de pencas limpias",
+        "use": "ensalada_nopales"
+      },
+      {
+        "id": "jitomate",
+        "amount": "2 medianos"
+      },
+      {
+        "id": "cebolla",
+        "amount": "¼ de pieza"
+      },
+      {
+        "id": "cilantro",
+        "amount": "3 cucharadas picadas"
+      },
+      {
+        "id": "lima",
+        "amount": "2 cucharadas de jugo",
+        "label": "Limón verde (lima ácida)"
+      },
+      {
+        "id": "queso_panela",
+        "amount": "100 g en cubos",
+        "use": "ensalada",
+        "alternatives": [
+          {
+            "to": "primo_sale",
+            "amount": "100 g de primo sale de vaca, en cubos"
+          }
+        ]
+      },
+      {
+        "id": "agua",
+        "amount": "750 ml para cocer"
+      },
+      {
+        "id": "sal",
+        "amount": "Al gusto"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Corta las pencas limpias en tiras cortas. Cuécelas en el agua con una pizca de sal hasta que estén tiernas, unos 12–15 minutos. Escurre y deja enfriar."
+      },
+      {
+        "text": "Pica el jitomate y la cebolla. Mezcla con el nopal, el cilantro y el jugo de limón verde."
+      },
+      {
+        "text": "Incorpora el queso panela en cubos. Prueba, ajusta la sal y sirve fría.",
+        "changes": [
+          {
+            "from": "queso_panela",
+            "to": "primo_sale",
+            "text": "Reparte los cubos de primo sale de vaca sobre la ensalada. Prueba antes de añadir sal y sirve fría."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "esquites",
+    "title": "Esquites caldosos",
+    "description": "Granos de elote cocidos con epazote y servidos con queso, limón y chile.",
+    "servings": 4,
+    "minutes": 40,
+    "prep_minutes": 10,
+    "sources": [
+      "bayless_esquites",
+      "gob_quesos"
+    ],
+    "photo": {
+      "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Traditional_%22esquites%22.jpg/960px-Traditional_%22esquites%22.jpg",
+      "author": "Alondrapr",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Traditional_%22esquites%22.jpg",
+      "alt": "Esquites servidos en vaso"
+    },
+    "ingredients": [
+      {
+        "id": "elote_tierno",
+        "amount": "500 g de granos frescos",
+        "use": "esquites",
+        "alternatives": [
+          {
+            "to": "maiz_dulce",
+            "amount": "500 g de maíz dulce fresco o congelado"
+          }
+        ]
+      },
+      {
+        "id": "epazote",
+        "amount": "1 ramita fresca"
+      },
+      {
+        "id": "agua",
+        "amount": "750 ml"
+      },
+      {
+        "id": "sal",
+        "amount": "Al gusto"
+      },
+      {
+        "id": "mayonesa",
+        "amount": "2 cucharadas"
+      },
+      {
+        "id": "queso_cotija",
+        "amount": "60 g desmoronado",
+        "use": "decorar",
+        "alternatives": [
+          {
+            "to": "pecorino_romano",
+            "amount": "30 g de Pecorino Romano rallado, al gusto"
+          },
+          {
+            "to": "parmigiano_reggiano",
+            "amount": "40 g de Parmigiano Reggiano rallado"
+          }
+        ]
+      },
+      {
+        "id": "lima",
+        "amount": "1 pieza",
+        "label": "Limón verde (lima ácida)"
+      },
+      {
+        "id": "chile_arbol",
+        "amount": "1 chile seco, molido, al gusto"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Cubre el elote con el agua. Añade la ramita de epazote y cuece a hervor suave hasta que el grano esté tierno, unos 25–30 minutos según el elote.",
+        "changes": [
+          {
+            "from": "elote_tierno",
+            "to": "maiz_dulce",
+            "text": "Añade el maíz dulce y el epazote al agua. Empieza a comprobar la textura a los 8 minutos de hervor suave y retira cuando esté tierno."
+          }
+        ]
+      },
+      {
+        "text": "Retira el epazote y reparte los granos calientes con un poco de su caldo. Añade un poco de mayonesa, limón y chile molido al gusto."
+      },
+      {
+        "text": "Termina con Cotija desmoronado. Prueba antes de ajustar la sal.",
+        "changes": [
+          {
+            "from": "queso_cotija",
+            "to": "pecorino_romano",
+            "text": "Ralla el Pecorino Romano sobre cada vaso. Empieza con poca cantidad y prueba antes de añadir sal."
+          },
+          {
+            "from": "queso_cotija",
+            "to": "parmigiano_reggiano",
+            "text": "Ralla el Parmigiano Reggiano sobre los esquites justo antes de servir. Ajusta la sal al final."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tostadas_tinga",
+    "title": "Tostadas de tinga de pollo",
+    "description": "Pollo deshebrado en salsa ahumada de jitomate y chipotle sobre tostadas de maíz.",
+    "servings": 4,
+    "minutes": 35,
+    "prep_minutes": 12,
+    "sources": [
+      "bayless_tinga",
+      "gob_tostadas"
+    ],
+    "photo": {
+      "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Tostada.jpg/960px-Tostada.jpg",
+      "author": "German matus",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tostada.jpg",
+      "alt": "Tostada de tinga de pollo"
+    },
+    "ingredients": [
+      {
+        "id": "tostada_maiz",
+        "amount": "8 piezas",
+        "use": "base_tostada",
+        "alternatives": [
+          {
+            "to": "tortilla_maiz",
+            "amount": "8 tortillas de maíz para hornear"
+          }
+        ]
+      },
+      {
+        "id": "pollo_cocido",
+        "amount": "450 g, deshebrado"
+      },
+      {
+        "id": "jitomate",
+        "amount": "4 medianos"
+      },
+      {
+        "id": "cebolla",
+        "amount": "1 mediana, en tiras"
+      },
+      {
+        "id": "ajo",
+        "amount": "1 diente"
+      },
+      {
+        "id": "chipotle_adobo",
+        "amount": "1 chile y 1 cucharadita del adobo",
+        "use": "tinga"
+      },
+      {
+        "id": "aceite_vegetal",
+        "amount": "1 cucharada"
+      },
+      {
+        "id": "aguacate",
+        "amount": "1 pieza"
+      },
+      {
+        "id": "sal",
+        "amount": "Al gusto"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Ten listas las tostadas, sin añadir la tinga aún.",
+        "changes": [
+          {
+            "from": "tostada_maiz",
+            "to": "tortilla_maiz",
+            "text": "Hornea las tortillas a 190 °C en una sola capa y voltéalas a mitad de cocción. Retíralas cuando queden rígidas y doradas, normalmente tras 10–15 minutos. Enfríalas en una rejilla."
+          }
+        ]
+      },
+      {
+        "text": "Asa los jitomates en un sartén hasta que se ablanden y se doren por zonas. Licúalos con el ajo, el chipotle y su adobo."
+      },
+      {
+        "text": "Sofríe la cebolla en el aceite hasta que se ablande. Añade el puré y deja que reduzca. Incorpora el pollo ya cocido y remueve a fuego medio hasta que todo esté bien caliente. Ajusta la sal."
+      },
+      {
+        "text": "Reparte el guiso sobre las bases crujientes justo antes de comer. Termina con rebanadas de aguacate."
+      }
+    ]
+  },
+  {
+    "id": "sopa_azteca",
+    "title": "Sopa azteca",
+    "description": "Caldo de jitomate y chile seco servido con tiras crujientes de tortilla, aguacate y queso.",
+    "servings": 4,
+    "minutes": 45,
+    "prep_minutes": 15,
+    "sources": [
+      "bayless_sopa_azteca",
+      "sep_pasilla_morita"
+    ],
+    "photo": {
+      "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Sopa_Azteca.jpg/960px-Sopa_Azteca.jpg",
+      "author": "camposart",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Sopa_Azteca.jpg",
+      "alt": "Tazón de sopa azteca"
+    },
+    "ingredients": [
+      {
+        "id": "chile_pasilla",
+        "amount": "1 chile seco",
+        "use": "sopa_azteca",
+        "alternatives": [
+          {
+            "to": "chile_ancho",
+            "amount": "1 chile ancho pequeño"
+          }
+        ]
+      },
+      {
+        "id": "jitomate",
+        "amount": "400 g"
+      },
+      {
+        "id": "cebolla",
+        "amount": "½ pieza"
+      },
+      {
+        "id": "ajo",
+        "amount": "2 dientes"
+      },
+      {
+        "id": "caldo_pollo",
+        "amount": "1 litro"
+      },
+      {
+        "id": "epazote",
+        "amount": "1 ramita fresca"
+      },
+      {
+        "id": "tortilla_maiz",
+        "amount": "6 piezas"
+      },
+      {
+        "id": "aceite_vegetal",
+        "amount": "2 cucharadas, repartidas"
+      },
+      {
+        "id": "aguacate",
+        "amount": "1 pieza"
+      },
+      {
+        "id": "queso_fresco_mexicano",
+        "amount": "80 g desmoronado"
+      },
+      {
+        "id": "sal",
+        "amount": "Al gusto"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Corta las tortillas en tiras. Mézclalas con una cucharada de aceite y hornéalas a 190 °C hasta que estén crujientes. Remueve a mitad de cocción."
+      },
+      {
+        "text": "Retira semillas y tallo del pasilla. Tuéstalo unos segundos por lado, remójalo 10 minutos en agua caliente y licúalo con el jitomate, la cebolla y el ajo.",
+        "changes": [
+          {
+            "from": "chile_pasilla",
+            "to": "chile_ancho",
+            "text": "Retira las semillas del ancho. Tuéstalo brevemente, remójalo en agua caliente hasta que se ablande y licúalo con el jitomate, la cebolla y el ajo."
+          }
+        ]
+      },
+      {
+        "text": "Calienta el aceite restante y sofríe el puré unos minutos. Añade el caldo y el epazote. Cocina a fuego bajo unos 15 minutos y prueba la sal."
+      },
+      {
+        "text": "Retira el epazote. Sirve el caldo con tiras de tortilla, aguacate en cubos y queso fresco desmoronado."
+      }
+    ]
+  },
+  {
+    "id": "agua_jamaica",
+    "title": "Agua de jamaica",
+    "description": "Infusión fría de cálices de jamaica con dulzor al gusto.",
+    "servings": 6,
+    "minutes": 35,
+    "prep_minutes": 5,
+    "sources": [
+      "gob_agua_jamaica",
+      "inifap_jamaica"
+    ],
+    "photo": {
+      "thumbnail": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Agua_de_jamaica.jpg/960px-Agua_de_jamaica.jpg",
+      "author": "marycarmenm",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Agua_de_jamaica.jpg",
+      "alt": "Vaso de agua de jamaica"
+    },
+    "ingredients": [
+      {
+        "id": "jamaica_seca",
+        "amount": "35 g"
+      },
+      {
+        "id": "agua",
+        "amount": "1,5 litros"
+      },
+      {
+        "id": "azucar_blanca",
+        "amount": "40–60 g, al gusto"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Calienta 500 ml de agua. Cuando hierva, apaga el fuego, añade la jamaica y deja reposar tapada 10 minutos."
+      },
+      {
+        "text": "Cuela la infusión. Disuelve el azúcar mientras esté tibia y añade el litro de agua restante."
+      },
+      {
+        "text": "Prueba, diluye con más agua si te queda muy intensa y refrigera hasta que esté fría."
+      }
+    ]
   }
 ]

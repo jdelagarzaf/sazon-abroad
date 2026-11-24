@@ -1,0 +1,37 @@
+query,kind,group,expected_ids,expected_substitutes,expected_warnings,expected_adjustments,source_ids
+prezzemolo,identidad,habitual,perejil,,,,
+fagioli pinto,identidad,habitual,frijol_pinto,,,,
+acqua,identidad,habitual,agua,,,,
+cebola,identidad,habitual,cebolla,,,,
+carne di maiale,identidad,habitual,carne_cerdo,,,,
+sedano da costa,identidad,habitual,apio,,,,
+patate,identidad,habitual,papa,,,,
+frumento farina,identidad,habitual,harina_trigo,,,,
+quesillo oaxaqueño,identidad,especializado,queso_oaxaca,,,,gob_quesos|bayless_quesillo
+miltomate,identidad,especializado,tomatillo,,,,gob_tomatillo
+calici di karkadè,identidad,especializado,jamaica_seca,,,,inifap_jamaica
+chile pasiya,identidad,especializado,chile_pasilla,,,,gob_chilaca
+annatto,identidad,especializado,achiote,,,,Q425902
+cuitlacoche,identidad,especializado,huitlacoche,,,,conabio_huitlacoche
+panela de leche per insalata,contexto,especializado,queso_panela,primo_sale,,,gob_quesos|primosale_vaccino
+quesillo oaxaqueño para fundir en quesadillas,ajuste,especializado,queso_oaxaca,scamorza|mozzarella,,mozzarella,gob_quesos|galbani_mozzarella|galbani_scamorza
+Cotija para guarnición,ajuste,especializado,queso_cotija,pecorino_romano|parmigiano_reggiano,,pecorino_romano,gob_quesos|pecorino_romano|parmigiano_reggiano
+piloncillo en cono para endulzar café de olla,ajuste,especializado,piloncillo,azucar_morena_oscura,,azucar_morena_oscura,bayless_cafe_olla
+peperoncino pasilla per zuppa di tortilla,ajuste,especializado,chile_pasilla,chile_ancho,,chile_ancho,bayless_sopa_azteca
+elote tierno para elote en vaso,ajuste,especializado,elote_tierno,maiz_dulce,,maiz_dulce,bayless_esquites
+tostadas de maíz para base crujiente,ajuste,especializado,tostada_maiz,tortilla_maiz,,tortilla_maiz,gob_tostadas
+¿Qué queso puedo usar en vez de Oaxaca en una quesadilla?,ajuste,especializado,queso_oaxaca,scamorza|mozzarella,,mozzarella,gob_quesos|galbani_mozzarella|galbani_scamorza
+crema de mesa mexicana para terminar chilaquiles,contexto,especializado,crema_mexicana,creme_fraiche,,,bayless_totopos
+harina de trigo per addensare una salsa,contexto,habitual,harina_trigo,fecula_maiz,,,csu_subs|mu_subs
+chile cuaresmeño para salsa fresca,contexto,especializado,jalapeno,serrano,,,sep_chiles|inifap_guajillo
+tomate rojo para caldillo,contexto,habitual,jitomate,tomate_lata,,,mu_subs|mutti_pelati
+¿Puedo usar chile ancho en lugar de guajillo para adobo?,ajuste,especializado,guajillo,chile_ancho,,chile_ancho,sep_chiles|inifap_guajillo
+chipotle en adobo para tinga de pollo,sin sustituto,especializado,chipotle_adobo,,,,bayless_tinga|gob_chipotle_adobo
+penca de nopal per insalata di nopales,sin sustituto,especializado,nopal,,,,conabio_nopal
+harina de maíz nixtamalizada per tortilla di mais,sin sustituto,especializado,masa_harina,,polenta|harina_maiz,,masienda_masa|treccani_polenta
+miltomate para salsa verde mexicana,sin sustituto,especializado,tomatillo,,jitomate,,gob_tomatillo
+paico para frijoles en olla,sin sustituto,especializado,epazote,,,,gob_epazote
+miso blanco,sin resultado,especializado,,,,,
+cardamomo negro,sin resultado,especializado,,,,,
+fideos soba,sin resultado,especializado,,,,,
+vinagre de arroz japonés,sin resultado,habitual,,,,,
