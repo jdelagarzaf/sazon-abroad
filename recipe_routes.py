@@ -5,6 +5,7 @@ import hmac
 import os
 from pathlib import Path
 import secrets
+from uuid import uuid4
 
 from flask import Blueprint, abort, current_app, redirect, render_template, request, session, url_for
 
@@ -12,7 +13,7 @@ from adaptation import AdaptationRequest
 from ingredient_views import get_catalog
 from local_model import ModelError, ModelSettings, OllamaClient
 from recipe_plans import load_recipes, make_plan, resolve_ingredients
-from recipe_workspace import DraftStore, LocalJobs, MAX_ROWS, extract_recipe, shopping_list, translate_draft
+from recipe_workspace import DraftStore, LocalJobs, MAX_ROWS, extract_recipe, shopping_list, translate_draft, propose_draft
 from store_search import StoreSearchError, StoreSearchService, TavilySearch, group_stores, manual_search
 
 workspace = Blueprint("workspace", __name__)
@@ -103,6 +104,46 @@ def bounded(value, limit, label, required=False):
     return value
 
 
+def invalidate_row(row):
+    for key in ("translation", "adaptation", "selected_name", "selected_amount", "selected_index", "manual",
+                "import_note", "import_adjustment", "import_limitation"):
+        row.pop(key, None)
+    row.update(local_name="", imported=False)
+
+
+def edit_row(row, form):
+    """Save one modal atomically, validating the selected option against its saved proposals."""
+    previous = (row["name"], row.get("use", ""), row.get("preparation", ""))
+    previous_local = row.get("local_name", "")
+    previous_amount = row.get("amount", "")
+    for key, limit in (("name", 160), ("amount", 100), ("use", 160), ("preparation", 160)):
+        row[key] = bounded(form.get(key, row.get(key, "")), limit, key, key == "name")
+    local = bounded(form.get("local_name", previous_local), 120, "término local")
+    changed = previous != (row["name"], row["use"], row["preparation"])
+    if row["amount"] != previous_amount:
+        row.pop("import_note", None)
+    if changed:
+        invalidate_row(row)
+        # Only retain a term explicitly corrected alongside the changed source.
+        if local == previous_local:
+            local = ""
+    if local != row.get("local_name", ""):
+        row["translation"] = None
+        row["manual"] = bool(local)
+    row["local_name"] = local
+    choice = form.get("proposal", "original")
+    alternatives = row.get("adaptation", {}).get("result", {}).get("alternatives", [])
+    for key in ("selected_name", "selected_index", "selected_amount"):
+        row.pop(key, None)
+    if choice != "original" and not changed:
+        allowed = {f"alternative:{i}": i for i in range(len(alternatives))}
+        if choice not in allowed:
+            raise ValueError("Esa propuesta ya no está disponible. Genera nuevas opciones.")
+        selected = allowed[choice]
+        row.update(selected_index=selected, selected_name=alternatives[selected]["local_name"],
+                   selected_amount=bounded(form.get("sub_amount", ""), 100, "cantidad del sustituto"))
+
+
 @workspace.route("/mi-receta/nueva", methods=["GET", "POST"])
 def new():
     error, raw = None, ""
@@ -156,6 +197,9 @@ def import_recipe():
 @workspace.route("/mi-receta/<draft_id>", methods=["GET", "POST"])
 def edit(draft_id):
     draft, error = get_draft(draft_id), None
+    dialog_id = request.args.get("edit", "")
+    modal_values = None
+    created_row_id = None
     if request.method == "POST":
         check_csrf()
         try:
@@ -164,7 +208,49 @@ def edit(draft_id):
             if draft["status"] == "working":
                 raise ValueError("Espera a que termine la tarea antes de editar.")
             action = request.form.get("action", "save")
-            if action in {"save", "translate", "add", "remove"}:
+            if action in {"settings", "row_save", "row_add", "row_add_generate", "row_generate", "row_remove", "generate", "steps"}:
+                updated = deepcopy(draft)
+                row_id = request.form.get("row", "")
+                if action == "settings":
+                    updated["title"] = bounded(request.form.get("title", ""), 120, "título", True)
+                    new_context = asdict(AdaptationRequest.from_mapping({**draft["context"],
+                        **{key: request.form.get(key, value) for key, value in draft["context"].items()}, "query": "receta"}))
+                    new_context["query"] = ""
+                    if any(value != draft["context"].get(key) for key, value in new_context.items() if key != "city"):
+                        for row in updated["rows"]:
+                            invalidate_row(row)
+                    updated["context"] = new_context
+                elif action == "steps":
+                    updated["steps"] = bounded(request.form.get("steps", ""), 6000, "pasos").splitlines()
+                elif action in {"row_add", "row_add_generate"}:
+                    if len(updated["rows"]) >= MAX_ROWS:
+                        raise ValueError("El máximo es 16 ingredientes.")
+                    row = {"id": uuid4().hex[:12], "name": "", "amount": "", "use": "", "preparation": ""}
+                    edit_row(row, request.form)
+                    updated["rows"].append(row)
+                    row_id = row["id"]
+                elif action in {"row_save", "row_generate", "row_remove"}:
+                    row = next((row for row in updated["rows"] if row["id"] == row_id), None)
+                    if not row:
+                        raise ValueError("Ingrediente desconocido.")
+                    if action == "row_remove":
+                        if len(updated["rows"]) == 1:
+                            raise ValueError("Conserva al menos un ingrediente.")
+                        updated["rows"].remove(row)
+                    else:
+                        edit_row(row, request.form)
+                updated.update(stores=None, error=None, status="editable")
+                draft = store().save(owner(), updated, draft["revision"])
+                if action == "row_add_generate":
+                    created_row_id = row_id
+                if action in {"generate", "row_generate", "row_add_generate"}:
+                    catalog, index = get_catalog()
+                    service, client = current_app.extensions["adaptation_service"], OllamaClient(ModelSettings.from_env())
+                    targets = {row_id} if action != "generate" else None
+                    start_job(draft, lambda data, progress: propose_draft(data, service, catalog, index, client, progress, targets))
+                    if action != "generate":
+                        return redirect(url_for("workspace.edit", draft_id=draft_id, edit=row_id), code=303)
+            elif action in {"save", "translate", "add", "remove"}:
                 updated = deepcopy(draft)
                 updated["title"] = bounded(request.form.get("title", draft["title"]), 120, "título", True)
                 context = AdaptationRequest.from_mapping({**draft["context"], **{key: request.form.get(key, value) for key, value in draft["context"].items()}, "query": "receta"})
@@ -192,7 +278,6 @@ def edit(draft_id):
                 if action == "add":
                     if len(updated["rows"]) >= MAX_ROWS:
                         raise ValueError("El máximo es 16 ingredientes.")
-                    from uuid import uuid4
                     updated["rows"].append({"id": uuid4().hex[:12], "name": "Nuevo ingrediente", "amount": "", "use": "", "preparation": ""})
                 if action == "remove":
                     updated["rows"] = [row for row in updated["rows"] if row["id"] != request.form.get("row")]
@@ -263,12 +348,19 @@ def edit(draft_id):
         except (ValueError, ModelError) as exc:
             error = str(exc)
             draft = get_draft(draft_id)
+            action = request.form.get("action")
+            dialog_id = "settings" if action == "settings" else "new" if action in {"row_add", "row_add_generate"} else "steps" if action == "steps" else request.form.get("row", "") if action in {"row_save", "row_generate"} else ""
+            if created_row_id:
+                dialog_id = created_row_id
+                error = "El ingrediente se guardó, pero no se pudo generar: " + error
+            modal_values = request.form if dialog_id else None
     shopping = shopping_list(draft)
     products = list(dict.fromkeys(item["name"] for item in shopping))
     searches = (draft.get("stores") or {}).get("searches", [])
     return render_template("recipe_workspace.html", draft=draft, shopping=shopping, error=error,
                            store_groups=group_stores(searches, len(shopping)), searches=searches,
                            search_products=products,
+                           dialog_id=dialog_id, modal_values=modal_values,
                            manual_search=manual_search, search_configured=TavilySearch().api_key not in {"", "PEGA_TU_CLAVE_AQUI"}), 400 if error else 200
 
 

@@ -17,9 +17,9 @@ Corta el pepino y mezcla con el yogur.
 Añade el eneldo.
 ```
 
-2. Revisa los nombres y cantidades. El título de la receta se propone como uso inicial; abre **Uso y presentación** para precisarlo (rellenar, espesar, servir en frío…). Abre **Receta, destino e idiomas** para modificar país, idiomas, ciudad o restricciones. Milán (`Milano`) es el ejemplo inicial.
-3. Pulsa **Guardar y traducir con IA local**. La página muestra el progreso y se actualiza al terminar. Puedes corregir el término local y guardar; se identifica como corrección propia.
-4. Para sustituir, guarda el uso y pide una propuesta explícitamente en **Alternativas por uso**. Revisa ajuste y limitación, elige la propuesta e indica su cantidad. Sin una proporción comprobada se muestra **Por confirmar**, nunca se copia la cantidad original al sustituto.
+2. Revisa la tabla **Ingrediente · Cantidad · Propuesta**. El engranaje **Settings**, arriba a la derecha, abre el modal de título, países, idiomas, ciudad y restricciones. Milán (`Milano`) es el ejemplo inicial.
+3. Usa **+** para añadir un ingrediente o el **lápiz** de una fila para editarlo. El mismo modal permite guardar nombre, cantidad, término local, platillo/función y presentación. **×** quita la fila; se conserva al menos un ingrediente. Los pasos originales permanecen visibles y su lápiz permite corregirlos.
+4. Pulsa **Enviar** junto al **+** para generar propuestas para toda la receta. La primera alternativa se selecciona si la respuesta propone una sustitución; en caso contrario se muestra el original traducido cuando está identificado. Es una prioridad de la respuesta, no una garantía de calidad. En el modal puedes elegir otra opción, conservar el original o usar **Generar solo este**. Para un ingrediente nuevo también existe **Añadir y generar**. El progreso se muestra sin ocultar la tabla. Una generación individual vuelve a abrir el modal con sus resultados. La cantidad de un sustituto distinto queda **Por confirmar** hasta que la indiques; no se copia la original.
 5. Comprueba la lista y los cambios antes de cocinar. Consulta tiendas cuando hayas activado la clave siguiendo [la guía de comercios](comercios.md).
 
 No hace falta dar de alta pepino, yogur o eneldo en `catalog.json`. Los términos generados siguen pendientes de revisión. No se declara seguridad para alergias a partir del nombre o del resultado del modelo.
@@ -36,7 +36,7 @@ La consolidación suma fracciones exactas cuando producto, presentación y unida
 
 Al importar una receta del repositorio se conservan los pasos de la versión elegida, sus cantidades comprobadas y sus ajustes. En recetas propias, los pasos mantienen el texto introducido. La vista **Cambios para cocinar** muestra cada original → sustituto, cantidad, ajuste y limitación junto a los pasos originales. No se declara una reescritura de técnicas validada: el usuario debe aplicar las correspondencias al cocinar. No se modifica silenciosamente una instrucción por una coincidencia parcial de palabras.
 
-Cambiar país, idiomas, restricciones o ingredientes invalida las propuestas afectadas y la búsqueda de comercios. Cambiar solo la ciudad conserva las traducciones y descarta las búsquedas anteriores. La selección de un sustituto es independiente del término local del original.
+Cambiar país, idiomas, restricciones, nombre, uso o presentación invalida las propuestas afectadas y la búsqueda de comercios. Editar solo una cantidad conserva las opciones. Cambiar solo la ciudad conserva las traducciones y descarta las búsquedas anteriores. La selección de un sustituto es independiente del término local del original. Al regenerar, se actualiza la selección principal; solo se conserva una cantidad de sustituto ya introducida si sigue siendo exactamente el mismo producto.
 
 ## Persistencia y ejecución
 

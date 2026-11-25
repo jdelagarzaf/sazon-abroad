@@ -193,3 +193,26 @@ def translate_draft(draft, service, catalog, index, client, progress=lambda *_: 
         row["translation"] = response
         row["local_name"] = response["result"]["local_name"] or ""
     return draft
+
+
+def propose_draft(draft, service, catalog, index, client, progress=lambda *_: None, row_ids=None):
+    """Generate ranked proposals; an actual substitute never inherits original quantity."""
+    targets = [row for row in draft["rows"] if row_ids is None or row["id"] in row_ids]
+    for number, row in enumerate(targets, 1):
+        progress(f"Generando {number} de {len(targets)}: {row['name']}")
+        query = f"¿Qué uso en vez de {row['name']} para {row['use']}?" if row.get("use") else row["name"]
+        context = AdaptationRequest.from_mapping({**draft["context"], "query": query,
+            "culinary_use": row.get("use", ""), "preparation": row.get("preparation", "")})
+        response = service.adapt(context, catalog, index, client)
+        result = response["result"]
+        old_name, old_amount = row.get("selected_name"), row.get("selected_amount", "")
+        row["adaptation"] = response
+        row["translation"] = response
+        if not row.get("manual"):
+            row["local_name"] = result["local_name"] or ""
+        for key in ("selected_name", "selected_index", "selected_amount"):
+            row.pop(key, None)
+        if result["kind"] == "substitute" and result["alternatives"]:
+            best = result["alternatives"][0]["local_name"]
+            row.update(selected_name=best, selected_index=0, selected_amount=old_amount if best == old_name else "")
+    return draft

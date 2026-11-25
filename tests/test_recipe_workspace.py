@@ -3,12 +3,12 @@ import re
 from pathlib import Path
 import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 from app import app
 from adaptation import AdaptationService
 from local_model import ModelError, ModelSettings
-from recipe_workspace import DraftStore, extract_recipe, quantity, shopping_list
+from recipe_workspace import DraftStore, extract_recipe, quantity, shopping_list, propose_draft
 
 
 class RecipeDataTests(unittest.TestCase):
@@ -204,3 +204,118 @@ class RecipeRouteTests(unittest.TestCase):
         response = self.client.post(self.url + "/borrar", data={"csrf": self.csrf})
         self.assertEqual(response.status_code, 303)
         self.assertEqual(self.client.get(self.url).status_code, 404)
+
+    def test_compact_table_and_always_visible_steps(self):
+        self.create()
+        html = self.client.get(self.url).get_data(as_text=True)
+        visible = html.split('<dialog', 1)[0]
+        self.assertIn('aria-label="Ingredientes y propuestas"', visible)
+        self.assertIn('Propuesta</th>', visible)
+        self.assertIn('Cuece el colinabo.', visible)
+        self.assertNotIn('name="name"', visible)
+        self.assertNotIn('Guardar cambios', html)
+        self.assertNotIn('Consultar los pasos guardados', html)
+        self.assertIn('id="recipe-settings"', html)
+        self.assertIn('name="action" value="row_generate"', html)
+
+    def test_modal_add_edit_remove_and_invalid_input(self):
+        draft = self.create()
+        response = self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"],
+            "action": "row_add", "name": "Eneldo", "amount": "al gusto", "use": "ensalada"})
+        self.assertEqual(response.status_code, 303)
+        draft = self.get()
+        added = draft["rows"][1]
+        response = self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"],
+            "action": "row_save", "row": added["id"], "name": "Eneldo fresco", "amount": "10 g", "local_name": "aneto", "use": "ensalada"})
+        self.assertEqual(response.status_code, 303)
+        draft = self.get()
+        self.assertEqual(draft["rows"][0]["amount"], "200 g")
+        self.assertEqual(draft["rows"][1]["local_name"], "aneto")
+        response = self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"],
+            "action": "row_save", "row": added["id"], "name": "", "amount": "20 g"})
+        self.assertEqual(response.status_code, 400)
+        self.assertIn('data-auto-open', response.get_data(as_text=True))
+        self.assertEqual(self.get()["rows"][1]["amount"], "10 g")
+        self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"], "action": "row_remove", "row": added["id"]})
+        draft = self.get()
+        self.assertEqual(len(draft["rows"]), 1)
+        response = self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"], "action": "row_remove", "row": draft["rows"][0]["id"]})
+        self.assertEqual(response.status_code, 400)
+
+    def proposal(self):
+        return {"model": "test", "sources": {}, "result": {"local_name": "cavolo rapa", "kind": "substitute",
+            "warnings": [], "clarification": None, "source_ids": [], "alternatives": [
+            {"local_name": "sedano rapa", "adjustment": "Ajusta el tiempo.", "limitation": "Sabor distinto.", "reason": "Textura parecida.", "source_ids": []},
+            {"local_name": "rapa", "adjustment": None, "limitation": "Otro sabor.", "reason": "Otra opción.", "source_ids": []}]}}
+
+    def test_global_send_selects_first_and_modal_can_change_proposal(self):
+        draft = self.create()
+        with patch("recipe_routes.jobs.submit", side_effect=lambda fn: fn()), patch.object(app.extensions["adaptation_service"], "adapt", return_value=self.proposal()):
+            response = self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"], "action": "generate"})
+        self.assertEqual(response.status_code, 303)
+        draft = self.get()
+        row = draft["rows"][0]
+        self.assertEqual(row["selected_name"], "sedano rapa")
+        self.assertEqual(row["selected_amount"], "")
+        self.assertEqual(shopping_list(draft)[0]["amount"], "Por confirmar")
+        self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"], "action": "row_save",
+            "row": row["id"], "proposal": "alternative:1", "sub_amount": "120 g"})
+        draft = self.get()
+        self.assertEqual(draft["rows"][0]["selected_name"], "rapa")
+        self.assertEqual(shopping_list(draft)[0]["amount"], "120 g")
+        self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"], "action": "row_save", "row": row["id"], "proposal": "original"})
+        draft = self.get()
+        self.assertNotIn("selected_name", draft["rows"][0])
+        self.assertEqual(shopping_list(draft)[0]["amount"], "200 g")
+
+    def test_individual_generation_saves_edits_and_does_not_touch_other_rows(self):
+        draft = self.create()
+        draft["rows"].append({"id": "other", "name": "sal", "amount": "1 g", "local_name": "sale", "use": "", "preparation": ""})
+        draft = DraftStore(app.config["RECIPE_DB"]).save(self.owner, draft, draft["revision"])
+        with patch("recipe_routes.jobs.submit", side_effect=lambda fn: fn()), patch.object(app.extensions["adaptation_service"], "adapt", return_value=self.proposal()) as adapt:
+            response = self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"], "action": "row_generate", "row": draft["rows"][0]["id"], "name": "Colinabo fresco", "amount": "300 g", "use": "sopa", "preparation": "fresco"})
+        self.assertIn('edit=', response.location)
+        self.assertEqual(adapt.call_count, 1)
+        context = adapt.call_args.args[0]
+        self.assertEqual((context.query, context.culinary_use, context.preparation), ("¿Qué uso en vez de Colinabo fresco para sopa?", "sopa", "fresco"))
+        current = self.get()
+        self.assertEqual(current["rows"][0]["amount"], "300 g")
+        self.assertEqual(current["rows"][1], draft["rows"][1])
+
+    def test_settings_and_steps_are_saved_independently(self):
+        draft = self.create()
+        draft["rows"][0]["local_name"] = "cavolo rapa"
+        draft = DraftStore(app.config["RECIPE_DB"]).save(self.owner, draft, draft["revision"])
+        self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"], "action": "settings", "title": "Mi sopa", "city": "Roma"})
+        draft = self.get()
+        self.assertEqual(draft["rows"][0]["local_name"], "cavolo rapa")
+        self.assertEqual(draft["context"]["city"], "Roma")
+        self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"], "action": "steps", "steps": "Corta.\nCuece."})
+        self.assertEqual(self.get()["steps"], ["Corta.", "Cuece."])
+
+    def test_context_edit_discards_outdated_options_and_invalid_choice_is_rejected(self):
+        draft = self.create()
+        draft["rows"][0].update(adaptation=self.proposal(), local_name="cavolo rapa", selected_name="sedano rapa", selected_index=0, selected_amount="100 g")
+        draft = DraftStore(app.config["RECIPE_DB"]).save(self.owner, draft, draft["revision"])
+        row_id = draft["rows"][0]["id"]
+        invalid = self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"], "action": "row_save", "row": row_id, "proposal": "alternative:99"})
+        self.assertEqual(invalid.status_code, 400)
+        self.assertEqual(self.get()["rows"][0]["selected_name"], "sedano rapa")
+        self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"], "action": "row_save", "row": row_id, "use": "otro plato", "proposal": "alternative:0"})
+        row = self.get()["rows"][0]
+        self.assertNotIn("adaptation", row)
+        self.assertNotIn("selected_name", row)
+        self.assertEqual(row["local_name"], "")
+
+    def test_add_and_generate_queue_failure_reopens_saved_row_without_duplicate(self):
+        draft = self.create()
+        with patch("recipe_routes.jobs.submit", side_effect=ValueError("Cola llena.")):
+            response = self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"],
+                "action": "row_add_generate", "name": "Eneldo", "amount": "10 g"})
+        self.assertEqual(response.status_code, 400)
+        current = self.get()
+        self.assertEqual(len(current["rows"]), 2)
+        row_id = current["rows"][-1]["id"]
+        html = response.get_data(as_text=True)
+        self.assertIn("El ingrediente se guardó", html)
+        self.assertRegex(html, 'id="ingredient-' + row_id + '"[^>]*data-auto-open')
