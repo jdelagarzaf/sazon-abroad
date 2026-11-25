@@ -6,26 +6,30 @@
 </header>
 {% if error or draft.error %}<p class="essential-note my-4" role="alert">{{ error or draft.error }}</p>{% endif %}
 {% if working %}<div class="recipe-progress my-5" role="status" aria-live="polite"><span class="recipe-spinner" aria-hidden="true"></span><span id="job-progress">{{ draft.progress }}</span></div><script src="{{ url_for('static',filename='recipe-job.js') }}" defer data-status-url="{{ url_for('workspace.status',draft_id=draft.id) }}"></script>{% endif %}
-<section class="mt-7" aria-labelledby="ingredients-heading">
+<div id="lista-compra" class="recipe-cooking-layout mt-7">
+<section aria-labelledby="ingredients-heading">
   <div class="recipe-section-heading"><div><h2 id="ingredients-heading">Ingredientes <span class="recipe-count">{{ draft.rows|length }}</span></h2></div><div class="recipe-toolbar">
     <button type="button" class="recipe-icon-button" data-open-dialog="ingredient-new" aria-label="Añadir ingrediente" title="Añadir ingrediente" {% if working %}disabled{% endif %}>{{ icon('plus') }}</button>
     <form method="post">{{ hidden(draft) }}<button class="button recipe-send" name="action" value="generate" {% if working %}disabled{% endif %}>{{ icon('send') }} Enviar</button></form>
   </div></div>
-  <p class="mt-2 mb-4 text-sm text-muted">Envía la receta para generar propuestas. Puedes ajustar cada una con el lápiz.</p>
+  <p class="mt-2 mb-4 text-sm text-muted">Pulsa un producto para buscarlo. Usa ↻ para regenerar su propuesta.</p>
   <div class="recipe-table-wrap"><table class="recipe-table" aria-label="Ingredientes y propuestas">
-    <thead><tr><th scope="col">Ingrediente</th><th scope="col">Cantidad</th><th scope="col">Propuesta</th><th scope="col"><span class="sr-only">Acciones</span></th></tr></thead>
+    <thead><tr><th scope="col">Producto / original</th><th scope="col">Cantidad</th><th scope="col"><span class="sr-only">Acciones</span></th></tr></thead>
     <tbody>{% for row in draft.rows %}<tr id="ingrediente-{{ row.id }}">
-      <th scope="row">{{ row.name }}</th><td>{{ row.amount or '—' }}</td>
-      <td><span class="recipe-proposal">{{ row.get('selected_name') or row.get('local_name') or '—' }}</span>{% if row.get('selected_name') %}<span class="block text-xs text-muted">Sustituto · {{ row.get('selected_amount') or 'Cantidad por confirmar' }}</span>{% endif %}
-        {% set response=row.get('adaptation') or row.get('translation') %}{% if response %}{% for warning in response.result.warnings %}<p class="recipe-table-warning">{{ warning }}</p>{% endfor %}{% if response.result.clarification %}<p class="recipe-table-warning">{{ response.result.clarification }}</p>{% endif %}{% endif %}
-      </td><td><div class="recipe-row-actions"><button type="button" class="recipe-icon-button" data-open-dialog="ingredient-{{ row.id }}" aria-label="Editar {{ row.name }}" title="Editar {{ row.name }}" {% if working %}disabled{% endif %}>{{ icon('edit') }}</button><form method="post">{{ hidden(draft) }}<input type="hidden" name="row" value="{{ row.id }}"><button class="recipe-icon-button recipe-remove" name="action" value="row_remove" aria-label="Quitar {{ row.name }}" title="Quitar {{ row.name }}" {% if working or draft.rows|length == 1 %}disabled{% endif %}>{{ icon('close') }}</button></form></div></td>
+      {% set product=row.get('selected_name') or row.get('local_name') %}{% set notes=ingredient_notes(row) %}
+      <th scope="row"><div class="recipe-product-heading"><a class="recipe-product-link" href="{{ manual_search(product or row.name,draft.context.city,draft.context.destination_country) }}" target="_blank" rel="noopener noreferrer" title="Buscar {{ product or row.name }} en la web">{{ product or row.name }}</a>
+        {% if notes or row.get('preparation') %}<button type="button" class="recipe-note-trigger" popovertarget="notes-{{ row.id }}" data-ingredient-note aria-label="Notas de {{ product or row.name }}" aria-describedby="notes-{{ row.id }}" aria-expanded="false">?</button><div id="notes-{{ row.id }}" class="recipe-note-panel" popover="auto" role="tooltip"><strong>{{ product or row.name }}</strong>{% if row.get('preparation') %}<p>Presentación: {{ row.preparation }}</p>{% endif %}{% for note in notes %}<p>{{ note }}</p>{% endfor %}</div>{% endif %}
+      </div><span class="recipe-original">{{ row.name if product else 'Propuesta pendiente' }}</span></th>
+      <td class="recipe-purchase-amount">{{ (row.get('selected_amount') or 'Por confirmar') if row.get('selected_name') else (row.amount or 'Por confirmar') }}</td>
+      <td><div class="recipe-row-actions"><form method="post">{{ hidden(draft) }}<input type="hidden" name="row" value="{{ row.id }}"><button class="recipe-icon-button" name="action" value="row_regenerate" aria-label="Regenerar propuesta de {{ row.name }}" title="Regenerar propuesta" {% if working %}disabled{% endif %}><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7v5h-5M4 17v-5h5M6 6a8 8 0 0 1 13 3M18 18A8 8 0 0 1 5 15"/></svg></button></form><button type="button" class="recipe-icon-button" data-open-dialog="ingredient-{{ row.id }}" aria-label="Editar {{ row.name }}" title="Editar {{ row.name }}" {% if working %}disabled{% endif %}>{{ icon('edit') }}</button><form method="post">{{ hidden(draft) }}<input type="hidden" name="row" value="{{ row.id }}"><button class="recipe-icon-button recipe-remove" name="action" value="row_remove" aria-label="Quitar {{ row.name }}" title="Quitar {{ row.name }}" {% if working or draft.rows|length == 1 %}disabled{% endif %}>{{ icon('close') }}</button></form></div></td>
     </tr>{% endfor %}</tbody>
   </table></div>
   {% if draft.rows|selectattr('translation')|list or draft.rows|selectattr('adaptation')|list %}<p class="text-xs text-muted mt-3">IA local · Propuestas pendientes de revisión.</p>{% endif %}
 </section>
-<section class="mt-7" aria-labelledby="steps-heading"><div class="recipe-section-heading"><h2 id="steps-heading">Pasos originales</h2><button type="button" class="recipe-icon-button" data-open-dialog="recipe-steps" aria-label="Editar pasos originales" title="Editar pasos" {% if working %}disabled{% endif %}>{{ icon('edit') }}</button></div>
+<section class="recipe-directions" aria-labelledby="steps-heading"><div class="recipe-section-heading"><h2 id="steps-heading">Pasos originales</h2><button type="button" class="recipe-icon-button" data-open-dialog="recipe-steps" aria-label="Editar pasos originales" title="Editar pasos" {% if working %}disabled{% endif %}>{{ icon('edit') }}</button></div>
   <ol class="recipe-steps mt-4">{% for step in draft.steps %}<li>{{ step }}</li>{% else %}<li class="text-muted">Aún no se han añadido pasos.</li>{% endfor %}</ol>
 </section>
+</div>
 {% if not working %}
 <dialog id="recipe-settings" class="recipe-dialog" aria-labelledby="settings-title" {% if dialog_id == 'settings' %}data-auto-open{% endif %}>
   <form method="post">{{ hidden(draft) }}<header class="recipe-dialog-heading"><div><p class="recipe-eyebrow">Settings</p><h2 id="settings-title">Receta, destino e idiomas</h2></div><button type="button" class="recipe-icon-button" data-close-dialog aria-label="Cerrar ajustes">{{ icon('close') }}</button></header>
@@ -58,7 +62,7 @@
     </section>{% endif %}
     {% if row.get('import_note') %}<p class="text-sm mt-4">{{ row.import_note }}</p>{% endif %}
     {% set response=adaptation or row.get('translation') %}{% if response %}{% for warning in response.result.warnings %}<p class="essential-note mt-3">{{ warning }}</p>{% endfor %}{% if not adaptation and response.result.clarification %}<p class="essential-note mt-3">{{ response.result.clarification }}</p>{% endif %}<details class="mt-4"><summary>Procedencia</summary><p class="text-sm mt-2">{{ response.model }} · Revisión pendiente</p>{{ source_list(response.result.source_ids,response.sources) }}</details>{% endif %}
-    </div><footer class="recipe-dialog-footer"><button type="button" class="recipe-secondary-button" data-close-dialog>Cancelar</button><button class="button recipe-save" name="action" value="{{ 'row_add' if new else 'row_save' }}">Guardar</button><button class="recipe-secondary-button recipe-send" name="action" value="{{ 'row_add_generate' if new else 'row_generate' }}">{{ icon('send') }} {{ 'Añadir y generar' if new else 'Generar solo este' }}</button></footer>
+    </div><footer class="recipe-dialog-footer"><button type="button" class="recipe-secondary-button" data-close-dialog>Cancelar</button><button class="button recipe-save" name="action" value="{{ 'row_add' if new else 'row_save' }}">Guardar</button>{% if new %}<button class="recipe-secondary-button recipe-send" name="action" value="row_add_generate">{{ icon('send') }} Añadir y generar</button>{% endif %}</footer>
   </form>
 </dialog>
 {% endmacro %}

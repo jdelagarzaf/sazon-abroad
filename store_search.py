@@ -16,7 +16,7 @@ from urllib.parse import urlencode, urlsplit
 from urllib.request import Request, ProxyHandler, build_opener
 
 from local_model import NoRedirects
-from retailers import BLOCKED_DOMAINS, blocked_domain, domain_matches
+from retailers import BLOCKED_DOMAINS, RETAILERS, blocked_domain, domain_matches
 
 
 class StoreSearchError(Exception):
@@ -127,9 +127,13 @@ class StoreSearchService:
         query = f'{product.strip()} {verb} {city.strip()} {country.strip()}'
         domains = sorted(set(domains or []))
         if domains:
-            product_word = {"it": "prodotto", "es": "producto", "de": "Produkt", "fr": "produit"}.get(language, "product")
-            query = f'{json.dumps(product.strip(), ensure_ascii=False)} {product_word} {city.strip()} {country.strip()}'
-        key = sha256(("tavily-commercial-v3:" + query.casefold() + json.dumps(domains)).encode()).hexdigest()
+            # Product catalogs are national: requiring the city hides valid pages.
+            # Retailer alternatives guide ranking; include_domains enforces scope.
+            shops = list(dict.fromkeys(next((store["name"] for store in RETAILERS
+                if any(domain_matches(domain, known) for known in store["domains"])), domain) for domain in domains))
+            query = f'{json.dumps(product.strip(), ensure_ascii=False)} ({" OR ".join(shops)})'
+        cache_scope = [query.casefold(), domains, city.strip().casefold(), country.strip().casefold(), language]
+        key = sha256(("tavily-commercial-v4:" + json.dumps(cache_scope, ensure_ascii=False)).encode()).hexdigest()
         now = time.time()
         with self.connect() as db:
             row = db.execute("SELECT stamp,data FROM cache WHERE key=?", (key,)).fetchone()
@@ -139,18 +143,18 @@ class StoreSearchService:
         if isinstance(provider, TavilySearch) and (not provider.api_key or provider.api_key == "PEGA_TU_CLAVE_AQUI"):
             raise StoreSearchError("Falta TAVILY_API_KEY. Sigue docs/comercios.md y reinicia la aplicación.")
         try:
-            limit = int(os.environ.get("SAZON_SEARCH_DAILY_LIMIT", "25"))
-            if not 0 <= limit <= 25:
+            limit = int(os.environ.get("SAZON_SEARCH_DAILY_LIMIT", "100"))
+            if not 0 <= limit <= 100:
                 raise ValueError()
         except ValueError:
-            raise StoreSearchError("SAZON_SEARCH_DAILY_LIMIT debe ser un número entre 0 y 25.") from None
+            raise StoreSearchError("SAZON_SEARCH_DAILY_LIMIT debe ser un número entre 0 y 100.") from None
         day = datetime.now(timezone.utc).date().isoformat()
         # Reserve attempts atomically, including failures, to avoid unbounded retries.
         with self.connect() as db:
             db.execute("BEGIN IMMEDIATE")
             db.execute("INSERT OR IGNORE INTO usage VALUES (?,0)", (day,))
             if db.execute("SELECT count FROM usage WHERE day=?", (day,)).fetchone()[0] >= limit:
-                raise StoreSearchError("Se alcanzó el límite diario local de búsquedas nuevas. La caché sigue disponible.")
+                raise StoreSearchError("Se alcanzó el límite diario local de búsquedas nuevas. Se renueva a las 00:00 UTC; la caché sigue disponible.")
             db.execute("UPDATE usage SET count=count+1 WHERE day=?", (day,))
         results = provider.search(query, domains=domains) if domains else provider.search(query)
         data = {"product": product, "query": query, "queried_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),

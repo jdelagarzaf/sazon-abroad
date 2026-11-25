@@ -80,7 +80,8 @@ def commercial_result(hit, product, retailers):
     path = unquote(url.path).lower()
     if not retailer or EXCLUDED_PATHS.search(path) or path.endswith((".pdf", ".jpg", ".png")):
         return None
-    strong = bool(re.search(r"/(?:p|product|products|prodotto|pd)/", path) or re.search(r"(?:\d{8,}|/p\d{5,})", path))
+    strong = bool(re.search(r"/(?:p|product|products|prodotto|pd)/", path) or re.search(r"(?:\d{8,}|/p\d{5,})", path)
+                  or (retailer["id"] == "coop" and re.match(r"/il-prodotto-coop/[^/]+/[^/]+/[^/]+/[^/]+/[^/]+/?$", path)))
     catalog = bool(re.search(r"/(?:prodotti|catalogo|spesa-online)/.+", path))
     if not strong and not catalog:
         return None
@@ -96,6 +97,15 @@ def commercial_result(hit, product, retailers):
     while title_words and title_words[0] in brand_words:
         title_words.pop(0)
     main_title = bool(title_words and title_words[0] in tokens)
+    # Brands can precede the ingredient (e.g. CAO Formaggi Pecorino Romano).
+    # Do not accept a food merely containing it: "cioccolato al latte" or
+    # "sofficini pomodoro e mozzarella" are different products.
+    product_words = normalize(product).split()
+    for start in range(1, min(4, len(title_words))):
+        if (title_words[start:start + len(product_words)] == product_words
+                and not set(title_words[:start]) & {"con", "al", "alla", "alle", "ai", "allo", "agli", "e", "ripieno", "ripiena"}):
+            main_title = True
+            break
     main_slug = any((parts := normalize(segment).split()) and parts[0] in tokens for segment in path.split("/"))
     if not main_title and not main_slug:
         return None

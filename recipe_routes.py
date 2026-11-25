@@ -13,7 +13,7 @@ from adaptation import AdaptationRequest
 from ingredient_views import get_catalog
 from local_model import ModelError, ModelSettings, OllamaClient
 from recipe_plans import load_recipes, make_plan, resolve_ingredients
-from recipe_workspace import DraftStore, LocalJobs, MAX_ROWS, extract_recipe, shopping_list, translate_draft, propose_draft
+from recipe_workspace import DraftStore, LocalJobs, MAX_ROWS, extract_recipe, shopping_list, ingredient_notes, translate_draft, propose_draft
 from store_search import StoreSearchError, StoreSearchService, TavilySearch, manual_search
 from retailers import DEFAULT_PREFERENCES, commercial_result, retailer_options, resolve_retailers
 from shopping_plan import product_key, purchase_plan
@@ -210,7 +210,7 @@ def edit(draft_id):
             if draft["status"] == "working":
                 raise ValueError("Espera a que termine la tarea antes de editar.")
             action = request.form.get("action", "save")
-            if action in {"settings", "row_save", "row_add", "row_add_generate", "row_generate", "row_remove", "generate", "steps"}:
+            if action in {"settings", "row_save", "row_add", "row_add_generate", "row_generate", "row_regenerate", "row_remove", "generate", "steps"}:
                 updated = deepcopy(draft)
                 row_id = request.form.get("row", "")
                 if action == "settings":
@@ -231,7 +231,7 @@ def edit(draft_id):
                     edit_row(row, request.form)
                     updated["rows"].append(row)
                     row_id = row["id"]
-                elif action in {"row_save", "row_generate", "row_remove"}:
+                elif action in {"row_save", "row_generate", "row_regenerate", "row_remove"}:
                     row = next((row for row in updated["rows"] if row["id"] == row_id), None)
                     if not row:
                         raise ValueError("Ingrediente desconocido.")
@@ -239,18 +239,18 @@ def edit(draft_id):
                         if len(updated["rows"]) == 1:
                             raise ValueError("Conserva al menos un ingrediente.")
                         updated["rows"].remove(row)
-                    else:
+                    elif action != "row_regenerate":
                         edit_row(row, request.form)
                 updated.update(stores=None, error=None, status="editable")
                 draft = store().save(owner(), updated, draft["revision"])
                 if action == "row_add_generate":
                     created_row_id = row_id
-                if action in {"generate", "row_generate", "row_add_generate"}:
+                if action in {"generate", "row_generate", "row_regenerate", "row_add_generate"}:
                     catalog, index = get_catalog()
                     service, client = current_app.extensions["adaptation_service"], OllamaClient(ModelSettings.from_env())
                     targets = {row_id} if action != "generate" else None
                     start_job(draft, lambda data, progress: propose_draft(data, service, catalog, index, client, progress, targets))
-                    if action != "generate":
+                    if action in {"row_generate", "row_add_generate"}:
                         return redirect(url_for("workspace.edit", draft_id=draft_id, edit=row_id), code=303)
             elif action in {"save", "translate", "add", "remove"}:
                 updated = deepcopy(draft)
@@ -401,7 +401,7 @@ def edit(draft_id):
         search_selection = request.form.getlist("products")
     return render_template("recipe_workspace.html", draft=draft, shopping=shopping, error=error,
                            searches=searches,
-                           search_products=products,
+                           search_products=products, ingredient_notes=ingredient_notes,
                            dialog_id=dialog_id, modal_values=modal_values,
                            retailers=retailers, retailer_options=retailer_options(draft["context"]["destination_country"]), store_preferences=preferences,
                            purchase_plan=plan, product_key=product_key,

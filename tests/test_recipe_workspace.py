@@ -186,7 +186,7 @@ class RecipeRouteTests(unittest.TestCase):
         self.assertEqual(current["steps"], draft["steps"])
         page = self.client.get(self.url).get_data(as_text=True)
         self.assertNotIn("<h3>Cambios para cocinar", page)
-        self.assertIn('class="shopping-item-notes', page)
+        self.assertIn('class="recipe-note-panel"', page)
         self.assertIn("Ajusta el tiempo.", page)
         self.assertIn("Sabor distinto.", page)
 
@@ -213,13 +213,16 @@ class RecipeRouteTests(unittest.TestCase):
         html = self.client.get(self.url).get_data(as_text=True)
         visible = html.split('<dialog', 1)[0]
         self.assertIn('aria-label="Ingredientes y propuestas"', visible)
-        self.assertIn('Propuesta</th>', visible)
+        self.assertIn('Producto / original</th>', visible)
         self.assertIn('Cuece el colinabo.', visible)
         self.assertNotIn('name="name"', visible)
         self.assertNotIn('Guardar cambios', html)
         self.assertNotIn('Consultar los pasos guardados', html)
         self.assertIn('id="recipe-settings"', html)
-        self.assertIn('name="action" value="row_generate"', html)
+        self.assertIn('name="action" value="row_regenerate"', visible)
+        self.assertNotIn('Generar solo este', html)
+        self.assertNotIn('Tu lista de compra', html)
+        self.assertNotIn('Búsqueda manual de apoyo', html)
 
     def test_modal_add_edit_remove_and_invalid_input(self):
         draft = self.create()
@@ -284,6 +287,44 @@ class RecipeRouteTests(unittest.TestCase):
         current = self.get()
         self.assertEqual(current["rows"][0]["amount"], "300 g")
         self.assertEqual(current["rows"][1], draft["rows"][1])
+
+    def test_row_reload_uses_saved_context_and_preserves_matching_substitute_amount(self):
+        draft = self.create()
+        row = draft["rows"][0]
+        row.update(local_name="cavolo rapa", use="sopa", adaptation=self.proposal(),
+                   selected_name="sedano rapa", selected_index=0, selected_amount="120 g")
+        draft["rows"].append({"id": "other", "name": "sal", "amount": "1 g", "local_name": "sale", "use": "", "preparation": ""})
+        draft = DraftStore(app.config["RECIPE_DB"]).save(self.owner, draft, draft["revision"])
+        with patch("recipe_routes.jobs.submit", side_effect=lambda fn: fn()), patch.object(app.extensions["adaptation_service"], "adapt", return_value=self.proposal()) as adapt:
+            response = self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"],
+                "action": "row_regenerate", "row": row["id"], "name": "Unsubmitted edit", "amount": "999 g"})
+        self.assertEqual(response.status_code, 303)
+        self.assertNotIn("edit=", response.location)
+        self.assertEqual(adapt.call_count, 1)
+        self.assertEqual(adapt.call_args.args[0].culinary_use, "sopa")
+        current = self.get()
+        self.assertEqual(current["rows"][0]["name"], row["name"])
+        self.assertEqual(current["rows"][0]["amount"], "200 g")
+        self.assertEqual(current["rows"][0]["selected_amount"], "120 g")
+        self.assertEqual(current["rows"][1], draft["rows"][1])
+        html = self.client.get(self.url).get_data(as_text=True)
+        table_row = html.split('id="ingrediente-' + row["id"] + '"', 1)[1].split('</tr>', 1)[0]
+        self.assertEqual(table_row.count("120 g"), 1)
+        self.assertNotIn("200 g", table_row)
+        self.assertIn('search?q=sedano+rapa', table_row)
+        self.assertLess(table_row.index('>sedano rapa</a>'), table_row.index('>colinabo</span>'))
+
+    def test_row_reload_failure_keeps_previous_choice_and_quantity(self):
+        draft = self.create()
+        draft["rows"][0].update(local_name="cavolo rapa", adaptation=self.proposal(),
+            selected_name="rapa", selected_index=1, selected_amount="120 g")
+        draft = DraftStore(app.config["RECIPE_DB"]).save(self.owner, draft, draft["revision"])
+        with patch("recipe_routes.jobs.submit", side_effect=lambda fn: fn()), patch.object(app.extensions["adaptation_service"], "adapt", side_effect=ModelError("offline", "Modelo no disponible.")):
+            self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"],
+                "action": "row_regenerate", "row": draft["rows"][0]["id"]})
+        current = self.get()
+        self.assertEqual(current["rows"], draft["rows"])
+        self.assertIn("Modelo no disponible", current["error"])
 
     def test_settings_and_steps_are_saved_independently(self):
         draft = self.create()

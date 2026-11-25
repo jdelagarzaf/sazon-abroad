@@ -88,6 +88,23 @@ def quantity(amount):
         return None
 
 
+def ingredient_notes(row):
+    """Essential notes shared by the ingredient tooltip and consolidated purchases."""
+    notes = []
+    if row.get("selected_name"):
+        alternatives = (row.get("adaptation") or {}).get("result", {}).get("alternatives", [])
+        selected = row.get("selected_index")
+        if isinstance(selected, int) and 0 <= selected < len(alternatives):
+            option = alternatives[selected]
+            notes.extend([option.get("adjustment"), option.get("limitation")])
+    notes.extend([row.get("import_adjustment"), row.get("import_limitation")])
+    response = row.get("adaptation") or row.get("translation")
+    if response:
+        notes.extend(response["result"].get("warnings", []))
+        notes.append(response["result"].get("clarification"))
+    return list(dict.fromkeys(note for note in notes if note))
+
+
 def shopping_list(draft):
     groups = {}
     for position, row in enumerate(draft["rows"], 1):
@@ -103,19 +120,7 @@ def shopping_list(draft):
         item = groups[key]
         item["rows"].append(row["id"])
         item["origins"].append({"id": row["id"], "name": row["name"], "position": position, "amount": row["amount"]})
-        notes = []
-        if row.get("selected_name"):
-            alternatives = row.get("adaptation", {}).get("result", {}).get("alternatives", [])
-            selected = row.get("selected_index")
-            if isinstance(selected, int) and 0 <= selected < len(alternatives):
-                option = alternatives[selected]
-                notes.extend([option.get("adjustment"), option.get("limitation")])
-        notes.extend([row.get("import_adjustment"), row.get("import_limitation")])
-        response = row.get("adaptation") or row.get("translation")
-        if response:
-            notes.extend(response["result"].get("warnings", []))
-            notes.append(response["result"].get("clarification"))
-        for note in notes:
+        for note in ingredient_notes(row):
             if note and note not in item["notes"]:
                 item["notes"].append(note)
         if parsed:

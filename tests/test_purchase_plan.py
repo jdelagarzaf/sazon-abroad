@@ -26,6 +26,54 @@ def fixture(coverage, preferred=None):
 
 
 class CommercialFilterTests(unittest.TestCase):
+    def test_real_pecorino_product_urls_are_not_lost(self):
+        # Public catalog pages checked on 2026-11-25; this is not a stock assertion.
+        pages = [
+            ("Pecorino Romano DOP 250 g | Prodotti Coop", "https://www.coop.it/il-prodotto-coop/coop/formaggi/alimenti-freschi/formaggi-stagionati-servizio-assistito/pecorino", "coop"),
+            ("Pecorino Romano DOP Grattugiato 100 g | Prodotti Coop", "https://www.coop.it/il-prodotto-coop/coop/formaggi/alimenti-freschi/formaggi-stagionati-libero-servizio/pecorino-romano", "coop"),
+            ("Pecorino Romano DOP 12 mesi Conad in vendita online | Conad", "https://spesaonline.conad.it/p/sapori-dintorni-conad-pecorino-romano-dop-stagionatura-minima-12-mesi-300-g--358059", "conad"),
+        ]
+        for title, url, retailer in pages:
+            with self.subTest(url=url):
+                result = commercial_result({"title": title, "url": url}, "pecorino romano", RETAILERS)
+                self.assertIsNotNone(result)
+                self.assertEqual(result["retailer_id"], retailer)
+                self.assertEqual(result["evidence_type"], "product_page")
+                self.assertEqual(result["stock"], "Desconocido")
+        self.assertIsNone(commercial_result({"title": "Pecorino Romano", "url": "https://www.coop.it/il-prodotto-coop/coop"}, "pecorino romano", RETAILERS))
+
+    def test_manufacturer_prefix_does_not_hide_product_or_admit_composite_food(self):
+        self.assertIsNotNone(commercial_result(hit("CAO Formaggi Pecorino Romano DOP", "esselunga"), "pecorino romano", RETAILERS))
+        self.assertIsNotNone(commercial_result(hit("Granarolo Latte senza lattosio", "conad"), "latte senza lattosio", RETAILERS))
+        self.assertIsNone(commercial_result(hit("Sugo al Pecorino Romano", "conad"), "pecorino romano", RETAILERS))
+        self.assertIsNone(commercial_result(hit("Cioccolato al latte", "conad"), "latte", RETAILERS))
+        self.assertIsNone(commercial_result(hit("Esselunga Pizza 4 formaggi", "esselunga"), "pecorino romano", RETAILERS))
+
+    def test_scoped_query_names_store_alternatives_without_requiring_city(self):
+        with tempfile.TemporaryDirectory() as directory:
+            service = StoreSearchService(Path(directory) / "cache.sqlite")
+            provider = Mock()
+            provider.search.return_value = []
+            result = service.search("pecorino romano", "Milano", "Italia", provider=provider,
+                                    domains=["penny.it", "esselunga.it", "lidl.it"])
+            self.assertEqual(result["query"], '"pecorino romano" (Esselunga OR Lidl OR PENNY)')
+            self.assertNotIn("Milano", result["query"])
+            self.assertEqual(provider.search.call_args.kwargs["domains"], ["esselunga.it", "lidl.it", "penny.it"])
+            self.assertTrue(service.search("pecorino romano", "Milano", "Italia", provider=provider,
+                                         domains=["esselunga.it", "lidl.it", "penny.it"])["cached"])
+            self.assertFalse(service.search("pecorino romano", "Roma", "Italia", provider=provider,
+                                          domains=["esselunga.it", "lidl.it", "penny.it"])["cached"])
+
+    def test_query_deduplicates_shop_domains_and_supports_custom_country(self):
+        with tempfile.TemporaryDirectory() as directory:
+            service = StoreSearchService(Path(directory) / "cache.sqlite")
+            provider = Mock()
+            provider.search.return_value = []
+            result = service.search("pecorino romano", "Milano", "Italia", provider=provider, domains=["coop.it", "coopshop.it"])
+            self.assertEqual(result["query"], '"pecorino romano" (Coop)')
+            result = service.search("rice", "Berlin", "Alemania", provider=provider, domains=["shop.example.de"])
+            self.assertEqual(result["query"], '"rice" (shop.example.de)')
+
     def test_host_boundary_social_recipe_locator_and_product_mismatch(self):
         valid = hit("mozzarella", "esselunga")
         self.assertIsNotNone(commercial_result(valid, "mozzarella", RETAILERS))

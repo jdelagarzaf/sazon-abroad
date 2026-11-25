@@ -1,4 +1,43 @@
 (() => {
+  document.querySelectorAll('[data-ingredient-note]').forEach(button => {
+    const panel = document.getElementById(button.getAttribute('popovertarget'));
+    let dismiss;
+    const position = () => {
+      const anchor = button.getBoundingClientRect();
+      const box = panel.getBoundingClientRect();
+      const viewport = document.documentElement;
+      const left = Math.max(8, Math.min(anchor.left, viewport.clientWidth - box.width - 8));
+      const below = anchor.bottom + 8;
+      const top = below + box.height <= viewport.clientHeight - 8 ? below : Math.max(8, anchor.top - box.height - 8);
+      panel.style.left = `${left}px`;
+      panel.style.top = `${top}px`;
+    };
+    const show = () => {
+      clearTimeout(dismiss);
+      if (!panel.matches(':popover-open')) panel.showPopover();
+      position();
+    };
+    const later = () => {
+      dismiss = setTimeout(() => {
+        if (!panel.matches(':hover') && !button.matches(':hover') && document.activeElement !== button) panel.hidePopover();
+      }, 150);
+    };
+    button.addEventListener('pointerenter', event => { if (event.pointerType !== 'touch') show(); });
+    // Focus/hover may already have opened it before the native click toggle.
+    button.addEventListener('click', event => { event.preventDefault(); show(); });
+    button.addEventListener('focus', show);
+    button.addEventListener('pointerleave', later);
+    button.addEventListener('blur', later);
+    panel.addEventListener('pointerenter', () => clearTimeout(dismiss));
+    panel.addEventListener('pointerleave', later);
+    panel.addEventListener('toggle', () => {
+      const opened = panel.matches(':popover-open');
+      button.setAttribute('aria-expanded', String(opened));
+      if (opened) position();
+    });
+    window.addEventListener('resize', () => { if (panel.matches(':popover-open')) position(); });
+    window.addEventListener('scroll', () => { if (panel.matches(':popover-open')) position(); }, { passive: true });
+  });
   const dialogs = document.querySelectorAll('.recipe-dialog');
   const open = (dialog) => {
     if (!dialog || dialog.open) return;
