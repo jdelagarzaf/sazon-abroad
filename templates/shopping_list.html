@@ -1,0 +1,11 @@
+<section id="lista-compra" class="mt-8 space-y-4" aria-labelledby="shopping-title">
+  <h2 id="shopping-title">Tu lista de compra</h2>
+  {% if draft.rows|selectattr('translation')|list or draft.rows|selectattr('adaptation')|list %}<p class="text-sm text-muted">IA local · Revisión pendiente. Los ajustes aparecen junto a cada compra.</p>{% endif %}
+  {% if shopping %}<ul class="shopping-merged-list">{% for item in shopping %}<li class="shopping-merged-item">
+    <div class="shopping-item-heading"><strong>{{ item.name }}</strong><span>{{ item.amount }}</span></div>
+    {% if item.preparation %}<p class="text-sm text-muted">{{ item.preparation }}</p>{% endif %}
+    <p class="text-xs text-muted mt-1">{% for origin in item.origins %}<a href="#ingrediente-{{ origin.id }}">{{ origin.name }} · {{ origin.amount or 'Sin cantidad' }}</a>{{ ' + ' if not loop.last }}{% endfor %}</p>
+    {% if item.notes %}<div class="shopping-item-notes mt-3">{% for note in item.notes %}<p>{{ note }}</p>{% endfor %}</div>{% endif %}
+  </li>{% endfor %}</ul>{% endif %}
+  {% set pending=draft.rows|rejectattr('local_name')|rejectattr('selected_name')|list %}{% if pending %}<p class="essential-note">{{ pending|length }} ingrediente(s) sin propuesta: completa sus términos antes de comprar.</p>{% endif %}
+</section>

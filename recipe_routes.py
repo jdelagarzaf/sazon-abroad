@@ -14,7 +14,9 @@ from ingredient_views import get_catalog
 from local_model import ModelError, ModelSettings, OllamaClient
 from recipe_plans import load_recipes, make_plan, resolve_ingredients
 from recipe_workspace import DraftStore, LocalJobs, MAX_ROWS, extract_recipe, shopping_list, translate_draft, propose_draft
-from store_search import StoreSearchError, StoreSearchService, TavilySearch, group_stores, manual_search
+from store_search import StoreSearchError, StoreSearchService, TavilySearch, manual_search
+from retailers import DEFAULT_PREFERENCES, commercial_result, retailer_options, resolve_retailers
+from shopping_plan import product_key, purchase_plan
 
 workspace = Blueprint("workspace", __name__)
 jobs = LocalJobs()
@@ -327,6 +329,16 @@ def edit(draft_id):
                     raise ValueError("Elige entre 1 y 8 productos para buscar.")
                 if not draft["context"]["city"]:
                     raise ValueError("Guarda una ciudad antes de buscar comercios.")
+                available = retailer_options(draft["context"]["destination_country"])
+                saved_preferences = draft.get("store_preferences", {})
+                preferred_ids = request.form.getlist("retailers") if "preferences_form" in request.form else saved_preferences.get("ids", [row["id"] for row in available if row["id"] in DEFAULT_PREFERENCES])
+                custom = bounded(request.form.get("custom_retailers", saved_preferences.get("custom", "")), 400, "dominios de comercios")
+                preferred = resolve_retailers(draft["context"]["destination_country"], preferred_ids, custom)
+                allow_other = request.form.get("allow_other") == "1" if "preferences_form" in request.form else saved_preferences.get("allow_other", True)
+                additional = [row for row in available if row["id"] not in {store["id"] for store in preferred}]
+                draft["store_preferences"] = {"ids": preferred_ids, "custom": custom, "allow_other": allow_other}
+                draft["store_assignments"] = {}
+                draft["stores"] = {"searches": [], "errors": [], "requested": names, "preferred": [row["id"] for row in preferred]}
                 database_path = current_app.config.get("SEARCH_DB")
                 def search(data, progress):
                     results, errors = [], []
@@ -334,14 +346,37 @@ def edit(draft_id):
                     for name in names:
                         progress("Buscando comercios: " + name)
                         try:
-                            results.append(search_service.search(name, data["context"]["city"], data["context"]["destination_country"], data["context"]["target_language"]))
+                            def lookup(retailers):
+                                domains = sorted({domain for store in retailers for domain in store["domains"]})
+                                raw = search_service.search(name, data["context"]["city"], data["context"]["destination_country"], data["context"]["target_language"], domains=domains)
+                                accepted = [hit for candidate in raw["results"] if (hit := commercial_result(candidate, name, retailers))]
+                                return {**raw, "results": accepted, "discarded": len(raw["results"]) - len(accepted), "domains": domains}
+                            primary = lookup(preferred)
+                            primary["queries"] = [{key: value for key, value in primary.items() if key != "results"}]
+                            results.append(primary)
+                            if not primary["results"] and allow_other and additional:
+                                extra = lookup(additional)
+                                primary["results"] = extra["results"]
+                                primary["queries"].append({key: value for key, value in extra.items() if key != "results"})
+                                primary["cached"] = primary["cached"] and extra["cached"]
+                                primary["queried_at"] = extra["queried_at"]
+                                primary["discarded"] += extra["discarded"]
                         except StoreSearchError as exc:
                             errors.append({"product": name, "message": str(exc)})
-                            if "TAVILY_API_KEY" in str(exc) or "cuota" in str(exc) or "diario" in str(exc):
+                            if "TAVILY_API_KEY" in str(exc) or "clave" in str(exc).lower() or "cuota" in str(exc) or "diario" in str(exc):
                                 break
-                    data["stores"] = {"searches": results, "errors": errors, "requested": names}
+                    data["stores"] = {"searches": results, "errors": errors, "requested": names, "preferred": [row["id"] for row in preferred]}
                     return data
                 start_job(draft, search, kind="search")
+            elif action in {"store_plan", "reset_store_plan"}:
+                available = configured_retailers(draft)
+                stored = draft.get("stores")
+                if not stored:
+                    raise ValueError("Busca primero los productos para poder distribuir la compra.")
+                pins = {name: value for name in stored["requested"] if (value := request.form.get("pin_" + product_key(name), ""))} if action == "store_plan" else {}
+                purchase_plan(shopping_list(draft), stored, available, pins)
+                draft["store_assignments"] = pins
+                draft = store().save(owner(), draft, draft["revision"])
             else:
                 raise ValueError("Acción desconocida.")
             return redirect(url_for("workspace.edit", draft_id=draft_id), code=303)
@@ -357,11 +392,29 @@ def edit(draft_id):
     shopping = shopping_list(draft)
     products = list(dict.fromkeys(item["name"] for item in shopping))
     searches = (draft.get("stores") or {}).get("searches", [])
+    retailers = configured_retailers(draft)
+    plan = purchase_plan(shopping, draft.get("stores"), retailers, draft.get("store_assignments", {}) if draft.get("stores") else {})
+    preferences = draft.get("store_preferences", {"ids": [row["id"] for row in retailer_options(draft["context"]["destination_country"]) if row["id"] in DEFAULT_PREFERENCES], "custom": "", "allow_other": True})
+    search_selection = None
+    if error and request.form.get("action") == "stores" and "preferences_form" in request.form:
+        preferences = {"ids": request.form.getlist("retailers"), "custom": request.form.get("custom_retailers", ""), "allow_other": request.form.get("allow_other") == "1"}
+        search_selection = request.form.getlist("products")
     return render_template("recipe_workspace.html", draft=draft, shopping=shopping, error=error,
-                           store_groups=group_stores(searches, len(shopping)), searches=searches,
+                           searches=searches,
                            search_products=products,
                            dialog_id=dialog_id, modal_values=modal_values,
+                           retailers=retailers, retailer_options=retailer_options(draft["context"]["destination_country"]), store_preferences=preferences,
+                           purchase_plan=plan, product_key=product_key,
+                           search_selection=search_selection,
                            manual_search=manual_search, search_configured=TavilySearch().api_key not in {"", "PEGA_TU_CLAVE_AQUI"}), 400 if error else 200
+
+
+def configured_retailers(draft):
+    available = retailer_options(draft["context"]["destination_country"])
+    custom = draft.get("store_preferences", {}).get("custom", "")
+    if custom:
+        return resolve_retailers(draft["context"]["destination_country"], [row["id"] for row in available], custom)
+    return available
 
 
 @workspace.get("/mi-receta/<draft_id>/estado")

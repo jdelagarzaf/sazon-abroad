@@ -9,6 +9,8 @@ from app import app
 from adaptation import AdaptationService
 from local_model import ModelError, ModelSettings
 from recipe_workspace import DraftStore, extract_recipe, quantity, shopping_list, propose_draft
+from shopping_plan import product_key, purchase_plan
+from retailers import RETAILERS
 
 
 class RecipeDataTests(unittest.TestCase):
@@ -159,16 +161,16 @@ class RecipeRouteTests(unittest.TestCase):
         draft["rows"][0]["local_name"] = "cavolo rapa"
         draft = database.save(self.owner, draft, draft["revision"])
         result = {"product": "cavolo rapa", "query": "cavolo rapa comprare Milano", "cached": False,
-                  "queried_at": "2026-11-24T20:00:00+00:00", "results": [{"domain": "example.com", "title": "<script>alert(1)</script>",
-                  "url": "https://example.com/prodotto", "snippet": "<b>dato del proveedor</b>", "evidence": "Enlace candidato",
+                  "queried_at": "2026-11-24T20:00:00+00:00", "results": [{"domain": "esselunga.it", "title": "<script>alert(1)</script> Cavolo rapa",
+                  "url": "https://www.esselunga.it/p/cavolo-rapa/12345678.html", "snippet": "<b>dato del proveedor</b>", "evidence": "Enlace candidato",
                   "stock": "Desconocido", "location": "Por comprobar"}]}
         with patch("recipe_routes.jobs.submit", side_effect=lambda fn: fn()), patch("recipe_routes.StoreSearchService.search", return_value=result):
             self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"], "action": "stores", "products": "cavolo rapa"})
         page = self.client.get(self.url).get_data(as_text=True)
-        self.assertIn('href="https://example.com/prodotto"', page)
+        self.assertIn('href="https://www.esselunga.it/p/cavolo-rapa/12345678.html"', page)
         self.assertNotIn("<script>alert(1)</script>", page)
         self.assertIn("&lt;script&gt;", page)
-        self.assertIn("enlaces para 1 de 1 productos", page)
+        self.assertIn("1 de 1 productos con evidencia", page)
         self.assertIn("Productos verificados: 0", page)
 
     def test_substitute_selection_uses_separate_amount_and_preserves_steps(self):
@@ -183,7 +185,8 @@ class RecipeRouteTests(unittest.TestCase):
         self.assertEqual(shopping_list(current)[0]["amount"], "Por confirmar")
         self.assertEqual(current["steps"], draft["steps"])
         page = self.client.get(self.url).get_data(as_text=True)
-        self.assertIn("Cambios para cocinar", page)
+        self.assertNotIn("<h3>Cambios para cocinar", page)
+        self.assertIn('class="shopping-item-notes', page)
         self.assertIn("Ajusta el tiempo.", page)
         self.assertIn("Sabor distinto.", page)
 
@@ -319,3 +322,57 @@ class RecipeRouteTests(unittest.TestCase):
         html = response.get_data(as_text=True)
         self.assertIn("El ingrediente se guardó", html)
         self.assertRegex(html, 'id="ingredient-' + row_id + '"[^>]*data-auto-open')
+
+    def test_store_preferences_use_preferred_domains_then_fallback_only_if_needed(self):
+        draft = self.create()
+        draft["rows"][0]["local_name"] = "cavolo rapa"
+        draft = DraftStore(app.config["RECIPE_DB"]).save(self.owner, draft, draft["revision"])
+        calls = []
+        def lookup(product, city, country, language, domains):
+            calls.append(domains)
+            rows = [{"url": "https://reddit.com/p/cavolo-rapa/12345678", "title": "Cavolo rapa"}] if len(calls) == 1 else [
+                {"url": "https://www.lidl.it/p/cavolo-rapa/p12345678", "title": "Cavolo rapa", "snippet": "Verdura"}]
+            return {"product": product, "queried_at": "2026-11-25", "cached": False, "query": product, "results": rows}
+        with patch("recipe_routes.jobs.submit", side_effect=lambda fn: fn()), patch("recipe_routes.StoreSearchService.search", side_effect=lookup):
+            response = self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"], "action": "stores",
+                "products": "cavolo rapa", "preferences_form": "1", "retailers": "esselunga", "allow_other": "1"})
+        self.assertEqual(response.status_code, 303)
+        self.assertEqual(calls[0], ["esselunga.it"])
+        self.assertIn("lidl.it", calls[1])
+        current = self.get()
+        self.assertEqual(current["store_preferences"]["ids"], ["esselunga"])
+        self.assertEqual(current["stores"]["searches"][0]["results"][0]["retailer_id"], "lidl")
+        self.assertEqual(purchase_plan(shopping_list(current), current["stores"], RETAILERS)["store_count"], 1)
+
+    def test_store_search_does_not_spend_fallback_query_when_preferred_has_product(self):
+        draft = self.create()
+        draft["rows"][0]["local_name"] = "cavolo rapa"
+        draft = DraftStore(app.config["RECIPE_DB"]).save(self.owner, draft, draft["revision"])
+        result = {"product": "cavolo rapa", "queried_at": "2026-11-25", "cached": True, "query": "q", "results": [
+            {"url": "https://www.esselunga.it/p/cavolo-rapa/12345678", "title": "Cavolo rapa", "snippet": "Verdura"}]}
+        with patch("recipe_routes.jobs.submit", side_effect=lambda fn: fn()), patch("recipe_routes.StoreSearchService.search", return_value=result) as search:
+            self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"], "action": "stores",
+                "products": "cavolo rapa", "preferences_form": "1", "retailers": "esselunga", "allow_other": "1"})
+        self.assertEqual(search.call_count, 1)
+        self.assertEqual(self.get()["stores"]["searches"][0]["results"][0]["retailer_id"], "esselunga")
+
+    def test_manual_store_distribution_persists_and_reset_reoptimizes_without_search(self):
+        draft = self.create()
+        draft["rows"][0]["local_name"] = "cavolo rapa"
+        draft["rows"].append({"id": "rice", "name": "arroz", "amount": "100 g", "local_name": "riso", "use": "", "preparation": ""})
+        draft["stores"] = {"requested": ["cavolo rapa", "riso"], "preferred": ["esselunga", "penny"], "errors": [], "searches": [
+            {"product": name, "queried_at": "2026-11-25", "results": [{"url": f"https://www.{sid}.it/p/{name.replace(' ', '-')}/12345678", "title": name, "snippet": ""} for sid in stores]}
+            for name, stores in [("cavolo rapa", ["esselunga", "penny"]), ("riso", ["esselunga"])]]}
+        draft = DraftStore(app.config["RECIPE_DB"]).save(self.owner, draft, draft["revision"])
+        with patch("recipe_routes.StoreSearchService.search") as search:
+            self.client.post(self.url, data={"csrf": self.csrf, "revision": draft["revision"], "action": "store_plan", "pin_" + product_key("cavolo rapa"): "penny"})
+            current = self.get()
+            self.assertEqual(current["store_assignments"], {"cavolo rapa": "penny"})
+            self.assertEqual(purchase_plan(shopping_list(current), current["stores"], RETAILERS, current["store_assignments"])["store_count"], 2)
+            self.client.post(self.url, data={"csrf": self.csrf, "revision": current["revision"], "action": "reset_store_plan"})
+            current = self.get()
+            self.assertEqual(current["store_assignments"], {})
+            self.assertEqual(purchase_plan(shopping_list(current), current["stores"], RETAILERS)["store_count"], 1)
+            invalid = self.client.post(self.url, data={"csrf": self.csrf, "revision": current["revision"], "action": "store_plan", "pin_" + product_key("riso"): "lidl"})
+            self.assertEqual(invalid.status_code, 400)
+            search.assert_not_called()

@@ -16,6 +16,7 @@ from urllib.parse import urlencode, urlsplit
 from urllib.request import Request, ProxyHandler, build_opener
 
 from local_model import NoRedirects
+from retailers import BLOCKED_DOMAINS, blocked_domain, domain_matches
 
 
 class StoreSearchError(Exception):
@@ -23,7 +24,7 @@ class StoreSearchError(Exception):
 
 
 class StoreSearchProvider(Protocol):
-    def search(self, query: str) -> list[dict]: ...
+    def search(self, query: str, domains=None) -> list[dict]: ...
 
 
 def public_url(value):
@@ -49,12 +50,16 @@ class TavilySearch:
         self.api_key = os.environ.get("TAVILY_API_KEY", "").strip() if api_key is None else api_key.strip()
         self.opener = opener or build_opener(ProxyHandler({}), NoRedirects())
 
-    def search(self, query):
+    def search(self, query, domains=None):
         if not self.api_key or self.api_key == "PEGA_TU_CLAVE_AQUI":
             raise StoreSearchError("Falta TAVILY_API_KEY. Sigue docs/comercios.md y reinicia la aplicación.")
-        payload = {"query": query, "topic": "general", "search_depth": "basic", "max_results": 5,
+        payload = {"query": query, "topic": "general", "search_depth": "basic", "max_results": 8,
                    "auto_parameters": False, "include_answer": False, "include_raw_content": False,
                    "include_images": False}
+        if domains:
+            payload.update(include_domains=list(domains), include_domains_mode="restrict")
+        else:
+            payload["exclude_domains"] = sorted(BLOCKED_DOMAINS)
         request = Request("https://api.tavily.com/search", data=json.dumps(payload).encode(),
                           headers={"Authorization": "Bearer " + self.api_key, "Content-Type": "application/json"},
                           method="POST")
@@ -67,10 +72,13 @@ class TavilySearch:
             if not isinstance(data, dict) or not isinstance(data.get("results"), list):
                 raise ValueError()
             results, seen = [], set()
-            for row in data["results"][:5]:
+            for row in data["results"][:8]:
                 if not isinstance(row, dict) or not public_url(row.get("url")):
                     continue
                 url = row["url"]
+                host = urlsplit(url).hostname.lower()
+                if blocked_domain(host) or (domains and not any(domain_matches(host, domain) for domain in domains)):
+                    continue
                 if url in seen:
                     continue
                 seen.add(url)
@@ -111,13 +119,17 @@ class StoreSearchService:
         finally:
             db.close()
 
-    def search(self, product, city, country, language="it", provider=None):
+    def search(self, product, city, country, language="it", provider=None, domains=None):
         if not all(isinstance(value, str) and 0 < len(value.strip()) <= 160 for value in (product, city, country)):
             raise StoreSearchError("Indica producto, ciudad y país (máximo 160 caracteres cada uno).")
         verb = {"it": "comprare negozio", "es": "comprar tienda", "de": "kaufen Geschäft",
                 "fr": "acheter magasin"}.get(language, "buy shop")
         query = f'{product.strip()} {verb} {city.strip()} {country.strip()}'
-        key = sha256(("tavily-basic-v1:" + query.casefold()).encode()).hexdigest()
+        domains = sorted(set(domains or []))
+        if domains:
+            product_word = {"it": "prodotto", "es": "producto", "de": "Produkt", "fr": "produit"}.get(language, "product")
+            query = f'{json.dumps(product.strip(), ensure_ascii=False)} {product_word} {city.strip()} {country.strip()}'
+        key = sha256(("tavily-commercial-v3:" + query.casefold() + json.dumps(domains)).encode()).hexdigest()
         now = time.time()
         with self.connect() as db:
             row = db.execute("SELECT stamp,data FROM cache WHERE key=?", (key,)).fetchone()
@@ -140,7 +152,7 @@ class StoreSearchService:
             if db.execute("SELECT count FROM usage WHERE day=?", (day,)).fetchone()[0] >= limit:
                 raise StoreSearchError("Se alcanzó el límite diario local de búsquedas nuevas. La caché sigue disponible.")
             db.execute("UPDATE usage SET count=count+1 WHERE day=?", (day,))
-        results = provider.search(query)
+        results = provider.search(query, domains=domains) if domains else provider.search(query)
         data = {"product": product, "query": query, "queried_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
                 "results": results, "cached": False}
         with self.connect() as db:

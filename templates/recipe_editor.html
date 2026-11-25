@@ -26,7 +26,6 @@
 <section class="mt-7" aria-labelledby="steps-heading"><div class="recipe-section-heading"><h2 id="steps-heading">Pasos originales</h2><button type="button" class="recipe-icon-button" data-open-dialog="recipe-steps" aria-label="Editar pasos originales" title="Editar pasos" {% if working %}disabled{% endif %}>{{ icon('edit') }}</button></div>
   <ol class="recipe-steps mt-4">{% for step in draft.steps %}<li>{{ step }}</li>{% else %}<li class="text-muted">Aún no se han añadido pasos.</li>{% endfor %}</ol>
 </section>
-{% for row in draft.rows if row.get('import_adjustment') or row.get('import_limitation') %}<div class="essential-note mt-4"><strong>{{ row.name }}</strong>{% if row.get('import_adjustment') %}<p>{{ row.import_adjustment }}</p>{% endif %}{% if row.get('import_limitation') %}<p>{{ row.import_limitation }}</p>{% endif %}</div>{% endfor %}
 {% if not working %}
 <dialog id="recipe-settings" class="recipe-dialog" aria-labelledby="settings-title" {% if dialog_id == 'settings' %}data-auto-open{% endif %}>
   <form method="post">{{ hidden(draft) }}<header class="recipe-dialog-heading"><div><p class="recipe-eyebrow">Settings</p><h2 id="settings-title">Receta, destino e idiomas</h2></div><button type="button" class="recipe-icon-button" data-close-dialog aria-label="Cerrar ajustes">{{ icon('close') }}</button></header>
