@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% from 'components.html' import source_list %}
+{% macro hidden(draft) %}<input type="hidden" name="csrf" value="{{ csrf_token() }}"><input type="hidden" name="revision" value="{{ draft.revision }}">{% endmacro %}
+{% block title %}{{ draft.title }} · Mi receta{% endblock %}
+{% block content %}
+<a href="{{ url_for('recipes_page') }}">← Recetas</a>
+<h1 class="mt-4">{{ draft.title }}</h1>
+<p class="mt-3 text-muted">1. Revisa · 2. Traduce y elige · 3. Encuentra tiendas</p>
+<p class="mt-2 text-sm"><a href="#lista-compra">Ir a mi lista de compra ↓</a></p>
+{% if error or draft.error %}<p class="essential-note my-4" role="alert">{{ error or draft.error }}</p>{% endif %}
+{% if draft.status == 'working' %}
+<section class="workspace-panel mt-5" aria-live="polite"><h2>{{ 'Buscando tiendas' if draft.job_kind == 'search' else 'Preparando tu lista' }}</h2><p id="job-progress">{{ draft.progress }}</p><p class="text-sm mt-2">Puedes dejar esta pestaña abierta. {{ 'Estamos consultando el buscador web.' if draft.job_kind == 'search' else 'El modelo trabaja en este equipo.' }}</p><noscript><a href="">Actualizar estado</a></noscript></section>
+<script src="{{ url_for('static',filename='recipe-job.js') }}" defer data-status-url="{{ url_for('workspace.status',draft_id=draft.id) }}"></script>
+{% else %}
+<form method="post" id="recipe-editor" class="mt-6 space-y-4">
+  {{ hidden(draft) }}
+  <details class="workspace-panel"><summary>Receta, destino e idiomas · {{ draft.context.city }}, {{ draft.context.destination_country }}</summary>
+    <div class="mt-4 grid gap-4 sm:grid-cols-2">
+      <div><label for="title">Título</label><input id="title" name="title" value="{{ draft.title }}" maxlength="120" required class="w-full"></div>
+      {% for key, label in [('origin_country','País de origen'),('destination_country','País de destino'),('city','Ciudad'),('source_language','Idioma de origen'),('target_language','Idioma de destino'),('ui_language','Idioma de la explicación')] %}
+      <div><label for="{{ key }}">{{ label }}</label><input id="{{ key }}" name="{{ key }}" value="{{ draft.context[key] }}" maxlength="160" required class="w-full"></div>{% endfor %}
+      <div><label for="restrictions">Restricciones</label><input id="restrictions" name="restrictions" value="{{ draft.context.restrictions }}" maxlength="500" class="w-full"></div>
+    </div><p class="text-sm mt-3">México → Italia es el trayecto inicial; los demás son experimentales. Cambiar país, idiomas, restricciones o ingredientes elimina sus propuestas anteriores. Cambiar solo la ciudad conserva las traducciones.</p>
+  </details>
+  <h2>Revisa los ingredientes</h2>
+  <p class="text-sm text-muted">Los nombres generados requieren revisión. Puedes corregirlos. Una traducción conserva la cantidad original; una sustitución necesita su propia cantidad.</p>
+  <div class="grid gap-4 lg:grid-cols-2">
+  {% for row in draft.rows %}
+    <article id="ingrediente-{{ row.id }}" class="workspace-panel space-y-3">
+      <div class="grid gap-3 sm:grid-cols-[2fr_1fr]">
+        <div><label for="name-{{ row.id }}">Ingrediente {{ loop.index }}</label><input id="name-{{ row.id }}" name="name_{{ row.id }}" value="{{ row.name }}" maxlength="160" required class="w-full"></div>
+        <div><label for="amount-{{ row.id }}">{{ 'Cantidad de esta versión' if row.get('import_note') else 'Cantidad original' }}</label><input id="amount-{{ row.id }}" name="amount_{{ row.id }}" value="{{ row.amount }}" maxlength="100" placeholder="Por confirmar" class="w-full"></div>
+      </div>
+      <div><label for="local-{{ row.id }}">Término local del original</label><input id="local-{{ row.id }}" name="local_{{ row.id }}" value="{{ row.get('local_name','') }}" maxlength="120" placeholder="Traduce o escribe el nombre" class="w-full"></div>
+      {% if row.get('translation') %}<p class="text-sm text-muted">IA local · Revisión pendiente</p>{% for warning in row.translation.result.warnings %}<p class="essential-note">{{ warning }}</p>{% endfor %}{% if row.translation.result.clarification %}<p class="essential-note">{{ row.translation.result.clarification }}</p>{% endif %}<details><summary>Procedencia</summary><p class="text-sm">{{ row.translation.model }} · {{ row.translation.prompt_version }}</p>{{ source_list(row.translation.result.source_ids,row.translation.sources) }}</details>{% endif %}
+      {% if row.get('manual') %}<p class="text-sm text-muted">Nombre corregido por ti</p>{% endif %}
+      {% if row.get('import_note') %}<p class="text-sm">{{ row.import_note }}</p>{% endif %}
+      {% if row.get('import_adjustment') %}<p class="essential-note">{{ row.import_adjustment }}</p>{% endif %}
+      {% if row.get('import_limitation') %}<p class="essential-note">{{ row.import_limitation }}</p>{% endif %}
+      <details><summary>Uso y presentación</summary><div class="mt-3 space-y-3">
+        <div><label for="use-{{ row.id }}">Platillo o función</label><input id="use-{{ row.id }}" name="use_{{ row.id }}" value="{{ row.use }}" maxlength="160" placeholder="Para espesar la salsa" class="w-full"></div>
+        <div><label for="prep-{{ row.id }}">Presentación</label><input id="prep-{{ row.id }}" name="preparation_{{ row.id }}" value="{{ row.preparation }}" maxlength="160" placeholder="Fresco, seco, molido…" class="w-full"></div>
+      </div></details>
+      <button class="text-sm underline" name="action" value="remove" type="submit" onclick="this.form.querySelector('[name=row]').value='{{ row.id }}'">Quitar ingrediente</button>
+    </article>
+  {% endfor %}
+  </div>
+  <input type="hidden" name="row" value="">
+  <details class="workspace-panel"><summary>Pasos originales · {{ draft.steps|length }}</summary><label for="steps" class="mt-3">Un paso por línea</label><textarea id="steps" name="steps" rows="6" maxlength="6000" class="w-full">{{ draft.steps|join('\n') }}</textarea></details>
+  <div class="flex flex-wrap gap-3"><button class="button" name="action" value="translate">Guardar y traducir con IA local</button><button class="button" name="action" value="save">Guardar cambios</button><button class="button" name="action" value="add">Añadir ingrediente</button></div>
+</form>
+<section class="mt-8 space-y-4"><h2>Alternativas por uso</h2><p class="text-sm text-muted">Guarda primero el uso del ingrediente. Las propuestas no cambian tu lista hasta que las elijas.</p>
+{% for row in draft.rows %}
+  <details class="workspace-panel"><summary>{{ row.name }}{% if row.get('selected_name') %} → {{ row.selected_name }}{% endif %}</summary>
+    <p class="mt-2 text-sm">Uso: {{ row.use or 'Pendiente de indicar y guardar' }}</p>
+    <form method="post" class="mt-3">{{ hidden(draft) }}<input type="hidden" name="row" value="{{ row.id }}"><button class="button" name="action" value="alternative" {% if not row.use %}disabled{% endif %}>Proponer alternativa con IA</button></form>
+    {% if row.get('adaptation') %}{% set result=row.adaptation.result %}
+      <p class="mt-3 text-sm">Propuestas generadas · Revisión pendiente</p>
+      {% for warning in result.warnings %}<p class="essential-note mt-2">{{ warning }}</p>{% endfor %}
+      {% if result.clarification %}<p class="essential-note">{{ result.clarification }}</p>{% endif %}
+      {% for option in result.alternatives %}<div class="mt-4"><h3>{{ option.local_name }}</h3>{% if option.adjustment %}<p class="essential-note">{{ option.adjustment }}</p>{% endif %}<p class="essential-note">{{ option.limitation }}</p><details><summary>Por qué puede servir y fuentes</summary><p>{{ option.reason }}</p>{{ source_list(option.source_ids,row.adaptation.sources) }}</details></div>{% else %}<p>No hay sustitución propuesta para este uso.</p>{% endfor %}
+      <form method="post" class="mt-4 space-y-3">{{ hidden(draft) }}<input type="hidden" name="row" value="{{ row.id }}"><input type="hidden" name="action" value="choose">
+        <label for="alternative-{{ row.id }}">Qué comprar</label><select id="alternative-{{ row.id }}" name="alternative"><option value="">Conservar el original</option>{% for option in result.alternatives %}<option value="{{ loop.index0 }}" {% if row.get('selected_index') == loop.index0 %}selected{% endif %}>{{ option.local_name }}</option>{% endfor %}</select>
+        <div><label for="sub-amount-{{ row.id }}">Cantidad del sustituto</label><input id="sub-amount-{{ row.id }}" name="sub_amount" value="{{ row.get('selected_amount','') }}" maxlength="100" placeholder="Por confirmar"></div><p class="text-sm">Sin una proporción comprobada, no copiamos la cantidad original. Revisa el ajuste antes de cocinar.</p><button class="button">Aplicar elección</button>
+      </form>
+    {% endif %}
+  </details>
+{% endfor %}
+</section>
+{% endif %}
+<section id="lista-compra" class="mt-8 space-y-4"><h2>Tu lista de compra</h2>
+{% if draft.rows|selectattr('translation')|list or draft.rows|selectattr('adaptation')|list %}<p class="text-sm text-muted">IA local · Nombres y alternativas pendientes de revisión.</p>{% endif %}
+{% if shopping %}<div class="workspace-panel"><ul class="space-y-3">{% for item in shopping %}<li><strong>{{ item.name }}</strong> · {{ item.amount }}{% if item.preparation %} · {{ item.preparation }}{% endif %}<span class="block text-sm text-muted">Origen: {% for origin in item.origins %}<a href="#ingrediente-{{ origin.id }}">{{ origin.name }} ({{ origin.amount or 'sin cantidad' }})</a>{{ ', ' if not loop.last }}{% endfor %}</span></li>{% endfor %}</ul></div>{% endif %}
+{% set pending=draft.rows|rejectattr('local_name')|rejectattr('selected_name')|list %}{% if pending %}<p class="essential-note">{{ pending|length }} ingrediente(s) sin término local: revisa y completa antes de comprar.</p>{% endif %}
+{% if draft.rows|selectattr('selected_name')|list %}<div class="workspace-panel"><h3>Cambios para cocinar</h3>{% for row in draft.rows if row.get('selected_name') %}{% set option=row.adaptation.result.alternatives[row.selected_index] %}<p class="mt-2"><strong>{{ row.name }} → {{ row.selected_name }}</strong> · {{ row.selected_amount or 'Cantidad por confirmar' }}</p>{% if option.adjustment %}<p class="essential-note">{{ option.adjustment }}</p>{% endif %}<p class="essential-note">{{ option.limitation }}</p>{% endfor %}<p class="mt-3 text-sm">Los pasos conservan su texto original. Aplica estas correspondencias y ajustes: todavía no hay una reescritura de técnicas validada para recetas propias.</p></div>{% endif %}
+<details class="workspace-panel"><summary>Consultar los pasos guardados</summary><ol class="mt-3 list-decimal pl-5 space-y-2">{% for step in draft.steps %}<li>{{ step }}</li>{% else %}<li>No se indicaron pasos.</li>{% endfor %}</ol></details>
+</section>
+<section class="mt-8 space-y-4"><h2>¿Dónde comprar en {{ draft.context.city }}?</h2>
+<p class="text-sm text-muted">Al buscar, enviamos a Tavily únicamente el nombre local del producto, ciudad y país. Un enlace encontrado no confirma stock ni envío.</p>
+{% if not search_configured %}<p class="essential-note">Falta activar la clave gratuita. Consulta <a class="underline" href="{{ url_for('workspace.search_help') }}">cómo obtenerla y pegarla</a>.</p>{% endif %}
+{% if shopping and draft.status != 'working' %}<form method="post" class="workspace-panel space-y-4">{{ hidden(draft) }}<input type="hidden" name="action" value="stores"><fieldset><legend class="font-semibold">Elige hasta 8 productos (omite los que ya tienes)</legend><div class="grid gap-3 mt-3 sm:grid-cols-2">{% for name in search_products %}<label class="flex items-center gap-2"><input type="checkbox" name="products" value="{{ name }}">{{ name }}</label>{% endfor %}</div></fieldset><button class="button">Buscar comercios en la web</button><p class="text-sm">Caché de 24 horas · Máximo 25 búsquedas nuevas al día para esta instalación.</p></form>{% endif %}
+{% if draft.stores %}
+  {% for failure in draft.stores.errors %}<p role="alert" class="essential-note">{{ failure.product }}: {{ failure.message }}</p>{% endfor %}
+  <p><strong>{{ searches|selectattr('results')|list|length }} de {{ search_products|length }}</strong> productos de la lista con enlaces candidatos. Productos verificados: 0. Stock desconocido.</p>
+  {% for group in store_groups %}<details class="workspace-panel"><summary>{{ group.domain }} · enlaces para {{ group.products|length }} de {{ search_products|length }} productos</summary>{% for link in group.links %}<article class="mt-4"><h3><a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.title }} ↗</a></h3><p class="text-sm">{{ link.product }} · {{ link.evidence }}</p><p class="text-sm">{{ link.location }} · Stock: {{ link.stock }}</p><p class="text-sm text-muted">Consulta: {{ link.queried_at }}</p><details><summary>Fragmento del buscador</summary><p class="text-sm">{{ link.snippet }}</p></details></article>{% endfor %}</details>{% endfor %}
+  <details class="workspace-panel"><summary>Consultas, caché y faltantes</summary>{% for item in shopping %}{% set found=searches|selectattr('product','equalto',item.name)|list %}<p class="mt-2">{{ item.name }} · {% if not found %}Sin consultar{% elif not found[0].results %}Sin resultados{% else %}Enlaces candidatos · {{ 'Caché' if found[0].cached else 'Consulta nueva' }} · {{ found[0].queried_at }}{% endif %}</p>{% endfor %}</details>
+{% endif %}
+<details><summary>Búsqueda manual de apoyo</summary>{% for item in shopping %}<p class="mt-2"><a href="{{ manual_search(item.name,draft.context.city,draft.context.destination_country) }}" target="_blank" rel="noopener noreferrer">Buscar {{ item.name }} ↗</a></p>{% endfor %}<p class="text-sm mt-2">Estos enlaces no cuentan como resultados consultados por la aplicación.</p></details>
+</section>
+<details class="mt-8"><summary>Privacidad y borrador</summary><p class="mt-2 text-sm">La receta se guarda en este equipo y en este navegador puedes volver a abrirla con su URL. Borrar cookies elimina el acceso. Guarda tu receta original antes de limpiar los datos locales.</p>
+{% if draft.source_recipe %}<p class="mt-3"><a href="{{ url_for('recipes_page',recipe=draft.source_recipe) }}">Ver receta de origen y fuentes →</a></p>{% else %}<details class="mt-3"><summary>Texto original pegado</summary><pre class="whitespace-pre-wrap text-sm">{{ draft.raw }}</pre></details>{% endif %}
+{% if draft.status != 'working' %}<form method="post" action="{{ url_for('workspace.delete',draft_id=draft.id) }}" class="mt-3"><input type="hidden" name="csrf" value="{{ csrf_token() }}"><button class="button">Borrar este borrador</button></form>{% endif %}</details>
+{% endblock %}

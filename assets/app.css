@@ -39,6 +39,19 @@
 }
 
 @layer components {
+  .workspace-panel {
+    @apply rounded-2xl border border-line bg-surface p-5 text-ink;
+    overflow-wrap: anywhere;
+  }
+  .workspace-panel :is(input:not([type=hidden]):not([type=checkbox]), textarea),
+  #recipe-editor :is(input:not([type=hidden]), textarea) {
+    @apply mt-1 max-w-full rounded-lg border border-line bg-white px-3 py-2 text-ink;
+    min-width: 0;
+  }
+  textarea { resize: vertical; }
+  textarea:focus-visible { @apply outline-2 outline-offset-2 outline-brand; }
+  .workspace-panel > summary { min-height: 2.75rem; align-content: center; }
+  button:disabled { opacity: .5; cursor: not-allowed; }
   .site-navigation {
     background: linear-gradient(to bottom, #591220, #420c1f);
   }
@@ -118,7 +131,7 @@
     .search-hero-content { max-width: min(34rem, 55%); }
   }
 
-  .find-card, .find-filter, .find-empty {
+  .find-filter, .find-empty {
     --color-muted: #715359;
     color: var(--color-ink);
     overflow-wrap: anywhere;
@@ -144,14 +157,30 @@
     color: #35421b;
   }
 
-  .find-caution {
-    @apply rounded-lg p-3 text-sm;
-    background-color: #f9e4cd;
-    color: #603718;
+  .ingredient-summary {
+    --color-muted: #715359;
+    color: var(--color-ink);
+    overflow-wrap: anywhere;
   }
-
-  .find-warning .find-caution { background-color: #fadcd7; color: #6d2432; }
-  .find-disclosure > summary { @apply flex items-center gap-2 rounded-md; }
+  .ingredient-heading { @apply flex items-center gap-3; }
+  .ingredient-photo { @apply size-16 shrink-0 rounded-xl object-cover; }
+  .essential-note {
+    border-left: 2px solid #d1b6a5;
+    padding-left: .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .essential-note--adjustment { border-color: #839945; }
+  .essential-note--warning { border-color: #a93443; color: #6d2432; }
+  .details-divider { border-top: 1px solid var(--color-line); padding-top: .25rem; }
+  .review-status { margin-left: auto; font-weight: 400; color: var(--color-muted); }
+  .review-status.find-olive-text { color: #485824; }
+  .more-options { border: 1px dashed #c6aaa3; border-radius: 1rem; padding: .25rem 1rem; }
+  .find-disclosure > summary {
+    @apply flex min-h-11 items-center gap-2 rounded-md;
+    list-style: none;
+  }
+  .find-disclosure > summary::-webkit-details-marker { display: none; }
   .find-disclosure > summary::after {
     content: "+";
     margin-left: auto;

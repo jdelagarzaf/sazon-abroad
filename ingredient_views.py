@@ -33,6 +33,15 @@ PROPERTY_LABELS = {
 }
 
 
+def group_relation_cards(relations):
+    """Keep retrieval priority while collecting uses of the same product and relation type."""
+    groups = {}
+    for relation in relations:
+        key = (relation["type"], relation["to"], relation["target_name_it"], relation["target_name_es"])
+        groups.setdefault(key, []).append(relation)
+    return list(groups.values())
+
+
 @lru_cache(maxsize=1)
 def _load_catalog(modified_ns):
     catalog = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))

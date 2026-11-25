@@ -51,22 +51,24 @@
   {% set result = adaptation.result %}
   {% set labels = {'same_ingredient': 'Mismo ingrediente', 'descriptive': 'Cómo buscar el original', 'substitute': 'Adaptación para este uso', 'no_proposal': 'Sin propuesta suficiente'} %}
   <section class="mt-8 space-y-4" aria-labelledby="adapt-result-heading">
-    <article class="adapt-panel space-y-3 rounded-2xl border border-line bg-surface p-5">
+    <article class="adapt-panel ingredient-summary space-y-3 rounded-2xl border border-line bg-surface p-5">
       <p class="text-sm font-semibold text-brand">{{ labels[result.kind] }} · {{ values.destination_country }}</p>
       <h2 id="adapt-result-heading">{{ result.original_name }}{% if result.local_name %} → {{ result.local_name }}{% endif %}</h2>
-      {% if not adaptation.name_only %}<p>{{ result.summary }}</p>{% endif %}
       {% if result.culinary_use %}<p class="text-sm"><strong>Uso:</strong> {{ result.culinary_use }}</p>{% endif %}
       {% if result.clarification %}<p class="notice"><strong>Para continuar:</strong> {{ result.clarification }}</p>{% endif %}
       {% for warning in result.warnings %}<p class="notice text-sm"><strong>Ten en cuenta:</strong> {{ warning }}</p>{% endfor %}
       <p class="text-sm text-muted">Propuesta de IA local · pendiente de verificación culinaria.</p>
+      {% if not adaptation.name_only %}
+        <details class="find-disclosure details-divider"><summary>Ver resumen de la adaptación</summary><p class="pt-2">{{ result.summary }}</p></details>
+      {% endif %}
     </article>
     {% for alternative in result.alternatives %}
-      <article class="adapt-panel space-y-3 rounded-2xl border border-line bg-surface p-5">
+      <article class="adapt-panel ingredient-summary space-y-3 rounded-2xl border border-line bg-surface p-5">
         <p class="text-sm font-semibold text-brand">Alternativa para {{ result.culinary_use }}</p>
         <h3 class="text-2xl">{{ alternative.local_name }}</h3>
-        {% if alternative.adjustment %}<p class="text-sm"><strong>Ajuste:</strong> {{ alternative.adjustment }}</p>{% endif %}
-        <p class="text-sm"><strong>Ten en cuenta:</strong> {{ alternative.limitation }}</p>
-        <details><summary>Por qué puede servir</summary><p class="pt-2">{{ alternative.reason }}</p></details>
+        {% if alternative.adjustment %}<p class="essential-note essential-note--adjustment"><strong>Ajuste:</strong> {{ alternative.adjustment }}</p>{% endif %}
+        <p class="essential-note"><strong>Ten en cuenta:</strong> {{ alternative.limitation }}</p>
+        <details class="find-disclosure details-divider"><summary>Por qué puede servir</summary><p class="pt-2">{{ alternative.reason }}</p></details>
       </article>
     {% endfor %}
     <details class="adapt-panel rounded-2xl border border-line bg-surface p-5">

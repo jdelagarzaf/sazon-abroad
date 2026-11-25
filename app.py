@@ -1,7 +1,10 @@
 """Flask routes for Sazón Abroad."""
 
-from collections import defaultdict
 from functools import lru_cache
+from pathlib import Path
+import json
+
+from dotenv import load_dotenv
 
 from flask import Flask, render_template, request
 
@@ -11,19 +14,26 @@ from local_model import ModelError, ModelSettings, OllamaClient
 from evaluation import DEVELOPMENT_PATH, FINAL_PATH, GROUPS, SNAPSHOT_PATH, evaluate, evaluate_final, load_cases
 from ingredient_views import (
     CATALOG_PATH, EVIDENCE_LABELS, PROPERTY_LABELS, REFERENCE_LABELS, VERIFICATION_LABELS,
-    get_catalog, load_photos,
+    get_catalog, group_relation_cards, load_photos,
 )
 from recipe_plans import load_recipes, make_plan, resolve_ingredients
 from search import METHODS, normalize
+from recipe_routes import workspace, csrf_token, session_key
+
+load_dotenv(Path(__file__).resolve().parent / ".env", override=False)
 
 app = Flask(__name__)
-app.config["MAX_CONTENT_LENGTH"] = 16 * 1024
+app.config.update(MAX_CONTENT_LENGTH=64 * 1024, SECRET_KEY=session_key(),
+                  SESSION_COOKIE_HTTPONLY=True, SESSION_COOKIE_SAMESITE="Lax")
 adaptation_service = AdaptationService()
+app.extensions["adaptation_service"] = adaptation_service
+app.register_blueprint(workspace)
 app.jinja_env.globals.update(
     verification_labels=VERIFICATION_LABELS,
     reference_labels=REFERENCE_LABELS,
     evidence_labels=EVIDENCE_LABELS,
     property_labels=PROPERTY_LABELS,
+    csrf_token=csrf_token,
 )
 
 METRICS = {
@@ -76,11 +86,7 @@ def find():
     selected = request.args.get("ingredient")
     if selected not in matches:
         selected = next(iter(matches), None)
-    groups = defaultdict(list)
-    if selected and (not lookup.context or lookup.use):
-        for relation in index.relations_for(selected, lookup.use):
-            key = (relation["type"], relation["to"], relation["target_name_it"], relation["target_name_es"])
-            groups[key].append(relation)
+    groups = group_relation_cards(index.relations_for(selected, lookup.use)) if selected and (not lookup.context or lookup.use) else []
     context = catalog["uses"][lookup.use]["label"] if lookup.use else lookup.context
     gaps = matches.get(selected, {}).get("substitution_gaps", {})
     gaps = [
@@ -90,8 +96,8 @@ def find():
     return render_template(
         "find.html", query=query, lookup=lookup, matches=matches, selected=selected,
         context=context, sources=catalog["sources"], photos=load_photos(),
-        substitutes=[cards for key, cards in groups.items() if key[0] == "culinary_substitute"],
-        warnings=[cards for key, cards in groups.items() if key[0] == "not_equivalent"],
+        substitutes=[cards for cards in groups if cards[0]["type"] == "culinary_substitute"],
+        warnings=[cards for cards in groups if cards[0]["type"] == "not_equivalent"],
         gaps=gaps,
     )
 
@@ -110,11 +116,13 @@ def catalog_page():
         key=lambda item: normalize(item["name_es"]),
     )
     selected = next((item for item in options if item["id"] == request.args.get("ingredient")), None)
+    groups = group_relation_cards(index.relations_for(selected["id"])) if selected else []
     return render_template(
         "catalog.html", options=options, selected=selected, categories=categories, statuses=statuses,
         category=category, status=status, total=len(ingredients), sources=catalog["sources"],
         uses=catalog["uses"],
-        relations=index.relations_for(selected["id"]) if selected else [],
+        substitutes=[cards for cards in groups if cards[0]["type"] == "culinary_substitute"],
+        warnings=[cards for cards in groups if cards[0]["type"] == "not_equivalent"],
     )
 
 
@@ -142,9 +150,12 @@ def adapt_ingredient():
 @app.get("/recetas")
 def recipes_page():
     recipes = {recipe["id"]: recipe for recipe in load_recipes()}
+    title_query = request.args.get("q", "")[:160].strip()
+    if title_query:
+        recipes = {key: recipe for key, recipe in recipes.items() if normalize(title_query) in normalize(recipe["title"])}
     recipe = recipes.get(request.args.get("recipe"), next(iter(recipes.values()), None))
     if recipe is None:
-        return render_template("recipes.html", recipes=recipes, recipe=None)
+        return render_template("recipes.html", recipes=recipes, recipe=None, title_query=title_query)
     catalog, index = get_catalog()
     rows = resolve_ingredients(recipe, catalog, index)
     italy = request.args.get("version") != "original"
@@ -159,6 +170,7 @@ def recipes_page():
     return render_template(
         "recipes.html", recipes=recipes, recipe=recipe, italy=italy, rows=rows,
         selection=selection, shopping=shopping, steps=steps, omitted=omitted, sources=catalog["sources"],
+        title_query=title_query,
     )
 
 
@@ -220,6 +232,16 @@ def evaluation_page():
         metrics=metrics, metric=metric, methods=methods, method=method, kinds=kinds, kind=kind,
         errors=errors, final=final, groups=GROUPS, group=group,
     )
+
+
+@app.get("/evaluacion/ia-local")
+def local_evaluation_page():
+    path = Path(__file__).resolve().parent / "docs" / "local-ai-results.json"
+    try:
+        report = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        report = None
+    return render_template("local_evaluation.html", report=report)
 
 
 @app.errorhandler(500)

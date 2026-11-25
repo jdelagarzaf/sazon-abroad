@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Evaluación de IA local{% endblock %}
+{% block content %}
+<a href="{{ url_for('evaluation_page') }}">← Evaluación de recuperación</a>
+<h1 class="mt-4">Evaluación de IA local</h1>
+<p class="mt-3 text-muted">Conjunto reservado: 40 consultas México → Italia, 10 México → Alemania y 5 recetas para comprobar extracción y cantidades.</p>
+<p class="essential-note mt-4">La revisión culinaria humana está pendiente. Un JSON válido o una coincidencia de nombre no acreditan una sustitución correcta ni el respeto de alergias.</p>
+{% if report %}
+<p class="mt-4 text-sm">Modelo: {{ report.model.model }} · Prompt: {{ report.prompt }} · {{ report.rows|length }} ejecuciones guardadas.</p>
+{% if report.summary %}<div class="table-wrap mt-5"><table><caption class="text-left mb-2">Medición local por variante; consultas sin caché, CPU del equipo de prueba</caption><thead><tr><th>Variante</th><th>Publicadas / intentos</th><th>Errores rechazados</th><th>p50</th><th>p95</th><th>Coincidencia nominal provisional</th></tr></thead><tbody>{% for name, summary in report.summary.items() %}<tr><td>{{ name }}</td><td>{{ summary.published }} / {{ summary.attempts }}</td><td>{{ summary.errors }}</td><td>{{ '%.2f'|format(summary.p50_seconds) }} s</td><td>{{ '%.2f'|format(summary.p95_seconds) }} s</td><td>{{ summary.provisional_term_matches }} / {{ summary.provisional_term_total }}</td></tr>{% endfor %}</tbody></table></div>{% else %}<p class="mt-3">Medición en curso; todavía no hay resumen final.</p>{% endif %}
+<details class="workspace-panel mt-5"><summary>Consultas, salidas y fallos</summary>{% for row in report.rows %}<details class="mt-3"><summary>{{ row.case }} · {{ row.variant }} · {{ row.input.query }} · {{ '%.2f'|format(row.seconds) }} s</summary>{% if row.error %}<p role="status">{{ row.error }}</p>{% else %}<p>{{ row.response.result.local_name or 'Sin término local' }}</p><p>{{ row.response.result.summary }}</p>{% for option in row.response.result.alternatives %}<p>{{ option.local_name }} · {{ option.adjustment or '' }} · {{ option.limitation }}</p>{% endfor %}{% endif %}<p class="text-sm">Revisión humana pendiente.</p></details>{% endfor %}</details>
+<details class="mt-5"><summary>Procedencia de la medición</summary><p class="text-sm mt-2">Dataset SHA-256: {{ report.dataset_sha256 }}. El informe JSON y las instrucciones reproducibles están en docs/validacion-final.md. Los umbrales del plan son objetivos; no se declaran aprobados sin revisión.</p></details>
+{% else %}<p class="mt-4">Aún no hay informe. Ejecuta scripts/evaluate_local_ai.py según la guía de validación.</p>{% endif %}
+{% endblock %}

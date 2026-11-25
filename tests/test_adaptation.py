@@ -38,6 +38,7 @@ class AdaptationTests(unittest.TestCase):
         self.client = Mock(settings=ModelSettings())
         self.client.generate.return_value = proposal()
         self.client.generate.side_effect = lambda messages, schema: (
+            self.client.generate.return_value["local_name"] if schema is None else
             {"local_name": self.client.generate.return_value["local_name"]}
             if set(schema.get("properties", {})) == {"local_name"} else self.client.generate.return_value
         )
@@ -50,10 +51,10 @@ class AdaptationTests(unittest.TestCase):
         result = self.adapt()
         self.assertEqual(result["result"]["local_name"], "foglie di curry")
         messages, schema = self.client.generate.call_args.args
-        payload = json.loads(messages[1]["content"])
-        self.assertEqual(payload["context"]["query"], "hojas de curry")
-        self.assertEqual(payload["evidence"]["ingredients"], [])
-        self.assertEqual(set(schema["properties"]), {"local_name"})
+        self.assertIn('"hojas de curry"', messages[0]["content"])
+        self.assertIn("Italian", messages[0]["content"])
+        self.assertIn("Spanish", messages[0]["content"])
+        self.assertIsNone(schema)
         self.assertEqual(result["result"]["alternatives"], [])
         self.assertTrue(result["name_only"])
         self.assertEqual(result["evidence_status"], "generated_unverified")
@@ -186,6 +187,15 @@ class AdaptationTests(unittest.TestCase):
                         replace(self.context, restrictions="sin gluten")]:
             self.assertFalse(name_only(context))
 
+    def test_plain_name_rejects_prose_urls_json_and_abstains_explicitly(self):
+        self.client.generate.side_effect = None
+        for value in ['Cetriolo\nUn comentario', '{"local_name":"cetriolo"}', 'https://example.com', 'x' * 121, '', '\x00', '...']:
+            self.client.generate.return_value = value
+            with self.subTest(value=value), self.assertRaises(ModelError):
+                self.adapt()
+        self.client.generate.return_value = "UNKNOWN"
+        self.assertEqual(self.adapt()["result"]["kind"], "no_proposal")
+
     def test_original_term_is_not_labeled_as_its_own_replacement(self):
         context = replace(self.context, query="masa harina para tortillas")
         evidence = local_evidence(context, self.catalog, self.index)
@@ -257,6 +267,11 @@ class TransportTests(unittest.TestCase):
         self.assertEqual(payload["format"], RESPONSE_SCHEMA)
         self.assertEqual(payload["options"]["temperature"], 0)
         self.assertEqual(client.opener.open.call_args.kwargs["timeout"], 120)
+
+    def test_plain_translation_omits_format_without_exposing_thinking(self):
+        client = self.client_with_envelope({"done": True, "message": {"content": " cetriolo\n", "thinking": "private"}})
+        self.assertEqual(client.generate([], None), "cetriolo")
+        self.assertNotIn("format", json.loads(client.opener.open.call_args.args[0].data))
 
     def test_invalid_incomplete_and_truncated_envelopes_are_errors(self):
         for envelope in [{"done": False}, {"done": True, "done_reason": "length"},

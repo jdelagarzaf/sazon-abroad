@@ -1,6 +1,6 @@
 # Plan preliminar: adaptación culinaria con IA local
 
-Fecha: 24 de noviembre de 2026. Estado: plan por fases; primera fase completada técnicamente. Seguimiento y límites al final.
+Fecha: 24 de noviembre de 2026. Estado: fases 1–3 implementadas; fase 4 preparada para activar la clave; validación técnica de fase 5 realizada. Aceptación culinaria y verificación comercial pendientes.
 
 ## Objetivo
 
@@ -24,9 +24,9 @@ Hay modificaciones previas en el repositorio. La implementación deberá conserv
 
 ### 1. Modelo local para comprender y adaptar
 
-Usar Ollama como servidor local y un adaptador Python independiente de las rutas Flask. Tras las pruebas de integración, la configuración inicial seleccionada es `qwen2.5:3b` Instruct, cuantizado. Su calidad culinaria y la de futuros candidatos deberán compararse con casos reservados y revisión humana antes de habilitar trayectos estables adicionales.
+Usar Ollama como servidor local y un adaptador Python independiente de las rutas Flask. La fase 1 usó `qwen2.5:3b` Instruct. Las pruebas posteriores con recetas nuevas detectaron traducciones erróneas y la configuración actual pasa a **`gemma3:4b`**, con texto breve para nombres nuevos y JSON para adaptaciones. Su calidad debe medirse y revisarse antes de habilitar trayectos estables adicionales.
 
-La ficha de Ollama publica un archivo de aproximadamente 1,9 GB para `qwen2.5:3b`; ese tamaño no equivale a la RAM necesaria durante la ejecución. En esta fase Ollama informó aproximadamente 2,17 GB residentes por CPU. La instalación y los tiempos observados están documentados en el registro de validación.
+La descarga de Gemma 3 4B ocupa aproximadamente 3,4 GB y Ollama informó unos 2,89 GB residentes para texto con contexto de 4096, por CPU. El Qwen inicial ocupaba 1,9 GB de descarga y unos 2,17 GB residentes. Tamaño descargado y memoria no son lo mismo. La instalación y las mediciones están documentadas en los registros de validación.
 
 El modelo recibirá ingrediente, presentación, receta o uso, países, idiomas y restricciones. Devolverá JSON con un esquema validado por el servidor:
 
@@ -78,7 +78,7 @@ La lista resultante agrupará ingredientes repetidos cuando las unidades sean co
 
 ### 6. Búsqueda web para comercios
 
-Crear una interfaz `StoreSearchProvider` y un primer proveedor de búsqueda web, con Brave Search API como candidato. Antes de integrarlo, comprobar credenciales disponibles, condiciones y coste vigente. No depender de las herramientas de búsqueda de esta conversación para ejecutar la aplicación.
+Crear una interfaz `StoreSearchProvider` y un primer proveedor de búsqueda web. Brave fue el candidato preliminar; se seleccionó **Tavily** tras verificar que su opción gratuita no requiere tarjeta. No depender de las herramientas de búsqueda de esta conversación para ejecutar la aplicación.
 
 Usar país, ciudad o código postal introducido por el usuario y términos locales para buscar páginas de productos y comercios. Distinguir compra física de venta online y comprobar cobertura de envío cuando la fuente lo indique. Empezar con una ciudad italiana de demostración configurable.
 
@@ -142,8 +142,8 @@ Incluir tres casos explicables: jitomate como identidad, poblano con propuestas 
 ## Dependencias y decisiones pendientes
 
 - Verificar hardware y seleccionar modelo mediante medición, no por tamaño de descarga.
-- Elegir ciudad inicial; mientras no se defina, mantenerla configurable y pedirla al consultar tiendas.
-- Obtener una credencial válida del proveedor web y comprobar su coste antes de llamadas de pago.
+- Ciudad elegida por el usuario: **Milán**, editable; se usa `Milano` como término local.
+- El usuario no dispone de clave y solicita priorizar opciones gratuitas/estudiantiles: integración Tavily preparada, [instrucciones de activación](comercios.md), sin habilitar pagos.
 - Conseguir revisión culinaria humana para afirmar aceptación; las propuestas generadas no la sustituyen.
 - Para publicar, el servidor Flask deberá tener acceso a un proceso Ollama y memoria suficiente. Una instalación de Ollama en el portátil no queda disponible automáticamente para un alojamiento remoto.
 
@@ -163,13 +163,23 @@ Consultadas el 24 de noviembre de 2026. Sustentan la viabilidad técnica; no pru
 | --- | --- |
 | 0. Línea base | Completada: 13 pruebas originales correctas con `.venv`; revisión del código y de la interfaz. |
 | 1. IA local | Completada técnicamente: inferencia real, interfaz, validación y caché comprobadas. Calidad culinaria experimental. |
-| 2. Presentación | Pendiente: simplificar las fichas heredadas; la pantalla nueva ya presenta una vista compacta. |
-| 3. Recetas | Pendiente. |
-| 4. Comercios | Pendiente. |
-| 5. Evaluación completa | Pendiente: conjunto reservado, revisión culinaria y medición suficiente de latencia. |
+| 2. Presentación | Completada: tarjetas compactas, detalles bajo demanda y avisos esenciales visibles; revisión de escritorio, móvil y teclado. |
+| 3. Recetas | Implementada: búsqueda por título, recetas pegadas, revisión editable, traducción local en segundo plano, elección de alternativas y cantidades trazables. |
+| 4. Comercios | Cliente Tavily implementado con ubicación, caché, cuota, fechas, dominios y faltantes. Activación y consulta real pendientes de la clave del titular. |
+| 5. Evaluación completa | Validación técnica realizada: 67 pruebas, 100 ejecuciones Gemma, antecedente Qwen, cinco recetas e inspección móvil/escritorio. Aceptación culinaria humana, objetivo p95 y 20 pares comerciales sin completar. |
 
-La primera fase añade contratos neutrales, cliente Ollama local, validación estructural y comprobaciones de coherencia, referencias por ID, caché y la ruta `/adaptar`. La guía [IA local](ia-local.md) contiene los pasos de instalación y las pruebas. Las 40 pruebas automáticas actuales incluyen las 13 originales; no constituyen aceptación culinaria. El [registro de validación](fase-1-validacion.md) documenta la ejecución real y sus límites.
+La primera fase añade contratos neutrales, cliente Ollama local, validación estructural y comprobaciones de coherencia, referencias por ID, caché y la ruta `/adaptar`. La guía [IA local](ia-local.md) contiene los pasos de instalación y las pruebas. Las 40 pruebas de esa fase incluían las 13 originales; no constituyen aceptación culinaria. El [registro de validación](fase-1-validacion.md) documenta la ejecución real y sus límites.
 
 Las primeras pruebas con Qwen3 detectaron modos de razonamiento no compatibles con la configuración solicitada, latencia excesiva por CPU y salidas incorrectas al forzar su desactivación. No son una comparación controlada de tamaños. Se adopta `qwen2.5:3b` Instruct para la configuración inicial, con contexto de 4096 tokens y espera de transporte de 120 segundos. El cliente detecta las capacidades del modelo antes de generar. La instalación portátil y el modelo se guardan fuera del control de versiones, en `.runtime/`.
 
 La ejecución final comprobó jitomate → pomodoro, poblano para rajas → peperone verde como sustituto, masa harina como el original nixtamalizado y anís estrellado → anice stellato sin ampliar el catálogo. La interfaz también comprobó jitomate → Tomate con destino Alemania. Las consultas de nombre registraron unos 2 segundos y las contextuales 31–32 segundos por CPU en esa ejecución. La evaluación reservada debe priorizar nombres nuevos y destinos adicionales: durante el desarrollo se observaron traducciones incorrectas para hojas de curry y anís estrellado en alemán.
+
+La fase 2 unifica las tarjetas de búsqueda y catálogo, agrupa los usos del mismo producto y conserva la prioridad del buscador. La vista cerrada mantiene completos ajustes, limitaciones y estado de revisión. Los motivos, propiedades, alias y fuentes quedan bajo desplegables nativos; las opciones posteriores a las dos iniciales se pueden expandir. Las advertencias de no equivalencia permanecen visibles. Las recetas elegidas y la pantalla de IA usan la misma separación entre información esencial y explicación.
+
+En el ejemplo de quesadillas, la vista cerrada pasó de 148 a 112 palabras y de 865 a 680 píxeles de alto en la misma ventana. Se comprobaron escritorio, móvil y activación por teclado. Las 46 pruebas de esa fase pasaron. Abrir detalles no llama al modelo ni cambia la alternativa. El [registro de presentación](fase-2-presentacion.md) contiene las capturas y sus límites.
+
+La fase 3 usa extracción determinista y editable de cantidades y pasos, evitando que el modelo reconstruya cantidades. Requiere ingredientes en líneas separadas; esta decisión reduce el alcance inicial del extractor libre propuesto, a cambio de precisión y menor latencia. Los alimentos nuevos no requieren IDs del catálogo. Los pasos propios conservan su texto y las correspondencias/ajustes se muestran aparte; no hay una reescritura de técnicas validada. Las recetas importadas mantienen sus cambios documentados. Véase [recetas propias](recetas-libres.md).
+
+Durante esa integración, Qwen produjo nombres erróneos para pepino, yogur y eneldo. Gemma también falló con nombres forzados en JSON. La tarea breve de traducción textual corrigió los ejemplos de desarrollo; el servidor sigue validando el objeto final. Se conserva el informe Qwen como antecedente y se evaluó Gemma con el mismo conjunto, sin atribuir una mejora controlada a un solo factor: cambian modelo y tratamiento de nombres nuevos. No se añade RAG vectorial sin demostrar su beneficio. Véase [validación final](validacion-final.md).
+
+Gemma con referencias publicó 50/50 respuestas estructuralmente válidas y coincidió nominalmente en 28/30 casos con etiqueta orientativa; sin referencias publicó 49/50 y coincidió en 18/30. Esas cifras no son aceptación culinaria. El p95 con referencias fue 27,11 s, por encima del objetivo de 15 s. Las cinco recetas conservaron cantidades y pasos, y se dejó una hoja de revisión sin aprobaciones humanas inventadas. Persisten errores de traducción que están publicados en el informe. La integración web queda lista para pegar la clave gratuita, con guía y prueba CLI; no se ha marcado como operativa sin credencial ni se han afirmado existencias o precios.

@@ -10,6 +10,7 @@
 {%- endmacro %}
 {% block content %}
 <h1>Evaluación de búsqueda</h1>
+<p class="mt-3"><a href="{{ url_for('local_evaluation_page') }}">Ver evaluación separada de IA local →</a></p>
 {% if final %}
   <p class="muted mt-2">Comparación sobre consultas nuevas, con las dos versiones del catálogo guardadas para reproducir el resultado.</p>
 {% endif %}

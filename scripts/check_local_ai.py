@@ -12,6 +12,7 @@ sys.path.insert(0, str(ROOT))
 from adaptation import AdaptationRequest, AdaptationService
 from ingredient_views import get_catalog
 from local_model import ModelError, ModelSettings, OllamaClient
+from dotenv import load_dotenv
 
 
 class InspectionClient(OllamaClient):
@@ -23,6 +24,7 @@ class InspectionClient(OllamaClient):
 
 
 def main():
+    load_dotenv(ROOT / ".env", override=False)
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--query", action="append", help="Consulta; puede repetirse.")
     parser.add_argument("--destination", default="Italia")

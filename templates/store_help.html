@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Activar búsqueda de tiendas{% endblock %}
+{% block content %}
+<a href="{{ url_for('workspace.new') }}">← Mis recetas</a>
+<h1 class="mt-4">Activa la búsqueda de tiendas</h1>
+<ol class="mt-6 list-decimal pl-5 space-y-4">
+  <li>Crea tu cuenta en <a href="https://app.tavily.com" target="_blank" rel="noopener noreferrer">Tavily</a>. El plan Researcher publica 1000 créditos al mes sin tarjeta. Consulta sus <a href="https://www.tavily.com/pricing">condiciones vigentes</a>.</li>
+  <li>Copia la API key del panel. No hace falta activar Pay As You Go.</li>
+  <li>En la carpeta del proyecto abre o crea <code>.env</code>. Conserva las demás variables y añade esta línea reemplazando el marcador:
+    <pre class="workspace-panel mt-3 overflow-x-auto"><code>TAVILY_API_KEY=PEGA_TU_CLAVE_AQUI</code></pre></li>
+  <li>Reinicia la aplicación, abre tu receta y pulsa «Buscar comercios en la web».</li>
+</ol>
+<p class="mt-6 text-muted">También existe un <a href="https://help.tavily.com/articles/6606514713-student-account">programa para estudiantes</a>. La guía del proyecto <code>docs/comercios.md</code> explica los límites, la comprobación y esa opción. No compartas tu clave ni la subas a Git.</p>
+{% endblock %}

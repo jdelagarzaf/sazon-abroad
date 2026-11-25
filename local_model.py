@@ -22,7 +22,7 @@ class ModelError(Exception):
 @dataclass(frozen=True)
 class ModelSettings:
     base_url: str = "http://127.0.0.1:11434"
-    model: str = "qwen2.5:3b"
+    model: str = "gemma3:4b"
     timeout: float = 120
     context_size: int = 4096
     output_tokens: int = 1200
@@ -91,10 +91,10 @@ class OllamaClient:
         return None
 
     def generate(self, messages, schema):
+        """Return JSON for a schema, or bounded final text when schema is None."""
         payload = {
             "model": self.settings.model,
             "messages": messages,
-            "format": schema,
             "stream": False,
             "keep_alive": "5m",
             "options": {
@@ -103,6 +103,8 @@ class OllamaClient:
                 "num_predict": self.settings.output_tokens,
             },
         }
+        if schema is not None:
+            payload["format"] = schema
         try:
             if self.thinking_mode is _UNSET:
                 self.thinking_mode = self._discover_thinking()
@@ -125,7 +127,7 @@ class OllamaClient:
             content = envelope["message"]["content"]
             if not isinstance(content, str):
                 raise ValueError("Contenido no textual.")
-            return json.loads(content)
+            return json.loads(content) if schema is not None else content.strip()
         except HTTPError as error:
             if error.code == 404:
                 raise ModelError("model_missing", "El modelo no está disponible. Descárgalo con ollama pull y vuelve a intentar.") from error

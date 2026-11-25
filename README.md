@@ -20,7 +20,17 @@ La nueva pantalla **Adaptar con IA** permite preguntas libres e ingredientes fue
 
 Consulta la [guía de instalación, configuración y pruebas](docs/ia-local.md) y el [plan por fases](docs/plan-adaptacion-ia-local.md). El buscador documental, las recetas existentes y la evaluación histórica siguen disponibles.
 
+## Recetas propias y tiendas
+
+En **Recetas** puedes buscar por título, pegar una receta o crear un borrador de la versión elegida. Revisa cantidades, traduce ingredientes con IA local, elige sustituciones por uso y prepara una lista que agrupa cantidades compatibles. País, idiomas y ciudad son editables; Milán es el ejemplo inicial. Consulta [cómo usar las recetas propias](docs/recetas-libres.md).
+
+La búsqueda web de comercios está preparada para **Tavily**, con caché y límites de uso. Para activarla solo hace falta añadir `TAVILY_API_KEY` a `.env` y reiniciar. La [guía de activación gratuita y opción para estudiantes](docs/comercios.md) explica cómo obtenerla. Los resultados son enlaces candidatos, con stock y envío por comprobar; todavía no hay una consulta real validada con una clave de este proyecto.
+
+La [validación de la entrega](docs/validacion-final.md) separa las pruebas de software, la evaluación local y la revisión culinaria humana pendiente. No se afirma calidad universal ni disponibilidad comercial a partir de una salida generada.
+
 ## Editar la interfaz
+
+Las fichas muestran nombres, ajustes y advertencias esenciales. Los motivos, propiedades, alias y fuentes se abren desde **Ver detalles** o **Detalles y fuentes**. La vista inicial ofrece hasta dos alternativas; los usos del mismo producto se agrupan en una tarjeta. Consulta el [registro de la fase de presentación](docs/fase-2-presentacion.md).
 
 - `templates/base.html` define la estructura general y la navegación. Las otras plantillas en `templates/` contienen el HTML de cada página. `templates/components.html` contiene el buscador, las tarjetas y las listas de fuentes que comparten varias páginas.
 - `assets/app.css` define la paleta en `@theme` y los estilos compartidos. Puedes usar clases de Tailwind directamente en las plantillas.

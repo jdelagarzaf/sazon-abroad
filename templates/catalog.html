@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% from 'components.html' import ingredient_card, relation_card, substitution_gap %}
+{% from 'components.html' import ingredient_card, relation_card, relation_list, substitution_gap %}
 {% block title %}Catálogo · Sazón Abroad{% endblock %}
 {% block content %}
 <h1>Catálogo</h1>
@@ -20,9 +20,16 @@
 {% if selected %}
   <section id="ficha" class="mb-5 grid scroll-mt-4 items-start gap-4 lg:grid-cols-2">
     {{ ingredient_card(selected, sources, {}) }}
-    {% if relations or selected.substitution_gaps %}
-      <div class="space-y-3"><h2>Relaciones culinarias</h2>
-        {% for relation in relations %}{{ relation_card([relation], sources, {}) }}{% endfor %}
+    {% if substitutes or warnings or selected.substitution_gaps %}
+      <div class="space-y-3">
+        {% if substitutes %}
+          <h2>Alternativas por uso</h2>
+          {{ relation_list(substitutes, sources, {}) }}
+        {% endif %}
+        {% if warnings %}
+          <h2>Evita estas confusiones</h2>
+          {% for group in warnings %}{{ relation_card(group, sources, {}) }}{% endfor %}
+        {% endif %}
         {% if selected.substitution_gaps %}
           {% for use, gap in selected.substitution_gaps.items() %}
             {{ substitution_gap(uses[use].label, gap, sources) }}

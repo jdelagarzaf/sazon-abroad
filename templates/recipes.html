@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
-{% from 'components.html' import photo_credit, relation_details, source_list %}
+{% from 'components.html' import photo_credit, relation_details, relation_essentials, source_list %}
 {% block title %}Recetas · Sazón Abroad{% endblock %}
 {% block content %}
 <h1>Recetas mexicanas</h1>
 <p class="mt-2 text-muted">Consulta la receta original o adapta la lista de compras y los pasos para cocinar en Italia.</p>
+<div class="my-5 flex flex-wrap items-end gap-4">
+  <form method="get"><label for="recipe-search">Buscar por título</label><input id="recipe-search" name="q" value="{{ title_query }}" maxlength="160"><button class="button">Buscar</button></form>
+  <a class="button" href="{{ url_for('workspace.new') }}">Pegar mi receta</a>
+</div>
+{% if not recipe %}<p>No hay recetas para esta búsqueda. Prueba otro título o pega tu receta.</p>{% endif %}
 {% if recipe %}
   <form method="get" class="card my-5 flex flex-wrap items-end gap-4">
     <div><label for="recipe">Elige una receta</label>
@@ -19,6 +24,11 @@
     </div>
     {% for id, target in selection.items() %}<input type="hidden" name="choice_{{ id }}" value="{{ target }}">{% endfor %}
     <button class="button">Ver receta</button>
+  </form>
+  <form method="post" action="{{ url_for('workspace.import_recipe') }}" class="my-5">
+    <input type="hidden" name="csrf" value="{{ csrf_token() }}"><input type="hidden" name="recipe" value="{{ recipe.id }}">
+    {% if italy %}{% for id, target in selection.items() %}<input type="hidden" name="choice_{{ id }}" value="{{ target }}">{% endfor %}{% endif %}
+    <button class="button">Crear lista editable y buscar tiendas</button>
   </form>
   <article class="card grid items-center gap-6 md:grid-cols-[3fr_2fr]">
     <div class="space-y-3">
@@ -38,7 +48,7 @@
   </article>
   {% set choices = rows|selectattr('choices')|list %}
   {% if italy and choices %}
-    <form method="get" action="{{ url_for('recipes_page', _anchor='sustituciones') }}" id="sustituciones" class="card mt-5 space-y-4">
+    <form method="get" action="{{ url_for('recipes_page', _anchor='sustituciones') }}" id="sustituciones" class="card ingredient-summary mt-5 space-y-4">
       <input type="hidden" name="recipe" value="{{ recipe.id }}"><input type="hidden" name="version" value="italia">
       <h2>Elige qué sustituir</h2>
       <div class="grid gap-4 md:grid-cols-2">
@@ -52,9 +62,10 @@
               {% endfor %}
             </select>
             {% if row.id in selection %}
-              <details>
-                <summary>Uso y fuente · {{ row.choices[selection[row.id]].target_name_it }}</summary>
-                {{ relation_details(row.choices[selection[row.id]], sources) }}
+              {{ relation_essentials(row.choices[selection[row.id]], show_context=false) }}
+              <details class="find-disclosure details-divider">
+                <summary>Ver explicación y fuentes</summary>
+                {{ relation_details(row.choices[selection[row.id]], sources, essentials=false) }}
               </details>
             {% endif %}
           </div>
